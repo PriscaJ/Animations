@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,7 +37,11 @@ public class AnimationModelTest {
 
   @Test
   public void testGetShape() {
-
+    initData();
+    ArrayList<Shapes> animatedShapes = new ArrayList<Shapes>();
+    animatedShapes.add(rect1);
+    model.setShapes(rect1);
+    assertEquals(animatedShapes, model.getShape());
   }
 
   @Test

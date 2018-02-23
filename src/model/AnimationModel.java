@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The model for how shapes will be called and then animmated.
@@ -15,8 +16,16 @@ public class AnimationModel implements AnimationOperations{
 
 
   @Override
-  public Shape getShape() {
-    return null;
+  public void setShapes(Shapes shape) {
+    if (isOverlap()) {
+      throw new RuntimeException("Cannot have inconsistent animations on shape");
+    }
+    shapes.add(shape);
+  }
+
+  @Override
+  public ArrayList<Shapes> getShape() {
+    return shapes;
   }
 
   @Override
@@ -29,5 +38,20 @@ public class AnimationModel implements AnimationOperations{
       workString.append(s.toString());
     }
     return workString.toString();
+  }
+
+
+  private boolean isOverlap() {
+    boolean answer = false;
+    for (Shapes s: shapes) {
+      ArrayList<AnimationCommand> seen = new ArrayList<AnimationCommand>();
+      for (AnimationCommand ac: s.getCommands()) {
+        // check if the animation is in the seen list
+        // if the animation is the same (contained in seen)
+        // then check their times to see if they overlap
+
+      }
+    }
+    return answer; // stub
   }
 }
