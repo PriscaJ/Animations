@@ -1,0 +1,34 @@
+
+Overall Implementation and design: Primarily designed to mimic the Command Pattern in order to
+simplify the model interface. Through the command pattern the classes for shapes do not become
+concerned with how they will be modified since the animation class takes care of it.
+
+Interface AnimationOperations
+This is the main interface for the model which contains the methods and behaviors that a model
+should have in order to run an animation. Methods such as getShape that returns the shapes in the
+current animation as well as the readBack which returns the animation as a String.
+
+class AnimationModel - implements AnimationOperations
+Field(s): ArrayList<Shapes>  all the shapes that are contained in this animation.
+
+Interface Shapes
+
+class Shape - enum ShapeType
+
+Interface AnimationCommands
+
+class MoveCommand
+
+class
+
+class
+
+Interface Animations
+
+abstract class AbstractAnimation - implements Animations
+
+class Move - extends AbstractAnimation
+
+class ScaleChange - extends AbstractAnimation
+
+class ColorChange - extends AbstractAnimation
