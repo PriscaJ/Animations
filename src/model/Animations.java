@@ -6,4 +6,8 @@ package model;
 public interface Animations {
 
   void apply();
+
+  int getFinish();
+
+  int getStart();
 }
