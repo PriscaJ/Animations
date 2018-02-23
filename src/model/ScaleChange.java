@@ -11,9 +11,9 @@ public class ScaleChange extends AbstractAnimation {
 
   public ScaleChange(int start, int finish,
                      Pair<Double, Double> initialStage, Pair<Double, Double> finalStage) {
-    super(start, finish);
-    this.initialStage = initialStage;
-    this.finalStage = finalStage;
+    super(start, finish, initialStage, finalStage);
+    //this.initialStage = initialStage;
+    //this.finalStage = finalStage;
   }
 
   @Override

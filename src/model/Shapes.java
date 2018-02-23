@@ -1,5 +1,8 @@
 package model;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 /**
  * Representation of common behaviors tha shapes.
  * These behaviors will play a role in how a shape animates.
@@ -23,5 +26,31 @@ public interface Shapes {
    * Runs through the animations that the Shape has under its Commands.
    */
   void animateShape();
+
+  ArrayList<AnimationCommand> getCommands();
+
+  String getName();
+
+  ShapeType getType();
+
+  Double getWidth();
+
+  Double getHeight();
+
+  int getAppears();
+
+  int getDisappears();
+
+  Point getPosition();
+
+  Color getColor();
+
+  /** private ArrayList<AnimationCommand> commands;
+  // qualities of a shape
+  private String name;
+  private ShapeType type;
+  private int width, height, appears, disappears;
+  private Point position;
+  private Color color; **/
 
 }

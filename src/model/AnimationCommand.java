@@ -6,4 +6,6 @@ package model;
 public interface AnimationCommand {
 
   void execute();
+
+  String toString();
 }

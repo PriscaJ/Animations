@@ -10,4 +10,8 @@ public interface Animations {
   int getFinish();
 
   int getStart();
+
+  Object getInitialStage();
+
+  Object getFinalStage();
 }

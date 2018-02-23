@@ -5,6 +5,12 @@ package model;
  */
 public interface AnimationOperations {
 
+
+  /**
+   * Set the shapes that will be in this animation.
+   */
+  void setShapes();
+
   /**
    * Observational method to return a shape when called.
    * @return AShape the called shape.

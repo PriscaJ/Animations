@@ -9,9 +9,9 @@ public class Move extends AbstractAnimation{
   Point initialStage, finalStage;
 
   public Move(int start, int finish, Point initialStage, Point finalStage) {
-    super(start, finish);
-    this.initialStage = initialStage;
-    this.finalStage = finalStage;
+    super(start, finish, initialStage, finalStage);
+    //this.initialStage = initialStage;
+    //this.finalStage = finalStage;
   }
 
 
@@ -33,4 +33,6 @@ public class Move extends AbstractAnimation{
       // todo fix the apply method
     }
   }
+
+
 }

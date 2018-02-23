@@ -5,10 +5,13 @@ package model;
  */
 public abstract class AbstractAnimation implements Animations {
   private int start, finish;
+  private Object initalStage, finalStage;
 
-  AbstractAnimation(int start, int finish) {
+  AbstractAnimation(int start, int finish, Object initialStage, Object finalStage) {
     this.start = start;
     this.finish = finish;
+    this.initalStage = initialStage;
+    this.finalStage = finalStage;
   }
 
   @Override
@@ -23,5 +26,26 @@ public abstract class AbstractAnimation implements Animations {
   @Override
   public int getFinish() {
     return finish;
+  }
+
+  @Override
+  public Object getInitialStage() {
+    return initalStage;
+  }
+
+  @Override
+  public Object getFinalStage() {
+    return finalStage;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder workString = new StringBuilder();
+
+    workString.append(" moves from " + getInitialStage()
+            + " to " + getFinalStage()
+            + "from t=" + getStart()
+            + "to t=" + getFinish());
+    return workString.toString();
   }
 }
