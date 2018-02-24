@@ -8,7 +8,17 @@ public class MoveCommand implements AnimationCommand {
   }
 
   @Override
+  public Animations getAnimation() {
+    return move;
+  }
+
+  @Override
   public void execute() {
     move.apply();
+  }
+
+  @Override
+  public String toString() {
+    return move.toString();
   }
 }

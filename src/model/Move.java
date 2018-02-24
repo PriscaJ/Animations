@@ -34,5 +34,15 @@ public class Move extends AbstractAnimation{
     }
   }
 
+  @Override
+  public String toString() {
+    StringBuilder workString = new StringBuilder();
+    workString.append("moves from " + getInitialStage()
+            +" to " + getFinalStage()
+            + "from time t=" + getStart()
+            + " to t=" + getFinish());
+    return workString.toString();
+  }
+
 
 }

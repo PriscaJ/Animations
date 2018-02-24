@@ -5,6 +5,8 @@ package model;
  */
 public interface AnimationCommand {
 
+  Animations getAnimation();
+
   void execute();
 
   String toString();

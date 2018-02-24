@@ -20,4 +20,15 @@ public class ScaleChange extends AbstractAnimation {
   public void apply() {
 
   }
+
+  @Override
+  public String toString() {
+    StringBuilder workString = new StringBuilder();
+
+    workString.append(" changes from " + getInitialStage()
+            + " to " + getFinalStage()
+            + "from t=" + getStart()
+            + "to t=" + getFinish());
+    return workString.toString();
+  }
 }

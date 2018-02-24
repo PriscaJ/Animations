@@ -23,7 +23,7 @@ public class AnimationModelTest {
 
 
   @Before
-  void initData() {
+  public void initData() {
     model = new AnimationModel();
     rect1Corner = new Point(200, 200);
     initalMove1 = new Point(200, 200);
@@ -33,6 +33,11 @@ public class AnimationModelTest {
             10, 50, rect1Corner, rect1Color);
     move1 = new Move(10, 50, initalMove1, finalMove1);
     moveCommand1 = new MoveCommand(move1);
+  }
+
+  @Test
+  public void emptyAnimation() {
+
   }
 
   @Test
@@ -46,6 +51,10 @@ public class AnimationModelTest {
 
   @Test
   public void testReadBack() {
+    initData();
+    rect1.setAnimation(moveCommand1);
+    model.setShapes(rect1);
+    assertEquals("", model.readBack());
 
   }
 
@@ -56,6 +65,16 @@ public class AnimationModelTest {
 
   @Test
   public void testAnimateShape() {
+
+  }
+
+  @Test
+  public void testOverlap() {
+
+  }
+
+  @Test
+  public void testGoodOverlap() {
 
   }
 

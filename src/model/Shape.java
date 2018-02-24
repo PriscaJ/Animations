@@ -36,6 +36,13 @@ public class Shape implements Shapes {
 
   @Override
   public void setAnimation(AnimationCommand newCommand) {
+    // does the action applied to the shape occur during the lifespan of the shape
+    if(newCommand.getAnimation().getStart() < getAppears()) {
+      throw new IllegalArgumentException("Cannot apply Action to shape");
+    }
+    if(newCommand.getAnimation().getFinish() > getDisappears()) {
+      throw new IllegalArgumentException("Cannot apply Action to shape");
+    }
     commands.add(newCommand);
   }
 
@@ -103,14 +110,15 @@ public class Shape implements Shapes {
               + ", Color: " + getColor());
     }
     else {
-      workString.append("\nLower-left corner: " + getPosition()
+      workString.append("\nLower-left corner: ("
+              + getPosition().getX() + " , " + getPosition().getY() + ") "
               + ", Width: " + getWidth()
               + ", Height: " + getHeight());
     }
     workString.append("\nAppears at t=" + getAppears()
     + "\nDisappears at t=" + getDisappears());
     for (AnimationCommand ac: getCommands()) {
-      workString.append("\n" + getName() + ac.toString());
+      workString.append("\n" + getName() + " " + ac.toString());
     }
     return workString.toString();
   }

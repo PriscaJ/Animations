@@ -39,13 +39,5 @@ public abstract class AbstractAnimation implements Animations {
   }
 
   @Override
-  public String toString() {
-    StringBuilder workString = new StringBuilder();
-
-    workString.append(" moves from " + getInitialStage()
-            + " to " + getFinalStage()
-            + "from t=" + getStart()
-            + "to t=" + getFinish());
-    return workString.toString();
-  }
+  public abstract String toString();
 }
