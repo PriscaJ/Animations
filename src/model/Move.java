@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.util.HashMap;
 
 /**
  * Class that handles moving a shape in an animation coupled to the shape by its command.
@@ -19,7 +20,7 @@ public class Move extends AbstractAnimation{
   public void apply() {
     // how long the move will last for
     int duration = getFinish() - getStart();
-    Point intermediateMove = new Point();
+    // Point intermediateMove = new Point();
 
     // distance to goal location broken up into X and Y
     double distX = initialStage.getX() - finalStage.getX();
@@ -31,6 +32,20 @@ public class Move extends AbstractAnimation{
 
     for (int i = 0; i < duration; i++) {
       // todo fix the apply method
+    }
+
+    // todo change the shape's position to the start position of the move
+    // it can be "teleported" into this spot
+    // curr.p = this.start; // mutating the inital position
+
+
+    // create a hashmap of all the positions while transitioning
+    // from one position to the next within the amount of time.
+    HashMap<Integer, Point> hmTpoint = new HashMap<Integer, Point>();
+
+    for (int t = getStart(), x = initialStage.x, y = initialStage.y;
+         t < getFinish(); t++, x += incrementX, y += incrementY) {
+      hmTpoint.put(t, new Point((int) x, (int) y));
     }
   }
 

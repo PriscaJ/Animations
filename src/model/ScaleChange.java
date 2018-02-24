@@ -1,5 +1,8 @@
 package model;
 
+import java.awt.*;
+import java.util.HashMap;
+
 import javafx.util.Pair;
 
 /**
@@ -18,7 +21,26 @@ public class ScaleChange extends AbstractAnimation {
 
   @Override
   public void apply() {
+    // how long the move will last for
+    int duration = getFinish() - getStart();
+    Point intermediateMove = new Point();
 
+    // distance to goal location broken up into X and Y
+    double xScale = initialStage.getKey() - finalStage.getKey();
+    double yScale = initialStage.getValue() - finalStage.getValue();
+
+    // how much the shape should move at each time t
+    double incrementX = xScale / duration;
+    double incrementY = yScale / duration;
+
+    HashMap<Integer, Pair> hmTscale = new HashMap<Integer, Pair>();
+
+    for (int t = getStart(),
+         x = initialStage.getKey().intValue(), y = initialStage.getValue().intValue();
+         t < getFinish(); t++, x += incrementX, y += incrementY) {
+      //new Pair<Double, Double>((double) x, (double) y);
+      hmTscale.put(t, new Pair<Double, Double>((double) x, (double) y));
+    }
   }
 
   @Override
