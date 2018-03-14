@@ -9,6 +9,13 @@ public class ColorChange extends AbstractAnimation {
   private Double[] initialStage;
   private Double[] finalStage;
 
+  /**
+   * constructor for colorchange
+   * @param start the start
+   * @param finish the finish
+   * @param initialStage this initial
+   * @param finalStage the final
+   */
   public ColorChange(int start, int finish, Double[] initialStage, Double[] finalStage) {
     super(start, finish, new Double[3], new Double[3]);
     // set to an array that is only of length 3

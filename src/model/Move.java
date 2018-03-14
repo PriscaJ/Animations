@@ -1,14 +1,22 @@
 package model;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.HashMap;
 
 /**
  * Class that handles moving a shape in an animation coupled to the shape by its command.
  */
-public class Move extends AbstractAnimation{
-  Point initialStage, finalStage;
+public class Move extends AbstractAnimation {
+  private Point initialStage;
+  private Point finalStage;
 
+  /**
+   * Constructor.
+   * @param start start
+   * @param finish finish
+   * @param initialStage inital
+   * @param finalStage finish
+   */
   public Move(int start, int finish, Point initialStage, Point finalStage) {
     super(start, finish, initialStage, finalStage);
     //this.initialStage = initialStage;

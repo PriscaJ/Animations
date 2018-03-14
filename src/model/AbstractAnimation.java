@@ -4,8 +4,10 @@ package model;
  * Abstract class for animations lifting fields and behavior that occur in all animations.
  */
 public abstract class AbstractAnimation implements Animations {
-  private int start, finish;
-  private Object initalStage, finalStage;
+  private int start;
+  private int finish;
+  private Object initalStage;
+  private Object finalStage;
 
   AbstractAnimation(int start, int finish, Object initialStage, Object finalStage) {
     this.start = start;

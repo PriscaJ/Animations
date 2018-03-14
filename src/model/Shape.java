@@ -14,11 +14,24 @@ public class Shape implements Shapes {
   // qualities of a shape
   private String name;
   private ShapeType type;
-  private double width, height;
-  private int appears, disappears;
+  private double width;
+  private double height;
+  private int appears;
+  private int disappears;
   private Point position;
   private Color color;
 
+  /**
+   * 
+   * @param name
+   * @param type
+   * @param width
+   * @param height
+   * @param appears
+   * @param disapears
+   * @param position
+   * @param color
+   */
   public Shape(String name, ShapeType type, double width, double height,
                int appears, int disapears, Point position, Color color) {
     this.commands = new ArrayList<AnimationCommand>();
@@ -117,8 +130,13 @@ public class Shape implements Shapes {
     }
     workString.append("\nAppears at t=" + getAppears()
     + "\nDisappears at t=" + getDisappears());
-    for (AnimationCommand ac: getCommands()) {
-      workString.append("\n" + getName() + " " + ac.toString());
+    if (getCommands().isEmpty()) {
+      return workString.toString();
+    }
+    else {
+      for (AnimationCommand ac : getCommands()) {
+        workString.append("\n" + getName() + " " + ac.toString());
+      }
     }
     return workString.toString();
   }

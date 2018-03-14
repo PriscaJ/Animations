@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.HashMap;
 
 import javafx.util.Pair;
@@ -12,6 +12,13 @@ public class ScaleChange extends AbstractAnimation {
   private Pair<Double, Double> initialStage;
   private Pair<Double, Double> finalStage;
 
+  /**
+   * Constructor.
+   * @param start start
+   * @param finish finish
+   * @param initialStage initial
+   * @param finalStage final
+   */
   public ScaleChange(int start, int finish,
                      Pair<Double, Double> initialStage, Pair<Double, Double> finalStage) {
     super(start, finish, initialStage, finalStage);

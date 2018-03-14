@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Primarily  uses its field of ScaleChange to apply the Action whihc is relayed back to the shape.
+ */
 public class ScaleCommand implements AnimationCommand {
   ScaleChange scale;
 

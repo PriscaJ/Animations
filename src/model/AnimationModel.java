@@ -1,12 +1,12 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * The model for how shapes will be called and then animmated.
  */
-public class AnimationModel implements AnimationOperations{
+public class AnimationModel implements AnimationOperations {
   // the shapes that will occur during an animation.
   private ArrayList<Shapes> shapes;
 
@@ -31,6 +31,10 @@ public class AnimationModel implements AnimationOperations{
   @Override
   public String readBack() {
     StringBuilder workString = new StringBuilder();
+
+    if (shapes.isEmpty()) {
+      return workString.toString();
+    }
 
     // description of the shapes
     workString.append("Shapes:\n");

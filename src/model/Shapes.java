@@ -1,6 +1,7 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +28,10 @@ public interface Shapes {
    */
   void animateShape();
 
+  /**
+   * Various observational mmethods to retrieve and access private fields when needed.
+   * @return various returns.
+   */
   ArrayList<AnimationCommand> getCommands();
 
   String getName();
@@ -44,13 +49,5 @@ public interface Shapes {
   Point getPosition();
 
   Color getColor();
-
-  /** private ArrayList<AnimationCommand> commands;
-  // qualities of a shape
-  private String name;
-  private ShapeType type;
-  private int width, height, appears, disappears;
-  private Point position;
-  private Color color; **/
 
 }
