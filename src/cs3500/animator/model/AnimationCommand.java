@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * Interface for commands to decouple the Shape from the animation.

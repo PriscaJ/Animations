@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import javafx.util.Pair;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests against the interface of the model (AnimationOperations)
+ * Tests against the interface of the cs3500.animator.model (AnimationOperations)
  * ensuring all methods work properly.
  */
 public class AnimationModelTest {

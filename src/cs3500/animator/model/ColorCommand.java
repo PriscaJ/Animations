@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * Primarily  uses its field of ColorChange to apply the Action whihc is relayed back to the shape.

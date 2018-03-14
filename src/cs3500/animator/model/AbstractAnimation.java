@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * Abstract class for animations lifting fields and behavior that occur in all animations.

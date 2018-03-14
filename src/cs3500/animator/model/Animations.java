@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * An interface for various kinds of animations that Shapes can have.
