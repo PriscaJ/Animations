@@ -1,11 +1,13 @@
 package cs3500.animator.model;
 
+import java.util.HashMap;
+
 /**
  * Class that handles the shifts in colors within a shape during an animation.
  */
 public class ColorChange extends AbstractAnimation {
-  private Float[] initialStage;
-  private Float[] finalStage;
+  private Double[] initialStage;
+  private Double[] finalStage;
 
   /**
    * constructor for colorchange
@@ -14,24 +16,40 @@ public class ColorChange extends AbstractAnimation {
    * @param initialStage this initial
    * @param finalStage the final
    */
-  public ColorChange(int start, int finish, Float[] initialStage, Float[] finalStage) {
-    super(start, finish, new Float[3], new Float[3]);
+  public ColorChange(int start, int finish, Double[] initialStage, Double[] finalStage) {
+    super(start, finish, new Double[3], new Double[3]);
     // set to an array that is only of length 3
-    //this.initialStage = new Float[3];
-    //this.finalStage = new Float[3];
+    //this.initialStage = new Double[3];
+    //this.finalStage = new Double[3];
   }
 
   @Override
-  protected float calculateChange(float startValue, float endValue, float tick) {
-    return (startValue - endValue) / (getFinish() - getStart());
-  }
+  public void apply() {
+    // how long the move will last for
+    int duration = getFinish() - getStart();
+    // Point intermediateMove = new Point();
 
-  @Override
-  public void apply(int tick) {
-    float updatedR = calculateChange(initialStage[1], finalStage[1], tick);
-    float updatedG = calculateChange(initialStage[2], finalStage[2], tick);
-    float updatedB = calculateChange(initialStage[3], finalStage[3], tick);
+    double rTransition = initialStage[1] - finalStage[1];
+    double gTransition = initialStage[2] - finalStage[2];
+    double bTransition = initialStage[3] - finalStage[3];
 
+
+    double rInc = rTransition / duration;
+    double gInc = gTransition / duration;
+    double bInc = bTransition / duration;
+    // distance to goal location broken up into X and Y
+    // log the color at each time
+
+    HashMap<Integer, Double[]> hmTcolors = new HashMap<Integer, Double[]>();
+
+    for (double t = getStart(), r = initialStage[1], g = initialStage[2],
+         b = initialStage[3]; t < getFinish(); t++, r += rInc, g += gInc, b += bInc) {
+      Double[] workArray = new Double[3];
+      workArray[1] = r;
+      workArray[2] = g;
+      workArray[3] = b;
+      hmTcolors.put((int) t, workArray);
+    }
   }
 
   @Override

@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 /**
- * The model for how shapes will be called and then animmated.
+ * The cs3500.animator.model for how shapes will be called and then animmated.
  */
 public class AnimationModel implements AnimationOperations {
   // the shapes that will occur during an animation.
