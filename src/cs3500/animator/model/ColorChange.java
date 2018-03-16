@@ -53,6 +53,16 @@ public class ColorChange extends AbstractAnimation {
   }
 
   @Override
+  protected float calculateChange(float startValue, float endValue, float tick) {
+    return 0;
+  }
+
+  @Override
+  public void apply(int tick) {
+
+  }
+
+  @Override
   public String toString() {
     StringBuilder workString = new StringBuilder();
 
