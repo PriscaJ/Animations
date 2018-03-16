@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import cs3500.animator.util.TweenModelBuilder;
+
 
 /**
  * The cs3500.animator.model for how shapes will be called and then animmated.
  */
-public class AnimationModel implements AnimationOperations {
+public final class AnimationModel implements AnimationOperations, IReadOnlyModel {
   // the shapes that will occur during an animation.
   private ArrayList<Shapes> shapes;
   // hashmap of shape name to shape
-  private Map<String, Shapes> allShapes = new HashMap<>();
+  private Map<String, Shapes> allShapes = new HashMap<String, Shapes>();
+  private Map<String, AnimationCommand> allActions = new HashMap<String, AnimationCommand>();
 
 
   public  AnimationModel() {
@@ -82,7 +85,43 @@ public class AnimationModel implements AnimationOperations {
     return answer; // stub
   }
 
+  public static final class Builder implements TweenModelBuilder<AnimationModel> {
+    @Override
+    public TweenModelBuilder<AnimationModel> addOval(String name, float cx, float cy, float xRadius
+            , float yRadius, float red, float green, float blue, int startOfLife, int endOfLife) {
+      return null;
+    }
 
+    @Override
+    public TweenModelBuilder<AnimationModel> addRectangle(String name, float lx, float ly
+            , float width, float height, float red, float green, float blue, int startOfLife
+            , int endOfLife) {
+      return null;
+    }
+
+    @Override
+    public TweenModelBuilder<AnimationModel> addMove(String name, float moveFromX, float moveFromY
+            , float moveToX, float moveToY, int startTime, int endTime) {
+      return null;
+    }
+
+    @Override
+    public TweenModelBuilder<AnimationModel> addColorChange(String name, float oldR, float oldG
+            , float oldB, float newR, float newG, float newB, int startTime, int endTime) {
+      return null;
+    }
+
+    @Override
+    public TweenModelBuilder<AnimationModel> addScaleToChange(String name, float fromSx
+            , float fromSy, float toSx, float toSy, int startTime, int endTime) {
+      return null;
+    }
+
+    @Override
+    public AnimationModel build() {
+      return null;
+    }
+  }
 
 
 

@@ -16,8 +16,8 @@ public class MoveCommand implements AnimationCommand {
   }
 
   @Override
-  public void execute() {
-    move.apply();
+  public void execute(int tick) {
+    move.apply(tick);
   }
 
   @Override
