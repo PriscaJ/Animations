@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 import java.awt.Point;
 import java.util.HashMap;
@@ -27,7 +27,11 @@ public class ScaleChange extends AbstractAnimation {
   }
 
   @Override
-  public void apply() {
+  public void apply(int tick) {
+
+
+
+
     // how long the move will last for
     int duration = getFinish() - getStart();
     Point intermediateMove = new Point();

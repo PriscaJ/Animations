@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * Abstract class for animations lifting fields and behavior that occur in all animations.
@@ -16,9 +16,10 @@ public abstract class AbstractAnimation implements Animations {
     this.finalStage = finalStage;
   }
 
-  @Override
-  public abstract void apply();
+  protected abstract float calculateChange(float startValue, float endValue, float tick);
 
+  @Override
+  public abstract void apply(int tick);
 
   @Override
   public int getStart() {

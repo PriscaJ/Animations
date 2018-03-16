@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * Interface for commands to decouple the Shape from the animation.
@@ -12,9 +12,9 @@ public interface AnimationCommand {
   Animations getAnimation();
 
   /**
-   * Used to call the Animation action it acts on. Used to invoke the command.
+   * Used to call the Animation action it acts on. Used to invoke the command at the given time.
    */
-  void execute();
+  void execute(int tick);
 
   /**
    * Helper to the readback in order to get the

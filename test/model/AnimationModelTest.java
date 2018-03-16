@@ -6,6 +6,16 @@ import org.junit.Test;
 import java.awt.*;
 import java.util.ArrayList;
 
+import cs3500.animator.model.AnimationCommand;
+import cs3500.animator.model.AnimationModel;
+import cs3500.animator.model.AnimationOperations;
+import cs3500.animator.model.Move;
+import cs3500.animator.model.MoveCommand;
+import cs3500.animator.model.ScaleChange;
+import cs3500.animator.model.ScaleCommand;
+import cs3500.animator.model.Shape;
+import cs3500.animator.model.ShapeType;
+import cs3500.animator.model.Shapes;
 import javafx.util.Pair;
 
 import static org.junit.Assert.assertEquals;

@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * An interface for various kinds of animations that Shapes can have.
@@ -6,9 +6,9 @@ package model;
 public interface Animations {
 
   /**
-   * Applies the Animation actions and stores them, in order for them to be used.
+   * Applies the Animation actions and mutates its shape at the given time.
    */
-  void apply();
+  void apply(int tick);
 
   /**
    * Various observational mmethods to retrieve and access private fields when needed.

@@ -1,4 +1,4 @@
-package model;
+package cs3500.animator.model;
 
 /**
  * Primarily  uses its field of ScaleChange to apply the Action whihc is relayed back to the shape.
