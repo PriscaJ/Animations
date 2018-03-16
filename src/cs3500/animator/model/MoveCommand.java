@@ -1,7 +1,7 @@
 package cs3500.animator.model;
 
 /**
- * Primarily  uses its field of Move to apply the Action whihc is relayed back to the shape.
+ * Primarily  uses its field of Move to apply the Action which is relayed back to the shape.
  */
 public class MoveCommand implements AnimationCommand {
   private Move move;
@@ -16,8 +16,8 @@ public class MoveCommand implements AnimationCommand {
   }
 
   @Override
-  public void execute() {
-    move.apply();
+  public void execute(int tick) {
+    move.apply(tick);
   }
 
   @Override

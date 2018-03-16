@@ -6,70 +6,40 @@ import java.util.HashMap;
  * Class that handles the shifts in colors within a shape during an animation.
  */
 public class ColorChange extends AbstractAnimation {
-  private Double[] initialStage;
-  private Double[] finalStage;
+  private AbstractShape s;
+  private float oldR;
+  private float oldG;
+  private float oldB;
+  private float newR;
+  private float newG;
+  private float newB;
 
   /**
-   * constructor for colorchange
-   * @param start the start
-   * @param finish the finish
-   * @param initialStage this initial
-   * @param finalStage the final
+   * Create a colorchange object that will change the color of a shape.
    */
-  public ColorChange(int start, int finish, Double[] initialStage, Double[] finalStage) {
-    super(start, finish, new Double[3], new Double[3]);
-    // set to an array that is only of length 3
-    //this.initialStage = new Double[3];
-    //this.finalStage = new Double[3];
+  public ColorChange(String name, float oldR, float oldG, float oldB,
+      float newR, float newG, float newB, int startTime, int endTime) {
+    super(name, startTime, endTime);
+    this.oldR = oldR;
+    this.oldG = oldG;
+    this.oldB = oldB;
+    this.newR = newR;
+    this.newG = newG;
+    this.newB = newB;
   }
 
-  @Override
-  public void apply() {
-    // how long the move will last for
-    int duration = getFinish() - getStart();
-    // Point intermediateMove = new Point();
-
-    double rTransition = initialStage[1] - finalStage[1];
-    double gTransition = initialStage[2] - finalStage[2];
-    double bTransition = initialStage[3] - finalStage[3];
-
-
-    double rInc = rTransition / duration;
-    double gInc = gTransition / duration;
-    double bInc = bTransition / duration;
-    // distance to goal location broken up into X and Y
-    // log the color at each time
-
-    HashMap<Integer, Double[]> hmTcolors = new HashMap<Integer, Double[]>();
-
-    for (double t = getStart(), r = initialStage[1], g = initialStage[2],
-         b = initialStage[3]; t < getFinish(); t++, r += rInc, g += gInc, b += bInc) {
-      Double[] workArray = new Double[3];
-      workArray[1] = r;
-      workArray[2] = g;
-      workArray[3] = b;
-      hmTcolors.put((int) t, workArray);
-    }
-  }
-
-  @Override
-  protected float calculateChange(float startValue, float endValue, float tick) {
-    return 0;
-  }
 
   @Override
   public void apply(int tick) {
-
+    s.red = calculateChange(oldR, newR, tick);
+    s.green = calculateChange(oldG, newG, tick);
+    s.blue = calculateChange(oldB, newB, tick);
   }
 
   @Override
-  public String toString() {
-    StringBuilder workString = new StringBuilder();
-
-    workString.append(" changes from " + getInitialStage()
-            + " to " + getFinalStage()
-            + "from t=" + getStart()
-            + "to t=" + getFinish());
-    return workString.toString();
+  public String getDescription() {
+    return String.format("Shape %s changes color from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f) "
+            + "from t=%d to t=%d",
+        name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
   }
 }

@@ -6,16 +6,6 @@ import org.junit.Test;
 import java.awt.*;
 import java.util.ArrayList;
 
-import cs3500.animator.model.AnimationCommand;
-import cs3500.animator.model.AnimationModel;
-import cs3500.animator.model.AnimationOperations;
-import cs3500.animator.model.Move;
-import cs3500.animator.model.MoveCommand;
-import cs3500.animator.model.ScaleChange;
-import cs3500.animator.model.ScaleCommand;
-import cs3500.animator.model.Shape;
-import cs3500.animator.model.ShapeType;
-import cs3500.animator.model.Shapes;
 import javafx.util.Pair;
 
 import static org.junit.Assert.assertEquals;
@@ -45,7 +35,7 @@ public class AnimationModelTest {
     initalMove1 = new Point(200, 200);
     finalMove1 = new Point(300, 300);
     rect1Color = Color.BLUE;
-    rect1 = new Shape("R", ShapeType.RECTANGLE, 50.0, 100.0,
+    rect1 = new AbstractShape("R", ShapeType.RECTANGLE, 50.0, 100.0,
             10, 50, rect1Corner, rect1Color);
     move1 = new Move(10, 50, initalMove1, finalMove1);
     moveCommand1 = new MoveCommand(move1);

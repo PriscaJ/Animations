@@ -9,59 +9,23 @@ import javafx.util.Pair;
  * Class that alters a shapes dimensions when called by its corresponding command by a shape.
  */
 public class ScaleChange extends AbstractAnimation {
-  private Pair<Double, Double> initialStage;
-  private Pair<Double, Double> finalStage;
 
-  /**
-   * Constructor.
-   * @param start start
-   * @param finish finish
-   * @param initialStage initial
-   * @param finalStage final
-   */
-  public ScaleChange(int start, int finish,
-                     Pair<Double, Double> initialStage, Pair<Double, Double> finalStage) {
-    super(start, finish, initialStage, finalStage);
-    //this.initialStage = initialStage;
-    //this.finalStage = finalStage;
+  // ADD CONSTRUCTOR COMMENT HERE
+  public ScaleChange(String name, float fromSx, float fromSy, float toSx, float toSy,
+      int startTime, int endTime) {
+    super(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
+    this.type = AnimationType.SCALECHANGE;
   }
 
   @Override
   public void apply(int tick) {
 
-
-
-
-    // how long the move will last for
-    int duration = getFinish() - getStart();
-    Point intermediateMove = new Point();
-
-    // distance to goal location broken up into X and Y
-    double xScale = initialStage.getKey() - finalStage.getKey();
-    double yScale = initialStage.getValue() - finalStage.getValue();
-
-    // how much the shape should move at each time t
-    double incrementX = xScale / duration;
-    double incrementY = yScale / duration;
-
-    HashMap<Integer, Pair> hmTscale = new HashMap<Integer, Pair>();
-
-    for (int t = getStart(),
-         x = initialStage.getKey().intValue(), y = initialStage.getValue().intValue();
-         t < getFinish(); t++, x += incrementX, y += incrementY) {
-      //new Pair<Double, Double>((double) x, (double) y);
-      hmTscale.put(t, new Pair<Double, Double>((double) x, (double) y));
-    }
   }
 
   @Override
-  public String toString() {
-    StringBuilder workString = new StringBuilder();
-
-    workString.append(" changes from " + getInitialStage()
-            + " to " + getFinalStage()
-            + "from t=" + getStart()
-            + "to t=" + getFinish());
-    return workString.toString();
+  public String getDescription() {
+    return String.format("Shape %s scales from Width: %.1f, Height: %.1f to "
+            + "Width: %.1f, Height: %.1f from t=%d to t=%d",
+        this.name, this.startX, startY, endX, endY, startTime, endTime);
   }
 }

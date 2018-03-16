@@ -14,12 +14,6 @@ public interface AnimationOperations {
   void setShapes(Shapes shape);
 
   /**
-   * Observational method to return a shape when called.
-   * @return AShape the called shape.
-   */
-  ArrayList<Shapes> getShape();
-
-  /**
    * Provides the String representation of the animation.
    * @return String of the animation.
    */

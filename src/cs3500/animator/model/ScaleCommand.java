@@ -16,8 +16,8 @@ public class ScaleCommand implements AnimationCommand {
   }
 
   @Override
-  public void execute() {
-    getAnimation().apply();
+  public void execute(int tick) {
+    getAnimation().apply(tick);
   }
 
   @Override

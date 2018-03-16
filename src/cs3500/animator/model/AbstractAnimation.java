@@ -4,31 +4,66 @@ package cs3500.animator.model;
  * Abstract class for animations lifting fields and behavior that occur in all animations.
  */
 public abstract class AbstractAnimation implements Animations {
-  private int start;
-  private int finish;
-  private Object initalStage;
-  private Object finalStage;
 
-  AbstractAnimation(int start, int finish, Object initialStage, Object finalStage) {
-    this.start = start;
-    this.finish = finish;
-    this.initalStage = initialStage;
-    this.finalStage = finalStage;
+  protected String name;
+  protected float startX;
+  protected float startY;
+  protected float endX;
+  protected float endY;
+  protected int startTime;
+  protected int endTime;
+  protected AbstractShape animatingShape = null;
+  protected AnimationType type = null;
+  /**
+   * Initialize the abstract command with the specific characteristics. Used for cs3500.animator.model.Move and cs3500.animator.model.Scale.
+   * @param name is the name of the shape to be animated.
+   * @param startX is the starting x characteristic. (X coordinate or width)
+   * @param startY is the starting y characteristic.
+   * @param endX is the ending x characteristic.
+   * @param endY is the ending y characteristic.
+   * @param startTime is the time the animation starts.
+   * @param endTime is the time the animation ends.
+   */
+  public AbstractAnimation(String name, float startX, float startY,
+      float endX, float endY, int startTime, int endTime) {
+    this.name = name;
+    this.startX = startX;
+    this.startY = startY;
+    this.endX = endX;
+    this.endY = endY;
+    this.startTime = startTime;
+    this.endTime = endTime;
   }
 
-  protected abstract float calculateChange(float startValue, float endValue, float tick);
+  /**
+   * The constructor for an animation given a name and starttime and endtime.
+   * @param name is the name of the shape to be animated.
+   * @param startTime is the time the animation starts.
+   * @param endTime is the time the animation ends.
+   */
+  public AbstractAnimation(String name, int startTime, int endTime) {
+    this.name = name;
+    this.startTime = startTime;
+    this.endTime = endTime;
+  }
+
+  @Override
+  public float calculateChange(float startValue, float endValue, float tick) {
+    int duration = getFinish() - getStart();
+    return (endValue - startValue) / duration;
+  }
 
   @Override
   public abstract void apply(int tick);
 
   @Override
   public int getStart() {
-    return start;
+    return startTime;
   }
 
   @Override
   public int getFinish() {
-    return finish;
+    return endTime;
   }
 
   @Override
@@ -42,5 +77,7 @@ public abstract class AbstractAnimation implements Animations {
   }
 
   @Override
-  public abstract String toString();
+  public abstract String getDescription();
+
+
 }

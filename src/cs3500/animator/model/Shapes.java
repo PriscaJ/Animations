@@ -1,7 +1,5 @@
 package cs3500.animator.model;
 
-import java.awt.Color;
-import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -11,22 +9,22 @@ import java.util.ArrayList;
 public interface Shapes {
 
   /**
-   * A String of the output of what the Shape is doing during an animation.
+   * A String of the output of what the AbstractShape is doing during an animation.
    * @return String of qualities of this shape.
    */
   String toString();
 
   /**
-   * The animations the Shape will undergo during an animations
+   * The animations the AbstractShape will undergo during an animations
    * by adding it to the list of animations that a shape has.
-   * @param newCommand Animation Command that will add to the list of commands the Shape will have.
+   * @param newCommand Animation Command that will add to the list of commands the AbstractShape will have.
    */
   void setAnimation(AnimationCommand newCommand);
 
   /**
-   * Runs through the animations that the Shape has under its Commands.
+   * Runs through the animations that the AbstractShape has under its Commands.
    */
-  void animateShape();
+  void animateShape(int tick);
 
   /**
    * Various observational mmethods to retrieve and access private fields when needed.
@@ -36,18 +34,22 @@ public interface Shapes {
 
   String getName();
 
-  ShapeType getType();
+  Float getWidth();
 
-  Double getWidth();
-
-  Double getHeight();
+  Float getHeight();
 
   int getAppears();
 
   int getDisappears();
 
-  Point getPosition();
+  Float getXPosition();
 
-  Color getColor();
+  Float getYPosition();
 
+  Float getRed();
+  Float getGreen();
+
+  Float getBlue();
+
+  String getDescription();
 }

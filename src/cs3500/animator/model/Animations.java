@@ -21,4 +21,8 @@ public interface Animations {
   Object getInitialStage();
 
   Object getFinalStage();
+
+  String getDescription();
+
+  float calculateChange(float startValue, float endValue, float tick);
 }

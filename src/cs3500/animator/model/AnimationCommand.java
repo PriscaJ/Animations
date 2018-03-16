@@ -1,7 +1,7 @@
 package cs3500.animator.model;
 
 /**
- * Interface for commands to decouple the Shape from the animation.
+ * Interface for commands to decouple the AbstractShape from the animation.
  */
 public interface AnimationCommand {
 
@@ -19,7 +19,7 @@ public interface AnimationCommand {
   /**
    * Helper to the readback in order to get the
    * string representation of the actionon the particular shape.
-   * @return String of what the animation action is doing to pass to the Shape.
+   * @return String of what the animation action is doing to pass to the AbstractShape.
    */
   String toString();
 }
