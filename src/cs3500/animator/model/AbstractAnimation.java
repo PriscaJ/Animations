@@ -14,8 +14,10 @@ public abstract class AbstractAnimation implements Animations {
   protected int endTime;
   protected AbstractShape animatingShape = null;
   protected AnimationType type = null;
+
   /**
    * Initialize the abstract command with the specific characteristics. Used for cs3500.animator.model.Move and cs3500.animator.model.Scale.
+   *
    * @param name is the name of the shape to be animated.
    * @param startX is the starting x characteristic. (X coordinate or width)
    * @param startY is the starting y characteristic.
@@ -37,6 +39,7 @@ public abstract class AbstractAnimation implements Animations {
 
   /**
    * The constructor for an animation given a name and starttime and endtime.
+   *
    * @param name is the name of the shape to be animated.
    * @param startTime is the time the animation starts.
    * @param endTime is the time the animation ends.
@@ -60,6 +63,7 @@ public abstract class AbstractAnimation implements Animations {
   public String getName() {
     return this.name;
   }
+
   @Override
   public int getStart() {
     return startTime;
@@ -74,6 +78,7 @@ public abstract class AbstractAnimation implements Animations {
   public AnimationType getType() {
     return this.type;
   }
+}
 //
 //  @Override
 //  public Object getInitialStage() {
@@ -84,9 +89,3 @@ public abstract class AbstractAnimation implements Animations {
 //  public Object getFinalStage() {
 //    return finalStage;
 //  }
-
-  @Override
-  public abstract String getDescription();
-
-
-}
