@@ -16,17 +16,19 @@ public class AnimationModel implements AnimationOperations {
   // the shapes that will occur during an animation.
   private List<Animations> animations;
   // hashmap of shape name to shape
-  private Map<String, Shapes> shapesMap = new HashMap<>();
-  private Map<String, List<Animations>> shapeToAnimations = new HashMap<>();
-
+  private Map<String, Shapes> shapesMap;
+  // todo: should this be shape to COMMAND?
+  // private Map<String, List<AnimationCommand>> shapeToCommand;
+  private Map<String, List<Animations>> shapeToAnimations;
 
   public AnimationModel() {
-
   }
 
   @Override
   public void setShapes(Shapes shape) {
-
+    shapesMap = new HashMap<>();
+    animations = new ArrayList<>();
+    shapeToAnimations = new HashMap<>();
   }
 
   @Override
