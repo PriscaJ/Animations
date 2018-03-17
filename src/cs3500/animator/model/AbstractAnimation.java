@@ -57,6 +57,10 @@ public abstract class AbstractAnimation implements Animations {
   public abstract void apply(int tick);
 
   @Override
+  public String getName() {
+    return this.name;
+  }
+  @Override
   public int getStart() {
     return startTime;
   }
@@ -67,14 +71,19 @@ public abstract class AbstractAnimation implements Animations {
   }
 
   @Override
-  public Object getInitialStage() {
-    return initalStage;
+  public AnimationType getType() {
+    return this.type;
   }
-
-  @Override
-  public Object getFinalStage() {
-    return finalStage;
-  }
+//
+//  @Override
+//  public Object getInitialStage() {
+//    return initalStage;
+//  }
+//
+//  @Override
+//  public Object getFinalStage() {
+//    return finalStage;
+//  }
 
   @Override
   public abstract String getDescription();

@@ -18,11 +18,11 @@ public interface Animations {
 
   int getStart();
 
-  Object getInitialStage();
-
-  Object getFinalStage();
-
   String getDescription();
 
   float calculateChange(float startValue, float endValue, float tick);
+
+  AnimationType getType();
+
+  String getName();
 }

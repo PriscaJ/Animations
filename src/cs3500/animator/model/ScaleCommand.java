@@ -4,7 +4,7 @@ package cs3500.animator.model;
  * Primarily  uses its field of ScaleChange to apply the Action whihc is relayed back to the shape.
  */
 public class ScaleCommand implements AnimationCommand {
-  ScaleChange scale;
+  private ScaleChange scale;
 
   public ScaleCommand(ScaleChange scale) {
     this.scale = scale;
@@ -18,10 +18,5 @@ public class ScaleCommand implements AnimationCommand {
   @Override
   public void execute(int tick) {
     getAnimation().apply(tick);
-  }
-
-  @Override
-  public String toString() {
-    return scale.toString();
   }
 }
