@@ -12,7 +12,7 @@ public abstract class AbstractAnimation implements Animations {
   protected float endY;
   protected int startTime;
   protected int endTime;
-  protected AbstractShape animatingShape = null;
+  protected Shapes animatingShape = null;
   protected AnimationType type = null;
 
   /**

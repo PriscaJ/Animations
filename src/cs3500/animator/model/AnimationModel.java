@@ -53,7 +53,7 @@ public class AnimationModel implements AnimationOperations {
    * @param command is the command being added.
    * @return whether the command will interfere with another command.
    */
-  private boolean commandsCollide(AbstractAnimation command) {
+  private boolean animationsCollide(AbstractAnimation command) {
     for (Animations c : animations) {
       // if they are the same type of command for the same shape
       if (command.type == c.getType() && command.name.equals(c.getName())) {
@@ -66,27 +66,37 @@ public class AnimationModel implements AnimationOperations {
     return false;
   }
 
+  private void addShape(AbstractShape shape) {
+    if (!shapesMap.containsKey(shape.name)) {
+      shapesMap.put(shape.name, shape);
+    }
+  }
+
+  private void addAnimation(AbstractAnimation animation) {
+    if (animationsCollide(animation)) {
+      throw new IllegalArgumentException("There cannot be inconsistent animations.");
+    } else {
+      String shapeName = animation.name;
+      if (shapeToAnimations.containsKey(shapeName)) {
+        List<Animations> currList = shapeToAnimations.get(shapeName);
+        currList.add(animation);
+        shapeToAnimations.put(shapeName, currList);
+      } else {
+        List<Animations> newList = new ArrayList<>();
+        newList.add(animation);
+        shapeToAnimations.put(shapeName, newList);
+      }
+      animations.add(animation);
+      animation.animatingShape = shapesMap.get(animation.name);
+    }
+  }
+
+
 
   //////////---------------------- BUILDER ---------------------------////////////
   public static final class Builder implements TweenModelBuilder<AnimationOperations> {
+    AnimationModel model = new AnimationModel();
 
-    private ArrayList<Animations> commands;
-    private HashMap<String, AbstractShape> shapes;
-
-    //default constructor
-    public Builder() {
-      this.commands = new ArrayList<Animations>();
-      this.shapes = new HashMap<String, AbstractShape>();
-    }
-
-    // constructor that takes in specific animations and shapes
-    private Builder(ArrayList<Animations> commands, HashMap<String, AbstractShape> shapes) {
-      this.commands = commands;
-      this.shapes = shapes;
-    }
-
-    // get one shape and change what you need
-    // AbstractShape thisShape = this.workShapes.values();
     @Override
     public TweenModelBuilder<AnimationOperations>
     addOval(String name, float cx, float cy, float xRadius, float yRadius,
@@ -97,15 +107,10 @@ public class AnimationModel implements AnimationOperations {
       if (name == null) {
         throw new IllegalArgumentException("Shapes must have names");
       }
-      //      Double cxAsDouble = (double) cx;
-      //      Double cyAsDouble = (double) cy;
-      AbstractShape oval = new Oval(name, new Color(red, green, blue),
-          new Point(Math.round(cx), Math.round(cy)),
-          Math.round(xRadius), Math.round(yRadius), startOfLife, endOfLife);
-
-      shapes.put(name, oval);
-
-      return new Builder(this.commands, this.shapes);
+      AbstractShape oval =
+          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife);
+      model.addShape(oval);
+      return this;
     }
 
     @Override
@@ -120,29 +125,23 @@ public class AnimationModel implements AnimationOperations {
       }
       //      Double cxAsDouble = (double) cx;
       //      Double cyAsDouble = (double) cy;
-      AbstractShape rect = new Rectangle(name, new Color(red, green, blue),
-          new Point(Math.round(lx), Math.round(ly)),
-          Math.round(width), Math.round(height), startOfLife, endOfLife);
-
-      shapes.put(name, rect);
-
-      return new Builder(this.commands, this.shapes);
+      AbstractShape rect =
+          new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife);
+      model.addShape(rect);
+      return this;
     }
 
     @Override
     public TweenModelBuilder<AnimationOperations>
     addMove(String name, float moveFromX, float moveFromY,
         float moveToX, float moveToY, int startTime, int endTime) {
-
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      Animations move = new Move(name, startTime, endTime,
-          new Point(Math.round(moveFromX), Math.round(moveFromY)),
-          new Point(Math.round(moveToX), Math.round(moveToY)));
-
-      commands.add(move);
-      return new Builder(this.commands, this.shapes);
+      AbstractAnimation move = new Move(name, moveFromX, moveFromY,
+          moveToX, moveToY, startTime, endTime);
+      model.addAnimation(move);
+      return this;
     }
 
     @Override
@@ -152,11 +151,10 @@ public class AnimationModel implements AnimationOperations {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      Animations color = new ColorChange(name,
-          oldR, oldG, oldB, newR, newG, newB, startTime, endTime,);
-
-      commands.add(color);
-      return new Builder(this.commands, this.shapes);
+      AbstractAnimation color = new ColorChange(name,
+          oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+      model.addAnimation(color);
+      return this;
     }
 
     @Override
@@ -166,16 +164,15 @@ public class AnimationModel implements AnimationOperations {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      Animations scale = new ScaleChange(name,
+      AbstractAnimation scale = new ScaleChange(name,
           fromSx, fromSy, toSx, toSy, startTime, endTime);
-
-      commands.add(scale);
-      return new Builder(this.commands, this.shapes);
+      model.addAnimation(scale);
+      return this;
     }
 
     @Override
     public AnimationOperations build() {
-      return new AnimationModel(this.commands, this.shapes);
+      return model;
     }
   }
 

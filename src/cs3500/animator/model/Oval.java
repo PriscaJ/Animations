@@ -12,7 +12,7 @@ public class Oval extends AbstractShape {
   }
 
   @Override
-  public String toString() {
+  public String getDescription() {
     return String.format("Name: %s\n"
             + "Type: oval\n"
             + "Center: (%.1f,%.1f), X radius: %.1f, Y radius: %.1f, Color: (%.1f,%.1f,%.1f)\n"
