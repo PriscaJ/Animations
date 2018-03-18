@@ -1,5 +1,7 @@
 package cs3500.animator.model;
 
+import sun.tools.jstat.Scale;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +20,8 @@ public class AnimationModel implements AnimationOperations {
   // hashmap of shape name to shape
   private Map<String, Shapes> shapesMap;
   // todo: should this be shape to COMMAND?
-  // private Map<String, List<AnimationCommand>> shapeToCommand;
-  private Map<String, List<Animations>> shapeToAnimations;
+  private Map<String, List<AnimationCommand>> shapeToCommands;
+  //private Map<String, List<Animations>> shapeToAnimations;
 
   public AnimationModel() {
   }
@@ -28,7 +30,7 @@ public class AnimationModel implements AnimationOperations {
   public void setShapes(Shapes shape) {
     shapesMap = new HashMap<>();
     animations = new ArrayList<>();
-    shapeToAnimations = new HashMap<>();
+    shapeToCommands = new HashMap<>();
   }
 
   @Override
@@ -74,25 +76,42 @@ public class AnimationModel implements AnimationOperations {
     }
   }
 
-  private void addAnimation(AbstractAnimation animation) {
-    if (animationsCollide(animation)) {
-      throw new IllegalArgumentException("There cannot be inconsistent animations.");
+//  private void addAnimation(AbstractAnimation animation) {
+//    if (animationsCollide(animation)) {
+//      throw new IllegalArgumentException("There cannot be inconsistent animations.");
+//    } else {
+//      String shapeName = animation.name;
+//      if (shapeToAnimations.containsKey(shapeName)) {
+//        List<Animations> currList = shapeToAnimations.get(shapeName);
+//        currList.add(animation);
+//        shapeToAnimations.put(shapeName, currList);
+//      } else {
+//        List<Animations> newList = new ArrayList<>();
+//        newList.add(animation);
+//        shapeToAnimations.put(shapeName, newList);
+//      }
+//      animations.add(animation);
+//      animation.animatingShape = shapesMap.get(animation.name);
+//
+//    }
+//  }
+
+  private void addCommand(AnimationCommand command) {
+    String shapeName = command.getAnimation().getName();
+    if (animationsCollide(command.getAnimation())) {
+      throw new IllegalArgumentException("not allowed");
+    }
+    if (shapeToCommands.containsKey(shapeName)) {
+      List<AnimationCommand> currList = shapeToCommands.get(shapeName);
+      currList.add(command);
+      shapeToCommands.put(shapeName, currList);
     } else {
-      String shapeName = animation.name;
-      if (shapeToAnimations.containsKey(shapeName)) {
-        List<Animations> currList = shapeToAnimations.get(shapeName);
-        currList.add(animation);
-        shapeToAnimations.put(shapeName, currList);
-      } else {
-        List<Animations> newList = new ArrayList<>();
-        newList.add(animation);
-        shapeToAnimations.put(shapeName, newList);
-      }
-      animations.add(animation);
-      animation.animatingShape = shapesMap.get(animation.name);
+      List<AnimationCommand> newList = new ArrayList<>();
+      newList.add(command);
+      shapeToCommands.put(shapeName, newList);
+      animations.add(command.getAnimation());
     }
   }
-
 
 
   //////////---------------------- BUILDER ---------------------------////////////
@@ -140,9 +159,11 @@ public class AnimationModel implements AnimationOperations {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      AbstractAnimation move = new Move(name, moveFromX, moveFromY,
+      Move move = new Move(name, moveFromX, moveFromY,
           moveToX, moveToY, startTime, endTime);
-      model.addAnimation(move);
+      // model.addAnimation(move);
+      MoveCommand command = new MoveCommand(move);
+      model.addCommand(command);
       return this;
     }
 
@@ -153,9 +174,11 @@ public class AnimationModel implements AnimationOperations {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      AbstractAnimation color = new ColorChange(name,
+      ColorChange color = new ColorChange(name,
           oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-      model.addAnimation(color);
+      //model.addAnimation(color);
+      ColorCommand command = new ColorCommand(color);
+      model.addCommand(command);
       return this;
     }
 
@@ -166,9 +189,11 @@ public class AnimationModel implements AnimationOperations {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      AbstractAnimation scale = new ScaleChange(name,
+      ScaleChange scale = new ScaleChange(name,
           fromSx, fromSy, toSx, toSy, startTime, endTime);
-      model.addAnimation(scale);
+      //model.addAnimation(scale);
+      ScaleCommand command = new ScaleCommand(scale);
+      model.addCommand(command);
       return this;
     }
 
@@ -177,5 +202,7 @@ public class AnimationModel implements AnimationOperations {
       return model;
     }
   }
+
+
 
 }

@@ -9,7 +9,7 @@ public interface AnimationCommand {
    * Gets the animation that this command acts on.
    * @return Animations that the command is acting on.
    */
-  Animations getAnimation();
+  AbstractAnimation getAnimation();
 
   /**
    * Used to call the Animation action it acts on. Used to invoke the command at the given time.
