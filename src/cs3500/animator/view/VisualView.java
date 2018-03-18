@@ -1,15 +1,29 @@
 package cs3500.animator.view;
 
+import java.awt.*;
+
 import javax.swing.*;
 
-public class VisualView implements IView {
+public class VisualView extends JFrame implements IView {
   private String visualView;
+  private AnimationPanel aniPanel;
   private JLabel display;
 
+  public VisualView() {
+    super();
+    this.setTitle("Turtles!");
+    this.setSize(500,500);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    this.aniPanel = new AnimationPanel();
+    aniPanel.setPreferredSize(new Dimension(500,500));
+    this.add(aniPanel,BorderLayout.CENTER);
+  }
+
+  // create private setters to send to the animation panel
 
   @Override
   public void makeVisible() {
-    display.set
+    this.setVisible(true);
   }
 }
