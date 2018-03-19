@@ -37,8 +37,8 @@ public class SVGView implements IView {
   private void asSVG() {
     String start = "<svg width= \"700\"  height= \"500\" version= \"1.1\" "
         + "xmlns=\"http://www.w3.org/2000/svg\">\n";
-    String output = format(allShapes);
-
+    String output = start + format(allShapes);
+    System.out.print(output);
     // return start.concat(output);
     try (FileWriter out = new FileWriter(fileName)) {
       out.write(start.concat(output));
@@ -48,6 +48,12 @@ public class SVGView implements IView {
       // do nothing
       System.out.print(e);
     }
+  }
+
+  public String svgOutput(){
+    String start = "<svg width= \"700\"  height= \"500\" version= \"1.1\" "
+        + "xmlns=\"http://www.w3.org/2000/svg\">\n";
+    return start + format(allShapes);
   }
 
   /**
@@ -62,12 +68,16 @@ public class SVGView implements IView {
       // list of animations for this shape
       // as.getAnimations();
       if (s instanceof Oval) {
-        workString = "<" + "ellipse" + formatShape(s, "ellipse") + ">\n"
+        workString += String.format("<ellipse id=\"%s\" cx=\"%.1f\" cy=\"100\" rx=\"60\" ry=\"30\" "
+            + "fill=\"rgb(0,0,255)\" visibility=\"visible\" >");
+
+
+        workString = workString + "\n<" + "ellipse" + formatShape(s, "ellipse") + ">\n"
             + formatCmd(s.getCommands(), "ellipse")
             + "\n</" + "ellipse" + ">\n";
       }
       if (s instanceof Rectangle) {
-        workString = "<" + "rect" + formatShape(s, "rect") + ">\n"
+        workString = workString + "\n<" + "rect" + formatShape(s, "rect") + ">\n"
             + formatCmd(s.getCommands(), "rect")
             + "\n</" + "rect" + ">\n";
       }
@@ -85,18 +95,18 @@ public class SVGView implements IView {
     String svg = " ";
     switch (type) {
       case "rect":
-        svg = "id=\"" + as.getName() + "\" x=\"" + as.getXPosition() + "\" y=\"" + as.getYPosition()
+        svg = " id=\"" + as.getName() + "\" x=\"" + as.getXPosition() + "\" y=\"" + as.getYPosition()
             + "\" width=\"" + as.getWidth() + "\" height=\"" + as.getHeight()
-            + "fill=\"rgb("
-            + as.getRed() + as.getGreen() + as.getBlue()
-            + "\" visibility=\"visible\"";
+            + "\" fill=\"rgb("
+            + (as.getRed() * 255) + "," + (as.getGreen() * 255) + "," + (as.getBlue() * 255)
+            + ")\" visibility=\"visible\"";
         break;
       case "ellipse":
-        svg = "id=\"" + as.getName() + "\" cx=\"" + as.getXPosition() + "\" cy=\"" + as.getYPosition()
+        svg = " id=\"" + as.getName() + "\" cx=\"" + as.getXPosition() + "\" cy=\"" + as.getYPosition()
             + "\" rx=\"" + as.getHeight() + "\" ry=\"" + as.getWidth()
             + "fill=\"rgb("
-            + as.getRed() + as.getGreen() + as.getBlue()
-            + "\" visibility=\"visible\"";
+            + (as.getRed() * 255) + "," + (as.getGreen() * 255) + "," + (as.getBlue() * 255)
+            + ")\" visibility=\"visible\"";
         break;
     }
     return svg;
@@ -109,25 +119,30 @@ public class SVGView implements IView {
    * @return Proper SVG format for Animation commands.
    */
   private String formatCmd(List<AnimationCommand> cmds, String shapeType) {
-    String workString = "<animate attributeType=\"xml\" begin=\"";
+    String workString = "";
 
     for (AnimationCommand a : cmds) {
+      workString += "<animate attributeType=\"xml\" begin=\"";
       String transition = a.getAnimation().getStart()
-          + "\" dur=\"" + (a.getAnimation().getFinish() - a.getAnimation().getStart())
-          + "\" attributeName=\"" //+ attributeCmd()
+          + "ms\" dur=\"" + (a.getAnimation().getFinish() - a.getAnimation().getStart())
+          + "ms\" attributeName=\"" //+ attributeCmd()
           ;
       switch (a.getAnimation().getType()) {
         case MOVE:
-          return formatMove(transition, (Move) a, shapeType);
+          workString+= formatMove(transition, (Move) a.getAnimation(), shapeType);
+          break;
         case COLORCHANGE:
-          return transition + formatColor(transition, (ColorChange) a);
+          workString+= transition + formatColor(transition, (ColorChange) a.getAnimation());
+          break;
         case SCALECHANGE:
-          return transition + formatScale(transition, (ScaleChange) a, shapeType);
+          workString+= transition + formatScale(transition, (ScaleChange) a.getAnimation(), shapeType);
+          break;
         default:
+          break;
       }
       // todo: fill freeze or fill remove??
       workString = workString + a.getAnimation().getStart() + "\" dur=\""
-          + (a.getAnimation().getFinish() - a.getAnimation().getStart()) + "\" attributeName="
+          + (a.getAnimation().getFinish() - a.getAnimation().getStart()) + "ms\" attributeName="
           + transition + "fill=\"remove\"";
     }
     return workString;

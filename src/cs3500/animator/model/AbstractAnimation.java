@@ -50,6 +50,10 @@ public abstract class AbstractAnimation implements Animations {
     this.endTime = endTime;
   }
 
+  public void setAnimatingShape(Shapes s) {
+    this.animatingShape = s;
+  }
+
   @Override
   public float calculateChange(float startValue, float endValue, float tick) {
     int duration = getFinish() - getStart();

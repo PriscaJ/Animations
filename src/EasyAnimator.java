@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.animator.controller.Controller;
@@ -101,7 +102,8 @@ public final class EasyAnimator {
   private static SVGView createSVGView(String animationFileName, String outputDest, String ticksPerSec,
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
-    return new SVGView();
+    return new SVGView(new ArrayList<>(), new ArrayList<>(), "");
+
 
   }
 
@@ -117,7 +119,7 @@ public final class EasyAnimator {
       output = new FileWriter(outFile);
       BufferedWriter out = new BufferedWriter(output);
       // temporarily changed model from ReadOnly to AnimationOperations
-      view = new TextualView(model, out, shapes, animations);
+      view = new TextualView(out, shapes, animations);
       return view;
     } catch (IOException e) {
       e.printStackTrace();
