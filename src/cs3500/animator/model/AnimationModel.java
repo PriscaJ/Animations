@@ -22,6 +22,8 @@ public class AnimationModel implements AnimationOperations {
   // todo: should this be shape to COMMAND?
   private Map<String, List<AnimationCommand>> shapeToCommands;
   //private Map<String, List<Animations>> shapeToAnimations;
+  // todo: do we need a timeline in the model??
+  private Map<Integer, List<Shapes>> shapesAtTime;
 
   public AnimationModel() {
 
@@ -105,11 +107,18 @@ public class AnimationModel implements AnimationOperations {
 //    }
 //  }
 
+  /**
+   * Check if a command to be added has an animation that is compatible with the current
+   * animations in the model. If so, set the animation's shape to be the correct shape,
+   * and add the command to the list and the map.
+   * @param command to be added.
+   */
   private void addCommand(AnimationCommand command) {
     String shapeName = command.getAnimation().getName();
     if (animationsCollide(command.getAnimation())) {
       throw new IllegalArgumentException("not allowed");
     }
+    command.getAnimation().animatingShape = shapesMap.get(shapeName);
     if (shapeToCommands.containsKey(shapeName)) {
       List<AnimationCommand> currList = shapeToCommands.get(shapeName);
       currList.add(command);

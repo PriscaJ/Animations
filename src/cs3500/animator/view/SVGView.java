@@ -3,7 +3,6 @@ package cs3500.animator.view;
 import java.io.FileWriter;
 import java.util.List;
 
-import cs3500.animator.model.AbstractShape;
 import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.Animations;
 import cs3500.animator.model.ColorChange;
@@ -62,8 +61,6 @@ public class SVGView implements IView {
     for (Shapes s : shapes) {
       // list of animations for this shape
       // as.getAnimations();
-
-      String ellipse = "";
       if (s instanceof Oval) {
         workString = "<" + "ellipse" + formatShape(s, "ellipse") + ">\n"
             + formatCmd(s.getCommands(), "ellipse")
@@ -87,23 +84,21 @@ public class SVGView implements IView {
   private String formatShape(Shapes as, String type) {
     String svg = " ";
     switch (type) {
-      switch:
-
-
-    if (as.getType().equals("rect")) {
-      svg = "id=\"" + as.getName() + "\" x=\"" + as.getPoint().x + "\" y=\"" + as.getPoint().y
-          + "\" width=\"" + as.getX() + "\" height=\"" + as.getY()
-          + "fill=\"rgb("
-          + as.getColor().getRed() + as.getColor().getGreen() + as.getColor().getBlue()
-          + "\" visibility=\"visible\"";
-    } else if (as.getType().equals("oval")) {
-      svg = "id=\"" + as.getName() + "\" cx=\"" + as.getPoint().x + "\" cy=\"" + as.getPoint().y
-          + "\" rx=\"" + as.getX() + "\" ry=\"" + as.getY()
-          + "fill=\"rgb("
-          + as.getColor().getRed() + as.getColor().getGreen() + as.getColor().getBlue()
-          + "\" visibility=\"visible\"";
+      case "rect":
+        svg = "id=\"" + as.getName() + "\" x=\"" + as.getXPosition() + "\" y=\"" + as.getYPosition()
+            + "\" width=\"" + as.getWidth() + "\" height=\"" + as.getHeight()
+            + "fill=\"rgb("
+            + as.getRed() + as.getGreen() + as.getBlue()
+            + "\" visibility=\"visible\"";
+        break;
+      case "ellipse":
+        svg = "id=\"" + as.getName() + "\" cx=\"" + as.getXPosition() + "\" cy=\"" + as.getYPosition()
+            + "\" rx=\"" + as.getHeight() + "\" ry=\"" + as.getWidth()
+            + "fill=\"rgb("
+            + as.getRed() + as.getGreen() + as.getBlue()
+            + "\" visibility=\"visible\"";
+        break;
     }
-
     return svg;
   }
 
@@ -116,30 +111,25 @@ public class SVGView implements IView {
   private String formatCmd(List<AnimationCommand> cmds, String shapeType) {
     String workString = "<animate attributeType=\"xml\" begin=\"";
 
-    for (Animations a : cmds) {
-      String transition = "<animate attributeType=\"xml\" begin=\"" + a.getBeginning()
-          + "\" dur=\"" + (a.getEnd() - a.getBeginning())
+    for (AnimationCommand a : cmds) {
+      String transition = a.getAnimation().getStart()
+          + "\" dur=\"" + (a.getAnimation().getFinish() - a.getAnimation().getStart())
           + "\" attributeName=\"" //+ attributeCmd()
           ;
-
-      switch (a.getType()) {
-        case "move":
+      switch (a.getAnimation().getType()) {
+        case MOVE:
           return formatMove(transition, (Move) a, shapeType);
-
-        case "colorChange":
+        case COLORCHANGE:
           return transition + formatColor(transition, (ColorChange) a);
-
-        case "scale":
+        case SCALECHANGE:
           return transition + formatScale(transition, (ScaleChange) a, shapeType);
-
         default:
       }
-
-      workString = workString + a.getBeginning() + "\" dur=\""
-          + (a.getEnd() - a.getBeginning()) + "\" attributeName="
-          + transition + "fill=\"freeze\"";
+      // todo: fill freeze or fill remove??
+      workString = workString + a.getAnimation().getStart() + "\" dur=\""
+          + (a.getAnimation().getFinish() - a.getAnimation().getStart()) + "\" attributeName="
+          + transition + "fill=\"remove\"";
     }
-
     return workString;
   }
 
@@ -164,18 +154,15 @@ public class SVGView implements IView {
       attributeX = "cx";
       attributeY = "cy";
     }
-
-    if (move.getStartPos() != move.getGoal()) {
-      if (move.getStartPos().x != move.getGoal().x) {
-        workString = temp
-            + "attributeName=\"" + attributeX + "\" "
-            + "from=\"" + move.getStartPos().x + "\" to=\"" + move.getGoal().x;
-      }
-      if (move.getStartPos().y != move.getGoal().y) {
-        workString = temp
-            + "attributeName=\"" + attributeY + "\" "
-            + "from=\"" + move.getStartPos().y + "\" to=\"" + move.getGoal().y;
-      }
+    if (move.getStartX() != move.getEndX()) {
+      workString = temp
+          + "attributeName=\"" + attributeX + "\" "
+          + "from=\"" + move.getStartX() + "\" to=\"" + move.getEndX();
+    }
+    if (move.getStartY() != move.getEndY()) {
+      workString = temp
+          + "attributeName=\"" + attributeY + "\" "
+          + "from=\"" + move.getStartY() + "\" to=\"" + move.getEndY();
     }
     return workString;
   }
@@ -190,23 +177,21 @@ public class SVGView implements IView {
   private String formatColor(String temp, ColorChange cChange) {
     String workString = "";
 
-    if (cChange.getStart() != cChange.getGoal()) {
-      if (cChange.getStart().getRed() != cChange.getGoal().getRed()) {
-        workString = temp
-            + "attributeName=\"fill\""
-            + "from=\"" + cChange.getStart().getRed()
-            + "\" to=\"" + cChange.getGoal().getRed();
-      }
-      if (cChange.getStart().getGreen() != cChange.getGoal().getGreen()) {
-        workString = temp
-            + "from=\"" + cChange.getStart().getGreen()
-            + "\" to=\"" + cChange.getGoal().getGreen();
-      }
-      if (cChange.getStart().getBlue() != cChange.getGoal().getBlue()) {
-        workString = temp
-            + "from=\"" + cChange.getStart().getBlue()
-            + "\" to=\"" + cChange.getGoal().getBlue();
-      }
+    if (cChange.getOldR() != cChange.getNewR()) {
+      workString = temp
+          + "attributeName=\"fill\""
+          + "from=\"" + cChange.getNewR()
+          + "\" to=\"" + cChange.getOldR();
+    }
+    if (cChange.getOldG() != cChange.getNewG()) {
+      workString = temp
+          + "from=\"" + cChange.getOldG()
+          + "\" to=\"" + cChange.getNewG();
+    }
+    if (cChange.getOldB() != cChange.getNewB()) {
+      workString = temp
+          + "from=\"" + cChange.getOldB()
+          + "\" to=\"" + cChange.getNewB();
     }
     return workString;
   }
@@ -233,19 +218,17 @@ public class SVGView implements IView {
       attributeY = "ry";
     }
 
-    if (sChange.getStartPoint() != sChange.getGoalPoint()) {
-      if (sChange.getStartW() != sChange.getGoalW()) {
-        workString = temp
-            + "attributeName=\"" + attributeX + "\" "
-            + "from=\"" + sChange.getStartW()
-            + "\" to=\"" + sChange.getGoalW();
-      }
-      if (sChange.getStartH() != sChange.getGoalH()) {
-        workString = temp
-            + "attributeName=\"" + attributeY + "\" "
-            + "from=\"" + sChange.getStartH()
-            + "\" to=\"" + sChange.getGoalH();
-      }
+    if (sChange.getStartX() != sChange.getEndX()) {
+      workString = temp
+          + "attributeName=\"" + attributeX + "\" "
+          + "from=\"" + sChange.getStartX()
+          + "\" to=\"" + sChange.getEndX();
+    }
+    if (sChange.getStartY() != sChange.getEndY()) {
+      workString = temp
+          + "attributeName=\"" + attributeY + "\" "
+          + "from=\"" + sChange.getStartY()
+          + "\" to=\"" + sChange.getEndY();
     }
     return workString;
   }
