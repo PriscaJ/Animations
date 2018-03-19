@@ -28,6 +28,30 @@ public class ColorChange extends AbstractAnimation {
     this.newB = newB;
   }
 
+  public float getOldR() {
+    return oldR;
+  }
+
+  public float getOldG() {
+    return oldG;
+  }
+
+  public float getOldB() {
+    return oldB;
+  }
+
+  public float getNewR() {
+    return newR;
+  }
+
+  public float getNewG() {
+    return newG;
+  }
+
+  public float getNewB() {
+    return newB;
+  }
+
 
   @Override
   public void apply(int tick) {

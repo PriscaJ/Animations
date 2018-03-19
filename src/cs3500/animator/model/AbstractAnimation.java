@@ -78,8 +78,23 @@ public abstract class AbstractAnimation implements Animations {
   public AnimationType getType() {
     return this.type;
   }
-}
-//
+
+
+  public float getStartX() {
+    return this.startX;
+  }
+
+  public float getEndX() {
+    return this.endX;
+  }
+
+  public float getStartY(){
+    return this.startY;
+  }
+
+  public float getEndY() {
+    return this.endY;
+  }
 //  @Override
 //  public Object getInitialStage() {
 //    return initalStage;
@@ -89,3 +104,8 @@ public abstract class AbstractAnimation implements Animations {
 //  public Object getFinalStage() {
 //    return finalStage;
 //  }
+
+}
+
+
+
