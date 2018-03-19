@@ -24,6 +24,7 @@ public class AnimationModel implements AnimationOperations {
   //private Map<String, List<Animations>> shapeToAnimations;
 
   public AnimationModel() {
+
   }
 
   @Override
@@ -42,6 +43,20 @@ public class AnimationModel implements AnimationOperations {
   public List<Animations> getAnimations() {
     return new ArrayList<>(animations);
   }
+
+
+  @Override
+  public int getEndTime() {
+    int max = 0;
+    for (Shapes shape : shapesMap.values()) {
+      int comp = shape.getDisappears();
+      if (comp > max) {
+        max = comp;
+      }
+    }
+    return max;
+  }
+
 
   /**
    * This is a helper method to check if a command will be compatible with any existing commands.

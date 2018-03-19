@@ -25,6 +25,8 @@ public interface AnimationOperations {
    */
   List<Animations> getAnimations();
 
+  int getEndTime();
+
   /**
    * Provides the String representation of the animation.
    * @return String of the animation.

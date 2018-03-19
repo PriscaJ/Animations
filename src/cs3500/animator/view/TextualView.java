@@ -3,16 +3,12 @@ package cs3500.animator.view;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
-import cs3500.animator.model.IReadOnlyModel;
 import cs3500.animator.model.Shapes;
 
 public class TextualView implements IView {
-  AnimationOperations model;
   Appendable ap;
   List<Shapes> allShapes;
   List<Animations> allAnimations;
@@ -20,9 +16,8 @@ public class TextualView implements IView {
   // todo: hand the textual view [the shapes] and [ the animations]
   // and have it loop through and call getDescription on all?
   // what does tight coupling look like?
-  public TextualView(AnimationOperations model, Appendable ap, List<Shapes> allShapes,
+  public TextualView(Appendable ap, List<Shapes> allShapes,
       List<Animations> allAnimations) {
-    this.model = model;
     this.ap = ap;
     this.allShapes = allShapes;
     this.allAnimations = allAnimations;
