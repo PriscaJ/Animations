@@ -61,8 +61,6 @@ public class SVGView implements IView {
     for (Shapes s : shapes) {
       // list of animations for this shape
       // as.getAnimations();
-
-      String ellipse = "";
       if (s instanceof Oval) {
         workString = "<" + "ellipse" + formatShape(s, "ellipse") + ">\n"
             + formatCmd(s.getCommands(), "ellipse")

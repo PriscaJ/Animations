@@ -22,7 +22,8 @@ public class AnimationModel implements AnimationOperations {
   // todo: should this be shape to COMMAND?
   private Map<String, List<AnimationCommand>> shapeToCommands;
   //private Map<String, List<Animations>> shapeToAnimations;
-
+  // todo: do we need a timeline in the model??
+  private Map<Integer, List<Shapes>> shapesAtTime;
 
   public AnimationModel() {
 
