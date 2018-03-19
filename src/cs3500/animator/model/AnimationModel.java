@@ -202,7 +202,4 @@ public class AnimationModel implements AnimationOperations {
       return model;
     }
   }
-
-
-
 }

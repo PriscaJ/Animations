@@ -12,40 +12,10 @@ import cs3500.animator.view.VisualView;
 
 public class Controller {
 
-  public static void run(String[] args) {
+  public static void run(String animationFileName, String typeOfView, String outputDest,
+      String ticksPerSec) {
     Controller c = new Controller();
 
-    String animationFileName = null;
-    String typeOfView = null;
-    String outputDest = null;
-    String ticksPerSec = null;
-
-    for (int i = 0; i < args.length; i = i + 2) {
-      String tag = args[i];
-      System.out.print(args[i]);
-      String content = args[i + 1];
-      switch (tag) {
-        // name of animation file
-        case "-if":
-          animationFileName = content;
-          break;
-        // type of view
-        case "-iv":
-          typeOfView = content;
-          break;
-        // where output should go
-        case "-o":
-          outputDest = content;
-          break;
-        // integer-ticks-per-sec
-        case "-speed":
-          ticksPerSec = content;
-          break;
-        default:
-          System.out.println("Invalid input: " + String.join(" ", args) + ".");
-          System.exit(1);
-      }
-    }
     if (typeOfView == null) {
       throw new IllegalArgumentException("Type of view must be specified.");
     }

@@ -1,5 +1,8 @@
 package cs3500.animator.model;
 
+/**
+ * This is a class to represent a rectangle in an animation.
+ */
 public class Rectangle extends AbstractShape{
 
 
