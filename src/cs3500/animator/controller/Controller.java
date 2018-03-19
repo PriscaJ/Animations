@@ -1,13 +1,20 @@
 package cs3500.animator.controller;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import cs3500.animator.model.AbstractShape;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.AnimationOperations;
+import cs3500.animator.model.Animations;
+import cs3500.animator.model.Shapes;
 import cs3500.animator.util.AnimationFileReader;
+import cs3500.animator.view.TextualView;
 import cs3500.animator.view.VisualView;
 
 public class Controller {
@@ -61,7 +68,19 @@ public class Controller {
   private void startTextView(String file, String outFile, String ticksPerSec) {
     int tps = getTicksPerSec(ticksPerSec);
     AnimationOperations model = createModel(file);
-
+    List<Shapes> shapes = model.getShapes();
+    List<Animations> animations = model.getAnimations();
+    FileWriter output = null;
+    try {
+      output = new FileWriter(outFile);
+      BufferedWriter out = new BufferedWriter(output);
+      // temporarily changed model from ReadOnly to AnimationOperations
+      TextualView view = new TextualView(model, out, shapes, animations);
+      view.makeVisible();
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private int getTicksPerSec(String ticksPerSec) {

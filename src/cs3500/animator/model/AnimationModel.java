@@ -34,20 +34,30 @@ public class AnimationModel implements AnimationOperations {
   }
 
   @Override
-  public String readBack() {
-    StringBuilder s = new StringBuilder();
-    List<Shapes> allShapes = new ArrayList<>(shapesMap.values());
-    s.append("Shapes:");
-    for (Shapes a : allShapes) {
-      s.append("\n");
-      s.append(a.getDescription()).append("\n");
-    }
-    for (Animations cmd : animations) {
-      s.append("\n");
-      s.append(cmd.getDescription());
-    }
-    return s.toString();
+  public List<Shapes> getShapes() {
+    return new ArrayList<>(shapesMap.values());
   }
+
+  @Override
+  public List<Animations> getAnimations() {
+    return new ArrayList<>(animations);
+  }
+
+  //  @Override
+//  public String readBack() {
+//    StringBuilder s = new StringBuilder();
+//    List<Shapes> allShapes = new ArrayList<>(shapesMap.values());
+//    s.append("Shapes:");
+//    for (Shapes a : allShapes) {
+//      s.append("\n");
+//      s.append(a.getDescription()).append("\n");
+//    }
+//    for (Animations cmd : animations) {
+//      s.append("\n");
+//      s.append(cmd.getDescription());
+//    }
+//    return s.toString();
+//  }
 
   /**
    * This is a helper method to check if a command will be compatible with any existing commands.
