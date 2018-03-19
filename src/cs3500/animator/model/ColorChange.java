@@ -26,6 +26,7 @@ public class ColorChange extends AbstractAnimation {
     this.newR = newR;
     this.newG = newG;
     this.newB = newB;
+    this.type = AnimationType.COLORCHANGE;
   }
 
   public float getOldR() {
