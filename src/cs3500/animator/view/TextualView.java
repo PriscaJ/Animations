@@ -3,22 +3,43 @@ package cs3500.animator.view;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
-import cs3500.animator.model.IReadOnlyModel;
+import cs3500.animator.model.Animations;
+import cs3500.animator.model.Shapes;
 
 public class TextualView implements IView {
-  IReadOnlyModel model;
   Appendable ap;
+  List<Shapes> allShapes;
+  List<Animations> allAnimations;
 
-  public TextualView(IReadOnlyModel model, Appendable ap) {
-    this.model = model;
+  // todo: hand the textual view [the shapes] and [ the animations]
+  // and have it loop through and call getDescription on all?
+  // what does tight coupling look like?
+  public TextualView(Appendable ap, List<Shapes> allShapes,
+      List<Animations> allAnimations) {
     this.ap = ap;
+    this.allShapes = allShapes;
+    this.allAnimations = allAnimations;
+  }
+
+  private String readBack() {
+    StringBuilder s = new StringBuilder();
+    s.append("Shapes:");
+    for (Shapes a : allShapes) {
+      s.append("\n");
+      s.append(a.getDescription()).append("\n");
+    }
+    for (Animations cmd : allAnimations) {
+      s.append("\n");
+      s.append(cmd.getDescription());
+    }
+    return s.toString();
   }
 
   @Override
   public void makeVisible() {
-    String output = model.readBack();
-
+    String output = readBack();
     // simply append?
     try {
       // all the work is handled in the readBack method,

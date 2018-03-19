@@ -11,7 +11,7 @@ public class ScaleCommand implements AnimationCommand {
   }
 
   @Override
-  public Animations getAnimation() {
+  public AbstractAnimation getAnimation() {
     return scale;
   }
 

@@ -11,7 +11,7 @@ public class MoveCommand implements AnimationCommand {
   }
 
   @Override
-  public Animations getAnimation() {
+  public AbstractAnimation getAnimation() {
     return move;
   }
 

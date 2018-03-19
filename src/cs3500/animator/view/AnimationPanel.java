@@ -18,6 +18,8 @@ import cs3500.animator.model.Shapes;
  */
 public class AnimationPanel extends JPanel implements ActionListener {
   // todo have a controller actionlistener to include in the constructor???
+  // I don't think we need an actionlistener yet because the user isn't interacting wiith the
+  // animation. Once we have to implement the interactive view we'll need one!!
   private int tick;
   private Timer t;
   private Map<String, Shapes> shapesInAnimation;

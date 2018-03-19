@@ -12,7 +12,7 @@ public class ColorCommand implements AnimationCommand {
   }
 
   @Override
-  public Animations getAnimation() {
+  public AbstractAnimation getAnimation() {
     return changeColor;
   }
 

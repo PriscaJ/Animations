@@ -8,6 +8,7 @@ public class VisualView extends JFrame implements IView {
   private String visualView;
   private AnimationPanel aniPanel;
   private JLabel display;
+  // todo: what data structure/information do we want here from the model?
 
   public VisualView() {
     super();
