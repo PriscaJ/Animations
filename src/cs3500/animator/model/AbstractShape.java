@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public abstract class AbstractShape implements Shapes {
   // the animations that the shape invokes
-  private ArrayList<AnimationCommand> commands;
+  private ArrayList<AnimationCommand> commands = new ArrayList<>();
   // qualities of a shape
   protected String name;
   protected float xPosn;
@@ -35,6 +35,10 @@ public abstract class AbstractShape implements Shapes {
     this.blue = blue;
     this.startOfLife = startOfLife;
     this.endOfLife = endOfLife;
+  }
+
+  public void addCommand(AnimationCommand c) {
+    commands.add(c);
   }
 
   @Override
@@ -110,10 +114,4 @@ public abstract class AbstractShape implements Shapes {
   public Float getBlue() {
     return blue;
   }
-
-  @Override
-  public abstract boolean isOval();
-
-  @Override
-  public abstract boolean isRect();
 }
