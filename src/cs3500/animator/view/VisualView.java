@@ -2,7 +2,10 @@ package cs3500.animator.view;
 
 import java.awt.*;
 
+
 import javax.swing.*;
+
+import cs3500.animator.model.IReadOnlyModel;
 
 public class VisualView extends JFrame implements IView {
   private String visualView;
@@ -12,17 +15,17 @@ public class VisualView extends JFrame implements IView {
 
   public VisualView() {
     super();
-    this.setTitle("Turtles!");
+    this.setTitle("Easy Animator!");
     this.setSize(500,500);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    this.setLayout(new BorderLayout());
     this.aniPanel = new AnimationPanel();
     aniPanel.setPreferredSize(new Dimension(500,500));
     this.add(aniPanel,BorderLayout.CENTER);
-  }
 
-  // todo create private setters to send to the animation panel
-  // todo AND add method to get the Animation command
+    this.pack();
+  }
 
   @Override
   public void makeVisible() {

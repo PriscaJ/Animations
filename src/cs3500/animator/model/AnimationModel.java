@@ -1,6 +1,6 @@
 package cs3500.animator.model;
 
-import sun.tools.jstat.Scale;
+// import sun.tools.jstat.Scale;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -122,9 +122,6 @@ public class AnimationModel implements AnimationOperations {
     }
   }
 
-  private void addCommand(AnimationCommand commandAction) {
-    if
-  }
 
 
   //////////---------------------- BUILDER ---------------------------////////////
