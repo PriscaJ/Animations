@@ -12,6 +12,8 @@ import cs3500.animator.view.VisualView;
 
 public class Controller {
 
+
+
   public static void run(String[] args) {
     Controller c = new Controller();
 

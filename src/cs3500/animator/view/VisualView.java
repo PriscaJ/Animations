@@ -20,10 +20,14 @@ public class VisualView extends JFrame implements IView {
     this.add(aniPanel,BorderLayout.CENTER);
   }
 
-  // create private setters to send to the animation panel
+  // todo create private setters to send to the animation panel
+  // todo AND add method to get the Animation command
 
   @Override
   public void makeVisible() {
     this.setVisible(true);
   }
+
+
+
 }

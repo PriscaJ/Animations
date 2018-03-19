@@ -93,6 +93,10 @@ public class AnimationModel implements AnimationOperations {
     }
   }
 
+  private void addCommand(AnimationCommand commandAction) {
+    if
+  }
+
 
 
   //////////---------------------- BUILDER ---------------------------////////////

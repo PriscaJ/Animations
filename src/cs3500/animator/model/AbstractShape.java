@@ -110,4 +110,10 @@ public abstract class AbstractShape implements Shapes {
   public Float getBlue() {
     return blue;
   }
+
+  @Override
+  public abstract boolean isOval();
+
+  @Override
+  public abstract boolean isRect();
 }

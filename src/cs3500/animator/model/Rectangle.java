@@ -9,6 +9,16 @@ public class Rectangle extends AbstractShape{
   }
 
   @Override
+  public boolean isOval() {
+    return false;
+  }
+
+  @Override
+  public boolean isRect() {
+    return true;
+  }
+
+  @Override
   public String getDescription() {
     return String.format("Name: %s\n"
             + "Type: rectangle\n"

@@ -12,6 +12,16 @@ public class Oval extends AbstractShape {
   }
 
   @Override
+  public boolean isOval() {
+    return true;
+  }
+
+  @Override
+  public boolean isRect() {
+    return false;
+  }
+
+  @Override
   public String getDescription() {
     return String.format("Name: %s\n"
             + "Type: oval\n"

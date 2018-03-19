@@ -52,4 +52,8 @@ public interface Shapes {
   Float getBlue();
 
   String getDescription();
+
+  boolean isOval();
+
+  boolean isRect();
 }
