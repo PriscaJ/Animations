@@ -78,9 +78,7 @@ public class AnimationModel implements AnimationOperations {
   }
 
   private void addShape(AbstractShape shape) {
-    if (!shapesMap.containsKey(shape.name)) {
       shapesMap.put(shape.name, shape);
-    }
   }
 
 //  private void addAnimation(AbstractAnimation animation) {

@@ -39,11 +39,6 @@ public class SVGTest {
     List<Shapes> shapes = new ArrayList<>();
     shapes.add(r);
     shapes.add(o);
-    List<Animations> animations = new ArrayList<>();
-    animations.add(c);
-    animations.add(m);
-    animations.add(cc);
-    animations.add(m2);
     MoveCommand mc3 = new MoveCommand(c);
     c.setAnimatingShape(r);
     r.addCommand(mc3);
@@ -59,7 +54,7 @@ public class SVGTest {
     ScaleCommand sc = new ScaleCommand(s);
     o.addCommand(sc);
     s.setAnimatingShape(o);
-    SVGView view = new SVGView(shapes, "hi");
+    SVGView view = new SVGView(shapes,"hi", 1);
     assertEquals(view.svgOutput(), "");
   }
 }
