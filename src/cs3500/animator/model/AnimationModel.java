@@ -77,7 +77,7 @@ public class AnimationModel implements AnimationOperations {
     return false;
   }
 
-  private void addShape(AbstractShape shape) {
+  public void addShape(AbstractShape shape) {
     shapesMap.put(shape.getName(), shape);
   }
 
@@ -111,7 +111,10 @@ public class AnimationModel implements AnimationOperations {
 
   //////////---------------------- BUILDER ---------------------------////////////
   public static final class Builder implements TweenModelBuilder<AnimationOperations> {
-    AnimationModel model = new AnimationModel();
+    AnimationModel model;
+    public Builder(){
+      model = new AnimationModel();
+    }
 
     @Override
     public TweenModelBuilder<AnimationOperations>
