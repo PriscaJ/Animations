@@ -58,23 +58,22 @@ public final class EasyAnimator {
     IView view = null;
     switch (typeOfView) {
       case "text":
-        view = createTextView(animationFileName, outputDest, ticksPerSec, model);
+        view = createTextView(outputDest, ticksPerSec, model);
         break;
       case "svg":
-        view = createSVGView(animationFileName, outputDest, ticksPerSec, model);
+        view = createSVGView(outputDest, ticksPerSec, model);
         break;
       case "visual":
-        view = createVisualView(animationFileName, ticksPerSec, model);
+        view = createVisualView(model.getShapes(), model.getEndTime(), ticksPerSec);
         break;
       default:
         System.out.println("Invalid type of view");
         System.exit(1);
     }
-    if (view == null || model == null) {
+    if (view == null) {
       System.out.println("Must create model and view.");
       System.exit(1);
-    }
-    else {
+    } else {
       Controller c = new Controller(model, view);
       c.run();
     }
@@ -94,44 +93,38 @@ public final class EasyAnimator {
   }
 
 
-  private static VisualView createVisualView(String animationFileName, String ticksPerSec,
-      AnimationOperations model) {
-    return new VisualView();
+  private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick, String ticksPerSec) {
+    // list of shapes and last tick
+    int tps = getTicksPerSec(ticksPerSec);
+    return new VisualView(shapesList, lastTick, 1000 / tps);
   }
 
-  private static SVGView createSVGView(String animationFileName, String outputDest, String ticksPerSec,
+  private static SVGView createSVGView(String outputDest, String ticksPerSec,
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
+<<<<<<< HEAD
     return new SVGView(new ArrayList<>(), "");
+=======
+    return new SVGView(model.getShapes(), outputDest, 1000 / tps);
+>>>>>>> 397d7ad8f91a5c89815b104d0137ac5c62241fe0
 
 
   }
 
-  private static TextualView createTextView(String file, String outFile,
+  private static TextualView createTextView(String outFile,
       String ticksPerSec, AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
     List<Shapes> shapes = model.getShapes();
     List<Animations> animations = model.getAnimations();
-    FileWriter output;
-    TextualView view;
-
-    try {
-      output = new FileWriter(outFile);
-      BufferedWriter out = new BufferedWriter(output);
-      // temporarily changed model from ReadOnly to AnimationOperations
-      view = new TextualView(out, shapes, animations);
-      return view;
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return null;
+    // temporarily changed model from ReadOnly to AnimationOperations
+    TextualView view = new TextualView(outFile, shapes, animations, 1000 / tps);
+    return view;
   }
 
   private static int getTicksPerSec(String ticksPerSec) {
     try {
       return Integer.parseInt(ticksPerSec);
-    }
-    catch (NumberFormatException ex) {
+    } catch (NumberFormatException ex) {
       return 1;
     }
   }

@@ -9,16 +9,16 @@ import cs3500.animator.model.Animations;
 import cs3500.animator.model.Shapes;
 
 public class TextualView implements IView {
-  Appendable ap;
+  String outFile;
   List<Shapes> allShapes;
   List<Animations> allAnimations;
 
   // todo: hand the textual view [the shapes] and [ the animations]
   // and have it loop through and call getDescription on all?
   // what does tight coupling look like?
-  public TextualView(Appendable ap, List<Shapes> allShapes,
-      List<Animations> allAnimations) {
-    this.ap = ap;
+  public TextualView(String outFile, List<Shapes> allShapes,
+      List<Animations> allAnimations, int ticksPerSec) {
+    this.outFile = outFile;
     this.allShapes = allShapes;
     this.allAnimations = allAnimations;
   }
@@ -41,17 +41,8 @@ public class TextualView implements IView {
   public void makeVisible() {
     String output = readBack();
     // simply append?
-    try {
-      // all the work is handled in the readBack method,
-      // just send to the appendable
-      ap.append(output);
-    }
-    catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-
     // create a file?
-    try (PrintWriter out = new PrintWriter("text-transcript.txt")) {
+    try (PrintWriter out = new PrintWriter(outFile)) {
       out.println(output);
     } catch (FileNotFoundException fe) {
       throw new RuntimeException(fe);

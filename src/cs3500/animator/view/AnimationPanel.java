@@ -23,13 +23,19 @@ public class AnimationPanel extends JPanel implements ActionListener {
   // todo have a controller actionlistener to include in the constructor???
   // I don't think we need an actionlistener yet because the user isn't interacting wiith the
   // animation. Once we have to implement the interactive view we'll need one!!
-  private IReadOnlyModel model;
+
   private int tick;
   private Timer t;
+  private ArrayList<Shapes> shapesList;
+  private int lastTick;
+  private int ticksPerSec;
   // private Map<String, Shapes> shapesInAnimation;
 
-  public AnimationPanel() {
+  public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model
+    this.shapesList = shapesList;
+    this.lastTick = lastTick;
+    this.ticksPerSec = ticksPerSec;
     this.setBackground(Color.WHITE);
     this.tick = 0;
     this.t = new Timer(0, this);
@@ -47,7 +53,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
 
-    for (Shapes shape: model.getShapes()) {
+    for (Shapes shape: shapesList) {
       if (shape.isOval()) {
         g2d.drawOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
                 getWidth(), getHeight());
@@ -67,7 +73,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private ArrayList<Shapes> activeShapes(int time){
     ArrayList<Shapes> currentShapes = new ArrayList<Shapes>();
 
-    for (Shapes s: model.getShapes()) {
+    for (Shapes s: shapesList) {
       if (time >= s.getAppears() && time <= s.getDisappears()) {
         currentShapes.add(s);
       }
@@ -86,7 +92,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     tick++;
 
     // when the model's last animation stops, stop the timer
-    if (tick > model.getEndTime()) {
+    if (tick > lastTick) {
       t.stop();
     }
   }

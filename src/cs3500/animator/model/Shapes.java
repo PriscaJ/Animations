@@ -56,4 +56,18 @@ public interface Shapes {
   boolean isOval();
 
   boolean isRect();
+
+  void setXPosn(float v);
+
+  void setYPosn(float v);
+
+  void setXDimension(float v);
+
+  void setYDimension(float v);
+
+  void setRed(float v);
+
+  void setGreen(float v);
+
+  void setBlue(float v);
 }
