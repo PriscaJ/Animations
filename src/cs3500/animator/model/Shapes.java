@@ -22,11 +22,6 @@ public interface Shapes {
   void setAnimation(AnimationCommand newCommand);
 
   /**
-   * Runs through the animations that the AbstractShape has under its Commands.
-   */
-  void animateShape(int tick);
-
-  /**
    * Various observational mmethods to retrieve and access private fields when needed.
    * @return various returns.
    */

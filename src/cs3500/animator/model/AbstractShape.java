@@ -54,13 +54,6 @@ public abstract class AbstractShape implements Shapes {
   }
 
   @Override
-  public void animateShape(int tick) {
-    for (int i = 0; i < commands.size() - 1; i++) {
-      commands.get(i).execute(tick);
-    }
-  }
-
-  @Override
   public ArrayList<AnimationCommand> getCommands() {
     return commands;
   }

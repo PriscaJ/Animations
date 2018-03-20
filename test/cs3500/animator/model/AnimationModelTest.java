@@ -1,3 +1,26 @@
+package cs3500.animator.model;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotEquals;
+
+public class AnimationModelTest {
+
+  @Test
+  public void testAddShape() {
+    AnimationModel model = new AnimationModel();
+    AnimationOperations model2 = new AnimationModel();
+
+    // create a shape
+    AbstractShape shape = new Rectangle("R", 200.0f, 200.0f, 50.0f,
+        100.0f, 1.0f, 0.0f, 0.0f, 1, 100);
+
+    // add a shape to the model but not model2
+    model.addShape(shape);
+
+    }
+}
+
 //package cs3500.animator.model;
 //
 //import org.junit.Before;
