@@ -78,35 +78,14 @@ public class AnimationModel implements AnimationOperations {
   }
 
   private void addShape(AbstractShape shape) {
-    if (!shapesMap.containsKey(shape.name)) {
-      shapesMap.put(shape.name, shape);
-    }
+    shapesMap.put(shape.getName(), shape);
   }
-
-//  private void addAnimation(AbstractAnimation animation) {
-//    if (animationsCollide(animation)) {
-//      throw new IllegalArgumentException("There cannot be inconsistent animations.");
-//    } else {
-//      String shapeName = animation.name;
-//      if (shapeToAnimations.containsKey(shapeName)) {
-//        List<Animations> currList = shapeToAnimations.get(shapeName);
-//        currList.add(animation);
-//        shapeToAnimations.put(shapeName, currList);
-//      } else {
-//        List<Animations> newList = new ArrayList<>();
-//        newList.add(animation);
-//        shapeToAnimations.put(shapeName, newList);
-//      }
-//      animations.add(animation);
-//      animation.animatingShape = shapesMap.get(animation.name);
-//
-//    }
-//  }
 
   /**
    * Check if a command to be added has an animation that is compatible with the current
    * animations in the model. If so, set the animation's shape to be the correct shape,
    * and add the command to the list and the map.
+   *
    * @param command to be added.
    */
   private void addCommand(AnimationCommand command) {
@@ -128,7 +107,6 @@ public class AnimationModel implements AnimationOperations {
       animations.add(command.getAnimation());
     }
   }
-
 
 
   //////////---------------------- BUILDER ---------------------------////////////
