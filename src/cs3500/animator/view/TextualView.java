@@ -30,11 +30,11 @@ public class TextualView implements IView {
     s.append("Shapes:");
     for (Shapes a : allShapes) {
       s.append("\n");
-      s.append(a.getDescription()).append("\n");
+      s.append(a.getDescription(ticksPerSec)).append("\n");
     }
     for (Animations cmd : allAnimations) {
       s.append("\n");
-      s.append(cmd.getDescription());
+      s.append(cmd.getDescription(ticksPerSec));
     }
     return s.toString();
   }

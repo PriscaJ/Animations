@@ -24,9 +24,9 @@ public class ScaleChange extends AbstractAnimation {
   }
 
   @Override
-  public String getDescription() {
+  public String getDescription(int tps) {
     return String.format("Shape %s scales from Width: %.1f, Height: %.1f to "
             + "Width: %.1f, Height: %.1f from t=%d to t=%d",
-        this.name, this.startX, startY, endX, endY, startTime, endTime);
+        this.name, this.startX, startY, endX, endY, startTime * tps, endTime * tps);
   }
 }

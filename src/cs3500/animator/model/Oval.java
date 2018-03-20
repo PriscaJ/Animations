@@ -22,12 +22,12 @@ public class Oval extends AbstractShape {
   }
 
   @Override
-  public String getDescription() {
+  public String getDescription(int tps) {
     return String.format("Name: %s\n"
             + "Type: oval\n"
             + "Center: (%.1f,%.1f), X radius: %.1f, Y radius: %.1f, Color: (%.1f,%.1f,%.1f)\n"
             + "Appears at t=%d\n"
             + "Disappears at t=%d",
-        name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife);
+        name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife * tps, endOfLife * tps);
   }
 }
