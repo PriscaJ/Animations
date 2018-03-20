@@ -61,7 +61,7 @@ public class ColorChange extends AbstractAnimation {
   @Override
   public String getDescription(int tps) {
     return String.format("Shape %s changes color from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f) "
-            + "from t=%d to t=%d",
-        name, oldR, oldG, oldB, newR, newG, newB, startTime * tps, endTime * tps);
+            + "from t=%.1fs to t=%.1fs",
+        name, oldR, oldG, oldB, newR, newG, newB, (float) startTime * tps /1000, (float) endTime * tps/1000);
   }
 }

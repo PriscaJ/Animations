@@ -19,11 +19,7 @@ public class AnimationModel implements AnimationOperations {
   private List<Animations> animations;
   // hashmap of shape name to shape
   private Map<String, Shapes> shapesMap;
-  // todo: should this be shape to COMMAND?
   private Map<String, List<AnimationCommand>> shapeToCommands;
-  //private Map<String, List<Animations>> shapeToAnimations;
-  // todo: do we need a timeline in the model??
-  private Map<Integer, List<Shapes>> shapesAtTime;
 
   public AnimationModel() {
     shapesMap = new HashMap<>();

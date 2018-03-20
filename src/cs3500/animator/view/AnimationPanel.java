@@ -63,6 +63,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
                 getWidth(), getHeight());
       }
     }
+    repaint();
   }
 
   /**

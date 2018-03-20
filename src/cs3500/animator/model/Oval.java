@@ -26,8 +26,8 @@ public class Oval extends AbstractShape {
     return String.format("Name: %s\n"
             + "Type: oval\n"
             + "Center: (%.1f,%.1f), X radius: %.1f, Y radius: %.1f, Color: (%.1f,%.1f,%.1f)\n"
-            + "Appears at t=%d\n"
-            + "Disappears at t=%d",
-        name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife * tps, endOfLife * tps);
+            + "Appears at t=%.1fs\n"
+            + "Disappears at t=%.1fs",
+        name, xPosn, yPosn, xDimension, yDimension, red, green, blue, (float) startOfLife * tps/1000, (float)endOfLife * tps/1000);
   }
 }
