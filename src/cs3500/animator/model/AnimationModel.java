@@ -37,7 +37,7 @@ public class AnimationModel implements AnimationOperations {
   }
 
   @Override
-  public List<Shapes> getShapes() {
+  public ArrayList<Shapes> getShapes() {
     return new ArrayList<>(shapesMap.values());
   }
 

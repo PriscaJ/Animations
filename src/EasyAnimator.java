@@ -64,7 +64,7 @@ public final class EasyAnimator {
         view = createSVGView(animationFileName, outputDest, ticksPerSec, model);
         break;
       case "visual":
-        view = createVisualView(animationFileName, ticksPerSec, model);
+        view = createVisualView(model.getShapes(), model.getEndTime(), getTicksPerSec(ticksPerSec));
         break;
       default:
         System.out.println("Invalid type of view");
@@ -94,15 +94,15 @@ public final class EasyAnimator {
   }
 
 
-  private static VisualView createVisualView(String animationFileName, String ticksPerSec,
-      AnimationOperations model) {
-    return new VisualView();
+  private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
+    // list of shapes and last tick
+    return new VisualView(shapesList, lastTick, ticksPerSec);
   }
 
   private static SVGView createSVGView(String animationFileName, String outputDest, String ticksPerSec,
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
-    return new SVGView(new ArrayList<>(), new ArrayList<>(), "");
+    return new SVGView(model.getShapes(), animationFileName);
 
 
   }

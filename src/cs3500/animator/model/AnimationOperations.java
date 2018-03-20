@@ -1,5 +1,6 @@
 package cs3500.animator.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public interface AnimationOperations {
    * A method to return a copy of all shapes in an animation.
    * @return
    */
-  List<Shapes> getShapes();
+  ArrayList<Shapes> getShapes();
 
   /**
    * A method to return a copy of all animations in an animation.
