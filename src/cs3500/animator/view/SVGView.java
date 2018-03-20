@@ -43,21 +43,23 @@ public class SVGView implements IView {
    * @return The String representation of an SVG for the animation
    */
   private void asSVG() {
-    try {
-      File file = new File(fileName);
-
-      String start = "<svg width= \"700\"  height= \"500\" version= \"1.1\" "
-          + "xmlns=\"http://www.w3.org/2000/svg\">\n";
-      String output = start + format(allShapes);
-      // return start.concat(output);
-
-      //Write Content
-      FileWriter writer = new FileWriter(file);
-      writer.write(output);
-      writer.close();
+    String start = "<svg width= \"700\"  height= \"500\" version= \"1.1\" "
+        + "xmlns=\"http://www.w3.org/2000/svg\">\n\n";
+    String end = "</svg>";
+    String output = start + format(allShapes) + end;
+    if (fileName.equals("out")) {
+      System.out.print(output);
     }
-    catch (IOException ioe) {
-      //
+    else {
+      try {
+        File file = new File(fileName);
+        //Write Content
+        FileWriter writer = new FileWriter(file);
+        writer.write(output);
+        writer.close();
+      } catch (IOException ioe) {
+        //
+      }
     }
   }
 
@@ -81,8 +83,8 @@ public class SVGView implements IView {
       // as.getAnimations();
       if (s instanceof Oval) {
         workString.append(String.format("<ellipse id=\"%s\" cx=\"%.1f\" cy=\"%.1f\" rx=\"%.1f\" ry=\"%.1f\" "
-                + "fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"visible\" >\n", s.getName(), s.getWidth(), s.getHeight(),
-            s.getXPosition(), s.getYPosition(), s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
+                + "fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"visible\" >\n", s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),
+             s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
 
         workString.append(formatCmd(s.getCommands(), "ellipse"));
         workString.append("</" + "ellipse" + ">\n\n");
@@ -91,8 +93,8 @@ public class SVGView implements IView {
       if (s instanceof Rectangle) {
         workString.append(String.format("<rect id=\"%s\" x=\"%.1f\" y=\"%.1f\" width=\"%.1f\" "
                 + "height=\"%.1f\" fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"visible\" >\n",
-            s.getName(), s.getWidth(), s.getHeight(),
-            s.getXPosition(), s.getYPosition(), s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
+            s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),
+            s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
         workString.append(formatCmd(s.getCommands(), "rect"));
         workString.append("</" + "rect" + ">\n\n");
       }
@@ -125,7 +127,7 @@ public class SVGView implements IView {
           break;
       }
       // todo: fill freeze or fill remove??
-      workString.append("fill=\"remove\" />\n");
+      workString.append("fill=\"freeze\" />\n");
     }
     return workString.toString();
   }
@@ -171,16 +173,16 @@ public class SVGView implements IView {
     String workString = "";
 
     if (cChange.getOldR() != cChange.getNewR()) {
-      workString = "\"r\" " + " from=\"" + cChange.getNewR()
-          + "\" to=\"" + cChange.getOldR() + "\" ";
+      workString = "r\" " + " from=\"" + cChange.getNewR()
+          + "\" to=\"" + cChange.getOldR() * 255 + "\" ";
     }
     if (cChange.getOldG() != cChange.getNewG()) {
-      workString = "\"g\" " + "from=\"" + cChange.getOldG()
-          + "\" to=\"" + cChange.getNewG() + "\" ";
+      workString = "g\" " + "from=\"" + cChange.getOldG()
+          + "\" to=\"" + cChange.getNewG() * 255 + "\" ";
     }
     if (cChange.getOldB() != cChange.getNewB()) {
       workString = "b\" " + "from=\"" + cChange.getOldB()
-          + "\" to=\"" + cChange.getNewB() + "\" ";
+          + "\" to=\"" + cChange.getNewB() * 255 + "\" ";
     }
     return workString;
   }

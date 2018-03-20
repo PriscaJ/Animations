@@ -86,10 +86,12 @@ public class AnimationModel implements AnimationOperations {
    */
   private void addCommand(AnimationCommand command) {
     String shapeName = command.getAnimation().getName();
+    Shapes shape = shapesMap.get(shapeName);
+    shape.addCommand(command);
     if (animationsCollide(command.getAnimation())) {
       throw new IllegalArgumentException("not allowed");
     }
-    command.getAnimation().animatingShape = shapesMap.get(shapeName);
+    command.getAnimation().setAnimatingShape(shapesMap.get(shapeName));
 
     if (shapeToCommands.containsKey(shapeName)) {
       List<AnimationCommand> currList = shapeToCommands.get(shapeName);

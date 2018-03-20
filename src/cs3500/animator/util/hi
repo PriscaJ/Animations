@@ -1,0 +1,15 @@
+Shapes:
+Name: R
+Type: rectangle
+Min-corner: (200.0,200.0), Width: 50.0, Height: 100.0, Color: (1.0,0.0,0.0)
+Appears at t=0.1s
+Disappears at t=5.0s
+
+Name: C
+Type: oval
+Center: (500.0,100.0), X radius: 60.0, Y radius: 30.0, Color: (0.0,0.0,1.0)
+Appears at t=0.3s
+Disappears at t=5.0s
+
+Shape R moves from (200.0,200.0) to (300.0,300.0) from t=0.5s to t=2.5s
+Shape C moves from (500.0,100.0) to (500.0,400.0) from t=1.0s to t=3.5s
