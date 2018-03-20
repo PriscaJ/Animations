@@ -111,7 +111,7 @@ public class SVGView implements IView {
 
     for (AnimationCommand a : cmds) {
       workString.append("<animate attributeType=\"xml\" begin=\"");
-      workString.append(a.getAnimation().getStart()).append("ms\" dur=\"").append(a.getAnimation().getFinish() - a.getAnimation().getStart()).append("ms\" attributeName=\"") //+ attributeCmd()
+      workString.append(a.getAnimation().getStart() *ticksPerSec).append("ms\" dur=\"").append((a.getAnimation().getFinish() - a.getAnimation().getStart())*ticksPerSec).append("ms\" attributeName=\"") //+ attributeCmd()
       ;
       switch (a.getAnimation().getType()) {
         case MOVE:

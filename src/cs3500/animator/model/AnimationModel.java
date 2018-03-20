@@ -26,15 +26,11 @@ public class AnimationModel implements AnimationOperations {
   private Map<Integer, List<Shapes>> shapesAtTime;
 
   public AnimationModel() {
-
-  }
-
-  @Override
-  public void setShapes(Shapes shape) {
     shapesMap = new HashMap<>();
     animations = new ArrayList<>();
     shapeToCommands = new HashMap<>();
   }
+
 
   @Override
   public ArrayList<Shapes> getShapes() {

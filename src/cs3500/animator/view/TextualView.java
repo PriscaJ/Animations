@@ -12,6 +12,7 @@ public class TextualView implements IView {
   String outFile;
   List<Shapes> allShapes;
   List<Animations> allAnimations;
+  int ticksPerSec;
 
   // todo: hand the textual view [the shapes] and [ the animations]
   // and have it loop through and call getDescription on all?
@@ -21,6 +22,7 @@ public class TextualView implements IView {
     this.outFile = outFile;
     this.allShapes = allShapes;
     this.allAnimations = allAnimations;
+    this.ticksPerSec = ticksPerSec;
   }
 
   private String readBack() {

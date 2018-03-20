@@ -103,8 +103,6 @@ public final class EasyAnimator {
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
     return new SVGView(model.getShapes(), outputDest, 1000 / tps);
-
-
   }
 
   private static TextualView createTextView(String outFile,

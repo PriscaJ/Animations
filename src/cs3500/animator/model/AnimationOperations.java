@@ -8,12 +8,6 @@ import java.util.List;
  */
 public interface AnimationOperations {
 
-
-  /**
-   * add the given shape to the animation.
-   */
-  void setShapes(Shapes shape);
-
   /**
    * A method to return a copy of all shapes in an animation.
    * @return
