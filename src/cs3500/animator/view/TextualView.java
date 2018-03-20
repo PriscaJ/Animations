@@ -1,6 +1,8 @@
 package cs3500.animator.view;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -41,15 +43,17 @@ public class TextualView implements IView {
 
   @Override
   public void makeVisible() {
-    String output = readBack();
-    // simply append?
-    // create a file?
-    try (PrintWriter out = new PrintWriter(outFile)) {
-      out.println(output);
-    } catch (FileNotFoundException fe) {
-      throw new RuntimeException(fe);
+    try {
+      File file = new File(outFile);
+      String output = readBack();
+      //Write Content
+      FileWriter writer = new FileWriter(file);
+      writer.write(output);
+      writer.close();
     }
-
+    catch (IOException ioe) {
+      //
+    }
     // or both?
   }
 }
