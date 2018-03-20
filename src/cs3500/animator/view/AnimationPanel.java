@@ -53,18 +53,17 @@ public class AnimationPanel extends JPanel implements ActionListener {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
 
-    for (Shapes shape: shapesList) {
+    for (Shapes shape: activeShapes(tick)) {
       g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
       if (shape.isOval()) {
-        g2d.drawOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
+        g2d.fillOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
                 getWidth(), getHeight());
       }
       else if(shape.isRect()) {
-        g2d.drawRect(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
+        g2d.fillRect(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
                 getWidth(), getHeight());
       }
     }
-    repaint();
   }
 
   /**
@@ -92,6 +91,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
       }
     }
     tick++;
+    repaint();
 
     // when the model's last animation stops, stop the timer
     if (tick > lastTick) {
