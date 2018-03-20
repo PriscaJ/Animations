@@ -18,7 +18,7 @@ public interface Animations {
 
   int getStart();
 
-  String getDescription();
+  String getDescription(int tps);
 
   float calculateChange(float startValue, float endValue, float tick);
 
