@@ -26,7 +26,6 @@ public class AnimationModel implements AnimationOperations {
   private Map<Integer, List<Shapes>> shapesAtTime;
 
   public AnimationModel() {
-
   }
 
   @Override

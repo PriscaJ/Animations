@@ -102,11 +102,7 @@ public final class EasyAnimator {
   private static SVGView createSVGView(String outputDest, String ticksPerSec,
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
-<<<<<<< HEAD
-    return new SVGView(new ArrayList<>(), "");
-=======
     return new SVGView(model.getShapes(), outputDest, 1000 / tps);
->>>>>>> 397d7ad8f91a5c89815b104d0137ac5c62241fe0
 
 
   }
