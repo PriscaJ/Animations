@@ -59,7 +59,7 @@ public class SVGTest {
     ScaleCommand sc = new ScaleCommand(s);
     o.addCommand(sc);
     s.setAnimatingShape(o);
-    SVGView view = new SVGView(shapes, animations, "hi");
+    SVGView view = new SVGView(shapes, "hi");
     assertEquals(view.svgOutput(), "");
   }
 }
