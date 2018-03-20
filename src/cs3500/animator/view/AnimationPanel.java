@@ -38,7 +38,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     this.ticksPerSec = ticksPerSec;
     this.setBackground(Color.WHITE);
     this.tick = 0;
-    this.t = new Timer(0, this);
+    this.t = new Timer(ticksPerSec, this);
     // this.shapesInAnimation = new HashMap<String, Shapes>();
   }
 
