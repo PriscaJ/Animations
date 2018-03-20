@@ -1,12 +1,9 @@
 package cs3500.animator.model;
 
-import java.util.HashMap;
-
 /**
  * Class that handles the shifts in colors within a shape during an animation.
  */
 public class ColorChange extends AbstractAnimation {
-  private AbstractShape s;
   private float oldR;
   private float oldG;
   private float oldB;
@@ -56,9 +53,9 @@ public class ColorChange extends AbstractAnimation {
 
   @Override
   public void apply(int tick) {
-    s.red = calculateChange(oldR, newR, tick);
-    s.green = calculateChange(oldG, newG, tick);
-    s.blue = calculateChange(oldB, newB, tick);
+    animatingShape.setRed(calculateChange(oldR, newR, tick));
+    animatingShape.setGreen(calculateChange(oldG, newG, tick));
+    animatingShape.setBlue(calculateChange(oldB, newB, tick));
   }
 
   @Override

@@ -24,10 +24,12 @@ public class SVGView implements IView {
 
   private List<Shapes> allShapes;
   private String fileName;
+  private int ticksPerSec;
 
-  public SVGView(List<Shapes> allShapes, String fileName) {
+  public SVGView(List<Shapes> allShapes, String fileName, int ticksPerSec) {
     this.allShapes = allShapes;
     this.fileName = fileName;
+    this.ticksPerSec = ticksPerSec;
   }
 
   @Override

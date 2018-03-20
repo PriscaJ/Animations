@@ -119,10 +119,12 @@ public class AnimationModel implements AnimationOperations {
       throw new IllegalArgumentException("not allowed");
     }
     command.getAnimation().animatingShape = shapesMap.get(shapeName);
+
     if (shapeToCommands.containsKey(shapeName)) {
       List<AnimationCommand> currList = shapeToCommands.get(shapeName);
       currList.add(command);
       shapeToCommands.put(shapeName, currList);
+
     } else {
       List<AnimationCommand> newList = new ArrayList<>();
       newList.add(command);

@@ -66,6 +66,27 @@ public abstract class AbstractShape implements Shapes {
   }
 
   @Override
+  public void setXPosn(float v) {this.xPosn = v;}
+
+  @Override
+  public void setYPosn(float v) {this.xPosn = v;}
+
+  @Override
+  public void setXDimension(float v) {this.xDimension = v;}
+
+  @Override
+  public void setYDimension(float v) {this.yDimension = v;}
+
+  @Override
+  public void setRed(float v){this.red = v;}
+
+  @Override
+  public void setGreen(float v){this.green = v;}
+
+  @Override
+  public void setBlue(float v){this.blue = v;}
+
+  @Override
   public String getName() {
     return name;
   }

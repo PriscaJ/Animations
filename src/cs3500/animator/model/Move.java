@@ -19,13 +19,8 @@ public class Move extends AbstractAnimation {
 
   @Override
   public void apply(int tick) {
-    // how long the move will last for
-    int duration = getFinish() - getStart();
-    // Point intermediateMove = new Point();
-
-    // distance to goal location broken up into X and Y
-    double distX = calculateChange(startX, endX, tick);
-    double distY = calculateChange(startY, endY, tick);
+    animatingShape.setXPosn(calculateChange(startX, endX, tick));
+    animatingShape.setYPosn(calculateChange(startY, endY, tick));
   }
 
   @Override

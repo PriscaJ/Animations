@@ -28,12 +28,14 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private Timer t;
   private ArrayList<Shapes> shapesList;
   private int lastTick;
+  private int ticksPerSec;
   // private Map<String, Shapes> shapesInAnimation;
 
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model
     this.shapesList = shapesList;
     this.lastTick = lastTick;
+    this.ticksPerSec = ticksPerSec;
     this.setBackground(Color.WHITE);
     this.tick = 0;
     this.t = new Timer(0, this);
