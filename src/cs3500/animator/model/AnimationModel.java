@@ -19,11 +19,7 @@ public class AnimationModel implements AnimationOperations {
   private List<Animations> animations;
   // hashmap of shape name to shape
   private Map<String, Shapes> shapesMap;
-  // todo: should this be shape to COMMAND?
   private Map<String, List<AnimationCommand>> shapeToCommands;
-  //private Map<String, List<Animations>> shapeToAnimations;
-  // todo: do we need a timeline in the model??
-  private Map<Integer, List<Shapes>> shapesAtTime;
 
   public AnimationModel() {
     shapesMap = new HashMap<>();
@@ -90,10 +86,12 @@ public class AnimationModel implements AnimationOperations {
    */
   private void addCommand(AnimationCommand command) {
     String shapeName = command.getAnimation().getName();
+    Shapes shape = shapesMap.get(shapeName);
+    shape.addCommand(command);
     if (animationsCollide(command.getAnimation())) {
       throw new IllegalArgumentException("not allowed");
     }
-    command.getAnimation().animatingShape = shapesMap.get(shapeName);
+    command.getAnimation().setAnimatingShape(shapesMap.get(shapeName));
 
     if (shapeToCommands.containsKey(shapeName)) {
       List<AnimationCommand> currList = shapeToCommands.get(shapeName);

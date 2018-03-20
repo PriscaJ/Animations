@@ -65,4 +65,6 @@ public interface Shapes {
   void setGreen(float v);
 
   void setBlue(float v);
+
+  void addCommand(AnimationCommand command);
 }

@@ -1,9 +1,5 @@
-//package cs3500.animator;
 
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +18,8 @@ public final class EasyAnimator {
   public static void main(String[] args) {
     String animationFileName = null;
     String typeOfView = null;
-    String outputDest = null;
+    // if not specified, outputDest is out by default
+    String outputDest = "out";
     String ticksPerSec = null;
 
     for (int i = 0; i < args.length; i = i + 2) {

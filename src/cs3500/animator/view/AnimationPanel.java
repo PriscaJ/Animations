@@ -54,6 +54,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     Graphics2D g2d = (Graphics2D) g;
 
     for (Shapes shape: shapesList) {
+      g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
       if (shape.isOval()) {
         g2d.drawOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
                 getWidth(), getHeight());
@@ -63,6 +64,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
                 getWidth(), getHeight());
       }
     }
+    repaint();
   }
 
   /**

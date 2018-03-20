@@ -37,6 +37,7 @@ public abstract class AbstractShape implements Shapes {
     this.endOfLife = endOfLife;
   }
 
+  @Override
   public void addCommand(AnimationCommand c) {
     commands.add(c);
   }

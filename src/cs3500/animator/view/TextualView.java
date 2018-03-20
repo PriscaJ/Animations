@@ -43,17 +43,20 @@ public class TextualView implements IView {
 
   @Override
   public void makeVisible() {
-    try {
-      File file = new File(outFile);
-      String output = readBack();
-      //Write Content
-      FileWriter writer = new FileWriter(file);
-      writer.write(output);
-      writer.close();
+    if (outFile.equals("out")) {
+      System.out.print(readBack());
+    } else {
+      try {
+        File file = new File(outFile);
+        String output = readBack();
+        //Write Content
+        FileWriter writer = new FileWriter(file);
+        writer.write(output);
+        writer.close();
+      } catch (IOException ioe) {
+        //
+      }
+      // or both?
     }
-    catch (IOException ioe) {
-      //
-    }
-    // or both?
   }
 }
