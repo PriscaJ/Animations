@@ -18,7 +18,7 @@ public class VisualView extends JFrame implements IView {
   JScrollPane pane;
 
   /**
-   * The Cconstructor for the visual view.
+   * The Constructor for the visual view.
    * @param shapesList The list of shapes in the animation.
    * @param lastTick The last tick marking the end of an animation.
    * @param ticksPerSec The speed of the animation.
