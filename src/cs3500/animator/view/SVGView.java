@@ -195,7 +195,9 @@ public class SVGView implements IView {
     String workString = "";
 
     workString += starter + "fill\"";
-    workString += String.format(" from=\"rgb(%.0f,%.0f,%.0f)\" to=\"rgb(%.0f,%.0f,%.0f)\"", c.getOldR() * 255, c.getOldG() * 255, c.getOldB() * 255, c.getNewR() * 255, c.getNewG() * 255, c.getNewB() * 255);
+    workString += String.format(" from=\"rgb(%.0f,%.0f,%.0f)\" to=\"rgb(%.0f,%.0f,%.0f)\"",
+            c.getOldR() * 255, c.getOldG() * 255, c.getOldB() * 255, c.getNewR() * 255, c.getNewG()
+                    * 255, c.getNewB() * 255);
     workString += " fill=\"freeze\" />\n";
     return workString;
   }
