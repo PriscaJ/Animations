@@ -9,25 +9,18 @@ ScaleChange).
 Interface AnimationOperations
 This is the main interface for the model which contains the methods and behaviors that a model
 should have in order to run an animation. Methods such as getShape that returns the shapes in the
-current animation.
+current animation as well as the readBack which returns the animation as a String.
 
 class AnimationModel - implements AnimationOperations
-Field(s): CHANGE
-List<Animations> animations; There is a list if all the actions that will occur in ab animation.
-Map<String, Shapes> shapesMap; All shapes are stored in a Hashmap to directly attach it from the
-shape's name to the actual Shape.
-List<Shapes> shapes; Instead of a specified Array LIst of shapes it is generalized to List, but it
-still represents all the shapes that are contained in this animation.
-
+Field(s): ArrayList<Shapes>  all the shapes that are contained in this animation.
 
 Interface Shapes
 
-DESIGN CHANGE
-class AbstractShape
-There is an abstract class for Shape since some qualities of a shape can mostly be shared between an
-oval and a rectangle. If there needs to be an additional shape added in the future a new class will
-be added and extend the Abstract shape if it has similar funtionality. Instead of an enum type which
-can complicate the behaviors for a shape that does not align completely with an Abstract Shape.
+class Shape - enum ShapeType
+There is only one class Shape since the qualities of a shape can mostly be shared between an oval
+and a rectangle. If there needs to be an additional shape added in the future the enum type can be
+ added and if a new class is needed it can extend the shape class and become backwards complatibale
+ by adding what it needs.
 
 Field(s):
  ArrayList<AnimationCommand> commands Commands that will be called for to call animation actions
@@ -38,10 +31,12 @@ Field(s):
   private Point position The position whether that be the center or the lower left corner
   private Color color the color of the shape
 
+DESIGN CHANGE:
+instead of being constrained
 Interface AnimationCommands
 
 The commands are used to decouple the responsibilities between a shape and an Animation action. The
-Shape does not worry about how it will be animated it only called the Command which invokes its
+Shape does not worry about how it will be animated it only calles the Command which invokes its
 field to call on its animation action
 
 class MoveCommand
@@ -55,18 +50,8 @@ Field(s) ColorChange the Action of the Animation
 
 Interface Animations
 
-DESIGN CHANGE
 abstract class AbstractAnimation - implements Animations
-Field(s): protected fields for
-protected String name;
-protected float startX;
-protected float startY;
-  protected float endX;
-  protected float endY;
-  protected int startTime;
-  protected int endTime;
-  protected Shapes animatingShape = null;
-  protected AnimationType type = null;
+Field(s) - int start int finish how long the action lasts for
 
 These are the classes that actually perform the action called they have a method that applies the
 action it is attached to.
