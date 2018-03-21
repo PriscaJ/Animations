@@ -6,6 +6,10 @@ package cs3500.animator.model;
 public class MoveCommand implements AnimationCommand {
   private Move move;
 
+  /**
+   * The constructor for the command controlling the Move action.
+   * @param move The Moving action.
+   */
   public MoveCommand(Move move) {
     this.move = move;
   }

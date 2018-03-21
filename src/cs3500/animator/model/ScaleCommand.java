@@ -6,6 +6,10 @@ package cs3500.animator.model;
 public class ScaleCommand implements AnimationCommand {
   private ScaleChange scale;
 
+  /**
+   * The constructor for a Command that controls a Scale Change.
+   * @param scale The Scale Change action.
+   */
   public ScaleCommand(ScaleChange scale) {
     this.scale = scale;
   }

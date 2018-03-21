@@ -1,5 +1,8 @@
 package cs3500.animator.model;
 
+/**
+ * Class that represents an Oval a type of shape in an animation.
+ */
 public class Oval extends AbstractShape {
   /**
    * This constructor initializes the oval with the necessary info.

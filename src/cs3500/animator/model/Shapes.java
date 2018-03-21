@@ -17,12 +17,13 @@ public interface Shapes {
   /**
    * The animations the AbstractShape will undergo during an animations
    * by adding it to the list of animations that a shape has.
-   * @param newCommand Animation Command that will add to the list of commands the AbstractShape will have.
+   * @param newCommand Animation Command that will add to the list of commands the AbstractShape
+   * will have.
    */
   void setAnimation(AnimationCommand newCommand);
 
   /**
-   * Various observational mmethods to retrieve and access private fields when needed.
+   * Various observational methods to retrieve and access private fields when needed.
    * @return various returns.
    */
   ArrayList<AnimationCommand> getCommands();
