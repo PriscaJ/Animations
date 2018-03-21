@@ -10,6 +10,10 @@ import java.util.List;
 import cs3500.animator.model.Animations;
 import cs3500.animator.model.Shapes;
 
+/**
+ * Creates the textual representation of the animation by creating separated by shapes and actions
+ * ordered by occurrence.
+ */
 public class TextualView implements IView {
   String outFile;
   List<Shapes> allShapes;
@@ -19,6 +23,14 @@ public class TextualView implements IView {
   // todo: hand the textual view [the shapes] and [ the animations]
   // and have it loop through and call getDescription on all?
   // what does tight coupling look like?
+
+  /**
+   * The constructor for the Textual View.
+   * @param outFile The file it outputs to.
+   * @param allShapes All the shapes in the animation.
+   * @param allAnimations All the animation actions that will be preformed.
+   * @param ticksPerSec The speed of the animation by ticks per seconds.
+   */
   public TextualView(String outFile, List<Shapes> allShapes,
       List<Animations> allAnimations, int ticksPerSec) {
     this.outFile = outFile;

@@ -20,12 +20,22 @@ import cs3500.animator.model.Rectangle;
 import cs3500.animator.model.ScaleChange;
 import cs3500.animator.model.Shapes;
 
+/**
+ * Class that renders an animation as an SVG which is compatible withe the browser to show the
+ * animation.
+ */
 public class SVGView implements IView {
 
   private List<Shapes> allShapes;
   private String fileName;
   private int ticksPerSec;
 
+  /**
+   * The constructor for an SVG.
+   * @param allShapes All the shapes in an Animation.
+   * @param fileName The file it will out put to.
+   * @param ticksPerSec The speed of the animation by ticks per seconds.
+   */
   public SVGView(List<Shapes> allShapes, String fileName, int ticksPerSec) {
     this.allShapes = allShapes;
     this.fileName = fileName;
@@ -113,7 +123,9 @@ public class SVGView implements IView {
 
     for (AnimationCommand a : cmds) {
       workString.append("<animate attributeType=\"xml\" begin=\"");
-      workString.append(a.getAnimation().getStart() *ticksPerSec).append("ms\" dur=\"").append((a.getAnimation().getFinish() - a.getAnimation().getStart())*ticksPerSec).append("ms\" attributeName=\"") //+ attributeCmd()
+      workString.append(a.getAnimation().getStart() *ticksPerSec).append("ms\" dur=\"").append
+              ((a.getAnimation().getFinish() - a.getAnimation().getStart())*ticksPerSec).append
+              ("ms\" attributeName=\"") //+ attributeCmd()
       ;
       switch (a.getAnimation().getType()) {
         case MOVE:
