@@ -22,18 +22,19 @@ public class VisualView extends JFrame implements IView {
 
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.setTitle("Easy Animator!");
-    this.setSize(1000, 1000);
+    this.setSize(800, 800);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
     // animation panel
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
-    this.aniPanel.setPreferredSize(new Dimension(1000, 1000));
+    this.aniPanel.setPreferredSize(new Dimension(800, 800));
     this.add(this.aniPanel, BorderLayout.CENTER);
     // scroll pane
     this.pane = new JScrollPane(this.aniPanel);
     pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-    pane.setSize(1000,1000);
+    pane.setPreferredSize(new Dimension(800, 800));
+    pane.setSize(100,100);
     this.add(this.pane);
     this.pack();
   }

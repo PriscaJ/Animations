@@ -3,6 +3,8 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +16,7 @@ import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.IReadOnlyModel;
 import cs3500.animator.model.Shapes;
+import javafx.scene.shape.Ellipse;
 
 
 /**
@@ -43,10 +46,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
     this.lastTick = lastTick;
     this.ticksPerSec = ticksPerSec;
     this.setBackground(Color.WHITE);
-    this.tick = 0;
+    this.setPreferredSize(new Dimension( 800,800));
+    this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
     t.start();
-    System.out.println("Timer started!");
 
     // this.shapesInAnimation = new HashMap<String, Shapes>();
   }
@@ -63,19 +66,26 @@ public class AnimationPanel extends JPanel implements ActionListener {
     Graphics2D g2d = (Graphics2D) g;
 
     for (Shapes shape: activeShapes(tick)) {
-      System.out.println(shape.getDescription(tick));
       float r = shape.getRed();
       float gg = shape.getGreen();
       float b = shape.getBlue();
       Color c = new Color(r, gg, b);
       g2d.setColor(c);
       if (shape.isOval()) {
-        g2d.fillOval(shape.getXPosition().intValue()/2, shape.getYPosition().intValue()/2,
-            getWidth() / 5, getHeight() / 5);
+        Ellipse2D oval = new Double(shape.getXPosition().intValue()/2, shape.getYPosition().intValue()/2,
+            getWidth() *2, getHeight() *2);
+        g2d.fill(oval);
+
       }
       else if(shape.isRect()) {
-        g2d.fillRect(shape.getXPosition().intValue() /2, shape.getYPosition().intValue() /2,
-            getWidth() / 5 , getHeight() / 5);
+        System.out.println("The width is: " + shape.getWidth().intValue());
+        System.out.println("The height is: " + shape.getHeight().intValue());
+        System.out.println("The xPosn is " + shape.getXPosition().intValue());
+        System.out.println("The yPosn is " + shape.getYPosition().intValue());
+
+        Rectangle rect = new Rectangle((Integer) shape.getXPosition().intValue() , shape.getYPosition().intValue() - getHeight(),
+            getWidth() , getHeight());
+        g2d.fill(rect);
       }
     }
   }
@@ -86,8 +96,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * @return The list of shapes running at the given time.
    */
   private ArrayList<Shapes> activeShapes(int time){
-    ArrayList<Shapes> currentShapes = new ArrayList<Shapes>();
-
+    ArrayList<Shapes> currentShapes = new ArrayList<>();
     for (Shapes s: shapesList) {
       if (time >= s.getAppears() && time < s.getDisappears()) {
         currentShapes.add(s);
@@ -98,6 +107,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    // when the model's last animation stops, stop the timer
+    if (tick >= lastTick) {
+      t.stop();
+    }
     // for every shape call its command to execute the action.
     for (Shapes s: activeShapes(tick)) {
       for(AnimationCommand cmd: s.getCommands()) {
@@ -109,9 +122,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
     tick++;
     repaint();
 
-    // when the model's last animation stops, stop the timer
-    if (tick >= lastTick) {
-      t.stop();
-    }
+
   }
 }
