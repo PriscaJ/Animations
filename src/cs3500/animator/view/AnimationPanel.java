@@ -3,20 +3,12 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Double;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.*;
 
-import cs3500.animator.controller.Controller;
 import cs3500.animator.model.AnimationCommand;
-import cs3500.animator.model.AnimationModel;
-import cs3500.animator.model.IReadOnlyModel;
 import cs3500.animator.model.Shapes;
-import javafx.scene.shape.Ellipse;
 
 
 /**
@@ -36,6 +28,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   /**
    * The constructor for the Animation Panel
+   *
    * @param shapesList The list of shapes in an Animation.
    * @param lastTick The last tick in an Aniation marking its end.
    * @param ticksPerSec The speed of animation in ticks per second.
@@ -46,7 +39,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     this.lastTick = lastTick;
     this.ticksPerSec = ticksPerSec;
     this.setBackground(Color.WHITE);
-    this.setPreferredSize(new Dimension( 800,800));
+    this.setPreferredSize(new Dimension(800, 800));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
     t.start();
@@ -65,19 +58,18 @@ public class AnimationPanel extends JPanel implements ActionListener {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
 
-    for (Shapes shape: activeShapes(tick)) {
+    for (Shapes shape : activeShapes(tick)) {
       float r = shape.getRed();
       float gg = shape.getGreen();
       float b = shape.getBlue();
       Color c = new Color(r, gg, b);
       g2d.setColor(c);
       if (shape.isOval()) {
-        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() /2,
-            shape.getYPosition().intValue() - shape.getHeight().intValue() /2,
+        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+            shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
             shape.getWidth().intValue(), shape.getHeight().intValue());
 
-      }
-      else if(shape.isRect()) {
+      } else if (shape.isRect()) {
         Rectangle r2 = new Rectangle(new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
             new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
         g2d.fill(r2);
@@ -88,12 +80,13 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   /**
    * Returns the list of Shapes that are currently running at a particular tick.
+   *
    * @param time The current tick.
    * @return The list of shapes running at the given time.
    */
-  private ArrayList<Shapes> activeShapes(int time){
+  private ArrayList<Shapes> activeShapes(int time) {
     ArrayList<Shapes> currentShapes = new ArrayList<>();
-    for (Shapes s: shapesList) {
+    for (Shapes s : shapesList) {
       if (time >= s.getAppears() && time <= s.getDisappears()) {
         currentShapes.add(s);
       }
@@ -108,8 +101,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
       t.stop();
     }
     // for every shape call its command to execute the action.
-    for (Shapes s: activeShapes(tick)) {
-      for(AnimationCommand cmd: s.getCommands()) {
+    for (Shapes s : activeShapes(tick)) {
+      for (AnimationCommand cmd : s.getCommands()) {
         if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
           cmd.execute(tick);
         }
