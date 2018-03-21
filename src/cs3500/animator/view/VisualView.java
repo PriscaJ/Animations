@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import cs3500.animator.model.IReadOnlyModel;
 import cs3500.animator.model.Shapes;
 
 /**
@@ -15,29 +14,31 @@ import cs3500.animator.model.Shapes;
  */
 
 public class VisualView extends JFrame implements IView {
-  private String visualView;
   private AnimationPanel aniPanel;
-  private JLabel display;
   JScrollPane pane;
 
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.setTitle("Easy Animator!");
-    this.setSize(1000, 1000);
-    this.setDefaultCloseOperation(3);
+    this.setSize(800, 800);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
     // animation panel
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
-    this.aniPanel.setPreferredSize(new Dimension(1000, 1000));
-    this.add(this.aniPanel, BorderLayout.CENTER);
+    this.aniPanel.setPreferredSize(new Dimension(800, 800));
+    this.add(this.aniPanel);
+    this.setLocation(0,0);
+    this.setResizable(true);
     // scroll pane
     this.pane = new JScrollPane(this.aniPanel);
     pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-    pane.setSize(1000,1000);
+    pane.setPreferredSize(new Dimension(800, 800));
+    pane.setSize(800,800);
     this.add(this.pane);
     this.pack();
   }
 
+  @Override
   public void makeVisible() {
     this.setVisible(true);
     System.out.println("VisualView made visible!");

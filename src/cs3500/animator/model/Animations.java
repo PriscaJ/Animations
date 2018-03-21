@@ -27,4 +27,12 @@ public interface Animations {
   AnimationType getType();
 
   String getName();
+
+  float getStartX();
+
+  float getEndX();
+
+  float getStartY();
+
+  float getEndY();
 }

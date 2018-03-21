@@ -7,8 +7,6 @@ import java.util.ArrayList;
  */
 
 public abstract class AbstractShape implements Shapes {
-  // the animations that the shape invokes
-  private ArrayList<AnimationCommand> commands = new ArrayList<>();
   // qualities of a shape
   protected String name;
   protected float xPosn;
@@ -20,8 +18,11 @@ public abstract class AbstractShape implements Shapes {
   protected float blue;
   protected int startOfLife;
   protected int endOfLife;
+  // the animations that the shape invokes
+  private ArrayList<AnimationCommand> commands = new ArrayList<>();
 
-  public AbstractShape (String name,
+  // This is a constructor for an abstract shape.
+  public AbstractShape(String name,
       float xPosn, float yPosn, float xDimension, float yDimension,
       float red, float green, float blue,
       int startOfLife, int endOfLife) {
@@ -45,10 +46,10 @@ public abstract class AbstractShape implements Shapes {
   @Override
   public void setAnimation(AnimationCommand newCommand) {
     // does the action applied to the shape occur during the lifespan of the shape
-    if(newCommand.getAnimation().getStart() < getAppears()) {
+    if (newCommand.getAnimation().getStart() < getAppears()) {
       throw new IllegalArgumentException("Cannot apply Action to shape");
     }
-    if(newCommand.getAnimation().getFinish() > getDisappears()) {
+    if (newCommand.getAnimation().getFinish() > getDisappears()) {
       throw new IllegalArgumentException("Cannot apply Action to shape");
     }
     commands.add(newCommand);
@@ -60,25 +61,24 @@ public abstract class AbstractShape implements Shapes {
   }
 
   @Override
-  public void setXPosn(float v) {this.xPosn = v;}
+  public void setXPosn(float v) {
+    this.xPosn = v;
+  }
 
   @Override
-  public void setYPosn(float v) {this.xPosn = v;}
+  public void setYPosn(float v) {
+    this.yPosn = v;
+  }
 
   @Override
-  public void setXDimension(float v) {this.xDimension = v;}
+  public void setXDimension(float v) {
+    this.xDimension = v;
+  }
 
   @Override
-  public void setYDimension(float v) {this.yDimension = v;}
-
-  @Override
-  public void setRed(float v){this.red = v;}
-
-  @Override
-  public void setGreen(float v){this.green = v;}
-
-  @Override
-  public void setBlue(float v){this.blue = v;}
+  public void setYDimension(float v) {
+    this.yDimension = v;
+  }
 
   @Override
   public String getName() {
@@ -121,12 +121,27 @@ public abstract class AbstractShape implements Shapes {
   }
 
   @Override
+  public void setRed(float v) {
+    this.red = v;
+  }
+
+  @Override
   public Float getGreen() {
     return green;
   }
 
   @Override
+  public void setGreen(float v) {
+    this.green = v;
+  }
+
+  @Override
   public Float getBlue() {
     return blue;
+  }
+
+  @Override
+  public void setBlue(float v) {
+    this.blue = v;
   }
 }
