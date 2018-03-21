@@ -5,6 +5,18 @@ package cs3500.animator.model;
  */
 public interface Animations {
 
+  float getOldR();
+
+  float getOldG();
+
+  float getOldB();
+
+  float getNewR();
+
+  float getNewG();
+
+  float getNewB();
+
   /**
    * Applies the Animation actions and mutates its shape at the given time.
    */
