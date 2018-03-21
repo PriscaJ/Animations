@@ -13,12 +13,16 @@ import cs3500.animator.model.Rectangle;
 import cs3500.animator.model.ScaleChange;
 import cs3500.animator.model.Shapes;
 
+/**
+ * This is a class to represent an animation in an SVG format.
+ */
 public class SVGView implements IView {
 
   private List<Shapes> allShapes;
   private String fileName;
   private int ticksPerSec;
 
+  // This is a constructor for an svg animation view.
   public SVGView(List<Shapes> allShapes, String fileName, int ticksPerSec) {
     this.allShapes = allShapes;
     this.fileName = fileName;
@@ -36,16 +40,16 @@ public class SVGView implements IView {
    * @return The String representation of an SVG for the animation
    */
   private void asSVG() {
-//    Comparator<Shapes> employeeNameComparator
-//        = Comparator.comparing(Shapes::getAppears);
-//    Comparator<Shapes> employeeNameComparator
-//        = Comparator.comparing(
-//        Shapes::getAppears, Comparator.naturalOrder());
-//    Comparator<Shapes> shapeNameComparator
-//        = Comparator.comparing(
-//        Shapes::getName);
-//    allShapes.sort(shapeNameComparator);
-//    allShapes.sort(employeeNameComparator);
+    //    Comparator<Shapes> employeeNameComparator
+    //        = Comparator.comparing(Shapes::getAppears);
+    //    Comparator<Shapes> employeeNameComparator
+    //        = Comparator.comparing(
+    //        Shapes::getAppears, Comparator.naturalOrder());
+    //    Comparator<Shapes> shapeNameComparator
+    //        = Comparator.comparing(
+    //        Shapes::getName);
+    //    allShapes.sort(shapeNameComparator);
+    //    allShapes.sort(employeeNameComparator);
     String start = "<svg version= \"1.1\" "
         + "xmlns=\"http://www.w3.org/2000/svg\">\n\n";
     String end = "</svg>";
@@ -68,6 +72,7 @@ public class SVGView implements IView {
 
   /**
    * This is a method to test the output of an SVG View.
+   *
    * @return the svg output.
    */
   protected String svgOutput() {
@@ -88,11 +93,17 @@ public class SVGView implements IView {
       // list of animations for this shape
       // as.getAnimations();
       if (s instanceof Oval) {
-        workString.append(String.format("<ellipse id=\"%s\" cx=\"%.1f\" cy=\"%.1f\" rx=\"%.1f\" ry=\"%.1f\" "
-                + "fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"hidden\" >\n", s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),
-            s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
-        workString.append(String.format("<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"%.1fms\" dur=\"%.1fms\" fill=\"freeze\" />",(float) s.getAppears() * ticksPerSec, (float) (s.getDisappears()-s.getAppears()) * ticksPerSec)
-);
+        workString.append(
+            String.format("<ellipse id=\"%s\" cx=\"%.1f\" cy=\"%.1f\" rx=\"%.1f\" ry=\"%.1f\" "
+                    + "fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"hidden\" >\n",
+                s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),
+                s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
+        workString.append(
+            String.format("<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" "
+                    + "begin=\"%.1fms\" dur=\"%.1fms\" fill=\"freeze\" />",
+                (float) s.getAppears() * ticksPerSec,
+                (float) (s.getDisappears() - s.getAppears()) * ticksPerSec)
+        );
         workString.append("\n");
 
         workString.append(formatCmd(s.getCommands(), "ellipse"));
@@ -104,7 +115,10 @@ public class SVGView implements IView {
                 + "height=\"%.1f\" fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"hidden\" >\n",
             s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),
             s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
-        workString.append(String.format("<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"%.1fms\" dur=\"%.1fms\" fill=\"freeze\" />",(float) s.getAppears() * ticksPerSec, (float) (s.getDisappears()-s.getAppears()) * ticksPerSec)
+        workString.append(String.format("<set attributeName=\"visibility\" attributeType=\"CSS\" "
+            + "to=\"visible\" begin=\"%.1fms\" dur=\"%.1fms\" fill=\"freeze\" />",
+            (float) s.getAppears() * ticksPerSec,
+            (float) (s.getDisappears() - s.getAppears()) * ticksPerSec)
         );
         workString.append("\n");
         workString.append(formatCmd(s.getCommands(), "rect"));
@@ -125,7 +139,9 @@ public class SVGView implements IView {
     String workString2;
     for (AnimationCommand a : cmds) {
       workString2 = "<animate attributeType=\"xml\" begin=\"";
-      workString2 += a.getAnimation().getStart() * ticksPerSec + "ms\" dur=\"" + ((a.getAnimation().getFinish() - a.getAnimation().getStart()) * ticksPerSec) + "ms\" attributeName=\"" //+ attributeCmd()
+      workString2 += a.getAnimation().getStart() * ticksPerSec + "ms\" dur=\"" +
+          ((a.getAnimation().getFinish() - a.getAnimation().getStart()) * ticksPerSec)
+          + "ms\" attributeName=\"" //+ attributeCmd()
       ;
       switch (a.getAnimation().getType()) {
         case MOVE:
@@ -168,13 +184,13 @@ public class SVGView implements IView {
     if (move.getStartX() != move.getEndX()) {
       workString = starter + attributeX + "\" "
           + "from=\"" + move.getStartX() + "\" to=\"" + move.getEndX() + "\" "
-      + "fill=\"freeze\" />\n";
+          + "fill=\"freeze\" />\n";
     }
     if (move.getStartY() != move.getEndY()) {
       // if the x has also changed, make a new tag
-        additional += starter + attributeY + "\" "
-            + "from=\"" + move.getStartY() + "\" to=\"" + move.getEndY() + "\" ";
-        additional += "fill=\"freeze\" />\n";
+      additional += starter + attributeY + "\" "
+          + "from=\"" + move.getStartY() + "\" to=\"" + move.getEndY() + "\" ";
+      additional += "fill=\"freeze\" />\n";
     }
     return workString + additional;
   }
@@ -189,8 +205,8 @@ public class SVGView implements IView {
 
     workString += starter + "fill\"";
     workString += String.format(" from=\"rgb(%.0f,%.0f,%.0f)\" to=\"rgb(%.0f,%.0f,%.0f)\"",
-            c.getOldR() * 255, c.getOldG() * 255, c.getOldB() * 255, c.getNewR() * 255, c.getNewG()
-                    * 255, c.getNewB() * 255);
+        c.getOldR() * 255, c.getOldG() * 255, c.getOldB() * 255, c.getNewR() * 255, c.getNewG()
+            * 255, c.getNewB() * 255);
     workString += " fill=\"freeze\" />\n";
     return workString;
   }
@@ -229,8 +245,7 @@ public class SVGView implements IView {
             + "from=\"" + sChange.getStartY()
             + "\" to=\"" + sChange.getEndY() + "\" ";
         workString2 += "fill=\"freeze\" />\n";
-      }
-      else {
+      } else {
         workString2 = starter + attributeY + "\" "
             + "from=\"" + sChange.getStartY()
             + "\" to=\"" + sChange.getEndY() + "\" " + "fill=\"freeze\" />\n";
