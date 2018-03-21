@@ -31,6 +31,12 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private int ticksPerSec;
   // private Map<String, Shapes> shapesInAnimation;
 
+  /**
+   * The constructor for the Animation Panel
+   * @param shapesList The list of shapes in an Animation.
+   * @param lastTick The last tick in an Aniation marking its end.
+   * @param ticksPerSec The speed of animation in ticks per second.
+   */
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model
     this.shapesList = shapesList;

@@ -26,12 +26,13 @@ Field(s):
  ArrayList<AnimationCommand> commands Commands that will be called for to call animation actions
  for this shape
   private String name The unique name that a shape has.
-  private ShapeType type The type of shape the shape is, whihch is one of Oval, rectangle
   private double width, height The Dimensions of the shape
   private int appears, disappears The lifespan of a shape.
   private Point position The position whether that be the center or the lower left corner
   private Color color the color of the shape
 
+DESIGN CHANGE:
+instead of being constrained
 Interface AnimationCommands
 
 The commands are used to decouple the responsibilities between a shape and an Animation action. The
