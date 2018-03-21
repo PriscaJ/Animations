@@ -19,18 +19,21 @@ public class AnimationModel implements AnimationOperations {
   private List<Animations> animations;
   // hashmap of shape name to shape
   private Map<String, Shapes> shapesMap;
+  private List<Shapes> shapes;
+
   private Map<String, List<AnimationCommand>> shapeToCommands;
 
   public AnimationModel() {
     shapesMap = new HashMap<>();
     animations = new ArrayList<>();
     shapeToCommands = new HashMap<>();
+    shapes = new ArrayList<>();
   }
 
 
   @Override
   public ArrayList<Shapes> getShapes() {
-    return new ArrayList<>(shapesMap.values());
+    return new ArrayList<>(shapes);
   }
 
   @Override
@@ -75,6 +78,7 @@ public class AnimationModel implements AnimationOperations {
 
   public void addShape(AbstractShape shape) {
     shapesMap.put(shape.getName(), shape);
+    shapes.add(shape);
   }
 
   /**
@@ -97,6 +101,7 @@ public class AnimationModel implements AnimationOperations {
       List<AnimationCommand> currList = shapeToCommands.get(shapeName);
       currList.add(command);
       shapeToCommands.put(shapeName, currList);
+      animations.add(command.getAnimation());
 
     } else {
       List<AnimationCommand> newList = new ArrayList<>();

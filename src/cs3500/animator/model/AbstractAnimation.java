@@ -50,6 +50,7 @@ public abstract class AbstractAnimation implements Animations {
     this.endTime = endTime;
   }
 
+  @Override
   public void setAnimatingShape(Shapes s) {
     this.animatingShape = s;
   }

@@ -20,6 +20,8 @@ public interface Animations {
 
   String getDescription(int tps);
 
+  void setAnimatingShape(Shapes s);
+
   float calculateChange(float startValue, float endValue, float tick);
 
   AnimationType getType();
