@@ -72,20 +72,16 @@ public class AnimationPanel extends JPanel implements ActionListener {
       Color c = new Color(r, gg, b);
       g2d.setColor(c);
       if (shape.isOval()) {
-        Ellipse2D oval = new Double(shape.getXPosition().intValue()/2, shape.getYPosition().intValue()/2,
-            getWidth() *2, getHeight() *2);
-        g2d.fill(oval);
+        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() /2,
+            shape.getYPosition().intValue() - shape.getHeight().intValue() /2,
+            shape.getWidth().intValue(), shape.getHeight().intValue());
 
       }
       else if(shape.isRect()) {
-        System.out.println("The width is: " + shape.getWidth().intValue());
-        System.out.println("The height is: " + shape.getHeight().intValue());
-        System.out.println("The xPosn is " + shape.getXPosition().intValue());
-        System.out.println("The yPosn is " + shape.getYPosition().intValue());
+        Rectangle r2 = new Rectangle(new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
+            new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
+        g2d.fill(r2);
 
-        Rectangle rect = new Rectangle((Integer) shape.getXPosition().intValue() , shape.getYPosition().intValue() - getHeight(),
-            getWidth() , getHeight());
-        g2d.fill(rect);
       }
     }
   }
@@ -98,7 +94,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private ArrayList<Shapes> activeShapes(int time){
     ArrayList<Shapes> currentShapes = new ArrayList<>();
     for (Shapes s: shapesList) {
-      if (time >= s.getAppears() && time < s.getDisappears()) {
+      if (time >= s.getAppears() && time <= s.getDisappears()) {
         currentShapes.add(s);
       }
     }
@@ -114,7 +110,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     // for every shape call its command to execute the action.
     for (Shapes s: activeShapes(tick)) {
       for(AnimationCommand cmd: s.getCommands()) {
-        if (cmd.getAnimation().getStart() <= tick && tick < cmd.getAnimation().getFinish()) {
+        if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
           cmd.execute(tick);
         }
       }

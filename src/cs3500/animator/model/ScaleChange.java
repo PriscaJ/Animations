@@ -19,8 +19,10 @@ public class ScaleChange extends AbstractAnimation {
 
   @Override
   public void apply(int tick) {
-    animatingShape.setXDimension(calculateChange(startX, endX, tick));
-    animatingShape.setYDimension(calculateChange(startY, endY, tick));
+    if (tick >= startTime && tick < endTime) {
+      animatingShape.setXDimension(calculateChange(startX, endX, tick));
+      animatingShape.setYDimension(calculateChange(startY, endY, tick));
+    }
   }
 
   @Override

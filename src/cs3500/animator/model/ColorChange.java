@@ -53,9 +53,12 @@ public class ColorChange extends AbstractAnimation {
 
   @Override
   public void apply(int tick) {
-    animatingShape.setRed(calculateChange(oldR, newR, tick));
-    animatingShape.setGreen(calculateChange(oldG, newG, tick));
-    animatingShape.setBlue(calculateChange(oldB, newB, tick));
+    if (tick >= startTime && tick < endTime) {
+
+      animatingShape.setRed(calculateChange(oldR, newR, tick));
+      animatingShape.setGreen(calculateChange(oldG, newG, tick));
+      animatingShape.setBlue(calculateChange(oldB, newB, tick));
+    }
   }
 
   @Override

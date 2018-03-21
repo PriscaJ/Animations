@@ -28,13 +28,15 @@ public class VisualView extends JFrame implements IView {
     // animation panel
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
     this.aniPanel.setPreferredSize(new Dimension(800, 800));
-    this.add(this.aniPanel, BorderLayout.CENTER);
+    this.add(this.aniPanel);
+    this.setLocation(0,0);
+    this.setResizable(true);
     // scroll pane
     this.pane = new JScrollPane(this.aniPanel);
     pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
     pane.setPreferredSize(new Dimension(800, 800));
-    pane.setSize(100,100);
+    pane.setSize(800,800);
     this.add(this.pane);
     this.pack();
   }

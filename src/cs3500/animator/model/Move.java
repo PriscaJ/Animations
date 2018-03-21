@@ -19,8 +19,11 @@ public class Move extends AbstractAnimation {
 
   @Override
   public void apply(int tick) {
-    animatingShape.setXPosn(calculateChange(startX, endX, tick));
-    animatingShape.setYPosn(calculateChange(startY, endY, tick));
+    if (tick >= startTime && tick <= endTime) {
+
+      animatingShape.setXPosn(calculateChange(this.startX, this.endX, tick));
+      animatingShape.setYPosn(calculateChange(this.startY, this.endY, tick));
+    }
   }
 
   @Override
