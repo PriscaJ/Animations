@@ -45,6 +45,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
     this.setBackground(Color.WHITE);
     this.tick = 0;
     this.t = new Timer(ticksPerSec, this);
+    t.start();
+    System.out.println("Timer started!");
+
     // this.shapesInAnimation = new HashMap<String, Shapes>();
   }
 
@@ -60,14 +63,19 @@ public class AnimationPanel extends JPanel implements ActionListener {
     Graphics2D g2d = (Graphics2D) g;
 
     for (Shapes shape: activeShapes(tick)) {
-      g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
+      System.out.println(shape.getDescription(tick));
+      float r = shape.getRed();
+      float gg = shape.getGreen();
+      float b = shape.getBlue();
+      Color c = new Color(r, gg, b);
+      g2d.setColor(c);
       if (shape.isOval()) {
         g2d.fillOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
-                getWidth(), getHeight());
+            getWidth(), getHeight());
       }
       else if(shape.isRect()) {
         g2d.fillRect(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
-                getWidth(), getHeight());
+            getWidth(), getHeight());
       }
     }
   }
@@ -81,7 +89,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     ArrayList<Shapes> currentShapes = new ArrayList<Shapes>();
 
     for (Shapes s: shapesList) {
-      if (time >= s.getAppears() && time <= s.getDisappears()) {
+      if (time >= s.getAppears() && time < s.getDisappears()) {
         currentShapes.add(s);
       }
     }
@@ -93,7 +101,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
     // for every shape call its command to execute the action.
     for (Shapes s: activeShapes(tick)) {
       for(AnimationCommand cmd: s.getCommands()) {
-        cmd.execute(tick);
+        if (cmd.getAnimation().getStart() <= tick && tick < cmd.getAnimation().getFinish()) {
+          cmd.execute(tick);
+        }
       }
     }
     tick++;

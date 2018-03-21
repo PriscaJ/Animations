@@ -13,37 +13,34 @@ import cs3500.animator.model.Shapes;
  * Class that creates the visual view it is used in junction with the AnimationPanel class
  * to display a given animation.
  */
+
 public class VisualView extends JFrame implements IView {
   private String visualView;
   private AnimationPanel aniPanel;
   private JLabel display;
-  // todo: what data structure/information do we want here from the model?
+  JScrollPane pane;
 
-  /**
-   * The constructor for a visual view.
-   * @param shapesList The List of shapes that are present in the animation.
-   * @param lastTick The ending tick in an animation, signalling its end.
-   * @param ticksPerSec Controls the speed of the animation.
-   */
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
-    super();
     this.setTitle("Easy Animator!");
-    this.setSize(500,500);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    this.setSize(1000, 1000);
+    this.setDefaultCloseOperation(3);
     this.setLayout(new BorderLayout());
+    // animation panel
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
-    aniPanel.setPreferredSize(new Dimension(500,500));
-    this.add(aniPanel,BorderLayout.CENTER);
-
+    this.aniPanel.setPreferredSize(new Dimension(1000, 1000));
+    this.add(this.aniPanel, BorderLayout.CENTER);
+    // scroll pane
+    this.pane = new JScrollPane(this.aniPanel);
+    pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    pane.setSize(1000,1000);
+    this.add(this.pane);
     this.pack();
   }
 
-  @Override
   public void makeVisible() {
     this.setVisible(true);
+    System.out.println("VisualView made visible!");
   }
-
-
-
 }
+
