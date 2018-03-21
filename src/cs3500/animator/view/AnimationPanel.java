@@ -104,6 +104,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     for (Shapes s: activeShapes(tick)) {
       for(AnimationCommand cmd: s.getCommands()) {
         if (cmd.getAnimation().getStart() <= tick && tick < cmd.getAnimation().getFinish()) {
+          System.out.println(cmd.getAnimation().getType() + " is being preformed"); // does it scale
           cmd.execute(tick);
         }
       }
