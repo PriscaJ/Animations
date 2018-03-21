@@ -16,7 +16,8 @@ public abstract class AbstractAnimation implements Animations {
   protected AnimationType type = null;
 
   /**
-   * Initialize the abstract command with the specific characteristics. Used for cs3500.animator.model.Move and cs3500.animator.model.Scale.
+   * Initialize the abstract command with the specific characteristics.
+   * Used for cs3500.animator.model.Move and cs3500.animator.model.Scale.
    *
    * @param name is the name of the shape to be animated.
    * @param startX is the starting x characteristic. (X coordinate or width)
@@ -63,25 +64,38 @@ public abstract class AbstractAnimation implements Animations {
 
   /**
    * Various getters for the fields of a shape.
+   *
    * @return Object that is one of the fields.
    */
   @Override
-  public float getOldR(){return 0;}
+  public float getOldR() {
+    return 0;
+  }
 
   @Override
-  public float getOldG(){return 0;}
+  public float getOldG() {
+    return 0;
+  }
 
   @Override
-  public float getOldB(){return 0;}
+  public float getOldB() {
+    return 0;
+  }
 
   @Override
-  public float getNewR(){return 0;}
+  public float getNewR() {
+    return 0;
+  }
 
   @Override
-  public float getNewG(){return 0;}
+  public float getNewG() {
+    return 0;
+  }
 
   @Override
-  public float getNewB(){return 0;}
+  public float getNewB() {
+    return 0;
+  }
 
   @Override
   public abstract void apply(int tick);

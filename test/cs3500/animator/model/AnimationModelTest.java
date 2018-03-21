@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+// This is a class to test the methods in the model of an animation.
 public class AnimationModelTest {
 
   @Test
@@ -21,7 +22,7 @@ public class AnimationModelTest {
     // add a shape to the model but not model2
     model.addShape(shape);
 
-    }
+  }
 
   @Test
   public void testGetCurrentShapes() {

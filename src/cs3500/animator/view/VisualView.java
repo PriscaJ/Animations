@@ -14,8 +14,8 @@ import cs3500.animator.model.Shapes;
  */
 
 public class VisualView extends JFrame implements IView {
-  private AnimationPanel aniPanel;
   JScrollPane pane;
+  private AnimationPanel aniPanel;
 
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.setTitle("Easy Animator!");
@@ -26,14 +26,14 @@ public class VisualView extends JFrame implements IView {
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
     this.aniPanel.setPreferredSize(new Dimension(800, 800));
     this.add(this.aniPanel);
-    this.setLocation(0,0);
+    this.setLocation(0, 0);
     this.setResizable(true);
     // scroll pane
     this.pane = new JScrollPane(this.aniPanel);
     pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
     pane.setPreferredSize(new Dimension(800, 800));
-    pane.setSize(800,800);
+    pane.setSize(800, 800);
     this.add(this.pane);
     this.pack();
   }
