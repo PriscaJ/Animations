@@ -38,7 +38,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * @param ticksPerSec The speed of animation in ticks per second.
    */
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
-    // find a way to instantiate the model by using similalr fields passed into it
+    // find a way to instantiate the model by using same fields passed into it
     this.shapesList = shapesList;
     this.lastTick = lastTick;
     this.ticksPerSec = ticksPerSec;
@@ -60,14 +60,14 @@ public class AnimationPanel extends JPanel implements ActionListener {
     Graphics2D g2d = (Graphics2D) g;
 
     for (Shapes shape: activeShapes(tick)) {
-      //g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
+      g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
       if (shape.isOval()) {
-        g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
+        //g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
         g2d.fillOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
                 getWidth(), getHeight());
       }
       else if(shape.isRect()) {
-        g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
+        //g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
         g2d.fillRect(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
                 getWidth(), getHeight());
       }
