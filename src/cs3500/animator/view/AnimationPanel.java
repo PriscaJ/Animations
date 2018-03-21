@@ -53,16 +53,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
       Color c = new Color(r, gg, b);
       g2d.setColor(c);
       if (shape.isOval()) {
-<<<<<<< HEAD
-        //g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
-        g2d.fillOval(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
-            getWidth(), getHeight());
-      }
-      else if(shape.isRect()) {
-        //g2d.setColor(new Color(shape.getRed(), shape.getGreen(), shape.getBlue()));
-        g2d.fillRect(shape.getXPosition().intValue(), shape.getYPosition().intValue(),
-            getWidth(), getHeight());
-=======
         g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
             shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
             shape.getWidth().intValue(), shape.getHeight().intValue());
@@ -71,8 +61,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
         Rectangle r2 = new Rectangle(new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
             new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
         g2d.fill(r2);
-
->>>>>>> 763da5ef2dbe1be53327d78aa47f4bee7b59a4bf
       }
     }
   }
@@ -100,16 +88,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
       t.stop();
     }
     // for every shape call its command to execute the action.
-<<<<<<< HEAD
-    for (Shapes s: activeShapes(tick)) {
-      for(AnimationCommand cmd: s.getCommands()) {
-        if (cmd.getAnimation().getStart() <= tick && tick < cmd.getAnimation().getFinish()) {
-          System.out.println(cmd.getAnimation().getType() + " is being preformed"); // does it scale
-=======
     for (Shapes s : activeShapes(tick)) {
       for (AnimationCommand cmd : s.getCommands()) {
         if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
->>>>>>> 763da5ef2dbe1be53327d78aa47f4bee7b59a4bf
           cmd.execute(tick);
         }
       }

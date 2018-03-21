@@ -13,6 +13,36 @@ public class ScaleChange extends AbstractAnimation {
   }
 
   @Override
+  public float getOldR() {
+    throw new RuntimeException("No color in a move");
+  }
+
+  @Override
+  public float getOldG() {
+    throw new RuntimeException("No color in a move");
+  }
+
+  @Override
+  public float getOldB() {
+    throw new RuntimeException("No color in a move");
+  }
+
+  @Override
+  public float getNewR() {
+    throw new RuntimeException("No color in a move");
+  }
+
+  @Override
+  public float getNewG() {
+    throw new RuntimeException("No color in a move");
+  }
+
+  @Override
+  public float getNewB() {
+    throw new RuntimeException("No color in a move");
+  }
+
+  @Override
   public void apply(int tick) {
     if (tick >= startTime && tick < endTime) {
       animatingShape.setXDimension(calculateChange(startX, endX, tick));
