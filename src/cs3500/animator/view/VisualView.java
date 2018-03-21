@@ -23,7 +23,7 @@ public class VisualView extends JFrame implements IView {
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.setTitle("Easy Animator!");
     this.setSize(1000, 1000);
-    this.setDefaultCloseOperation(3);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
     // animation panel
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);

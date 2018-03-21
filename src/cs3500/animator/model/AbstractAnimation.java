@@ -57,8 +57,8 @@ public abstract class AbstractAnimation implements Animations {
 
   @Override
   public float calculateChange(float startValue, float endValue, float tick) {
-    float ans = startValue * (((float)this.endTime - tick) / (float)(this.endTime - this.startTime)) + endValue * (tick - (float)this.startTime) / (float)(this.endTime - this.startTime);
-    return ans;
+    return startValue * (((float) this.endTime - tick) / (float)(this.endTime - this.startTime))
+        + endValue * (tick - (float) this.startTime) / (float)(this.endTime - this.startTime);
   }
 
   @Override
