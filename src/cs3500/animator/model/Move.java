@@ -1,8 +1,5 @@
 package cs3500.animator.model;
 
-import java.awt.Point;
-import java.util.HashMap;
-
 /**
  * Class that handles moving a shape in an animation coupled to the shape by its command.
  */
@@ -20,7 +17,6 @@ public class Move extends AbstractAnimation {
   @Override
   public void apply(int tick) {
     if (tick >= startTime && tick <= endTime) {
-
       animatingShape.setXPosn(calculateChange(this.startX, this.endX, tick));
       animatingShape.setYPosn(calculateChange(this.startY, this.endY, tick));
     }
@@ -29,7 +25,7 @@ public class Move extends AbstractAnimation {
   @Override
   public String getDescription(int tps) {
     return String.format("Shape %s moves from (%.1f,%.1f) to (%.1f,%.1f) from t=%.1fs to t=%.1fs",
-        name, startX, startY, endX, endY, (float) startTime * tps /1000, (float) endTime * tps /1000);
+        name, startX, startY, endX, endY, (float) startTime * tps / 1000, (float) endTime * tps / 1000);
   }
 
 

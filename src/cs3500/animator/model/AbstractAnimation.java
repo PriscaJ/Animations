@@ -57,9 +57,21 @@ public abstract class AbstractAnimation implements Animations {
 
   @Override
   public float calculateChange(float startValue, float endValue, float tick) {
-    return startValue * (((float) this.endTime - tick) / (float)(this.endTime - this.startTime))
-        + endValue * (tick - (float) this.startTime) / (float)(this.endTime - this.startTime);
+    return startValue * (((float) this.endTime - tick) / (float) (this.endTime - this.startTime))
+        + endValue * (tick - (float) this.startTime) / (float) (this.endTime - this.startTime);
   }
+
+  public abstract float getOldR();
+
+  public abstract float getOldG();
+
+  public abstract float getOldB();
+
+  public abstract float getNewR();
+
+  public abstract float getNewG();
+
+  public abstract float getNewB();
 
   @Override
   public abstract void apply(int tick);
@@ -84,32 +96,25 @@ public abstract class AbstractAnimation implements Animations {
     return this.type;
   }
 
-
+  @Override
   public float getStartX() {
     return this.startX;
   }
 
+  @Override
   public float getEndX() {
     return this.endX;
   }
 
-  public float getStartY(){
+  @Override
+  public float getStartY() {
     return this.startY;
   }
 
+  @Override
   public float getEndY() {
     return this.endY;
   }
-//  @Override
-//  public Object getInitialStage() {
-//    return initalStage;
-//  }
-//
-//  @Override
-//  public Object getFinalStage() {
-//    return finalStage;
-//  }
-
 }
 
 

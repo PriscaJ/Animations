@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import cs3500.animator.model.IReadOnlyModel;
 import cs3500.animator.model.Shapes;
 
 /**
@@ -15,9 +14,7 @@ import cs3500.animator.model.Shapes;
  */
 
 public class VisualView extends JFrame implements IView {
-  private String visualView;
   private AnimationPanel aniPanel;
-  private JLabel display;
   JScrollPane pane;
 
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
@@ -41,6 +38,7 @@ public class VisualView extends JFrame implements IView {
     this.pack();
   }
 
+  @Override
   public void makeVisible() {
     this.setVisible(true);
     System.out.println("VisualView made visible!");

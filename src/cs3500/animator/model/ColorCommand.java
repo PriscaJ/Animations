@@ -6,7 +6,7 @@ package cs3500.animator.model;
 public class ColorCommand implements AnimationCommand {
   ColorChange changeColor;
 
-
+  // This is the constructor for a command that changes a shape's color.
   public ColorCommand(ColorChange changeColor) {
     this.changeColor = changeColor;
   }

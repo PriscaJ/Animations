@@ -26,30 +26,35 @@ public class ColorChange extends AbstractAnimation {
     this.type = AnimationType.COLORCHANGE;
   }
 
+  @Override
   public float getOldR() {
     return oldR;
   }
 
+  @Override
   public float getOldG() {
     return oldG;
   }
 
+  @Override
   public float getOldB() {
     return oldB;
   }
 
+  @Override
   public float getNewR() {
     return newR;
   }
 
+  @Override
   public float getNewG() {
     return newG;
   }
 
+  @Override
   public float getNewB() {
     return newB;
   }
-
 
   @Override
   public void apply(int tick) {
@@ -65,6 +70,6 @@ public class ColorChange extends AbstractAnimation {
   public String getDescription(int tps) {
     return String.format("Shape %s changes color from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f) "
             + "from t=%.1fs to t=%.1fs",
-        name, oldR, oldG, oldB, newR, newG, newB, (float) startTime * tps /1000, (float) endTime * tps/1000);
+        name, oldR, oldG, oldB, newR, newG, newB, (float) startTime * tps / 1000, (float) endTime * tps / 1000);
   }
 }

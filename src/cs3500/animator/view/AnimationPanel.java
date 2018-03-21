@@ -16,15 +16,11 @@ import cs3500.animator.model.Shapes;
  */
 public class AnimationPanel extends JPanel implements ActionListener {
   // todo have a controller actionlistener to include in the constructor???
-  // I don't think we need an actionlistener yet because the user isn't interacting wiith the
-  // animation. Once we have to implement the interactive view we'll need one!!
 
   private int tick;
   private Timer t;
   private ArrayList<Shapes> shapesList;
   private int lastTick;
-  private int ticksPerSec;
-  // private Map<String, Shapes> shapesInAnimation;
 
   /**
    * The constructor for the Animation Panel
@@ -37,20 +33,12 @@ public class AnimationPanel extends JPanel implements ActionListener {
     // find a way to instantiate the model
     this.shapesList = shapesList;
     this.lastTick = lastTick;
-    this.ticksPerSec = ticksPerSec;
     this.setBackground(Color.WHITE);
     this.setPreferredSize(new Dimension(800, 800));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
     t.start();
-
-    // this.shapesInAnimation = new HashMap<String, Shapes>();
   }
-
-  /*
-  public void setShapes(Map<String, Shapes> shapes) {
-    this.shapesInAnimation = new HashMap<String, Shapes>().putAll(shapes);
-  }*/
 
   @Override
   protected void paintComponent(Graphics g) {
