@@ -17,6 +17,12 @@ public class VisualView extends JFrame implements IView {
   private AnimationPanel aniPanel;
   JScrollPane pane;
 
+  /**
+   * The Cconstructor for the visual view.
+   * @param shapesList The list of shapes in the animation.
+   * @param lastTick The last tick marking the end of an animation.
+   * @param ticksPerSec The speed of the animation.
+   */
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.setTitle("Easy Animator!");
     this.setSize(800, 800);

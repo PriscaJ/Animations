@@ -24,12 +24,22 @@ import cs3500.animator.model.Rectangle;
 import cs3500.animator.model.ScaleChange;
 import cs3500.animator.model.Shapes;
 
+/**
+ * Class that represent a view that is in an SVG format where it can be run on a browser due to its
+ * various tags.
+ */
 public class SVGView implements IView {
 
   private List<Shapes> allShapes;
   private String fileName;
   private int ticksPerSec;
 
+  /**
+   * The constructor for an SVG view.
+   * @param allShapes All the shapes running in the animation.
+   * @param fileName The file name that the SVG will output to.
+   * @param ticksPerSec The speed that the Animation will run.
+   */
   public SVGView(List<Shapes> allShapes, String fileName, int ticksPerSec) {
     this.allShapes = allShapes;
     this.fileName = fileName;
@@ -47,16 +57,6 @@ public class SVGView implements IView {
    * @return The String representation of an SVG for the animation
    */
   private void asSVG() {
-//    Comparator<Shapes> employeeNameComparator
-//        = Comparator.comparing(Shapes::getAppears);
-//    Comparator<Shapes> employeeNameComparator
-//        = Comparator.comparing(
-//        Shapes::getAppears, Comparator.naturalOrder());
-//    Comparator<Shapes> shapeNameComparator
-//        = Comparator.comparing(
-//        Shapes::getName);
-//    allShapes.sort(shapeNameComparator);
-//    allShapes.sort(employeeNameComparator);
     String start = "<svg version= \"1.1\" "
         + "xmlns=\"http://www.w3.org/2000/svg\">\n\n";
     String end = "</svg>";
@@ -71,7 +71,7 @@ public class SVGView implements IView {
         writer.write(output);
         writer.close();
       } catch (IOException ioe) {
-        //
+        // do nothing
       }
     }
   }
@@ -92,8 +92,6 @@ public class SVGView implements IView {
   private String format(List<Shapes> shapes) {
     StringBuilder workString = new StringBuilder();
     for (Shapes s : shapes) {
-      // list of animations for this shape
-      // as.getAnimations();
       if (s instanceof Oval) {
         workString.append(String.format("<ellipse id=\"%s\" cx=\"%.1f\" cy=\"%.1f\" rx=\"%.1f\" ry=\"%.1f\" "
                 + "fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"hidden\" >\n", s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),

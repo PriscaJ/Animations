@@ -39,6 +39,10 @@ public class TextualView implements IView {
     this.ticksPerSec = ticksPerSec;
   }
 
+  /**
+   * The String representation from the model asking for the descriptions of shapes and commands.
+   * @return The String representation of the animation.
+   */
   private String readBack() {
     StringBuilder s = new StringBuilder();
     s.append("Shapes:");
