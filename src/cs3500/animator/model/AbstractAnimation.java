@@ -58,7 +58,15 @@ public abstract class AbstractAnimation implements Animations {
   @Override
   public float calculateChange(float startValue, float endValue, float tick) {
     int duration = getFinish() - getStart();
-    return (endValue - startValue) / duration;
+    float aSum = startValue * ((getFinish() - tick) / duration);
+    float bSum = endValue * ((tick - startValue) / duration);
+    return aSum + bSum;
+
+    /**
+     *  int duration = getFinish() - getStart();
+     *  return (endValue - startValue) / duration;
+     */
+
   }
 
   @Override
