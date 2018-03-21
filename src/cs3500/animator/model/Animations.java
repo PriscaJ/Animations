@@ -23,8 +23,8 @@ public interface Animations {
   void apply(int tick);
 
   /**
-   * Various observational mmethods to retrieve and access private fields when needed.
-   * @return int or an Object depending
+   * Various observational methods to retrieve and access private fields when needed.
+   * @return int or an Object depending.
    */
   int getFinish();
 
@@ -34,6 +34,13 @@ public interface Animations {
 
   void setAnimatingShape(Shapes s);
 
+  /**
+   * Depending on what time the animation is at it will show the incrementation of the of an Action.
+   * @param startValue The value it begins at.
+   * @param endValue The value it should end at.
+   * @param tick The moment in time the action and subsequent change is taking place.
+   * @return Float The difference between the start and the end values.
+   */
   float calculateChange(float startValue, float endValue, float tick);
 
   AnimationType getType();

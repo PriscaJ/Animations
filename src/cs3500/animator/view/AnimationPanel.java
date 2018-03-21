@@ -30,7 +30,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * @param ticksPerSec The speed of animation in ticks per second.
    */
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
-    // find a way to instantiate the model
+    // find a way to instantiate the model by using same fields passed into it
     this.shapesList = shapesList;
     this.lastTick = lastTick;
     this.setBackground(Color.WHITE);
@@ -61,7 +61,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
         Rectangle r2 = new Rectangle(new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
             new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
         g2d.fill(r2);
-
       }
     }
   }
