@@ -39,7 +39,7 @@ public class TextualView implements IView {
     this.ticksPerSec = ticksPerSec;
   }
 
-  private String readBack() {
+  protected String readBack() {
     StringBuilder s = new StringBuilder();
     s.append("Shapes:");
     for (Shapes a : allShapes) {

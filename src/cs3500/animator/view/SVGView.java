@@ -3,20 +3,9 @@ package cs3500.animator.view;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import cs3500.animator.model.AnimationCommand;
-import cs3500.animator.model.Animations;
 import cs3500.animator.model.ColorChange;
 import cs3500.animator.model.Move;
 import cs3500.animator.model.Oval;
@@ -76,8 +65,12 @@ public class SVGView implements IView {
     }
   }
 
-  // FOR TESTING GET RID OF THIS
-  public String svgOutput() {
+
+  /**
+   * This is a method to test the output of an SVG View.
+   * @return the svg output.
+   */
+  protected String svgOutput() {
     String start = "<svg width= \"700\"  height= \"500\" version= \"1.1\" "
         + "xmlns=\"http://www.w3.org/2000/svg\">\n\n";
     return start + format(allShapes);

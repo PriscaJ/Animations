@@ -61,17 +61,12 @@ public abstract class AbstractAnimation implements Animations {
         + endValue * (tick - (float) this.startTime) / (float) (this.endTime - this.startTime);
   }
 
-<<<<<<< HEAD
-
   /**
    * Various getters for the fields of a shape.
    * @return Object that is one of the fields.
    */
-  public abstract float getOldR();
-=======
   @Override
   public float getOldR(){return 0;}
->>>>>>> 3b5b82db8265a72feb8f66cfde764a628f3018f1
 
   @Override
   public float getOldG(){return 0;}

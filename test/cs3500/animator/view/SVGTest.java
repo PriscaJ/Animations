@@ -5,9 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.AbstractAnimation;
-import cs3500.animator.model.AnimationCommand;
-import cs3500.animator.model.Animations;
 import cs3500.animator.model.ColorChange;
 import cs3500.animator.model.ColorCommand;
 import cs3500.animator.model.Move;
@@ -20,6 +17,7 @@ import cs3500.animator.model.Shapes;
 
 import static org.junit.Assert.assertEquals;
 
+// This is a test class to check the output of an SVG view.
 public class SVGTest {
   @Test
   public void testSVG() {
@@ -54,7 +52,22 @@ public class SVGTest {
     ScaleCommand sc = new ScaleCommand(s);
     o.addCommand(sc);
     s.setAnimatingShape(o);
-    SVGView view = new SVGView(shapes,"hi", 1);
-    assertEquals(view.svgOutput(), "");
+    SVGView view = new SVGView(shapes, "hi", 1);
+    assertEquals("<svg width= \"700\"  height= \"500\" version= \"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n"
+        + "\n"
+        + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"1.0ms\" dur=\"99.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"10ms\" dur=\"40ms\" attributeName=\"x\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"10ms\" dur=\"40ms\" attributeName=\"y\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"50ms\" dur=\"30ms\" attributeName=\"fill\" from=\"rgb(0,0,255)\" to=\"rgb(0,255,0)\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"50ms\" attributeName=\"y\" from=\"100.0\" to=\"400.0\" fill=\"freeze\" />\n"
+        + "</rect>\n"
+        + "\n"
+        + "<ellipse id=\"C\" cx=\"500.0\" cy=\"100.0\" rx=\"120.0\" ry=\"60.0\" fill=\"rgb(0,0,255)\" visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"6.0ms\" dur=\"94.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"70ms\" dur=\"30ms\" attributeName=\"cx\" from=\"300.0\" to=\"200.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"70ms\" dur=\"30ms\" attributeName=\"cy\" from=\"300.0\" to=\"200.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"51ms\" dur=\"19ms\" attributeName=\"rx\" from=\"50.0\" to=\"25.0\" fill=\"freeze\" />\n"
+        + "</ellipse>\n\n", view.svgOutput());
   }
 }
