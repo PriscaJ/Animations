@@ -16,8 +16,13 @@ public abstract class AbstractAnimation implements Animations {
   protected AnimationType type = null;
 
   /**
+<<<<<<< HEAD
    * Initialize the abstract command with the specific characteristics. Used for
    * cs3500.animator.model.Move and cs3500.animator.model.Scale.
+=======
+   * Initialize the abstract command with the specific characteristics.
+   * Used for cs3500.animator.model.Move and cs3500.animator.model.Scale.
+>>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
    *
    * @param name      is the name of the shape to be animated.
    * @param startX    is the starting x characteristic. (X coordinate or width)

@@ -32,8 +32,14 @@ public class SVGTest {
     Move m = new Move("C", 500, 100,
             500, 400, 20, 70);
     ColorChange cc = new ColorChange("C", 0f, 0, 1,
+<<<<<<< HEAD
             0, 1, 0, 50, 80);
     ScaleChange s = new ScaleChange("R", 50, 100, 25, 100, 51, 70);
+=======
+        0, 1, 0, 50, 80);
+    ScaleChange s = new ScaleChange(
+        "R", 50, 100, 25, 100, 51, 70);
+>>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
     Move m2 = new Move("R", 300, 300,
             200, 200, 70, 100);
     List<Shapes> shapes = new ArrayList<>();
@@ -56,6 +62,7 @@ public class SVGTest {
     s.setAnimatingShape(o);
     SVGView view = new SVGView(shapes, "hi", 1);
     assertEquals("<svg width= \"700\"  height= \"500\" version= \"1.1\" "
+<<<<<<< HEAD
             + "xmlns=\"http://www.w3.org/2000/svg\">\n"
             + "\n"
             + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" "
@@ -84,5 +91,34 @@ public class SVGTest {
             + "<animate attributeType=\"xml\" begin=\"51ms\" dur=\"19ms\" "
             + "attributeName=\"rx\" from=\"50.0\" to=\"25.0\" fill=\"freeze\" />\n"
             + "</ellipse>\n\n", view.svgOutput());
+=======
+        + "xmlns=\"http://www.w3.org/2000/svg\">\n"
+        + "\n"
+        + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" "
+        + "fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" "
+        + "begin=\"1.0ms\" dur=\"99.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"10ms\" dur=\"40ms\" "
+        + "attributeName=\"x\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"10ms\" dur=\"40ms\" "
+        + "attributeName=\"y\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"50ms\" dur=\"30ms\" "
+        + "attributeName=\"fill\" from=\"rgb(0,0,255)\" to=\"rgb(0,255,0)\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"50ms\" "
+        + "attributeName=\"y\" from=\"100.0\" to=\"400.0\" fill=\"freeze\" />\n"
+        + "</rect>\n"
+        + "\n"
+        + "<ellipse id=\"C\" cx=\"500.0\" cy=\"100.0\" rx=\"120.0\" ry=\"60.0\" "
+        + "fill=\"rgb(0,0,255)\" visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" "
+        + "begin=\"6.0ms\" dur=\"94.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"70ms\" dur=\"30ms\" "
+        + "attributeName=\"cx\" from=\"300.0\" to=\"200.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"70ms\" dur=\"30ms\" "
+        + "attributeName=\"cy\" from=\"300.0\" to=\"200.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"51ms\" dur=\"19ms\" "
+        + "attributeName=\"rx\" from=\"50.0\" to=\"25.0\" fill=\"freeze\" />\n"
+        + "</ellipse>\n\n", view.svgOutput());
+>>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
   }
 }

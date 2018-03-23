@@ -14,8 +14,8 @@ import cs3500.animator.model.Shapes;
  */
 
 public class VisualView extends JFrame implements IView {
-  private AnimationPanel aniPanel;
   JScrollPane pane;
+  private AnimationPanel aniPanel;
 
   /**
    * The Constructor for the visual view.

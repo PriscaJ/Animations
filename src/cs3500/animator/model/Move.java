@@ -55,8 +55,13 @@ public class Move extends AbstractAnimation {
   @Override
   public String getDescription(int tps) {
     return String.format("Shape %s moves from (%.1f,%.1f) to (%.1f,%.1f) from t=%.1fs to t=%.1fs",
+<<<<<<< HEAD
             name, startX, startY, endX, endY, (float) startTime * tps / 1000,
             (float) endTime * tps / 1000);
+=======
+        name, startX, startY, endX, endY,
+        (float) startTime * tps / 1000, (float) endTime * tps / 1000);
+>>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
   }
 
 
