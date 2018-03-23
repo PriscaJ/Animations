@@ -10,13 +10,11 @@ public interface AnimationOperations {
 
   /**
    * A method to return a copy of all shapes in an animation.
-   * @return
    */
   ArrayList<Shapes> getShapes();
 
   /**
    * A method to return a copy of all animations in an animation.
-   * @return
    */
   List<Animations> getAnimations();
 

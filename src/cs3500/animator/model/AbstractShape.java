@@ -21,7 +21,19 @@ public abstract class AbstractShape implements Shapes {
   // the animations that the shape invokes
   private ArrayList<AnimationCommand> commands = new ArrayList<>();
 
-  // This is a constructor for an abstract shape.
+  /**
+   * Constructor for a shape.
+   * @param name shape name.
+   * @param xPosn Shape postion.
+   * @param yPosn Shape y position.
+   * @param xDimension The width of a Shape.
+   * @param yDimension The Height of a Shape.
+   * @param red The red color.
+   * @param green The green color.
+   * @param blue The blue color.
+   * @param startOfLife The appears time.
+   * @param endOfLife The disappears time.
+   */
   public AbstractShape(String name,
       float xPosn, float yPosn, float xDimension, float yDimension,
       float red, float green, float blue,

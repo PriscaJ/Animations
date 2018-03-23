@@ -20,6 +20,9 @@ public class AnimationModel implements AnimationOperations {
 
   private Map<String, List<AnimationCommand>> shapeToCommands;
 
+  /**
+   * The constructor for the model.
+   */
   public AnimationModel() {
     shapesMap = new HashMap<>();
     animations = new ArrayList<>();
@@ -53,8 +56,8 @@ public class AnimationModel implements AnimationOperations {
 
 
   /**
-   * This is a helper method to check if a command will be compatible with any existing commands.
-   * A command is incompatible with another if they occur during the same time frame, for the same
+   * This is a helper method to check if a command will be compatible with any existing commands. A
+   * command is incompatible with another if they occur during the same time frame, for the same
    * shape. Two overlapping commands of the same type are not allowed.
    *
    * @param command is the command being added.
@@ -79,9 +82,9 @@ public class AnimationModel implements AnimationOperations {
   }
 
   /**
-   * Check if a command to be added has an animation that is compatible with the current
-   * animations in the model. If so, set the animation's shape to be the correct shape,
-   * and add the command to the list and the map.
+   * Check if a command to be added has an animation that is compatible with the current animations
+   * in the model. If so, set the animation's shape to be the correct shape, and add the command to
+   * the list and the map.
    *
    * @param command to be added.
    */
@@ -112,14 +115,15 @@ public class AnimationModel implements AnimationOperations {
   //////////---------------------- BUILDER ---------------------------////////////
   public static final class Builder implements TweenModelBuilder<AnimationOperations> {
     AnimationModel model;
-    public Builder(){
+
+    public Builder() {
       model = new AnimationModel();
     }
 
     @Override
     public TweenModelBuilder<AnimationOperations>
     addOval(String name, float cx, float cy, float xRadius, float yRadius,
-        float red, float green, float blue, int startOfLife, int endOfLife) {
+            float red, float green, float blue, int startOfLife, int endOfLife) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -127,7 +131,7 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape oval =
-          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife);
+              new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife);
       model.addShape(oval);
       return this;
     }
@@ -135,7 +139,7 @@ public class AnimationModel implements AnimationOperations {
     @Override
     public TweenModelBuilder<AnimationOperations>
     addRectangle(String name, float lx, float ly, float width, float height,
-        float red, float green, float blue, int startOfLife, int endOfLife) {
+                 float red, float green, float blue, int startOfLife, int endOfLife) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -145,7 +149,7 @@ public class AnimationModel implements AnimationOperations {
       //      Double cxAsDouble = (double) cx;
       //      Double cyAsDouble = (double) cy;
       AbstractShape rect =
-          new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife);
+              new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife);
       model.addShape(rect);
       return this;
     }
@@ -153,12 +157,12 @@ public class AnimationModel implements AnimationOperations {
     @Override
     public TweenModelBuilder<AnimationOperations>
     addMove(String name, float moveFromX, float moveFromY,
-        float moveToX, float moveToY, int startTime, int endTime) {
+            float moveToX, float moveToY, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       Move move = new Move(name, moveFromX, moveFromY,
-          moveToX, moveToY, startTime, endTime);
+              moveToX, moveToY, startTime, endTime);
       // model.addAnimation(move);
       MoveCommand command = new MoveCommand(move);
       model.addCommand(command);
@@ -168,12 +172,12 @@ public class AnimationModel implements AnimationOperations {
     @Override
     public TweenModelBuilder<AnimationOperations>
     addColorChange(String name, float oldR, float oldG, float oldB,
-        float newR, float newG, float newB, int startTime, int endTime) {
+                   float newR, float newG, float newB, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       ColorChange color = new ColorChange(name,
-          oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+              oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
       //model.addAnimation(color);
       ColorCommand command = new ColorCommand(color);
       model.addCommand(command);
@@ -183,12 +187,12 @@ public class AnimationModel implements AnimationOperations {
     @Override
     public TweenModelBuilder<AnimationOperations>
     addScaleToChange(String name, float fromSx, float fromSy,
-        float toSx, float toSy, int startTime, int endTime) {
+                     float toSx, float toSy, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       ScaleChange scale = new ScaleChange(name,
-          fromSx, fromSy, toSx, toSy, startTime, endTime);
+              fromSx, fromSy, toSx, toSy, startTime, endTime);
       //model.addAnimation(scale);
       ScaleCommand command = new ScaleCommand(scale);
       model.addCommand(command);

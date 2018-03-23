@@ -14,7 +14,14 @@ import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
 import cs3500.animator.view.VisualView;
 
+/**
+ * The Runner for the Animation.
+ */
 public final class EasyAnimator {
+  /**
+   * The main method to run the animation.
+   * @param args
+   */
   public static void main(String[] args) {
     String animationFileName = null;
     String typeOfView = null;
@@ -90,7 +97,8 @@ public final class EasyAnimator {
   }
 
 
-  private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick, String ticksPerSec) {
+  private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick,
+                                             String ticksPerSec) {
     // list of shapes and last tick
     int tps = getTicksPerSec(ticksPerSec);
     return new VisualView(shapesList, lastTick, 1000 / tps);

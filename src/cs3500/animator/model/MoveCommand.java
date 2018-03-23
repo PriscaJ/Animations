@@ -8,6 +8,7 @@ public class MoveCommand implements AnimationCommand {
 
   /**
    * The constructor for the command controlling the Move action.
+   *
    * @param move The Moving action.
    */
   public MoveCommand(Move move) {

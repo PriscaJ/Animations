@@ -20,19 +20,17 @@ public class TextualView implements IView {
   List<Animations> allAnimations;
   int ticksPerSec;
 
-  // todo: hand the textual view [the shapes] and [ the animations]
-  // and have it loop through and call getDescription on all?
-  // what does tight coupling look like?
 
   /**
    * The constructor for the Textual View.
-   * @param outFile The file it outputs to.
-   * @param allShapes All the shapes in the animation.
+   *
+   * @param outFile       The file it outputs to.
+   * @param allShapes     All the shapes in the animation.
    * @param allAnimations All the animation actions that will be preformed.
-   * @param ticksPerSec The speed of the animation by ticks per seconds.
+   * @param ticksPerSec   The speed of the animation by ticks per seconds.
    */
   public TextualView(String outFile, List<Shapes> allShapes,
-      List<Animations> allAnimations, int ticksPerSec) {
+                     List<Animations> allAnimations, int ticksPerSec) {
     this.outFile = outFile;
     this.allShapes = allShapes;
     this.allAnimations = allAnimations;
@@ -42,6 +40,7 @@ public class TextualView implements IView {
 
   /**
    * The String representation from the model asking for the descriptions of shapes and commands.
+   *
    * @return The String representation of the animation.
    */
   protected String readBack() {
