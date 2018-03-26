@@ -8,6 +8,7 @@ public class ScaleCommand implements AnimationCommand {
 
   /**
    * The constructor for a Command that controls a Scale Change.
+   *
    * @param scale The Scale Change action.
    */
   public ScaleCommand(ScaleChange scale) {

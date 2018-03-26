@@ -1,0 +1,105 @@
+
+Overall Implementation and design: Primarily designed to mimic the Command Pattern in order to
+simplify the model interface. Through the command pattern the classes for shapes do not become
+concerned with how they will be modified since the Animation itself takes care of it. The Model
+loads all the shapes that will be used in the animation in a list then the Shape has its own list
+of animation commands which will each invoke the neccessary animation Action (Move, ColorChange,
+ScaleChange).
+
+Interface AnimationOperations
+This is the main interface for the model which contains the methods and behaviors that a model
+should have in order to run an animation. Methods such as getShape that returns the shapes in the
+current animation as well as the readBack which returns the animation as a String.
+
+class AnimationModel - implements AnimationOperations
+Field(s):
+  private List<Animations> animations;
+  private Map<String, Shapes> shapesMap;
+  private List<Shapes> shapes;
+
+DESIGN CHANGE: instead only having the field for the ArrayList of Shapes now there is a Hashmap from
+the shape's name to the shape to be eaily mapped and it is faster to find. The other two fields have
+a generalized List for all the animation actions and Shapes that will take place in an Animation.
+
+Interface Shapes
+
+DESIGN CHANGE
+abstract class Shape
+There is an abstract class Shape since the qualities of a shape can mostly be shared between an oval
+and a rectangle. If there needs to be an additional shape added in the future a new class that can
+extend this abstract class or simply implement the interface. Instead of only having an enum type
+where it will be hard to handle shapes that are not similar to the abstract class.
+
+Field(s):
+ ArrayList<AnimationCommand> commands Commands that will be called for to call animation actions
+ for this shape
+  private String name The unique name that a shape has.
+  private double width, height The Dimensions of the shape
+  private int appears, disappears The lifespan of a shape.
+  private Point position The position whether that be the center or the lower left corner
+  private Color color the color of the shape
+
+Interface AnimationCommands
+
+The commands are used to decouple the responsibilities between a shape and an Animation action. The
+Shape does not worry about how it will be animated it only calles the Command which invokes its
+field to call on its animation action
+
+class MoveCommand
+Field(s) Move the Action of the Animation
+
+class ScaleCommand
+Field(s) ScaleChange the Action of the Animation
+
+class ColorCommand
+Field(s) ColorChange the Action of the Animation
+
+Interface Animations
+
+abstract class AbstractAnimation - implements Animations
+Field(s) - int start int finish how long the action lasts for
+
+These are the classes that actually perform the action called they have a method that applies the
+action it is attached to.
+class Move - extends AbstractAnimation
+
+class ScaleChange - extends AbstractAnimation
+
+class ColorChange - extends AbstractAnimation
+
+DESIGN DECISION:
+class Controller
+handles the input in the model to pass to the model instead of having the
+model and the view too tightly coupled.
+
+Interface IView
+The behaviors of a view which are primarily to display it to the user, so ther is only one method in
+the interface that all views should have as a behavior which is to make it visible.
+
+class TextualView
+Handles the view for textual output.
+
+Field(s):
+String outFile;
+List<Shapes> allShapes;
+List<Animations> allAnimations;
+int ticksPerSec;
+
+class SVGView
+
+Field(s)
+private List<Shapes> allShapes;
+  private String fileName;
+  private int ticksPerSec;
+
+class VisualVIew
+ArrayList<Shapes> shapesList
+int lastTick
+int ticksPerSec
+
+class AnimationPanel
+Field(s):
+ArrayList<Shapes> shapesList
+int lastTick
+int ticksPerSec
+Timer t

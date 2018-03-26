@@ -9,8 +9,8 @@ import javax.swing.*;
 import cs3500.animator.model.Shapes;
 
 /**
- * Class that creates the visual view it is used in junction with the AnimationPanel class
- * to display a given animation.
+ * Class that creates the visual view it is used in junction with the AnimationPanel class to
+ * display a given animation.
  */
 
 public class VisualView extends JFrame implements IView {
@@ -19,8 +19,9 @@ public class VisualView extends JFrame implements IView {
 
   /**
    * The Constructor for the visual view.
-   * @param shapesList The list of shapes in the animation.
-   * @param lastTick The last tick marking the end of an animation.
+   *
+   * @param shapesList  The list of shapes in the animation.
+   * @param lastTick    The last tick marking the end of an animation.
    * @param ticksPerSec The speed of the animation.
    */
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {

@@ -14,8 +14,9 @@ public class Controller {
 
   /**
    * Constructor for the controller.
+   *
    * @param model The Model that the controller gets information from
-   * @param view The view that the controller sends information to.
+   * @param view  The view that the controller sends information to.
    */
   public Controller(AnimationOperations model, IView view) {
     this.model = model;

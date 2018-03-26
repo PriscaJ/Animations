@@ -13,21 +13,34 @@ import cs3500.animator.model.Shapes;
  * ordered by occurrence.
  */
 public class TextualView implements IView {
+<<<<<<< HEAD
+  String outFile;
+  List<Shapes> allShapes;
+  List<Animations> allAnimations;
+  int ticksPerSec;
+
+=======
   private String outFile;
   private List<Shapes> allShapes;
   private List<Animations> allAnimations;
   private int ticksPerSec;
+>>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
 
   /**
    * The constructor for the Textual View.
    *
+<<<<<<< HEAD
+   * @param outFile       The file it outputs to.
+   * @param allShapes     All the shapes in the animation.
+=======
    * @param outFile The file it outputs to.
    * @param allShapes All the shapes in the animation.
+>>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
    * @param allAnimations All the animation actions that will be preformed.
-   * @param ticksPerSec The speed of the animation by ticks per seconds.
+   * @param ticksPerSec   The speed of the animation by ticks per seconds.
    */
   public TextualView(String outFile, List<Shapes> allShapes,
-      List<Animations> allAnimations, int ticksPerSec) {
+                     List<Animations> allAnimations, int ticksPerSec) {
     this.outFile = outFile;
     this.allShapes = allShapes;
     this.allAnimations = allAnimations;
@@ -37,6 +50,7 @@ public class TextualView implements IView {
 
   /**
    * The String representation from the model asking for the descriptions of shapes and commands.
+   *
    * @return The String representation of the animation.
    */
   protected String readBack() {
