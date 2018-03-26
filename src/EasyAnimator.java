@@ -9,6 +9,7 @@ import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
 import cs3500.animator.model.Shapes;
 import cs3500.animator.util.AnimationFileReader;
+import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
@@ -63,6 +64,9 @@ public final class EasyAnimator {
       case "visual":
         view = createVisualView(model.getShapes(), model.getEndTime(), ticksPerSec);
         break;
+      case "interactive":
+        view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+        break;
       default:
         System.out.println("Invalid type of view");
         System.exit(1);
@@ -74,6 +78,11 @@ public final class EasyAnimator {
       Controller c = new Controller(model, view);
       c.run();
     }
+  }
+
+  private static HybridView createHybridView(ArrayList<Shapes> shapes, int endTime, String ticksPerSec, String outputDest) {
+    int tps = getTicksPerSec(ticksPerSec);
+    return new HybridView(shapes, endTime, outputDest, 1000/tps);
   }
 
   private static AnimationOperations createModel(String animationFileName) {

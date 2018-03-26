@@ -37,6 +37,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     this.setPreferredSize(new Dimension(800, 800));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
+
     t.start();
   }
 
