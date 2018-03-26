@@ -1,4 +1,3 @@
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,6 @@ import cs3500.animator.view.VisualView;
 public final class EasyAnimator {
   /**
    * The main method to run the animation.
-   * @param args
    */
   public static void main(String[] args) {
     String animationFileName = null;
@@ -87,9 +85,10 @@ public final class EasyAnimator {
     }
   }
 
-  private static HybridView createHybridView(ArrayList<Shapes> shapes, int endTime, String ticksPerSec, String outputDest) {
+  private static HybridView createHybridView(ArrayList<Shapes> shapes, int endTime,
+      String ticksPerSec, String outputDest) {
     int tps = getTicksPerSec(ticksPerSec);
-    return new HybridView(shapes, endTime, outputDest, 1000/tps);
+    return new HybridView(shapes, endTime, outputDest, 1000 / tps);
   }
 
   private static AnimationOperations createModel(String animationFileName) {
@@ -107,7 +106,7 @@ public final class EasyAnimator {
 
 
   private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick,
-                                             String ticksPerSec) {
+      String ticksPerSec) {
     // list of shapes and last tick
     int tps = getTicksPerSec(ticksPerSec);
     return new VisualView(shapesList, lastTick, 1000 / tps);

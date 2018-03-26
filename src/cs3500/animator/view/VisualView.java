@@ -25,7 +25,8 @@ public class VisualView extends JFrame implements IView {
    * @param ticksPerSec The speed of the animation.
    */
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
-    this.setTitle("Easy Animator!");
+
+      this.setTitle("Easy Animator!");
     this.setSize(800, 800);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
@@ -44,6 +45,19 @@ public class VisualView extends JFrame implements IView {
     this.add(this.pane);
     this.pack();
   }
+
+  //public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
+  //    this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec, looping);
+
+  public void stopTimer() {
+    aniPanel.stopTimer();
+  }
+
+  public void resetTicks() {
+    aniPanel.resetTicks();
+  }
+
+
 
   @Override
   public void makeVisible() {

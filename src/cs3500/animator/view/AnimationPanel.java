@@ -21,6 +21,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private Timer t;
   private ArrayList<Shapes> shapesList;
   private int lastTick;
+  private boolean looping = false;
 
   /**
    * The constructor for the Animation Panel
@@ -41,6 +42,17 @@ public class AnimationPanel extends JPanel implements ActionListener {
     t.start();
   }
 
+  //public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec, boolean looping) {
+   // looping = looping;
+
+    protected void stopTimer(){
+    t.stop();
+  }
+
+  protected  void resetTicks() {
+    tick = 0;
+  }
+
   @Override
   protected void paintComponent(Graphics g) {
 
@@ -59,13 +71,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
             shape.getWidth().intValue(), shape.getHeight().intValue());
 
       } else if (shape.isRect()) {
-<<<<<<< HEAD
-        Rectangle r2 = new Rectangle(new Point(shape.getXPosition().intValue(),
-                shape.getYPosition().intValue()),
-=======
         Rectangle r2 = new Rectangle(
             new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
->>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
             new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
         g2d.fill(r2);
       }
@@ -92,7 +99,12 @@ public class AnimationPanel extends JPanel implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     // when the model's last animation stops, stop the timer
     if (tick >= lastTick) {
-      t.stop();
+      if (looping) {
+        tick = 0;
+      }
+      else {
+        t.stop();
+      }
     }
     // for every shape call its command to execute the action.
     for (Shapes s : activeShapes(tick)) {
