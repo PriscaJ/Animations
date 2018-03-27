@@ -1,51 +1,64 @@
 package cs3500.animator.view;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cs3500.animator.model.Shapes;
 
-public class HybridView implements IView{
-  VisualView visualView;
-  SVGView svgView;
-  List<Shapes> allShapes;
-  List<Shapes> selectedShapes;
-  int endTime;
-  boolean looping;
+public class HybridView implements IHybridView{
+  private VisualView visualView;
+  private ArrayList<Shapes> allShapes;
+  private ArrayList<Shapes> selectedShapes;
+  private int endTime;
+  // looping is set to be false initially
+  private boolean looping = false;
+  private String outputDest;
+  private int tps;
 
   public HybridView(ArrayList<Shapes> shapes, int endTime, String outputDest, int tps) {
     this.allShapes = shapes;
     this.selectedShapes = shapes;
     this.endTime = endTime;
-    this.visualView = new VisualView(shapes, endTime, tps, looping);
-    this.svgView = new SVGView(shapes, outputDest, tps, looping);
+    this.outputDest = outputDest;
+    this.tps = tps;
+  }
+
+  // Pause animation
+  @Override
+  public void stopTimer() {
+    visualView.stopTimer();
+  }
+
+  // Reset animation = loop with current shapes
+  @Override
+  public void setTickToZero() {
+    visualView.setTickToZero();
   }
 
   @Override
   public void makeVisible() {
+    this.start();
+  }
+
+  @Override
+  public void increaseSpeed() {
+    visualView.increaseSpeed();
+  }
+
+  @Override
+  public void decreaseSpeed() {
+    visualView.decreaseSpeed();
+  }
+  // Start the animation with the initial shapes.
+  @Override
+  public void start() {
+    visualView = new VisualView(allShapes, endTime, tps, looping);
     visualView.makeVisible();
   }
 
-
-  void getTick() {
-    tick = visualView.getTick();
-    if (tick = endTime) {
-      visualView.resetTicks();
-    }
+  @Override
+  public void setLooping() {
+    looping = !looping;
   }
-
-  // if tick = last tick --> reset tick
-
-  // check if the visualView's animationPanel's tick is at the last tick
-  // if (looping) { reset the tick }
-  // else {end program}
-
-  // start()
-  // tick = 0;
-  // timer.start()
-
-  // increaseSpeed()
-  // this.timer = new Timer(oaweefa)
 
   // pause
   // this.timer.stop()
@@ -62,11 +75,15 @@ public class HybridView implements IView{
 
 
   // in interface
+  @Override
   public void exportSVG() {
+    SVGView svgView;
     if (looping) {
-
+      svgView = new SVGView(selectedShapes, outputDest, tps, true);
     }
-    svgView = new SVGView(selectedShapes, outputDest, tps);
+    else {
+      svgView = new SVGView(selectedShapes, outputDest, tps, false);
+    }
     svgView.makeVisible();
   }
 

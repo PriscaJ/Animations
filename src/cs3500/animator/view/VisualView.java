@@ -3,7 +3,6 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.util.ArrayList;
 
-
 import javax.swing.*;
 
 import cs3500.animator.model.Shapes;
@@ -14,29 +13,41 @@ import cs3500.animator.model.Shapes;
  */
 
 public class VisualView extends JFrame implements IView {
-  JScrollPane pane;
+  private JScrollPane pane;
   private AnimationPanel aniPanel;
-
+  private boolean looping;
   /**
    * The Constructor for the visual view.
    *
-   * @param shapesList  The list of shapes in the animation.
-   * @param lastTick    The last tick marking the end of an animation.
+   * @param shapesList The list of shapes in the animation.
+   * @param lastTick The last tick marking the end of an animation.
    * @param ticksPerSec The speed of the animation.
    */
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
+    initView();
+    initAnimationPanel(shapesList, lastTick, ticksPerSec);
+    this.looping = false;
+  }
 
-      this.setTitle("Easy Animator!");
+  public VisualView(ArrayList<Shapes> shapes, int endTime, int tps, boolean looping) {
+    initView();
+    initAnimationPanel(shapes, endTime, tps);
+    this.looping = looping;
+  }
+
+  private void initView() {
+    this.setTitle("Easy Animator!");
     this.setSize(800, 800);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
-    // animation panel
+    this.setLocation(0, 0);
+    this.setResizable(true);
+  }
+
+  private void initAnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
     this.aniPanel.setPreferredSize(new Dimension(800, 800));
     this.add(this.aniPanel);
-    this.setLocation(0, 0);
-    this.setResizable(true);
-    // scroll pane
     this.pane = new JScrollPane(this.aniPanel);
     pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -46,18 +57,21 @@ public class VisualView extends JFrame implements IView {
     this.pack();
   }
 
-  //public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
-  //    this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec, looping);
-
   public void stopTimer() {
     aniPanel.stopTimer();
   }
 
-  public void resetTicks() {
-    aniPanel.resetTicks();
+  public void setTickToZero() {
+    aniPanel.setTickToZero();
   }
 
+  public void increaseSpeed() {
 
+  }
+
+  public void decreaseSpeed() {
+
+  }
 
   @Override
   public void makeVisible() {

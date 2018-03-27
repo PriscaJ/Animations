@@ -43,14 +43,14 @@ public class AnimationPanel extends JPanel implements ActionListener {
   }
 
   //public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec, boolean looping) {
-   // looping = looping;
+  // looping = looping;
 
-    protected void stopTimer(){
+  protected void stopTimer() {
     t.stop();
   }
 
-  protected  void resetTicks() {
-    tick = 0;
+  protected void setTickToZero() {
+    this.tick = 0;
   }
 
   @Override
@@ -101,8 +101,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     if (tick >= lastTick) {
       if (looping) {
         tick = 0;
-      }
-      else {
+      } else {
         t.stop();
       }
     }
@@ -116,7 +115,5 @@ public class AnimationPanel extends JPanel implements ActionListener {
     }
     tick++;
     repaint();
-
-
   }
 }
