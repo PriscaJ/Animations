@@ -3,9 +3,6 @@ package cs3500.animator.view;
 public interface IHybridView extends IView{
   void stopTimer();
 
-  // Reset animation = loop with current shapes
-  void setTickToZero();
-
   void increaseSpeed();
 
   void decreaseSpeed();
@@ -13,6 +10,9 @@ public interface IHybridView extends IView{
   void start();
 
   void setLooping();
+
+  // Reset animation = loop with current shapes
+  void restart();
 
   // in interface
   void exportSVG();

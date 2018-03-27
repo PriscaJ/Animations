@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import cs3500.animator.model.Shapes;
 
-public class HybridView implements IHybridView{
+public class HybridView implements IHybridView {
   private VisualView visualView;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
   private int endTime;
   // looping is set to be false initially
   private boolean looping = false;
+  private boolean selecting = false;
   private String outputDest;
   private int tps;
 
@@ -28,12 +29,6 @@ public class HybridView implements IHybridView{
     visualView.stopTimer();
   }
 
-  // Reset animation = loop with current shapes
-  @Override
-  public void setTickToZero() {
-    visualView.setTickToZero();
-  }
-
   @Override
   public void makeVisible() {
     this.start();
@@ -48,10 +43,11 @@ public class HybridView implements IHybridView{
   public void decreaseSpeed() {
     visualView.decreaseSpeed();
   }
+
   // Start the animation with the initial shapes.
   @Override
   public void start() {
-    visualView = new VisualView(allShapes, endTime, tps, looping);
+    visualView = new VisualView(selectedShapes, endTime, tps, looping);
     visualView.makeVisible();
   }
 
@@ -60,19 +56,11 @@ public class HybridView implements IHybridView{
     looping = !looping;
   }
 
-  // pause
-  // this.timer.stop()
-  // visualView.stopTimer() --> stop the animation panel's timer
-
-  // resume()
-  // this.timer.start()
-
-  // restart()
-  // view.resetTicks();
   // starting animation from beginning with selected shapes?
-
-
-
+  @Override
+  public void restart() {
+    visualView.setTickToZero();
+  }
 
   // in interface
   @Override
@@ -80,11 +68,25 @@ public class HybridView implements IHybridView{
     SVGView svgView;
     if (looping) {
       svgView = new SVGView(selectedShapes, outputDest, tps, true);
-    }
-    else {
+    } else {
       svgView = new SVGView(selectedShapes, outputDest, tps, false);
     }
     svgView.makeVisible();
+  }
+
+  public void startSelection() {
+    selecting = true;
+  }
+  // occurs on click, mouse x and y coord provided
+  @Override
+  public void selectShape(int xCoord, int yCoord) {
+    // selectedShapes = new ArrayList<>();
+
+    selectedShapes.add();
+  }
+
+  private Shapes selectShape(int xCoord, int yCoord) {
+
   }
 
   // if the user has selected shapes
