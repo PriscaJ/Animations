@@ -58,13 +58,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
             shape.getWidth().intValue(), shape.getHeight().intValue());
 
       } else if (shape.isRect()) {
-<<<<<<< HEAD
-        Rectangle r2 = new Rectangle(new Point(shape.getXPosition().intValue(),
-                shape.getYPosition().intValue()),
-=======
         Rectangle r2 = new Rectangle(
             new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
->>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
             new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
         g2d.fill(r2);
       }
