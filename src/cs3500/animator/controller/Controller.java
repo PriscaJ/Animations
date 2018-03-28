@@ -29,4 +29,12 @@ public class Controller {
   public void run() {
     view.makeVisible();
   }
+
+  // if svg export button is pressed --> svg.makeVisible()
+  // - has to be with the currently selected shapes
+  // --> svgview = new SVGView(currentshapes, ,,,)
+  // view.exportSVG();
+
+  // increase speed button
+  // view.increaseSpeed()
 }

@@ -1,4 +1,3 @@
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,7 @@ import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
 import cs3500.animator.model.Shapes;
 import cs3500.animator.util.AnimationFileReader;
+import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
@@ -20,7 +20,6 @@ import cs3500.animator.view.VisualView;
 public final class EasyAnimator {
   /**
    * The main method to run the animation.
-   * @param args
    */
   public static void main(String[] args) {
     String animationFileName = null;
@@ -70,6 +69,9 @@ public final class EasyAnimator {
       case "visual":
         view = createVisualView(model.getShapes(), model.getEndTime(), ticksPerSec);
         break;
+      case "interactive":
+        view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+        break;
       default:
         System.out.println("Invalid type of view");
         System.exit(1);
@@ -81,6 +83,12 @@ public final class EasyAnimator {
       Controller c = new Controller(model, view);
       c.run();
     }
+  }
+
+  private static HybridView createHybridView(ArrayList<Shapes> shapes, int endTime,
+      String ticksPerSec, String outputDest) {
+    int tps = getTicksPerSec(ticksPerSec);
+    return new HybridView(shapes, endTime, outputDest, 1000 / tps);
   }
 
   private static AnimationOperations createModel(String animationFileName) {
@@ -98,7 +106,7 @@ public final class EasyAnimator {
 
 
   private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick,
-                                             String ticksPerSec) {
+      String ticksPerSec) {
     // list of shapes and last tick
     int tps = getTicksPerSec(ticksPerSec);
     return new VisualView(shapesList, lastTick, 1000 / tps);
@@ -107,7 +115,7 @@ public final class EasyAnimator {
   private static SVGView createSVGView(String outputDest, String ticksPerSec,
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
-    return new SVGView(model.getShapes(), outputDest, 1000 / tps);
+    return new SVGView(model.getShapes(), outputDest, 1000 / tps, false);
   }
 
   private static TextualView createTextView(String outFile,

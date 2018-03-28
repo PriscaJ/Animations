@@ -21,6 +21,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private Timer t;
   private ArrayList<Shapes> shapesList;
   private int lastTick;
+  private boolean looping = false;
 
   /**
    * The constructor for the Animation Panel
@@ -37,7 +38,19 @@ public class AnimationPanel extends JPanel implements ActionListener {
     this.setPreferredSize(new Dimension(800, 800));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
+
     t.start();
+  }
+
+  //public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec, boolean looping) {
+  // looping = looping;
+
+  protected void stopTimer() {
+    t.stop();
+  }
+
+  protected void setTickToZero() {
+    this.tick = 0;
   }
 
   @Override
@@ -86,7 +99,11 @@ public class AnimationPanel extends JPanel implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     // when the model's last animation stops, stop the timer
     if (tick >= lastTick) {
-      t.stop();
+      if (looping) {
+        tick = 0;
+      } else {
+        t.stop();
+      }
     }
     // for every shape call its command to execute the action.
     for (Shapes s : activeShapes(tick)) {
@@ -98,7 +115,5 @@ public class AnimationPanel extends JPanel implements ActionListener {
     }
     tick++;
     repaint();
-
-
   }
 }
