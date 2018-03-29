@@ -9,7 +9,7 @@ public class Move extends AbstractAnimation {
    * This is the constructor for a move. It initializes the fields!
    */
   public Move(String name, float moveFromX, float moveFromY, float moveToX, float moveToY,
-              int startTime, int endTime) {
+      int startTime, int endTime) {
     super(name, moveFromX, moveFromY, moveToX, moveToY, startTime, endTime);
     this.type = AnimationType.MOVE;
   }
@@ -55,13 +55,8 @@ public class Move extends AbstractAnimation {
   @Override
   public String getDescription(int tps) {
     return String.format("Shape %s moves from (%.1f,%.1f) to (%.1f,%.1f) from t=%.1fs to t=%.1fs",
-<<<<<<< HEAD
-            name, startX, startY, endX, endY, (float) startTime * tps / 1000,
-            (float) endTime * tps / 1000);
-=======
         name, startX, startY, endX, endY,
         (float) startTime * tps / 1000, (float) endTime * tps / 1000);
->>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
   }
 
 
