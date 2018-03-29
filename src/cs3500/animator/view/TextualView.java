@@ -13,18 +13,11 @@ import cs3500.animator.model.Shapes;
  * ordered by occurrence.
  */
 public class TextualView implements IView {
-<<<<<<< HEAD
-  String outFile;
-  List<Shapes> allShapes;
-  List<Animations> allAnimations;
-  int ticksPerSec;
 
-=======
   private String outFile;
   private List<Shapes> allShapes;
   private List<Animations> allAnimations;
   private int ticksPerSec;
->>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
 
   /**
    * The constructor for the Textual View.

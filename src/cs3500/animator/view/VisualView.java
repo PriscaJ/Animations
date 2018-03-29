@@ -57,22 +57,6 @@ public class VisualView extends JFrame implements IView {
     this.pack();
   }
 
-  public void stopTimer() {
-    aniPanel.stopTimer();
-  }
-
-  public void setTickToZero() {
-    aniPanel.setTickToZero();
-  }
-
-  public void increaseSpeed() {
-
-  }
-
-  public void decreaseSpeed() {
-
-  }
-
   @Override
   public void makeVisible() {
     this.setVisible(true);
