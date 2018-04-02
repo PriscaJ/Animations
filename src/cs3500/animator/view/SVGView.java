@@ -194,7 +194,7 @@ public class SVGView implements IView {
       for (AnimationCommand a : cmds) {
         String startString =
             "\n<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" "
-                    + "attributeName=\"";
+                + "attributeName=\"";
         workString.append(formatReset(a, shapeType, startString));
       }
     }
@@ -225,8 +225,7 @@ public class SVGView implements IView {
       } else if (shapeType.equals("ellipse")) {
         return "cy";
       }
-    }
-    else if (aType == (AnimationType.SCALECHANGE)) {
+    } else if (aType == (AnimationType.SCALECHANGE)) {
       if (shapeType.equals("rect")) {
         return "height";
       } else if (shapeType.equals("ellipse")) {
@@ -256,7 +255,7 @@ public class SVGView implements IView {
         }
         if (animation.getStartY() != animation.getEndY()) {
           additional += startString + attributeY
-          + "\" to=\"" + animation.getStartY() + "\" ";
+              + "\" to=\"" + animation.getStartY() + "\" ";
           additional += "fill=\"freeze\" />";
         }
         workString.append(additional);
@@ -364,10 +363,10 @@ public class SVGView implements IView {
     }
     if (sChange.getStartY() != sChange.getEndY()) {
       // if it was changed make a new tag
-        workString2 = starter + attributeY + "\" "
-            + "from=\"" + sChange.getStartY()
-            + "\" to=\"" + sChange.getEndY() + "\" ";
-        workString2 += "fill=\"freeze\" />\n";
+      workString2 = starter + attributeY + "\" "
+          + "from=\"" + sChange.getStartY()
+          + "\" to=\"" + sChange.getEndY() + "\" ";
+      workString2 += "fill=\"freeze\" />\n";
     }
     return workString + workString2;
   }

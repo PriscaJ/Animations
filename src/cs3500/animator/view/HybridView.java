@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import cs3500.animator.model.Shapes;
 
-public class HybridView extends JFrame implements IHybridView{
+public class HybridView extends JFrame implements IHybridView {
   private VisualView visualView;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
@@ -39,7 +39,7 @@ public class HybridView extends JFrame implements IHybridView{
     //button panel
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
-    this.add(buttonPanel,BorderLayout.SOUTH);
+    this.add(buttonPanel, BorderLayout.SOUTH);
 
     // the list of shapes
     shapeList = new JListShape(shapes);
@@ -51,36 +51,37 @@ public class HybridView extends JFrame implements IHybridView{
 
     // speed
     incSpeed = new JButton("Increase Speed");
-    incSpeed.addActionListener((ActionEvent e)-> increaseSpeed());
+    incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
     buttonPanel.add(incSpeed);
 
     decSpeed = new JButton("Decrease Speed");
-    decSpeed.addActionListener((ActionEvent e)-> decreaseSpeed());
+    decSpeed.addActionListener((ActionEvent e) -> decreaseSpeed());
     buttonPanel.add(decSpeed);
 
     // stop/ start / restart
     stop = new JButton("Stop");
-    stop.addActionListener((ActionEvent e)-> stopTimer());
+    stop.addActionListener((ActionEvent e) -> stopTimer());
     buttonPanel.add(stop);
 
     start = new JButton("Start");
-    start.addActionListener((ActionEvent e)-> start());
+    start.addActionListener((ActionEvent e) -> start());
     buttonPanel.add(start);
 
     restart = new JButton("Restart");
-    restart.addActionListener((ActionEvent e)-> restart());
+    restart.addActionListener((ActionEvent e) -> restart());
     buttonPanel.add(restart);
 
     // looping
     String loopCondition = "";
     if (looping) {
       loopCondition = "Turn off looping";
-    }
-    else {
+    } else {
       loopCondition = "Turn on looping";
     }
     loop = new JButton(loopCondition);
-    loop.addActionListener((ActionEvent e)-> {setLooping();});
+    loop.addActionListener((ActionEvent e) -> {
+      setLooping();
+    });
     buttonPanel.add(loop);
 
     // svg export
@@ -89,12 +90,16 @@ public class HybridView extends JFrame implements IHybridView{
     buttonPanel.add(svgFileName);
     // - jbutton to export
     svgExport = new JButton("Export in SVG");
-    svgExport.addActionListener((ActionEvent e)-> {exportSVG();});
+    svgExport.addActionListener((ActionEvent e) -> {
+      exportSVG();
+    });
     buttonPanel.add(svgExport);
 
     // run selected
     runSelected = new JButton("Run Selected Shapes");
-    runSelected.addActionListener((ActionEvent e)-> {runSelected();});
+    runSelected.addActionListener((ActionEvent e) -> {
+      runSelected();
+    });
     buttonPanel.add(runSelected);
 
     this.pack();
@@ -150,9 +155,9 @@ public class HybridView extends JFrame implements IHybridView{
       outputDest = fileName;
     }
     if (looping) {
-      svgView = new SVGView(selectedShapes, outputDest, tps, true);
+      svgView = new SVGView(selectedShapes, outputDest, interactivePanel.getSpeed(), true);
     } else {
-      svgView = new SVGView(selectedShapes, outputDest, tps, false);
+      svgView = new SVGView(selectedShapes, outputDest, interactivePanel.getSpeed(), false);
     }
     svgView.setEndTime(endTime);
     svgView.makeVisible();
@@ -161,7 +166,10 @@ public class HybridView extends JFrame implements IHybridView{
   @Override
   public void runSelected() {
     selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
-    visualView = new VisualView(selectedShapes, endTime, tps, looping);
-    visualView.makeVisible();
+    // You don't need to start it over again with the selected shapes
+    // until the next loop, so I think it would be simpler to just update it if it loops?
+    // We don't want to restart the program
+//    visualView = new VisualView(selectedShapes, endTime, tps, looping);
+//    visualView.makeVisible();
   }
 }
