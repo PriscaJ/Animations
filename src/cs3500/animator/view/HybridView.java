@@ -11,6 +11,7 @@ public class HybridView extends JFrame implements IHybridView{
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
   private int endTime;
+  private JPanel buttonPanel;
   private InteractivePanel interactivePanel;
   // looping is set to be false initially
   private boolean looping = false;
