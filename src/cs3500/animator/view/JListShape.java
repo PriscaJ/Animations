@@ -45,7 +45,12 @@ public class JListShape extends JFrame {
     this.setVisible(true);
   }
 
-  // todo with the running list play those shape
+  // todo with the running list play those shapes
+
+  /**
+   * call the visual view to run the shapes
+   * set up a button to run those shapes
+   */
   private void runSelected() {
 
   }

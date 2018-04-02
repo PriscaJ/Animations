@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ public class HybridView extends JFrame implements IHybridView{
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
   private int endTime;
+  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
   private JPanel buttonPanel;
   private InteractivePanel interactivePanel;
   // looping is set to be false initially
@@ -26,6 +28,50 @@ public class HybridView extends JFrame implements IHybridView{
     this.endTime = endTime;
     this.outputDest = outputDest;
     this.tps = tps;
+
+    // set up for buttons
+
+    // speed
+    incSpeed = new JButton("Increase Speed");
+    incSpeed.addActionListener((ActionEvent e)-> {increaseSpeed();});
+    buttonPanel.add(incSpeed);
+
+    decSpeed = new JButton("Decrease Speed");
+    decSpeed.addActionListener((ActionEvent e)-> {decreaseSpeed();});
+    buttonPanel.add(decSpeed);
+
+    // stop/ start / restart
+    stop = new JButton("Stop");
+    stop.addActionListener((ActionEvent e)-> {stopTimer();});
+    buttonPanel.add(stop);
+
+    start = new JButton("Start");
+    start.addActionListener((ActionEvent e)-> {start();});
+    buttonPanel.add(start);
+
+    restart = new JButton("Restart");
+    restart.addActionListener((ActionEvent e)-> {restart();});
+    buttonPanel.add(restart);
+
+    // looping
+    String loopCondition = "";
+    if (looping) {
+      loopCondition = "Turn off looping";
+    }
+    else {
+      loopCondition = "Turn on looping";
+    }
+    loop = new JButton(loopCondition);
+    loop.addActionListener((ActionEvent e)-> {setLooping();});
+    buttonPanel.add(loop);
+
+    // svg export
+    svgExport = new JButton("Export in SVG");
+    svgExport.addActionListener((ActionEvent e)-> {exportSVG();});
+    buttonPanel.add(svgExport);
+
+    // run selected
+    
   }
 
   // Pause animation
@@ -54,13 +100,6 @@ public class HybridView extends JFrame implements IHybridView{
   public void start() {
     visualView = new VisualView(selectedShapes, endTime, tps, looping);
     visualView.makeVisible();
-  }
-
-  protected void loadShapes() {
-
-
-
-
   }
 
   @Override
