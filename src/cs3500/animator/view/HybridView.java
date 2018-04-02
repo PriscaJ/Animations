@@ -21,7 +21,6 @@ public class HybridView extends JFrame implements IHybridView{
   private InteractivePanel interactivePanel;
   // looping is set to be false initially
   private boolean looping = false;
-  private boolean selecting = false;
   private String outputDest;
   private int tps;
 
@@ -33,6 +32,9 @@ public class HybridView extends JFrame implements IHybridView{
     this.endTime = endTime;
     this.outputDest = outputDest;
     this.tps = tps;
+
+    // interactive panel (Visual view)
+    interactivePanel = new InteractivePanel(shapes, endTime, tps);
 
     //button panel
     buttonPanel = new JPanel();
@@ -112,6 +114,7 @@ public class HybridView extends JFrame implements IHybridView{
   @Override
   public void increaseSpeed() {
     interactivePanel.increaseSpeed();
+
   }
 
   @Override

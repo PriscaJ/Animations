@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ import javax.swing.*;
 import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.Shapes;
 
-public class InteractivePanel extends AnimationPanel{
+public class InteractivePanel extends AnimationPanel {
   private int tick;
   private Timer t;
   private ArrayList<Shapes> shapesList;
@@ -25,10 +26,16 @@ public class InteractivePanel extends AnimationPanel{
    */
   public InteractivePanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     super(shapesList, lastTick, ticksPerSec);
+    this.shapesList = shapesList;
+    this.lastTick = lastTick;
+    this.setBackground(Color.WHITE);
+    this.setPreferredSize(new Dimension(800, 800));
+    this.tick = -1;
+    this.t = new Timer(ticksPerSec, this);
 
+    t.start();
 
   }
-
 
   //public AnimationPanel(ArrayList<Shapes> shapesList,
   // int lastTick, int ticksPerSec, boolean looping) {
@@ -43,17 +50,17 @@ public class InteractivePanel extends AnimationPanel{
   }
 
   protected void increaseSpeed() {
-    Timer newTimer = new Timer(t.getDelay() + 10, this);
-    t = newTimer;
-
+    t = new Timer(t.getDelay() + 10, this);
   }
 
   protected void decreaseSpeed() {
     if (t.getDelay() > 10) {
-      Timer newTimer = new Timer(t.getDelay() - 10, this);
-      t = newTimer;
+      t = new Timer(t.getDelay() - 10, this);
     }
+  }
 
+  protected int getSpeed() {
+    return t.getDelay();
   }
 
 
@@ -78,7 +85,6 @@ public class InteractivePanel extends AnimationPanel{
     tick++;
     repaint();
   }
-
 
 
 }

@@ -124,8 +124,7 @@ public final class EasyAnimator {
     List<Shapes> shapes = model.getShapes();
     List<Animations> animations = model.getAnimations();
     // temporarily changed model from ReadOnly to AnimationOperations
-    TextualView view = new TextualView(outFile, shapes, animations, 1000 / tps);
-    return view;
+    return new TextualView(outFile, shapes, animations, 1000 / tps);
   }
 
   private static int getTicksPerSec(String ticksPerSec) {
@@ -136,3 +135,6 @@ public final class EasyAnimator {
     }
   }
 }
+// tps = 20
+// ticksPerSec = 50
+// delay = 50

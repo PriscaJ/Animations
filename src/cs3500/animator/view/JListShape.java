@@ -1,7 +1,5 @@
 package cs3500.animator.view;
 
-import sun.security.provider.SHA;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +18,18 @@ public class JListShape extends JFrame {
   public JListShape(ArrayList<Shapes> shapeList) {
     DefaultListModel<Shapes> loadedShapes = new DefaultListModel<>();
 
-
     // makes the model
     for (Shapes shape : shapeList) {
       loadedShapes.addElement(shape);
     }
 
     // puts shape in the model in the list
-    shapesInAnimation = new JList<Shapes>(loadedShapes);
+    shapesInAnimation = new JList<>(loadedShapes);
 
     // shapes in list wait to be selected to be added to the running list
     shapesInAnimation.addListSelectionListener((ListSelectionEvent e) -> {
       if (!e.getValueIsAdjusting()) {
-         selectedValuesList = shapesInAnimation.getSelectedValuesList();
+        selectedValuesList = shapesInAnimation.getSelectedValuesList();
       }
     });
 
