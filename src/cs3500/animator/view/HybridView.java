@@ -14,6 +14,7 @@ public class HybridView extends JFrame implements IHybridView{
   private ArrayList<Shapes> selectedShapes;
   private int endTime;
   private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
+  private JTextField svgFileName;
   private JPanel buttonPanel;
   private JListShape shapeList;
   private JScrollPane scrollingShapes;
@@ -48,24 +49,24 @@ public class HybridView extends JFrame implements IHybridView{
 
     // speed
     incSpeed = new JButton("Increase Speed");
-    incSpeed.addActionListener((ActionEvent e)-> {increaseSpeed();});
+    incSpeed.addActionListener((ActionEvent e)-> increaseSpeed());
     buttonPanel.add(incSpeed);
 
     decSpeed = new JButton("Decrease Speed");
-    decSpeed.addActionListener((ActionEvent e)-> {decreaseSpeed();});
+    decSpeed.addActionListener((ActionEvent e)-> decreaseSpeed());
     buttonPanel.add(decSpeed);
 
     // stop/ start / restart
     stop = new JButton("Stop");
-    stop.addActionListener((ActionEvent e)-> {stopTimer();});
+    stop.addActionListener((ActionEvent e)-> stopTimer());
     buttonPanel.add(stop);
 
     start = new JButton("Start");
-    start.addActionListener((ActionEvent e)-> {start();});
+    start.addActionListener((ActionEvent e)-> start());
     buttonPanel.add(start);
 
     restart = new JButton("Restart");
-    restart.addActionListener((ActionEvent e)-> {restart();});
+    restart.addActionListener((ActionEvent e)-> restart());
     buttonPanel.add(restart);
 
     // looping
@@ -81,6 +82,10 @@ public class HybridView extends JFrame implements IHybridView{
     buttonPanel.add(loop);
 
     // svg export
+    // - text box for output file name
+    svgFileName = new JTextField("File output name:");
+    buttonPanel.add(svgFileName);
+    // - jbutton to export
     svgExport = new JButton("Export in SVG");
     svgExport.addActionListener((ActionEvent e)-> {exportSVG();});
     buttonPanel.add(svgExport);
@@ -137,6 +142,10 @@ public class HybridView extends JFrame implements IHybridView{
   @Override
   public void exportSVG() {
     SVGView svgView;
+    String fileName = svgFileName.getText();
+    if (fileName != null) {
+      outputDest = fileName;
+    }
     if (looping) {
       svgView = new SVGView(selectedShapes, outputDest, tps, true);
     } else {
@@ -152,7 +161,4 @@ public class HybridView extends JFrame implements IHybridView{
     visualView = new VisualView(selectedShapes, endTime, tps, looping);
     visualView.makeVisible();
   }
-
-
-
 }

@@ -1,13 +1,17 @@
 package cs3500.animator.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import cs3500.animator.model.AnimationOperations;
+import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IView;
 
 /**
  * Class that represents the controller which handles the communication between the model and the
  * the view. Runs the view based on the information of the model.
  */
-public class Controller {
+public class Controller{
 
   private AnimationOperations model;
   private IView view;
@@ -29,6 +33,7 @@ public class Controller {
   public void run() {
     view.makeVisible();
   }
+
 
   // if svg export button is pressed --> svg.makeVisible()
   // - has to be with the currently selected shapes
