@@ -74,6 +74,7 @@ public class HybridView extends JFrame implements IHybridView{
   }
 
   // in interface
+  // ON BUTTON CLICK, THE OUTPUT DEST SHOULD BE UPDATED BY WHAT THE USER SPECIFIES
   @Override
   public void exportSVG() {
     SVGView svgView;
@@ -82,6 +83,7 @@ public class HybridView extends JFrame implements IHybridView{
     } else {
       svgView = new SVGView(selectedShapes, outputDest, tps, false);
     }
+    svgView.setEndTime(endTime);
     svgView.makeVisible();
   }
 

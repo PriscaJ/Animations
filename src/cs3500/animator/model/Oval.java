@@ -11,7 +11,7 @@ public class Oval extends AbstractShape {
               float cx, float cy, float xRadius, float yRadius,
               float red, float green, float blue,
               int startOfLife, int endOfLife) {
-    super(name, cx, cy, xRadius * 2, yRadius * 2, red, green, blue,
+    super(name, cx, cy, xRadius, yRadius, red, green, blue,
             startOfLife, endOfLife);
   }
 
