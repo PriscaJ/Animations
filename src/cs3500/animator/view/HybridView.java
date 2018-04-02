@@ -71,7 +71,12 @@ public class HybridView extends JFrame implements IHybridView{
     buttonPanel.add(svgExport);
 
     // run selected
-    
+    runSelected = new JButton("Run Selected Shapes");
+    runSelected.addActionListener((ActionEvent e)-> {runSelected();});
+    buttonPanel.add(runSelected);
+
+
+    this.pack();
   }
 
   // Pause animation
@@ -98,7 +103,7 @@ public class HybridView extends JFrame implements IHybridView{
   // Start the animation with the initial shapes.
   @Override
   public void start() {
-    visualView = new VisualView(selectedShapes, endTime, tps, looping);
+    visualView = new VisualView(allShapes, endTime, tps, looping);
     visualView.makeVisible();
   }
 
@@ -123,6 +128,12 @@ public class HybridView extends JFrame implements IHybridView{
       svgView = new SVGView(selectedShapes, outputDest, tps, false);
     }
     svgView.makeVisible();
+  }
+
+  @Override
+  public void runSelected() {
+    visualView = new VisualView(selectedShapes, endTime, tps, looping);
+    visualView.makeVisible();
   }
 
 
