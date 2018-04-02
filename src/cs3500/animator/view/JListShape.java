@@ -20,6 +20,7 @@ public class JListShape extends JFrame {
   public JListShape(ArrayList<Shapes> shapeList) {
     DefaultListModel<Shapes> loadedShapes = new DefaultListModel<>();
 
+
     // makes the model
     for (Shapes shape : shapeList) {
       loadedShapes.addElement(shape);
@@ -46,6 +47,11 @@ public class JListShape extends JFrame {
   }
 
   // todo with the running list play those shapes
+
+  public List<Shapes> getSelected() {
+    return selectedValuesList;
+  }
+
 
   /**
    * call the visual view to run the shapes

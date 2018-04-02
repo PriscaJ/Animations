@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -14,6 +15,8 @@ public class HybridView extends JFrame implements IHybridView{
   private int endTime;
   private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
   private JPanel buttonPanel;
+  private JListShape shapeList;
+  private JScrollPane scrollingShapes;
   private InteractivePanel interactivePanel;
   // looping is set to be false initially
   private boolean looping = false;
@@ -23,11 +26,23 @@ public class HybridView extends JFrame implements IHybridView{
 
 
   public HybridView(ArrayList<Shapes> shapes, int endTime, String outputDest, int tps) {
+    super();
     this.allShapes = shapes;
     this.selectedShapes = shapes;
     this.endTime = endTime;
     this.outputDest = outputDest;
     this.tps = tps;
+
+    //button panel
+    buttonPanel = new JPanel();
+    buttonPanel.setLayout(new FlowLayout());
+    this.add(buttonPanel,BorderLayout.SOUTH);
+
+    // the list of shapes
+    shapeList = new JListShape(shapes);
+
+    // pane that will display all the shapes
+    // todo: add the pane so that the shapes can be selected 
 
     // set up for buttons
 
@@ -74,7 +89,6 @@ public class HybridView extends JFrame implements IHybridView{
     runSelected = new JButton("Run Selected Shapes");
     runSelected.addActionListener((ActionEvent e)-> {runSelected();});
     buttonPanel.add(runSelected);
-
 
     this.pack();
   }
@@ -132,6 +146,7 @@ public class HybridView extends JFrame implements IHybridView{
 
   @Override
   public void runSelected() {
+    selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
     visualView = new VisualView(selectedShapes, endTime, tps, looping);
     visualView.makeVisible();
   }
