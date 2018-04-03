@@ -20,7 +20,7 @@ public interface Shapes {
    * animations that a shape has.
    *
    * @param newCommand Animation Command that will add to the list of commands the AbstractShape
-   *                   will have.
+   * will have.
    */
   void setAnimation(AnimationCommand newCommand);
 
@@ -47,9 +47,15 @@ public interface Shapes {
 
   Float getRed();
 
+  void setRed(float v);
+
   Float getGreen();
 
+  void setGreen(float v);
+
   Float getBlue();
+
+  void setBlue(float v);
 
   String getDescription(int tps);
 
@@ -64,12 +70,6 @@ public interface Shapes {
   void setXDimension(float v);
 
   void setYDimension(float v);
-
-  void setRed(float v);
-
-  void setGreen(float v);
-
-  void setBlue(float v);
 
   void addCommand(AnimationCommand command);
 }

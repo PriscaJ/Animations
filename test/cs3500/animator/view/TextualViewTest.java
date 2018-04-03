@@ -26,19 +26,19 @@ public class TextualViewTest {
   public void TextViewTest() {
     // set up the shapes and their actions
     Rectangle r = new Rectangle("R", 200f, 200f, 50f,
-            100f, 1f, 0f, 0f, 1, 100);
+        100f, 1f, 0f, 0f, 1, 100);
     Oval o = new Oval("C", 500f, 100f, 60f, 30f,
-            0f, 0f, 1f, 6, 100);
+        0f, 0f, 1f, 6, 100);
     Move c = new Move("R", 200, 200.0f,
-            300.0f, 300.0f, 10, 50);
+        300.0f, 300.0f, 10, 50);
     Move m = new Move("C", 500, 100,
-            500, 400, 20, 70);
+        500, 400, 20, 70);
     ColorChange cc = new ColorChange("C", 0f, 0, 1,
-            0, 1, 0, 50, 80);
+        0, 1, 0, 50, 80);
     ScaleChange s = new ScaleChange("R", 50, 100,
-            25, 100, 51, 70);
+        25, 100, 51, 70);
     Move m2 = new Move("R", 300, 300,
-            200, 200, 70, 100);
+        200, 200, 70, 100);
 
     // send the list of shapes to the model
     List<Shapes> shapes = new ArrayList<>();
@@ -76,24 +76,24 @@ public class TextualViewTest {
     TextualView view = new TextualView("", shapes, animationActions, 1);
     // actually try to run it
     assertEquals("Shapes:\n"
-            + "Name: R\n"
-            + "Type: rectangle\n"
-            + "Min-corner: (200.0,200.0), Width: 50.0, Height: 100.0, Color: (1.0,0.0,0.0)\n"
-            + "Appears at t=0.0s\n"
-            + "Disappears at t=0.1s\n"
-            + "\n"
-            + "Name: C\n"
-            + "Type: oval\n"
-            + "Center: (500.0,100.0), X radius: 120.0, Y radius: 60.0, Color: (0.0,0.0,1.0)\n"
-            + "Appears at t=0.0s\n"
-            + "Disappears at t=0.1s\n"
-            + "\n"
-            + "Shape R moves from (200.0,200.0) to (300.0,300.0) from t=0.0s to t=0.1s\n"
-            + "Shape C changes color from (0.0,0.0,1.0) to (0.0,1.0,0.0) from t=0.1s to t=0.1s\n"
-            + "Shape C moves from (500.0,100.0) to (500.0,400.0) from t=0.0s to t=0.1s\n"
-            + "Shape R moves from (300.0,300.0) to (200.0,200.0) from t=0.1s to t=0.1s\n"
-            + "Shape R scales from Width: 50.0, Height: 100.0 to Width: 25.0, Height: 100.0 "
-            + "from t=0.1s to t=0.1s", view.readBack());
+        + "Name: R\n"
+        + "Type: rectangle\n"
+        + "Min-corner: (200.0,200.0), Width: 50.0, Height: 100.0, Color: (1.0,0.0,0.0)\n"
+        + "Appears at t=0.0s\n"
+        + "Disappears at t=0.1s\n"
+        + "\n"
+        + "Name: C\n"
+        + "Type: oval\n"
+        + "Center: (500.0,100.0), X radius: 60.0, Y radius: 30.0, Color: (0.0,0.0,1.0)\n"
+        + "Appears at t=0.0s\n"
+        + "Disappears at t=0.1s\n"
+        + "\n"
+        + "Shape R moves from (200.0,200.0) to (300.0,300.0) from t=0.0s to t=0.1s\n"
+        + "Shape C changes color from (0.0,0.0,1.0) to (0.0,1.0,0.0) from t=0.1s to t=0.1s\n"
+        + "Shape C moves from (500.0,100.0) to (500.0,400.0) from t=0.0s to t=0.1s\n"
+        + "Shape R moves from (300.0,300.0) to (200.0,200.0) from t=0.1s to t=0.1s\n"
+        + "Shape R scales from Width: 50.0, Height: 100.0 to Width: 25.0, Height: 100.0 "
+        + "from t=0.1s to t=0.1s", view.readBack());
   }
 
 }

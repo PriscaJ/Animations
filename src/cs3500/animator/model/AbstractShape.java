@@ -23,6 +23,7 @@ public abstract class AbstractShape implements Shapes {
 
   /**
    * Constructor for a shape.
+   *
    * @param name shape name.
    * @param xPosn Shape postion.
    * @param yPosn Shape y position.

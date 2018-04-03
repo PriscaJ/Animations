@@ -12,6 +12,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AnimationModelTest {
 
+  @Test
   public void testGetCurrentShapes() {
     AnimationModel model = new AnimationModel();
     List<AbstractShape> curShapes = new ArrayList<>();

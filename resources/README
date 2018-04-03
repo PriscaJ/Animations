@@ -1,4 +1,15 @@
+//---------------- Assignment 7 ----------------//
 
+
+Class SVGView
+
+DESIGN CHANGE: We changed the code to allow users to specify whether an svg animation is looping
+or not. This was done by adding a boolean global variable that can be set in an
+additional boolean field in the constructor we added. If no such boolean is present, the
+default will be that looping is false. 
+
+
+//---------------- Assignment 6 ----------------//
 Overall Implementation and design: Primarily designed to mimic the Command Pattern in order to
 simplify the model interface. Through the command pattern the classes for shapes do not become
 concerned with how they will be modified since the Animation itself takes care of it. The Model

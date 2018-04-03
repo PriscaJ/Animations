@@ -16,6 +16,7 @@ public class VisualView extends JFrame implements IView {
   private JScrollPane pane;
   private AnimationPanel aniPanel;
   private boolean looping;
+
   /**
    * The Constructor for the visual view.
    *
