@@ -54,9 +54,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
       Color c = new Color(r, gg, b);
       g2d.setColor(c);
       if (shape.isOval()) {
-        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-            shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-            shape.getWidth().intValue(), shape.getHeight().intValue());
+        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() /2,
+            shape.getYPosition().intValue() - shape.getHeight().intValue() /2 ,
+            shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
 
       } else if (shape.isRect()) {
         Rectangle r2 = new Rectangle(
