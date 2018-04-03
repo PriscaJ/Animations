@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd0404cb-a0c2-455c-a410-1adbd46a28ae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/Controller.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/HybridView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/HybridView.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/JListShape.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/JListShape.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" />
-    </list>
+    <list default="true" id="fd0404cb-a0c2-455c-a410-1adbd46a28ae" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,8 +65,8 @@
       <file leaf-file-name="JListShape.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/JListShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="599">
-              <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+            <state relative-caret-position="357">
+              <caret line="29" column="74" lean-forward="true" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -353,12 +348,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522694763184</updated>
-      <workItem from="1522694764687" duration="6977000" />
+      <workItem from="1522694764687" duration="8104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6977000" />
+    <option name="totallyTimeSpent" value="8104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -491,8 +486,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/JListShape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        <state relative-caret-position="357">
+          <caret line="29" column="74" lean-forward="true" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
