@@ -9,7 +9,7 @@ import javax.swing.event.ListSelectionListener;
 
 import cs3500.animator.model.Shapes;
 
-public class JListShape extends JFrame {
+public class JListShape extends JPanel {
 
   private JList<Shapes> shapesInAnimation;
   private List<Shapes> selectedValuesList;
@@ -36,10 +36,10 @@ public class JListShape extends JFrame {
     add(shapesInAnimation);
     add(new JScrollPane(shapesInAnimation));
 
-    this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    this.setTitle("List of shapes");
-    this.setSize(200, 200);
-    this.setLocationRelativeTo(null);
+    //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    //this.setTitle("List of shapes");
+    this.setSize(200, 500);
+    //this.setLocationRelativeTo(null);
     this.setVisible(true);
   }
 
