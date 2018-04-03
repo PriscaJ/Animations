@@ -56,18 +56,16 @@ public class HybridView extends JFrame implements IHybridView {
     incSpeed = new JButton("Increase Speed");
     incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
     buttonPanel.add(incSpeed);
-    System.out.print("button placed 1");
+
 
     decSpeed = new JButton("Decrease Speed");
     decSpeed.addActionListener((ActionEvent e) -> decreaseSpeed());
     buttonPanel.add(decSpeed);
-    System.out.print("button placed 2");
 
     // stop/ start / restart
     stop = new JButton("Stop");
     stop.addActionListener((ActionEvent e) -> stopTimer());
     buttonPanel.add(stop);
-    System.out.print("button placed 3");
 
     start = new JButton("Start");
     start.addActionListener((ActionEvent e) -> start());
@@ -143,13 +141,21 @@ public class HybridView extends JFrame implements IHybridView {
   // Start the animation with the initial shapes.
   @Override
   public void start() {
+    // creating a new instance outside of panel when declared new
     visualView = new VisualView(allShapes, endTime, tps, looping);
     visualView.makeVisible();
   }
 
   @Override
   public void setLooping() {
-    looping = !looping;
+    // toggle between turning looping on and off
+    if (looping) {
+      looping = false;
+    }
+    else {
+      looping = true;
+    }
+    // looping = !looping;
   }
 
   // starting animation from beginning with selected shapes?
