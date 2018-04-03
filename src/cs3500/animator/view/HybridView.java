@@ -33,19 +33,22 @@ public class HybridView extends JFrame implements IHybridView {
     this.outputDest = outputDest;
     this.tps = tps;
 
+    // Display the window.
+    setSize(800, 800);
+    setVisible(true);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     // interactive panel (Visual view)
+    this.setLayout(new BorderLayout());
     interactivePanel = new InteractivePanel(shapes, endTime, tps);
+    interactivePanel.setPreferredSize(new Dimension(300,300));
+    this.add(interactivePanel,BorderLayout.CENTER);
 
     //button panel
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
     this.add(buttonPanel, BorderLayout.SOUTH);
-
-    // the list of shapes
-    shapeList = new JListShape(shapes);
-
-    // pane that will display all the shapes
-    // todo: add the pane so that the shapes can be selected 
+    System.out.print("buttons placed");
 
     // set up for buttons
 
@@ -53,15 +56,18 @@ public class HybridView extends JFrame implements IHybridView {
     incSpeed = new JButton("Increase Speed");
     incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
     buttonPanel.add(incSpeed);
+    System.out.print("button placed 1");
 
     decSpeed = new JButton("Decrease Speed");
     decSpeed.addActionListener((ActionEvent e) -> decreaseSpeed());
     buttonPanel.add(decSpeed);
+    System.out.print("button placed 2");
 
     // stop/ start / restart
     stop = new JButton("Stop");
     stop.addActionListener((ActionEvent e) -> stopTimer());
     buttonPanel.add(stop);
+    System.out.print("button placed 3");
 
     start = new JButton("Start");
     start.addActionListener((ActionEvent e) -> start());
@@ -101,6 +107,13 @@ public class HybridView extends JFrame implements IHybridView {
       runSelected();
     });
     buttonPanel.add(runSelected);
+
+    // the list of shapes
+    shapeList = new JListShape(shapes);
+
+    // pane that will display all the shapes
+    scrollingShapes = new JScrollPane(shapeList);
+    this.add(scrollingShapes, BorderLayout.EAST);
 
     this.pack();
   }
@@ -165,11 +178,12 @@ public class HybridView extends JFrame implements IHybridView {
 
   @Override
   public void runSelected() {
-    selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
-    // You don't need to start it over again with the selected shapes
-    // until the next loop, so I think it would be simpler to just update it if it loops?
-    // We don't want to restart the program
-//    visualView = new VisualView(selectedShapes, endTime, tps, looping);
-//    visualView.makeVisible();
+    if (looping) {
+      // On the next iteration of the looped animation
+      // it will run with the selected shapes.
+      selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
+    }
+    // otherwise do nothing
+
   }
 }

@@ -17,7 +17,7 @@ import cs3500.animator.view.VisualView;
 /**
  * The Runner for the Animation.
  */
-public final class EasyAnimator {
+public final class  EasyAnimator {
   /**
    * The main method to run the animation.
    */
