@@ -29,7 +29,7 @@ public class InteractivePanel extends AnimationPanel {
     this.shapesList = shapesList;
     this.lastTick = lastTick;
     this.setBackground(Color.WHITE);
-    this.setPreferredSize(new Dimension(800, 800));
+    // this.setPreferredSize(new Dimension(300, 300));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
 

@@ -24,7 +24,7 @@ public class JListShape extends JFrame {
     }
 
     // puts shape in the model in the list
-    shapesInAnimation = new JList<>(loadedShapes);
+    shapesInAnimation = new JList<Shapes>(loadedShapes);
 
     // shapes in list wait to be selected to be added to the running list
     shapesInAnimation.addListSelectionListener((ListSelectionEvent e) -> {
