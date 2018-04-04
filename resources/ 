@@ -1,7 +1,0 @@
-<svg version= "1.1" xmlns="http://www.w3.org/2000/svg">
-
-<rect id="window010" x="100.0" y="670.0" width="20.0" height="20.0" fill="rgb(255,255,255)" visibility="hidden" >
-<set attributeName="visibility" attributeType="CSS" to="visible" begin="50.0ms" dur="9950.0ms" fill="freeze" />
-<animate attributeType="xml" begin="1000ms" dur="2000ms" attributeName="y" from="890.0" to="670.0" fill="freeze" />
-
-</rect></svg>

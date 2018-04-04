@@ -1,6 +1,7 @@
 package cs3500.animator.view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -20,6 +21,19 @@ public class VisualView extends JFrame implements IView {
   protected int lastTick;
   protected int ticksPerSec;
 
+  private VisualView visualView;
+  private ArrayList<Shapes> allShapes;
+  private ArrayList<Shapes> selectedShapes;
+  private int endTime;
+  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
+  private JTextField svgFileName;
+  private JPanel buttonPanel;
+  private JListShape shapeList;
+  private JScrollPane scrollingShapes;
+  // looping is set to be false initially
+  private String outputDest;
+  private String svgButtonText = "Type file name here:";
+
   /**
    * The Constructor for the visual view.
    *
@@ -31,6 +45,86 @@ public class VisualView extends JFrame implements IView {
     initView();
     initAnimationPanel(shapesList, lastTick, ticksPerSec);
     this.looping = false;
+
+
+
+    //button panel
+    buttonPanel = new JPanel();
+    buttonPanel.setLayout(new FlowLayout());
+    this.add(buttonPanel, BorderLayout.SOUTH);
+    System.out.print("buttons placed");
+
+    // set up for buttons
+
+    // speed
+    incSpeed = new JButton("Increase Speed");
+    incSpeed.setActionCommand("Increase Speed");
+    buttonPanel.add(incSpeed);
+    //incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
+
+
+    decSpeed = new JButton("Decrease Speed");
+    decSpeed.setActionCommand("Decrease speed");
+    buttonPanel.add(decSpeed);
+    //decSpeed.addActionListener((ActionEvent e) -> decreaseSpeed());
+
+    // stop/ start / restart
+    stop = new JButton("Stop");
+    stop.setActionCommand("Stop");
+    buttonPanel.add(stop);
+    //stop.addActionListener((ActionEvent e) -> stopTimer());
+
+    start = new JButton("Start");
+    start.setActionCommand("Start");
+    buttonPanel.add(start);
+    //start.addActionListener((ActionEvent e) -> start());
+
+    restart = new JButton("Restart");
+    restart.setActionCommand("Restart");
+    buttonPanel.add(restart);
+    // restart.addActionListener((ActionEvent e) -> restart());
+    // looping
+//    String loopCondition;
+//    if (looping) {
+//      loopCondition = "Turn off looping";
+//    } else {
+//      loopCondition = "Turn on looping";
+//    }
+    loop = new JButton("Looping");
+    loop.setActionCommand("Looping");
+//    loop.addActionListener((ActionEvent e) -> {
+//      setLooping();
+//    });
+    buttonPanel.add(loop);
+
+    // svg export
+    // - text box for output file name
+    svgFileName = new JTextField(svgButtonText);
+    buttonPanel.add(svgFileName);
+    // - jbutton to export
+    svgExport = new JButton("Export SVG");
+    svgExport.addActionListener((ActionEvent e) -> {
+      exportSVG();
+    });
+    buttonPanel.add(svgExport);
+
+    // run selected
+    runSelected = new JButton("Run Selected Shapes");
+    runSelected.addActionListener((ActionEvent e) -> runSelected());
+    buttonPanel.add(runSelected);
+
+    // the list of shapes
+    shapeList = new JListShape(shapesList);
+
+
+    // pane that will display all the shapes
+    //scrollingShapes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    scrollingShapes = new JScrollPane(shapeList);
+    scrollingShapes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    scrollingShapes.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+    this.add(scrollingShapes, BorderLayout.EAST);
+    this.pack();
   }
 
   public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec, boolean looping) {
@@ -65,6 +159,16 @@ public class VisualView extends JFrame implements IView {
   public void makeVisible() {
     this.setVisible(true);
     System.out.println("VisualView made visible!");
+  }
+
+  public void runSelected() {
+    if (looping) {
+      // On the next iteration of the looped animation
+      // it will run with the selected shapes.
+      selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
+    }
+    // otherwise do nothing
+
   }
 
 }

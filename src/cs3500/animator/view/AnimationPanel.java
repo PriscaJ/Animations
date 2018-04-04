@@ -70,10 +70,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
       }
     }
   }
+
   protected void startTimer() {
     t.start();
   }
-
 
   protected void stopTimer() {
     t.stop();
@@ -125,7 +125,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   }
 
   protected void setTPS(int TPS) {
-    t = new Timer(TPS, this);
+    t.setDelay(TPS);
   }
 
   protected void setLooping(boolean looping) {
@@ -146,5 +146,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     }
     return currentShapes;
   }
+
+
 
 }

@@ -18,7 +18,6 @@ public class HybridView extends JFrame implements IHybridView {
   private JPanel buttonPanel;
   private JListShape shapeList;
   private JScrollPane scrollingShapes;
-  private InteractivePanel interactivePanel;
   // looping is set to be false initially
   private boolean looping = false;
   private String outputDest;
