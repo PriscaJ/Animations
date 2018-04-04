@@ -36,11 +36,6 @@ public interface IInteractiveView extends IView {
   void restart();
 
   /**
-   * Turn the current animation into an SVG.
-   */
-  void exportSVG();
-
-  /**
    * Runs the animation only with the shapes selected
    */
   void runSelected();

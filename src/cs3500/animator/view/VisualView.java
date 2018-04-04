@@ -27,6 +27,7 @@ public class VisualView extends JFrame implements IInteractiveView {
   private JPanel buttonPanel;
   private JListShape shapeList;
   private JScrollPane scrollingShapes;
+  private int initTPS;
   // looping is set to be false initially
   private String svgButtonText = "Type file name here:";
 
@@ -42,6 +43,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     initAnimationPanel(shapesList, lastTick, ticksPerSec);
     this.looping = false;
     this.lastTick = lastTick;
+    this.initTPS = ticksPerSec;
     this.ticksPerSec = ticksPerSec;
     this.allShapes = shapesList;
 
@@ -184,10 +186,11 @@ public class VisualView extends JFrame implements IInteractiveView {
     // creating a new instance outside of panel when declared new
     aniPanel.setShapesList(allShapes);
     aniPanel.setEndTime(lastTick);
-    aniPanel.setTPS(ticksPerSec);
+    aniPanel.setTPS(initTPS);
     aniPanel.setLooping(looping);
     aniPanel.setTickToZero();
     aniPanel.startTimer();
+    this.makeVisible();
 
     // visualView = new VisualView(allShapes, endTime, tps, looping);
     //    visualView.shapesList = allShapes;
@@ -200,6 +203,7 @@ public class VisualView extends JFrame implements IInteractiveView {
   @Override
   public void setLooping() {
     // toggle between turning looping on and off
+    aniPanel.setLooping(!looping);
     looping = !looping;
     // looping = !looping;
   }
@@ -209,12 +213,6 @@ public class VisualView extends JFrame implements IInteractiveView {
   public void restart() {
     aniPanel.setTickToZero();
   }
-
-  @Override
-  public void exportSVG() {
-    // do nothing
-  }
-
 
   public int getSpeed() {
     return aniPanel.getSpeed();

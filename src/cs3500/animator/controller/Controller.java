@@ -71,7 +71,10 @@ public class Controller implements ActionListener {
           v.setLooping();
           break;
         case "Export SVG":
-          v.exportSVG();
+          if (view instanceof HybridView) {
+            HybridView hView = (HybridView) v;
+            hView.exportSVG();
+          }
           break;
         case "Run Selected Shapes":
           v.runSelected();
