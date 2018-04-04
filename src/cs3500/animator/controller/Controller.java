@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.view.HybridView;
-import cs3500.animator.view.IHybridView;
 import cs3500.animator.view.IInteractiveView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.VisualView;

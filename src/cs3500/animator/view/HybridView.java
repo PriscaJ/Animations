@@ -1,7 +1,6 @@
 package cs3500.animator.view;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -16,7 +15,6 @@ public class HybridView implements IInteractiveView {
   private JTextField svgFileName;
   private JPanel buttonPanel;
   private JListShape shapeList;
-  private JScrollPane scrollingShapes;
   // looping is set to be false initially
   private boolean looping = false;
   private String outputDest;
@@ -40,6 +38,10 @@ public class HybridView implements IInteractiveView {
   @Override
   public void stopTimer() {
     visualView.stopTimer();
+  }
+
+  public void setButtonListeners(ActionListener listener) {
+    visualView.setButtonListeners(listener);
   }
 
   @Override
@@ -67,13 +69,7 @@ public class HybridView implements IInteractiveView {
   @Override
   public void setLooping() {
     // toggle between turning looping on and off
-    if (looping) {
-      looping = false;
-    }
-    else {
-      looping = true;
-    }
-    // looping = !looping;
+    looping = !looping;
   }
 
   // starting animation from beginning with selected shapes?
