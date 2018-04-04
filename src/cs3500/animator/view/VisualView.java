@@ -3,6 +3,7 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -15,14 +16,13 @@ import cs3500.animator.model.Shapes;
 
 public class VisualView extends JFrame implements IInteractiveView {
   protected boolean looping;
-  protected ArrayList<Shapes> shapesList;
   protected int lastTick;
   protected int ticksPerSec;
   private JScrollPane pane;
   private AnimationPanel aniPanel;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
-  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
+  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected, resume;
   private JTextField svgFileName;
   private JPanel buttonPanel;
   private JListShape shapeList;
@@ -30,6 +30,7 @@ public class VisualView extends JFrame implements IInteractiveView {
   private int initTPS;
   // looping is set to be false initially
   private String svgButtonText = "Type file name here:";
+  private JLabel info;
 
   /**
    * The Constructor for the visual view.
@@ -72,6 +73,10 @@ public class VisualView extends JFrame implements IInteractiveView {
     buttonPanel.add(stop);
     //stop.addActionListener((ActionEvent e) -> stopTimer());
 
+    resume = new JButton("Resume");
+    resume.setActionCommand("Resume");
+    buttonPanel.add(resume);
+
     start = new JButton("Start");
     start.setActionCommand("Start");
     buttonPanel.add(start);
@@ -111,6 +116,10 @@ public class VisualView extends JFrame implements IInteractiveView {
     scrollingShapes.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
     this.add(scrollingShapes, BorderLayout.EAST);
+
+    // info about state of animation
+    info = new JLabel();
+    this.add(info, BorderLayout.NORTH);
     this.pack();
   }
 
@@ -145,6 +154,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     loop.addActionListener(listener);
     svgExport.addActionListener(listener);
     runSelected.addActionListener(listener);
+    resume.addActionListener(listener);
   }
 
   @Override
@@ -156,27 +166,34 @@ public class VisualView extends JFrame implements IInteractiveView {
   @Override
   public void stopTimer() {
     aniPanel.stopTimer();
+    info.setText("Animation paused.");
   }
 
   public void runSelected() {
-    if (looping) {
-      // On the next iteration of the looped animation
-      // it will run with the selected shapes.
-      selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
-    }
-    // otherwise do nothing
+    // On the next iteration of the looped animation
+    // it will run with the selected shapes.
+    selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
+    aniPanel.setShapesList(selectedShapes);
+    info.setText("Running with selected shapes.");
 
   }
 
   @Override
   public void increaseSpeed() {
     aniPanel.increaseSpeed();
+    info.setText("Animation speed increased.");
 
   }
 
   @Override
   public void decreaseSpeed() {
     aniPanel.decreaseSpeed();
+    info.setText("Animation speed decreased.");
+
+  }
+
+  protected void setInfoText(String text) {
+    info.setText(text);
   }
 
   // Start the animation with the initial shapes.
@@ -191,6 +208,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     aniPanel.setTickToZero();
     aniPanel.startTimer();
     this.makeVisible();
+    info.setText("Animation started! woohoo!");
 
     // visualView = new VisualView(allShapes, endTime, tps, looping);
     //    visualView.shapesList = allShapes;
@@ -206,9 +224,14 @@ public class VisualView extends JFrame implements IInteractiveView {
     // aniPanel.setLooping(!looping);
     if (looping) {
       looping = !looping;
-    }
-    else {
+      aniPanel.setLooping(looping);
+      info.setText("Animation is not looping.");
+
+    } else {
       looping = true;
+      aniPanel.setLooping(looping);
+      info.setText("Animation is looping.");
+
     }
   }
 
@@ -216,10 +239,36 @@ public class VisualView extends JFrame implements IInteractiveView {
   @Override
   public void restart() {
     aniPanel.setTickToZero();
+    info.setText("Animation restarted.");
+
+  }
+
+  @Override
+  public void resume() {
+    aniPanel.startTimer();
+    info.setText("Animation resumed.");
   }
 
   public int getSpeed() {
     return aniPanel.getSpeed();
+  }
+
+  public ArrayList<Shapes> getSelectedShapes() {
+    if (shapeList.getSelected() == null) {
+      return allShapes;
+    }
+    else {
+      return (ArrayList<Shapes>) shapeList.getSelected();
+    }
+  }
+
+  public void setSelectedShapes(ArrayList<Shapes> selectedShapes) {
+    this.selectedShapes = selectedShapes;
+    aniPanel.setShapesList(selectedShapes);
+  }
+
+  public String getFileName() {
+    return svgFileName.getText();
   }
 }
 

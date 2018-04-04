@@ -27,6 +27,33 @@ public class JListShape extends JPanel {
     // puts shape in the model in the list
     shapesInAnimation = new JList<>(loadedShapes);
 
+    // deselecting shapes
+    shapesInAnimation.setSelectionModel(new DefaultListSelectionModel() {
+      private static final long serialVersionUID = 1L;
+
+      boolean gestureStarted = false;
+
+      @Override
+      public void setSelectionInterval(int index0, int index1) {
+        if(!gestureStarted){
+          if (isSelectedIndex(index0)) {
+            super.removeSelectionInterval(index0, index1);
+          } else {
+            super.addSelectionInterval(index0, index1);
+          }
+        }
+        gestureStarted = true;
+      }
+
+      @Override
+      public void setValueIsAdjusting(boolean isAdjusting) {
+        if (!isAdjusting) {
+          gestureStarted = false;
+        }
+      }
+
+    });
+
     // shapes in list wait to be selected to be added to the running list
     shapesInAnimation.addListSelectionListener((ListSelectionEvent e) -> {
       if (!e.getValueIsAdjusting()) {
@@ -39,7 +66,7 @@ public class JListShape extends JPanel {
 
     //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     //this.setTitle("List of shapes");
-    this.setSize(200, 500);
+    //this.setSize(200, 500);
     //this.setLocationRelativeTo(null);
     this.setVisible(true);
   }
@@ -48,15 +75,6 @@ public class JListShape extends JPanel {
 
   public List<Shapes> getSelected() {
     return selectedValuesList;
-  }
-
-
-  /**
-   * call the visual view to run the shapes
-   * set up a button to run those shapes
-   */
-  private void runSelected() {
-
   }
 
 

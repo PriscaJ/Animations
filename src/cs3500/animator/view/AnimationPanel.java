@@ -33,6 +33,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model by using same fields passed into it
     this.shapesList = shapesList;
+    System.out.print("Shapes list initialized");
     this.lastTick = lastTick;
     this.setBackground(Color.WHITE);
     this.setPreferredSize(new Dimension(800, 800));
@@ -44,6 +45,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   protected void setShapesList(ArrayList<Shapes> shapes) {
     this.shapesList = shapes;
+    t.start();
+    System.out.print("Shapes list set");
+
   }
 
   @Override
@@ -58,8 +62,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
       Color c = new Color(r, gg, b);
       g2d.setColor(c);
       if (shape.isOval()) {
-        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() /2,
-            shape.getYPosition().intValue() - shape.getHeight().intValue() /2 ,
+        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+            shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
             shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
 
       } else if (shape.isRect()) {
@@ -84,12 +88,12 @@ public class AnimationPanel extends JPanel implements ActionListener {
   }
 
   protected void increaseSpeed() {
-    t = new Timer(t.getDelay() + 10, this);
+    t = new Timer(t.getDelay() + 15, this);
   }
 
   protected void decreaseSpeed() {
     if (t.getDelay() > 10) {
-      t = new Timer(t.getDelay() - 10, this);
+      t = new Timer(t.getDelay() - 15, this);
     }
   }
 
@@ -131,6 +135,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void setLooping(boolean looping) {
     this.looping = looping;
   }
+
   /**
    * Returns the list of Shapes that are currently running at a particular tick.
    *
@@ -146,7 +151,5 @@ public class AnimationPanel extends JPanel implements ActionListener {
     }
     return currentShapes;
   }
-
-
 
 }

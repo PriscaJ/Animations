@@ -25,6 +25,8 @@ public interface IInteractiveView extends IView {
    */
   void start();
 
+  void resume();
+
   /**
    * Toggles between turning looping on and off.
    */

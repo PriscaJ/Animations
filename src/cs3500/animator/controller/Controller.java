@@ -67,6 +67,8 @@ public class Controller implements ActionListener {
         case "Restart":
           v.restart();
           break;
+        case "Resume":
+          v.resume();
         case "Looping":
           v.setLooping();
           break;
