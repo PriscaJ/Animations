@@ -203,9 +203,13 @@ public class VisualView extends JFrame implements IInteractiveView {
   @Override
   public void setLooping() {
     // toggle between turning looping on and off
-    aniPanel.setLooping(!looping);
-    looping = !looping;
-    // looping = !looping;
+    // aniPanel.setLooping(!looping);
+    if (looping) {
+      looping = !looping;
+    }
+    else {
+      looping = true;
+    }
   }
 
   // starting animation from beginning with selected shapes?
@@ -213,7 +217,7 @@ public class VisualView extends JFrame implements IInteractiveView {
   public void restart() {
     aniPanel.setTickToZero();
   }
-  
+
   public int getSpeed() {
     return aniPanel.getSpeed();
   }

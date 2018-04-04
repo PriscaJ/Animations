@@ -69,7 +69,7 @@ public class HybridView implements IInteractiveView {
   @Override
   public void setLooping() {
     // toggle between turning looping on and off
-    looping = !looping;
+    visualView.setLooping();
   }
 
   // starting animation from beginning with selected shapes?
