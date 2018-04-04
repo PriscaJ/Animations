@@ -24,6 +24,8 @@ public class HybridView extends JFrame implements IHybridView {
   private String outputDest;
   private int tps;
 
+  private JScrollPane pane;
+
 
   public HybridView(ArrayList<Shapes> shapes, int endTime, String outputDest, int tps) {
     super();
@@ -68,6 +70,7 @@ public class HybridView extends JFrame implements IHybridView {
     buttonPanel.add(stop);
 
     start = new JButton("Start");
+
     start.addActionListener((ActionEvent e) -> start());
     buttonPanel.add(start);
 
@@ -109,10 +112,13 @@ public class HybridView extends JFrame implements IHybridView {
     // the list of shapes
     shapeList = new JListShape(shapes);
 
+
     // pane that will display all the shapes
     scrollingShapes = new JScrollPane(shapeList);
-    this.add(scrollingShapes, BorderLayout.EAST);
+    scrollingShapes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    scrollingShapes.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+    this.add(scrollingShapes, BorderLayout.EAST);
     this.pack();
   }
 
@@ -142,8 +148,9 @@ public class HybridView extends JFrame implements IHybridView {
   @Override
   public void start() {
     // creating a new instance outside of panel when declared new
-    visualView = new VisualView(allShapes, endTime, tps, looping);
-    visualView.makeVisible();
+
+    this.setVisible(true);
+
   }
 
   @Override
@@ -181,6 +188,8 @@ public class HybridView extends JFrame implements IHybridView {
     svgView.setEndTime(endTime);
     svgView.makeVisible();
   }
+
+
 
   @Override
   public void runSelected() {

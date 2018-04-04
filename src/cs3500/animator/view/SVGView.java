@@ -41,7 +41,7 @@ public class SVGView implements IView {
   public SVGView(List<Shapes> shapes, String outputDest, int tps, boolean looping) {
     this.allShapes = shapes;
     this.fileName = outputDest;
-    this.ticksPerSec = tps * 1000;
+    this.ticksPerSec = tps;
     this.looping = looping;
     int max = 0;
     for (Shapes shape : shapes) {

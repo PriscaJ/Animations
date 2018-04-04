@@ -41,6 +41,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
     t.start();
   }
 
+  protected void setShapesList(ArrayList<Shapes> shapes) {
+    this.shapesList = shapes;
+  }
+
   @Override
   protected void paintComponent(Graphics g) {
 
