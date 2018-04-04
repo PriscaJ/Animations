@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import cs3500.animator.model.Shapes;
 
-public class HybridView implements IHybridView {
+public class HybridView implements IInteractiveView {
   private VisualView visualView;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;

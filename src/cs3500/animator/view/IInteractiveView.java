@@ -4,7 +4,7 @@ package cs3500.animator.view;
  * Represents the behaviors of a hybrid view. A Hybrid has some functionality that it takes from the
  * visual view, but also additional functionality that it provides in a button panel.
  */
-public interface IHybridView extends IView {
+public interface IInteractiveView extends IView {
   /**
    * Stops the timer which in turn stops the animation.
    */

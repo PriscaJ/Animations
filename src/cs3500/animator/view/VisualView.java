@@ -14,7 +14,7 @@ import cs3500.animator.model.Shapes;
  * display a given animation.
  */
 
-public class VisualView extends JFrame implements IHybridView {
+public class VisualView extends JFrame implements IInteractiveView {
   protected boolean looping;
   protected ArrayList<Shapes> shapesList;
   protected int lastTick;
@@ -225,6 +225,11 @@ public class VisualView extends JFrame implements IHybridView {
   @Override
   public void restart() {
     aniPanel.setTickToZero();
+  }
+
+  @Override
+  public void exportSVG() {
+
   }
 
 

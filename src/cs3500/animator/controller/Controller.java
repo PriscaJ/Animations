@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IHybridView;
+import cs3500.animator.view.IInteractiveView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.VisualView;
 
@@ -48,8 +49,8 @@ public class Controller implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     String buttonPressed = e.getActionCommand();
 
-    if (view instanceof IHybridView) {
-      IHybridView v = (IHybridView) view;
+    if (view instanceof IInteractiveView) {
+      IInteractiveView v = (IInteractiveView) view;
 
       switch (buttonPressed) {
         case "Increase Speed":
