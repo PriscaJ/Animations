@@ -15,7 +15,10 @@ import cs3500.animator.model.Shapes;
 public class VisualView extends JFrame implements IView {
   private JScrollPane pane;
   private AnimationPanel aniPanel;
-  private boolean looping;
+  protected boolean looping;
+  protected ArrayList<Shapes> shapesList;
+  protected int lastTick;
+  protected int ticksPerSec;
 
   /**
    * The Constructor for the visual view.
@@ -30,9 +33,9 @@ public class VisualView extends JFrame implements IView {
     this.looping = false;
   }
 
-  public VisualView(ArrayList<Shapes> shapes, int endTime, int tps, boolean looping) {
+  public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec, boolean looping) {
     initView();
-    initAnimationPanel(shapes, endTime, tps);
+    initAnimationPanel(shapesList, lastTick, ticksPerSec);
     this.looping = looping;
   }
 
@@ -63,5 +66,6 @@ public class VisualView extends JFrame implements IView {
     this.setVisible(true);
     System.out.println("VisualView made visible!");
   }
+
 }
 

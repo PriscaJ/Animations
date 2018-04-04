@@ -36,7 +36,10 @@ public class JListShape extends JPanel {
     add(shapesInAnimation);
     add(new JScrollPane(shapesInAnimation));
 
-    this.setSize(200, 200);
+    //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    //this.setTitle("List of shapes");
+    this.setSize(200, 500);
+    //this.setLocationRelativeTo(null);
     this.setVisible(true);
   }
 
