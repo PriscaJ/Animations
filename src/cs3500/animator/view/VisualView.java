@@ -1,7 +1,6 @@
 package cs3500.animator.view;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ import cs3500.animator.model.Shapes;
  * display a given animation.
  */
 
-public class VisualView extends JFrame implements IHybridView {
+public class VisualView extends JFrame implements IInteractiveView {
   protected boolean looping;
   protected ArrayList<Shapes> shapesList;
   protected int lastTick;
@@ -23,14 +22,12 @@ public class VisualView extends JFrame implements IHybridView {
   private AnimationPanel aniPanel;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
-  private int endTime;
   private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
   private JTextField svgFileName;
   private JPanel buttonPanel;
   private JListShape shapeList;
   private JScrollPane scrollingShapes;
   // looping is set to be false initially
-  private String outputDest;
   private String svgButtonText = "Type file name here:";
 
   /**
@@ -44,6 +41,9 @@ public class VisualView extends JFrame implements IHybridView {
     initView();
     initAnimationPanel(shapesList, lastTick, ticksPerSec);
     this.looping = false;
+    this.lastTick = lastTick;
+    this.ticksPerSec = ticksPerSec;
+    this.allShapes = shapesList;
 
     //button panel
     buttonPanel = new JPanel();
@@ -78,14 +78,6 @@ public class VisualView extends JFrame implements IHybridView {
     restart = new JButton("Restart");
     restart.setActionCommand("Restart");
     buttonPanel.add(restart);
-    // restart.addActionListener((ActionEvent e) -> restart());
-    // looping
-    //    String loopCondition;
-    //    if (looping) {
-    //      loopCondition = "Turn off looping";
-    //    } else {
-    //      loopCondition = "Turn on looping";
-    //    }
     loop = new JButton("Looping");
     loop.setActionCommand("Looping");
     //    loop.addActionListener((ActionEvent e) -> {
@@ -100,15 +92,11 @@ public class VisualView extends JFrame implements IHybridView {
     // - jbutton to export
     svgExport = new JButton("Export SVG");
     svgExport.setActionCommand("Export SVG");
-    //    svgExport.addActionListener((ActionEvent e) -> {
-    //      exportSVG();
-    //    });
     buttonPanel.add(svgExport);
 
     // run selected
     runSelected = new JButton("Run Selected Shapes");
     runSelected.setActionCommand("Run Selected Shapes");
-    //runSelected.addActionListener((ActionEvent e) -> runSelected());
     buttonPanel.add(runSelected);
 
     // the list of shapes
@@ -195,7 +183,7 @@ public class VisualView extends JFrame implements IHybridView {
     System.out.print("start plz");
     // creating a new instance outside of panel when declared new
     aniPanel.setShapesList(allShapes);
-    aniPanel.setEndTime(endTime);
+    aniPanel.setEndTime(lastTick);
     aniPanel.setTPS(ticksPerSec);
     aniPanel.setLooping(looping);
     aniPanel.setTickToZero();
@@ -212,12 +200,7 @@ public class VisualView extends JFrame implements IHybridView {
   @Override
   public void setLooping() {
     // toggle between turning looping on and off
-    if (looping) {
-      looping = false;
-    }
-    else {
-      looping = true;
-    }
+    looping = !looping;
     // looping = !looping;
   }
 
@@ -225,6 +208,11 @@ public class VisualView extends JFrame implements IHybridView {
   @Override
   public void restart() {
     aniPanel.setTickToZero();
+  }
+
+  @Override
+  public void exportSVG() {
+    // do nothing
   }
 
 
