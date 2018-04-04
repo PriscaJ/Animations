@@ -11,7 +11,7 @@ import cs3500.animator.view.IView;
  * Class that represents the controller which handles the communication between the model and the
  * the view. Runs the view based on the information of the model.
  */
-public class Controller{
+public class Controller implements ActionListener{
 
   private AnimationOperations model;
   private IView view;
@@ -34,4 +34,24 @@ public class Controller{
     view.makeVisible();
   }
 
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    switch (e.getActionCommand()) {
+      //read from the input textfield
+      case "Echo Button":
+        String text = view.getInputString();
+        //send text to the model
+        model.setString(text);
+
+        //clear input textfield
+        view.clearInputString();
+        //finally echo the string in view
+        text = model.getString();
+        view.setEchoOutput(text);
+
+        //set focus back to main frame so that keyboard events work
+        view.resetFocus();
+
+        break;
+  }
 }

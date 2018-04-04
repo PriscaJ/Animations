@@ -19,12 +19,13 @@ public class JListShape extends JPanel {
     DefaultListModel<Shapes> loadedShapes = new DefaultListModel<>();
 
     // makes the model
+    // todo: add shape name instead of shape, select shape by name in view
     for (Shapes shape : shapeList) {
       loadedShapes.addElement(shape);
     }
 
     // puts shape in the model in the list
-    shapesInAnimation = new JList<Shapes>(loadedShapes);
+    shapesInAnimation = new JList<>(loadedShapes);
 
     // shapes in list wait to be selected to be added to the running list
     shapesInAnimation.addListSelectionListener((ListSelectionEvent e) -> {

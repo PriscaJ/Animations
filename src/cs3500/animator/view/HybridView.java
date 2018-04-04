@@ -23,6 +23,7 @@ public class HybridView extends JFrame implements IHybridView {
   private boolean looping = false;
   private String outputDest;
   private int tps;
+  private String svgButtonText = "Type file name here:";
 
   private JScrollPane pane;
 
@@ -56,6 +57,7 @@ public class HybridView extends JFrame implements IHybridView {
 
     // speed
     incSpeed = new JButton("Increase Speed");
+
     incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
     buttonPanel.add(incSpeed);
 
@@ -93,10 +95,10 @@ public class HybridView extends JFrame implements IHybridView {
 
     // svg export
     // - text box for output file name
-    svgFileName = new JTextField("File output name:");
+    svgFileName = new JTextField(svgButtonText);
     buttonPanel.add(svgFileName);
     // - jbutton to export
-    svgExport = new JButton("Export in SVG");
+    svgExport = new JButton("Export SVG");
     svgExport.addActionListener((ActionEvent e) -> {
       exportSVG();
     });
@@ -131,7 +133,7 @@ public class HybridView extends JFrame implements IHybridView {
 
   @Override
   public void makeVisible() {
-    this.start();
+    this.setVisible(true);
   }
 
   @Override
@@ -148,14 +150,21 @@ public class HybridView extends JFrame implements IHybridView {
   // Start the animation with the initial shapes.
   @Override
   public void start() {
+    System.out.print("start plz");
     // creating a new instance outside of panel when declared new
+    interactivePanel.setShapesList(allShapes);
+    interactivePanel.setEndTime(endTime);
+    interactivePanel.setTPS(tps);
+    interactivePanel.setLooping(looping);
+    interactivePanel.setTickToZero();
+    interactivePanel.startTimer();
 
     // visualView = new VisualView(allShapes, endTime, tps, looping);
-    visualView.shapesList = allShapes;
-    visualView.lastTick = endTime;
-    visualView.ticksPerSec = tps;
-    visualView.looping = looping;
-    visualView.makeVisible();
+//    visualView.shapesList = allShapes;
+//    visualView.lastTick = endTime;
+//    visualView.ticksPerSec = tps;
+//    visualView.looping = looping;
+//    visualView.makeVisible();
   }
 
   @Override
@@ -181,9 +190,14 @@ public class HybridView extends JFrame implements IHybridView {
   @Override
   public void exportSVG() {
     SVGView svgView;
-    String fileName = svgFileName.getText();
-    if (fileName != null) {
-      outputDest = fileName;
+    if (shapeList.getSelected() != null) {
+      selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
+    }
+    if (!(svgFileName.getText().equals(svgButtonText) || svgFileName.getText().equals(""))) {
+      outputDest = svgFileName.getText();
+    }
+    else {
+      outputDest = "out";
     }
     if (looping) {
       svgView = new SVGView(selectedShapes, outputDest, interactivePanel.getSpeed(), true);
@@ -193,8 +207,6 @@ public class HybridView extends JFrame implements IHybridView {
     svgView.setEndTime(endTime);
     svgView.makeVisible();
   }
-
-
 
   @Override
   public void runSelected() {

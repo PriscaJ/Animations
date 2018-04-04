@@ -21,6 +21,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private Timer t;
   private ArrayList<Shapes> shapesList;
   private int lastTick;
+  private boolean looping = false;
 
   /**
    * The constructor for the Animation Panel
@@ -47,7 +48,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   @Override
   protected void paintComponent(Graphics g) {
-
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
 
@@ -70,7 +70,67 @@ public class AnimationPanel extends JPanel implements ActionListener {
       }
     }
   }
+  protected void startTimer() {
+    t.start();
+  }
 
+
+  protected void stopTimer() {
+    t.stop();
+  }
+
+  protected void setTickToZero() {
+    this.tick = 0;
+  }
+
+  protected void increaseSpeed() {
+    t = new Timer(t.getDelay() + 10, this);
+  }
+
+  protected void decreaseSpeed() {
+    if (t.getDelay() > 10) {
+      t = new Timer(t.getDelay() - 10, this);
+    }
+  }
+
+  protected int getSpeed() {
+    return t.getDelay();
+  }
+
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    // when the model's last animation stops, stop the timer
+    if (tick >= lastTick) {
+      if (looping) {
+        tick = 0;
+      } else {
+        t.stop();
+      }
+    }
+    // for every shape call its command to execute the action.
+    for (Shapes s : activeShapes(tick)) {
+      for (AnimationCommand cmd : s.getCommands()) {
+        if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
+          cmd.execute(tick);
+        }
+      }
+    }
+    tick++;
+    repaint();
+  }
+
+  protected void setEndTime(int endTime) {
+    this.lastTick = endTime;
+  }
+
+  protected void setTPS(int TPS) {
+    t = new Timer(TPS, this);
+  }
+
+  protected void setLooping(boolean looping) {
+    this.looping = looping;
+  }
   /**
    * Returns the list of Shapes that are currently running at a particular tick.
    *
@@ -87,21 +147,4 @@ public class AnimationPanel extends JPanel implements ActionListener {
     return currentShapes;
   }
 
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    // when the model's last animation stops, stop the timer
-    if (tick >= lastTick) {
-      t.stop();
-    }
-    // for every shape call its command to execute the action.
-    for (Shapes s : activeShapes(tick)) {
-      for (AnimationCommand cmd : s.getCommands()) {
-        if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
-          cmd.execute(tick);
-        }
-      }
-    }
-    tick++;
-    repaint();
-  }
 }

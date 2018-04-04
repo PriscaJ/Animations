@@ -2,6 +2,7 @@ package cs3500.animator.view;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import javax.swing.*;
 import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.Shapes;
 
-public class InteractivePanel extends AnimationPanel {
+public class InteractivePanel extends AnimationPanel implements ActionListener{
   private int tick;
   private Timer t;
   private ArrayList<Shapes> shapesList;
@@ -40,6 +41,10 @@ public class InteractivePanel extends AnimationPanel {
   //public AnimationPanel(ArrayList<Shapes> shapesList,
   // int lastTick, int ticksPerSec, boolean looping) {
   // looping = looping;
+  protected void startTimer() {
+    t.start();
+  }
+
 
   protected void stopTimer() {
     t.stop();
@@ -86,5 +91,15 @@ public class InteractivePanel extends AnimationPanel {
     repaint();
   }
 
+  protected void setEndTime(int endTime) {
+    this.lastTick = endTime;
+  }
 
+  protected void setTPS(int TPS) {
+    t = new Timer(TPS, this);
+  }
+
+  protected void setLooping(boolean looping) {
+    this.looping = looping;
+  }
 }
