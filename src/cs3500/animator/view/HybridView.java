@@ -78,9 +78,12 @@ public class HybridView implements IInteractiveView {
     visualView.restart();
   }
 
+
+  /**
+   * Turn the current animation into an SVG.
+   */
   // in interface
   // ON BUTTON CLICK, THE OUTPUT DEST SHOULD BE UPDATED BY WHAT THE USER SPECIFIES
-  @Override
   public void exportSVG() {
     SVGView svgView;
     if (shapeList.getSelected() != null) {
