@@ -13,7 +13,6 @@ public class HybridView implements IHybridView {
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
   private int endTime;
-  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
   private JTextField svgFileName;
   private JPanel buttonPanel;
   private JListShape shapeList;
@@ -29,6 +28,7 @@ public class HybridView implements IHybridView {
 
   public HybridView(ArrayList<Shapes> shapes, int endTime, String outputDest, int tps) {
     super();
+    this.visualView = new VisualView(shapes, endTime, tps);
     this.allShapes = shapes;
     this.selectedShapes = shapes;
     this.endTime = endTime;
@@ -97,9 +97,9 @@ public class HybridView implements IHybridView {
       outputDest = "out";
     }
     if (looping) {
-      svgView = new SVGView(selectedShapes, outputDest, interactivePanel.getSpeed(), true);
+      svgView = new SVGView(selectedShapes, outputDest, visualView.getSpeed(), true);
     } else {
-      svgView = new SVGView(selectedShapes, outputDest, interactivePanel.getSpeed(), false);
+      svgView = new SVGView(selectedShapes, outputDest, visualView.getSpeed(), false);
     }
     svgView.setEndTime(endTime);
     svgView.makeVisible();

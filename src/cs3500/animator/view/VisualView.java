@@ -124,12 +124,6 @@ public class VisualView extends JFrame implements IHybridView {
     this.pack();
   }
 
-  public VisualView(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec, boolean looping) {
-    initView();
-    initAnimationPanel(shapesList, lastTick, ticksPerSec);
-    this.looping = looping;
-  }
-
   private void initView() {
     this.setTitle("Easy Animator!");
     this.setSize(800, 800);
@@ -234,5 +228,8 @@ public class VisualView extends JFrame implements IHybridView {
   }
 
 
+  public int getSpeed() {
+    return aniPanel.getSpeed();
+  }
 }
 
