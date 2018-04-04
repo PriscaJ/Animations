@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 
 import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.view.HybridView;
+import cs3500.animator.view.IHybridView;
 import cs3500.animator.view.IView;
+import cs3500.animator.view.VisualView;
 
 /**
  * Class that represents the controller which handles the communication between the model and the
@@ -31,6 +33,14 @@ public class Controller implements ActionListener{
    * Runs the view by making it visible to the user.
    */
   public void run() {
+    if (view instanceof HybridView) {
+      HybridView hybridView = (HybridView) view;
+      hybridView.setButtonListeners(this);
+    }
+    if (view instanceof VisualView) {
+      VisualView visualView = (VisualView) view;
+      visualView.setButtonListeners(this);
+    }
     view.makeVisible();
   }
 

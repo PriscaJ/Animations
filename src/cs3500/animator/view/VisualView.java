@@ -14,14 +14,13 @@ import cs3500.animator.model.Shapes;
  * display a given animation.
  */
 
-public class VisualView extends JFrame implements IView {
+public class VisualView extends JFrame implements IHybridView {
   protected boolean looping;
   protected ArrayList<Shapes> shapesList;
   protected int lastTick;
   protected int ticksPerSec;
   private JScrollPane pane;
   private AnimationPanel aniPanel;
-  private VisualView visualView;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
   private int endTime;
@@ -155,13 +154,24 @@ public class VisualView extends JFrame implements IView {
 
   public void setButtonListeners(ActionListener listener) {
     incSpeed.addActionListener(listener);
-    decSpeed, stop, start, restart, loop, svgExport, runSelected
+    decSpeed.addActionListener(listener);
+    stop.addActionListener(listener);
+    start.addActionListener(listener);
+    restart.addActionListener(listener);
+    loop.addActionListener(listener);
+    svgExport.addActionListener(listener);
+    runSelected.addActionListener(listener);
   }
 
   @Override
   public void makeVisible() {
     this.setVisible(true);
     System.out.println("VisualView made visible!");
+  }
+
+  @Override
+  public void stopTimer() {
+    aniPanel.stopTimer();
   }
 
   public void runSelected() {
@@ -173,6 +183,56 @@ public class VisualView extends JFrame implements IView {
     // otherwise do nothing
 
   }
+
+  @Override
+  public void increaseSpeed() {
+    aniPanel.increaseSpeed();
+
+  }
+
+  @Override
+  public void decreaseSpeed() {
+    aniPanel.decreaseSpeed();
+  }
+
+  // Start the animation with the initial shapes.
+  @Override
+  public void start() {
+    System.out.print("start plz");
+    // creating a new instance outside of panel when declared new
+    aniPanel.setShapesList(allShapes);
+    aniPanel.setEndTime(endTime);
+    aniPanel.setTPS(ticksPerSec);
+    aniPanel.setLooping(looping);
+    aniPanel.setTickToZero();
+    aniPanel.startTimer();
+
+    // visualView = new VisualView(allShapes, endTime, tps, looping);
+    //    visualView.shapesList = allShapes;
+    //    visualView.lastTick = endTime;
+    //    visualView.ticksPerSec = tps;
+    //    visualView.looping = looping;
+    //    visualView.makeVisible();
+  }
+
+  @Override
+  public void setLooping() {
+    // toggle between turning looping on and off
+    if (looping) {
+      looping = false;
+    }
+    else {
+      looping = true;
+    }
+    // looping = !looping;
+  }
+
+  // starting animation from beginning with selected shapes?
+  @Override
+  public void restart() {
+    aniPanel.setTickToZero();
+  }
+
 
 }
 
