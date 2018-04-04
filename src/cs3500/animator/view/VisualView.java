@@ -2,6 +2,7 @@ package cs3500.animator.view;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -14,13 +15,12 @@ import cs3500.animator.model.Shapes;
  */
 
 public class VisualView extends JFrame implements IView {
-  private JScrollPane pane;
-  private AnimationPanel aniPanel;
   protected boolean looping;
   protected ArrayList<Shapes> shapesList;
   protected int lastTick;
   protected int ticksPerSec;
-
+  private JScrollPane pane;
+  private AnimationPanel aniPanel;
   private VisualView visualView;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
@@ -46,8 +46,6 @@ public class VisualView extends JFrame implements IView {
     initAnimationPanel(shapesList, lastTick, ticksPerSec);
     this.looping = false;
 
-
-
     //button panel
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
@@ -61,7 +59,6 @@ public class VisualView extends JFrame implements IView {
     incSpeed.setActionCommand("Increase Speed");
     buttonPanel.add(incSpeed);
     //incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
-
 
     decSpeed = new JButton("Decrease Speed");
     decSpeed.setActionCommand("Decrease speed");
@@ -84,17 +81,17 @@ public class VisualView extends JFrame implements IView {
     buttonPanel.add(restart);
     // restart.addActionListener((ActionEvent e) -> restart());
     // looping
-//    String loopCondition;
-//    if (looping) {
-//      loopCondition = "Turn off looping";
-//    } else {
-//      loopCondition = "Turn on looping";
-//    }
+    //    String loopCondition;
+    //    if (looping) {
+    //      loopCondition = "Turn off looping";
+    //    } else {
+    //      loopCondition = "Turn on looping";
+    //    }
     loop = new JButton("Looping");
     loop.setActionCommand("Looping");
-//    loop.addActionListener((ActionEvent e) -> {
-//      setLooping();
-//    });
+    //    loop.addActionListener((ActionEvent e) -> {
+    //      setLooping();
+    //    });
     buttonPanel.add(loop);
 
     // svg export
@@ -103,19 +100,20 @@ public class VisualView extends JFrame implements IView {
     buttonPanel.add(svgFileName);
     // - jbutton to export
     svgExport = new JButton("Export SVG");
-    svgExport.addActionListener((ActionEvent e) -> {
-      exportSVG();
-    });
+    svgExport.setActionCommand("Export SVG");
+    //    svgExport.addActionListener((ActionEvent e) -> {
+    //      exportSVG();
+    //    });
     buttonPanel.add(svgExport);
 
     // run selected
     runSelected = new JButton("Run Selected Shapes");
-    runSelected.addActionListener((ActionEvent e) -> runSelected());
+    runSelected.setActionCommand("Run Selected Shapes");
+    //runSelected.addActionListener((ActionEvent e) -> runSelected());
     buttonPanel.add(runSelected);
 
     // the list of shapes
     shapeList = new JListShape(shapesList);
-
 
     // pane that will display all the shapes
     //scrollingShapes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -153,6 +151,11 @@ public class VisualView extends JFrame implements IView {
     pane.setSize(800, 800);
     this.add(this.pane);
     this.pack();
+  }
+
+  public void setButtonListeners(ActionListener listener) {
+    incSpeed.addActionListener(listener);
+    decSpeed, stop, start, restart, loop, svgExport, runSelected
   }
 
   @Override

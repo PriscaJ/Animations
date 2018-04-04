@@ -7,112 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13642b6b-d525-4c76-b3ae-e2208a212a24" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.Animations.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.Archive.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.submission.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.submission1.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.submission4.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/AllFiles.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/AllFiles/all.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/b.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/big-bang-big-crunch.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/buildings.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/simple-example.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/smalldemo.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/text-transcript.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/toh-12.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/toh-3.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/JIC/toh-8.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/ " afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/Animations.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/buildings.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/buildingssvg.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/hellohello" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/helloplzwork" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/hi.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/hihihi.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/hoho.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/.submission2.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/.submission2.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/HybridView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/HybridView.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/InteractivePanel.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/Animations.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/b.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/big-bang-big-crunch.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/simple-example-with-loopback.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/simple-example.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/smalldemo.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/text-transcript.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/toh-12.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/toh-3.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/toh-8.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/resources/toh-at-20.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/.cs3500.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/EasyAnimator.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/META-INF/MANIFEST.MF" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/.animator.zip.icloud" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/README" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/controller/Controller.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/AbstractAnimation.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/AbstractShape.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/AnimationCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/AnimationModel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/AnimationOperations.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/AnimationType.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/Animations.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/ColorChange.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/ColorCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/Move.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/MoveCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/Oval.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/Rectangle.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/ScaleChange.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/ScaleCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/model/Shapes.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/util/AnimationFileReader.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/util/Animations.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/util/TweenModelBuilder.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/view/AnimationPanel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/view/IView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/view/SVGView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/view/TextualView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator 2/view/VisualView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/README" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/controller/Controller.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/AbstractAnimation.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/AbstractShape.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/AnimationCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/AnimationModel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/AnimationOperations.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/AnimationType.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/Animations.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/ColorChange.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/ColorCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/Move.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/MoveCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/Oval.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/Rectangle.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/ScaleChange.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/ScaleCommand.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/model/Shapes.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/util/AnimationFileReader.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/util/Animations.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/util/TweenModelBuilder.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/view/AnimationPanel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/view/IView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/view/SVGView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/view/TextualView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/src/cs3500/animator/view/VisualView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/test/cs3500/animator/model/AnimationModelTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/test/cs3500/animator/view/SVGTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission1/test/cs3500/animator/view/TextualViewTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission2.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/submission3.zip" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -127,8 +22,8 @@
       <file leaf-file-name="VisualView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="96" column="9" lean-forward="true" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+            <state relative-caret-position="371">
+              <caret line="157" column="64" lean-forward="false" selection-start-line="157" selection-start-column="64" selection-end-line="157" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -498,12 +393,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522824860075</updated>
-      <workItem from="1522824861463" duration="7578000" />
+      <workItem from="1522824861463" duration="7802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7578000" />
+    <option name="totallyTimeSpent" value="7802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -655,8 +550,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="96" column="9" lean-forward="true" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+        <state relative-caret-position="371">
+          <caret line="157" column="64" lean-forward="false" selection-start-line="157" selection-start-column="64" selection-end-line="157" selection-end-column="64" />
           <folding />
         </state>
       </provider>
