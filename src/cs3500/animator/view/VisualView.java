@@ -3,6 +3,7 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -15,14 +16,13 @@ import cs3500.animator.model.Shapes;
 
 public class VisualView extends JFrame implements IInteractiveView {
   protected boolean looping;
-  protected ArrayList<Shapes> shapesList;
   protected int lastTick;
-  protected int ticksPerSec;
+  private int ticksPerSec;
   private JScrollPane pane;
   private AnimationPanel aniPanel;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
-  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected;
+  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected, resume;
   private JTextField svgFileName;
   private JPanel buttonPanel;
   private JListShape shapeList;
@@ -30,6 +30,7 @@ public class VisualView extends JFrame implements IInteractiveView {
   private int initTPS;
   // looping is set to be false initially
   private String svgButtonText = "Type file name here:";
+  private JLabel info;
 
   /**
    * The Constructor for the visual view.
@@ -72,6 +73,10 @@ public class VisualView extends JFrame implements IInteractiveView {
     buttonPanel.add(stop);
     //stop.addActionListener((ActionEvent e) -> stopTimer());
 
+    resume = new JButton("Resume");
+    resume.setActionCommand("Resume");
+    buttonPanel.add(resume);
+
     start = new JButton("Start");
     start.setActionCommand("Start");
     buttonPanel.add(start);
@@ -111,9 +116,16 @@ public class VisualView extends JFrame implements IInteractiveView {
     scrollingShapes.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
     this.add(scrollingShapes, BorderLayout.EAST);
+
+    // info about state of animation
+    info = new JLabel();
+    this.add(info, BorderLayout.NORTH);
     this.pack();
   }
 
+  /**
+   * This initializes the frame of the view.
+   */
   private void initView() {
     this.setTitle("Easy Animator!");
     this.setSize(800, 800);
@@ -123,6 +135,12 @@ public class VisualView extends JFrame implements IInteractiveView {
     this.setResizable(true);
   }
 
+  /**
+   * This initializes the animation panel that will display the shapes.
+   * @param shapesList the list of shapes to be displayed.
+   * @param lastTick the last tick at which a shape is visible.
+   * @param ticksPerSec the speed of the animation.
+   */
   private void initAnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
     this.aniPanel.setPreferredSize(new Dimension(800, 800));
@@ -136,6 +154,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     this.pack();
   }
 
+  @Override
   public void setButtonListeners(ActionListener listener) {
     incSpeed.addActionListener(listener);
     decSpeed.addActionListener(listener);
@@ -145,6 +164,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     loop.addActionListener(listener);
     svgExport.addActionListener(listener);
     runSelected.addActionListener(listener);
+    resume.addActionListener(listener);
   }
 
   @Override
@@ -156,27 +176,39 @@ public class VisualView extends JFrame implements IInteractiveView {
   @Override
   public void stopTimer() {
     aniPanel.stopTimer();
+    info.setText("Animation paused.");
   }
 
   public void runSelected() {
-    if (looping) {
-      // On the next iteration of the looped animation
-      // it will run with the selected shapes.
-      selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
-    }
-    // otherwise do nothing
+    // On the next iteration of the looped animation
+    // it will run with the selected shapes.
+    selectedShapes = (ArrayList<Shapes>) shapeList.getSelected();
+    aniPanel.setShapesList(selectedShapes);
+    info.setText("Running with selected shapes.");
 
   }
 
   @Override
   public void increaseSpeed() {
     aniPanel.increaseSpeed();
+    info.setText("Animation speed increased.");
 
   }
 
   @Override
   public void decreaseSpeed() {
     aniPanel.decreaseSpeed();
+    info.setText("Animation speed decreased.");
+
+  }
+
+  /**
+   * This method allows the view to update the JText panel that will inform the user of
+   * the state of the animation as they make changes.
+   * @param text information about what action the user has taken.
+   */
+  protected void setInfoText(String text) {
+    info.setText(text);
   }
 
   // Start the animation with the initial shapes.
@@ -191,13 +223,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     aniPanel.setTickToZero();
     aniPanel.startTimer();
     this.makeVisible();
-
-    // visualView = new VisualView(allShapes, endTime, tps, looping);
-    //    visualView.shapesList = allShapes;
-    //    visualView.lastTick = endTime;
-    //    visualView.ticksPerSec = tps;
-    //    visualView.looping = looping;
-    //    visualView.makeVisible();
+    info.setText("Animation started! woohoo!");
   }
 
   @Override
@@ -206,9 +232,14 @@ public class VisualView extends JFrame implements IInteractiveView {
     // aniPanel.setLooping(!looping);
     if (looping) {
       looping = !looping;
-    }
-    else {
+      aniPanel.setLooping(looping);
+      info.setText("Animation is not looping.");
+
+    } else {
       looping = true;
+      aniPanel.setLooping(looping);
+      info.setText("Animation is looping.");
+
     }
   }
 
@@ -216,10 +247,52 @@ public class VisualView extends JFrame implements IInteractiveView {
   @Override
   public void restart() {
     aniPanel.setTickToZero();
+    info.setText("Animation restarted.");
   }
 
-  public int getSpeed() {
+  @Override
+  public void resume() {
+    aniPanel.startTimer();
+    info.setText("Animation resumed.");
+  }
+
+  /**
+   * This method allows the hybrid view to get the current speed of the animation.
+   * @return the speed of the animation in ticks per second.
+   */
+  protected int getSpeed() {
     return aniPanel.getSpeed();
+  }
+
+  /**
+   * This method allows the user to get the shapes that have been selected
+   * from the JList of Shapes.
+   * @return the shapes that have been selected.
+   */
+  protected ArrayList<Shapes> getSelectedShapes() {
+    if (shapeList.getSelected() == null) {
+      return allShapes;
+    }
+    else {
+      return (ArrayList<Shapes>) shapeList.getSelected();
+    }
+  }
+
+  /**
+   * This allows the view to update the animation panel with the shapes that have been selected.
+   * @param selectedShapes the shapes to be given to the AnimationPanel.
+   */
+  protected void setSelectedShapes(ArrayList<Shapes> selectedShapes) {
+    this.selectedShapes = selectedShapes;
+    aniPanel.setShapesList(selectedShapes);
+  }
+
+  /**
+   * This is the name of the file to be exported.
+   * @return the text from the file name box.
+   */
+  protected String getFileName() {
+    return svgFileName.getText();
   }
 }
 

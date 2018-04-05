@@ -201,7 +201,14 @@ public class SVGView implements IView {
     return workString.toString();
   }
 
-  public String getAttributeXName(String shapeType, AnimationType aType) {
+  /**
+   * This is a helper method to get the correct attribute name given the shape and animation.
+   *
+   * @param shapeType the type of shape that is being printed.
+   * @param aType the type of animation that is being performed on the shape.
+   * @return the correct x attribute.
+   */
+  private String getAttributeXName(String shapeType, AnimationType aType) {
     if (aType == (AnimationType.MOVE)) {
       if (shapeType.equals("rect")) {
         return "x";
@@ -218,7 +225,14 @@ public class SVGView implements IView {
     throw new IllegalArgumentException("Unable to get attribute x name");
   }
 
-  public String getAttributeYName(String shapeType, AnimationType aType) {
+  /**
+   * This is a helper method to get the correct attribute name given the shape and animation.
+   *
+   * @param shapeType the type of shape that is being printed.
+   * @param aType the type of animation that is being performed on the shape.
+   * @return the correct y attribute.
+   */
+  private String getAttributeYName(String shapeType, AnimationType aType) {
     if (aType == (AnimationType.MOVE)) {
       if (shapeType.equals("rect")) {
         return "y";
@@ -235,6 +249,14 @@ public class SVGView implements IView {
     throw new IllegalArgumentException("Unable to get attribute y name");
   }
 
+  /**
+   * This is a helper method to format the lines needed to reset an animation if it is looping.
+   *
+   * @param a is the AnimationCommand that is being formatted.
+   * @param shapeType is the type of shape the command is being performed on.
+   * @param startString is the initial string that all reset tags require.
+   * @return the entire tag needed to set a shape to its original attributes.
+   */
   private String formatReset(AnimationCommand a, String shapeType, String startString) {
     String attributeX;
     String attributeY;
@@ -371,6 +393,11 @@ public class SVGView implements IView {
     return workString + workString2;
   }
 
+  /**
+   * This is a method that returns the last tick a shape is visible.
+   *
+   * @param endTime is the last tick in the animation.
+   */
   protected void setEndTime(int endTime) {
     this.endTime = endTime;
   }

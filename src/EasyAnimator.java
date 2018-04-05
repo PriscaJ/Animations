@@ -85,12 +85,26 @@ public final class  EasyAnimator {
     }
   }
 
+  /**
+   * This is a helper method to create the HybridView with information from the model.
+   * @param shapes the shapes in the animation.
+   * @param endTime the last tick a shape is present.
+   * @param ticksPerSec the speed of the animation.
+   * @param outputDest the file name for the svg to be exported to.
+   * @return the correctly created HybridView.
+   */
   private static HybridView createHybridView(ArrayList<Shapes> shapes, int endTime,
       String ticksPerSec, String outputDest) {
     int tps = getTicksPerSec(ticksPerSec);
     return new HybridView(shapes, endTime, outputDest, 1000 / tps);
   }
 
+  /**
+   * This is a helper method to create the model, using the AnimationFileReader and the
+   * file the user has selected to create an animation from.
+   * @param animationFileName the input file from which the animation will be created.
+   * @return the model to be used in the animation.
+   */
   private static AnimationOperations createModel(String animationFileName) {
     AnimationFileReader fileReader = new AnimationFileReader();
     AnimationModel.Builder modelBuilder = new AnimationModel.Builder();
@@ -104,7 +118,13 @@ public final class  EasyAnimator {
     return new AnimationModel();
   }
 
-
+  /**
+   * This method creates a visual view, similarly to how the Hybrid view is created.
+   * @param shapesList the shapes to be used in the animation.
+   * @param lastTick the last tick a shape is present.
+   * @param ticksPerSec the speed of the animation.
+   * @return the VisualView that has been created.
+   */
   private static VisualView createVisualView(ArrayList<Shapes> shapesList, int lastTick,
       String ticksPerSec) {
     // list of shapes and last tick
@@ -112,12 +132,14 @@ public final class  EasyAnimator {
     return new VisualView(shapesList, lastTick, 1000 / tps);
   }
 
+  // Create an SVGView with the given file name, speed, and model.
   private static SVGView createSVGView(String outputDest, String ticksPerSec,
       AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
     return new SVGView(model.getShapes(), outputDest, 1000 / tps, false);
   }
 
+  // Creates a text view, similar to the other views.
   private static TextualView createTextView(String outFile,
       String ticksPerSec, AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
@@ -127,6 +149,7 @@ public final class  EasyAnimator {
     return new TextualView(outFile, shapes, animations, 1000 / tps);
   }
 
+  // 
   private static int getTicksPerSec(String ticksPerSec) {
     try {
       return Integer.parseInt(ticksPerSec);
