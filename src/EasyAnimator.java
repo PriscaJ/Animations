@@ -2,6 +2,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.*;
+
 import cs3500.animator.controller.Controller;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.AnimationOperations;
@@ -17,7 +19,7 @@ import cs3500.animator.view.VisualView;
 /**
  * The Runner for the Animation.
  */
-public final class  EasyAnimator {
+public final class EasyAnimator {
   /**
    * The main method to run the animation.
    */
@@ -50,13 +52,14 @@ public final class  EasyAnimator {
           ticksPerSec = content;
           break;
         default:
-          System.out.println("Invalid input: " + String.join(" ", args) + ".");
+          makeErrorMessage("Invalid input: " + String.join(" ", args) + ".");
           System.exit(1);
       }
     }
     AnimationOperations model = createModel(animationFileName);
     if (typeOfView == null) {
-      throw new IllegalArgumentException("Type of view must be specified.");
+      makeErrorMessage("Type of view must be specified.");
+      System.exit(1);
     }
     IView view = null;
     switch (typeOfView) {
@@ -73,12 +76,10 @@ public final class  EasyAnimator {
         view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       default:
-        System.out.println("Invalid type of view");
-        System.exit(1);
+        makeErrorMessage("Invalid type of view");
     }
     if (view == null) {
-      System.out.println("Must create model and view.");
-      System.exit(1);
+      makeErrorMessage("Must create model and view.");
     } else {
       Controller c = new Controller(model, view);
       c.run();
@@ -87,6 +88,7 @@ public final class  EasyAnimator {
 
   /**
    * This is a helper method to create the HybridView with information from the model.
+   *
    * @param shapes the shapes in the animation.
    * @param endTime the last tick a shape is present.
    * @param ticksPerSec the speed of the animation.
@@ -102,6 +104,7 @@ public final class  EasyAnimator {
   /**
    * This is a helper method to create the model, using the AnimationFileReader and the
    * file the user has selected to create an animation from.
+   *
    * @param animationFileName the input file from which the animation will be created.
    * @return the model to be used in the animation.
    */
@@ -120,6 +123,7 @@ public final class  EasyAnimator {
 
   /**
    * This method creates a visual view, similarly to how the Hybrid view is created.
+   *
    * @param shapesList the shapes to be used in the animation.
    * @param lastTick the last tick a shape is present.
    * @param ticksPerSec the speed of the animation.
@@ -149,7 +153,7 @@ public final class  EasyAnimator {
     return new TextualView(outFile, shapes, animations, 1000 / tps);
   }
 
-  // 
+  // Interprets the string ticks per second as an integer and sets it as 1 else.
   private static int getTicksPerSec(String ticksPerSec) {
     try {
       return Integer.parseInt(ticksPerSec);
@@ -157,7 +161,16 @@ public final class  EasyAnimator {
       return 1;
     }
   }
+
+  // Creates an error message upon invalid input.
+  private static void makeErrorMessage(String message) {
+    JFrame frame = new JFrame("Invalid Arguments");
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    frame.pack();
+    JOptionPane.showMessageDialog(frame,
+        message,
+        "Invalid Argument",
+        JOptionPane.PLAIN_MESSAGE);
+    frame.setVisible(true);
+  }
 }
-// tps = 20
-// ticksPerSec = 50
-// delay = 50
