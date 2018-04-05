@@ -84,7 +84,6 @@ public class Controller implements ActionListener {
           default:
             // should not fall in here
             buttonPressed = "";
-
       }
     }
   }
