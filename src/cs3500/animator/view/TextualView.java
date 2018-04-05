@@ -22,18 +22,13 @@ public class TextualView implements IView {
   /**
    * The constructor for the Textual View.
    *
-<<<<<<< HEAD
-   * @param outFile       The file it outputs to.
-   * @param allShapes     All the shapes in the animation.
-=======
    * @param outFile The file it outputs to.
    * @param allShapes All the shapes in the animation.
->>>>>>> 67e9a101365856cdf8c12c5642d244a34a537c64
    * @param allAnimations All the animation actions that will be preformed.
-   * @param ticksPerSec   The speed of the animation by ticks per seconds.
+   * @param ticksPerSec The speed of the animation by ticks per seconds.
    */
   public TextualView(String outFile, List<Shapes> allShapes,
-                     List<Animations> allAnimations, int ticksPerSec) {
+      List<Animations> allAnimations, int ticksPerSec) {
     this.outFile = outFile;
     this.allShapes = allShapes;
     this.allAnimations = allAnimations;
@@ -73,7 +68,7 @@ public class TextualView implements IView {
         writer.write(output);
         writer.close();
       } catch (IOException ioe) {
-        //
+        System.out.print("IOException CAUGHT BOI WHAT U DOIN.");
       }
     }
   }

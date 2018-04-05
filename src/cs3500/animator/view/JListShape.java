@@ -14,7 +14,10 @@ public class JListShape extends JPanel {
   private JList<Shapes> shapesInAnimation;
   private List<Shapes> selectedValuesList;
 
-
+  /**
+   * This is the constructor for a JList of Shapes. These shapes can be selected and deselected.
+   * @param shapeList is the list of shapes to be added to the JList.
+   */
   public JListShape(ArrayList<Shapes> shapeList) {
     DefaultListModel<Shapes> loadedShapes = new DefaultListModel<>();
 
@@ -35,7 +38,7 @@ public class JListShape extends JPanel {
 
       @Override
       public void setSelectionInterval(int index0, int index1) {
-        if(!gestureStarted){
+        if (!gestureStarted) {
           if (isSelectedIndex(index0)) {
             super.removeSelectionInterval(index0, index1);
           } else {
@@ -64,15 +67,13 @@ public class JListShape extends JPanel {
     add(shapesInAnimation);
     add(new JScrollPane(shapesInAnimation));
 
-    //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    //this.setTitle("List of shapes");
-    //this.setSize(200, 500);
-    //this.setLocationRelativeTo(null);
     this.setVisible(true);
   }
 
-  // todo with the running list play those shapes
-
+  /**
+   * Gives the view the list of shapes that have been selected from the JList.
+   * @return the list of shapes that have been selected.
+   */
   public List<Shapes> getSelected() {
     return selectedValuesList;
   }

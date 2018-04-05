@@ -33,21 +33,22 @@ public class AnimationPanel extends JPanel implements ActionListener {
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model by using same fields passed into it
     this.shapesList = shapesList;
-    System.out.print("Shapes list initialized");
     this.lastTick = lastTick;
     this.setBackground(Color.WHITE);
     this.setPreferredSize(new Dimension(800, 800));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
-
     t.start();
   }
 
+  /**
+   * This method uses the given shapes in the animation.
+   *
+   * @param shapes to be used.
+   */
   protected void setShapesList(ArrayList<Shapes> shapes) {
     this.shapesList = shapes;
     t.start();
-    System.out.print("Shapes list set");
-
   }
 
   @Override
@@ -75,28 +76,46 @@ public class AnimationPanel extends JPanel implements ActionListener {
     }
   }
 
+  /**
+   * This method allows the view to start the timer if it has been paused.
+   */
   protected void startTimer() {
     t.start();
   }
 
+  /**
+   * This method allows the view to stop the timer.
+   */
   protected void stopTimer() {
     t.stop();
   }
 
+  /**
+   * This method allows the view to restart the animation by resetting the tick to -1.
+   */
   protected void setTickToZero() {
-    this.tick = 0;
+    this.tick = -1;
   }
 
+  /**
+   * This method allows the view to increase the delay of the timer.
+   */
   protected void increaseSpeed() {
     t = new Timer(t.getDelay() + 15, this);
   }
 
+  /**
+   * This method allows the view to decrease the delay of the timer.
+   */
   protected void decreaseSpeed() {
-    if (t.getDelay() > 10) {
+    if (t.getDelay() > 15) {
       t = new Timer(t.getDelay() - 15, this);
     }
   }
 
+  /**
+   * This method allows the view to get the current speed to tell the svg view.
+   */
   protected int getSpeed() {
     return t.getDelay();
   }
@@ -124,14 +143,29 @@ public class AnimationPanel extends JPanel implements ActionListener {
     repaint();
   }
 
+  /**
+   * Sets the end time of the animation.
+   *
+   * @param endTime is the last tick a shape is present.
+   */
   protected void setEndTime(int endTime) {
     this.lastTick = endTime;
   }
 
+  /**
+   * Sets the ticks per second (speed) of the animation.
+   *
+   * @param TPS is the ticks per second.
+   */
   protected void setTPS(int TPS) {
     t.setDelay(TPS);
   }
 
+  /**
+   * Sets whether the animation is looping or not.
+   *
+   * @param looping is whether an animation will repeat after ending.
+   */
   protected void setLooping(boolean looping) {
     this.looping = looping;
   }
