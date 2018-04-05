@@ -108,9 +108,44 @@ ArrayList<Shapes> shapesList
 int lastTick
 int ticksPerSec
 
+DESIGN CHANGE: contains functionality for the hybrid view to display all the buttons, but when
+the visual is called the buttons do not preform while the animation runs as given.
+
 class AnimationPanel
 Field(s):
 ArrayList<Shapes> shapesList
 int lastTick
 int ticksPerSec
 Timer t
+
+Interface IInteractiveView
+
+Extending the interface for the previous view it provided more functionality to the classes that
+implement it. The interface represents the functionality of interactivity within the hybrid view.
+The HybridView implements the interface where it implements the methods that allow for changes to be
+made in the model such as increasing/decreasing speed, looping, start, restart, stop, and exporting
+the SVG. As a design decision the Hybrid view has a field of the VisualView and most of the methods
+ mentioned are delegated to the methods in the visual view.
+
+Class HybridView
+
+Hybrid view brings together the functionality of the visual view while it is still has the ability
+to have interactivity. This is done by the having similar fields as the Visual view and then having
+a delegate field to the Visualview. The VisualView has been changed to include functionalities of
+not only the JFrame, but also implements the IInteractiveView
+
+Fields:
+VisualView visualView
+ArrayList<Shapes> selectedShapes
+String outputDest
+
+Class JListShape
+
+Extending the JPanel This class creates the functionality of having all the shapes in a list
+which can be then selected by the user. Ultimately this allows for only certain shapes to be
+selected and run in the animation. All the shapes in the animation run if nothing is selected, but
+multiple shapes can be slected and only those selected will run.
+
+Fields:
+JList<Shapes> shapesInAnimation
+List<Shapes> selectedValuesList
