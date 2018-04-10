@@ -24,7 +24,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private boolean looping = false;
 
   /**
-   * The constructor for the Animation Panel
+   * The constructor for the Animation Panel.
    *
    * @param shapesList The list of shapes in an Animation.
    * @param lastTick The last tick in an Aniation marking its end.

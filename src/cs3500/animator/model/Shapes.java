@@ -20,7 +20,7 @@ public interface Shapes {
    * animations that a shape has.
    *
    * @param newCommand Animation Command that will add to the list of commands the AbstractShape
-   * will have.
+   *                   will have.
    */
   void setAnimation(AnimationCommand newCommand);
 
