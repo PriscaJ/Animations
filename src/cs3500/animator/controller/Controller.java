@@ -15,7 +15,6 @@ import cs3500.animator.view.VisualView;
  */
 public class Controller implements ActionListener {
 
-  private AnimationOperations model;
   private IView view;
 
   /**
@@ -25,7 +24,6 @@ public class Controller implements ActionListener {
    * @param view  The view that the controller sends information to.
    */
   public Controller(AnimationOperations model, IView view) {
-    this.model = model;
     this.view = view;
   }
 
@@ -69,6 +67,7 @@ public class Controller implements ActionListener {
           break;
         case "Resume":
           v.resume();
+          break;
         case "Looping":
           v.setLooping();
           break;
@@ -81,9 +80,9 @@ public class Controller implements ActionListener {
         case "Run Selected Shapes":
           v.runSelected();
           break;
-          default:
-            // should not fall in here
-            buttonPressed = "";
+        default:
+          // should not fall in here
+          buttonPressed = "";
       }
     }
   }

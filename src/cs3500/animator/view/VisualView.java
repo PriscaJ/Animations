@@ -3,7 +3,7 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 import javax.swing.*;
 

@@ -6,7 +6,7 @@ package cs3500.animator.model;
 public interface Animations {
 
   /**
-   * Observational method for color
+   * Observational method for color.
    *
    * @return Float the color value.
    */
