@@ -1,0 +1,57 @@
+
+//--------------- VIEWS ---------------//
+
+Overview:
+ All the views work and are functioning. Below is a brief description of how the views work
+
+Interface IView
+The behaviors of a view which are primarily to display it to the user, so there is only one method in
+the interface that all views should have as a behavior which is to make it visible.
+
+Class SVGView
+We allow users to specify whether an svg animation is looping or not. 
+This was done by adding a boolean global variable that can be set in an
+additional boolean field in the constructor we added. If no such boolean is present, the
+default will be that looping is false.
+
+class TextualView
+Handles the view for textual output. Within the command prompt it will present the
+information for the animation including the information for the shapes for what they will look
+like and actions they will perform during the animation.
+
+class VisualVIew
+Similar to the interactive/hybridview it contains functionality for the hybrid view 
+to display all the buttons, but when the visual is called the buttons do not preform 
+while the animation runs as given.
+
+class AnimationPanel
+Used in juction with the visual view to display the shapes in a panel.
+
+Interface IInteractiveView
+
+Extending the interface for the previous view it provided more functionality to the classes that
+implement it. The interface represents the functionality of interactivity within the hybrid view.
+The HybridView implements the interface where it implements the methods that allow for changes to be
+made in the model such as increasing/decreasing speed, looping, start, restart, stop, and exporting
+the SVG. As a design decision the Hybrid view has a field of the VisualView and most of the methods
+ mentioned are delegated to the methods in the visual view.
+
+Class HybridView
+
+Hybrid view brings together the functionality of the visual view while it is still has the ability
+to have interactivity. This is done by the having similar fields as the Visual view and then having
+a delegate field to the Visualview. The VisualView has been changed to include functionalities of
+not only the JFrame, but also implements the IInteractiveView
+
+NOTE ON BUTTONS:
+upon opening the hybrid view the animation will play through once, however when creating a change
+in the animation (i.e. looping, incresasing/decreasing speed, etc.). The restart and the start button
+must be pressed to administer the change.
+
+
+Class JListShape
+
+Extending the JPanel This class creates the functionality of having all the shapes in a list
+which can be then selected by the user. Ultimately this allows for only certain shapes to be
+selected and run in the animation. All the shapes in the animation run if nothing is selected, but
+multiple shapes can be slected and only those selected will run.
