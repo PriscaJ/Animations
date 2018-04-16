@@ -3,6 +3,7 @@ package cs3500.animator.provider.model;
 
 import java.util.List;
 
+import cs3500.animator.provider.misc.IPosition2D;
 import cs3500.commands.Command;
 import cs3500.misc.Position2D;
 
@@ -22,7 +23,7 @@ public interface Shape {
    * Get a the position of this shape.
    * @return a copy of the position
    */
-  Position2D getPosition();
+  IPosition2D getPosition();
 
   /**
    * Move this shape by a given amount in the x and y directions.
@@ -35,7 +36,7 @@ public interface Shape {
    * Move this shape to a given position.
    * @param position where should this shape be moved to
    */
-  void moveTo(Position2D position);
+  void moveTo(IPosition2D position);
 
   /**
    * Find the name of this shape as a string.
@@ -52,7 +53,7 @@ public interface Shape {
    * Change the color of this shape to a given color.
    * @param c what color the shape should be changed to
    */
-  void changeColor(Colors c);
+  void changeColor(IColors c);
 
   /**
    * Get the type of this shape.

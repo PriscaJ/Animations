@@ -2,6 +2,8 @@ package cs3500.animator.model;
 
 import java.util.List;
 
+import cs3500.animator.provider.misc.IColors;
+import cs3500.animator.provider.misc.IPosition2D;
 import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
 import javafx.scene.transform.Scale;
@@ -23,7 +25,7 @@ public class ShapeAdapter implements Shape {
 
   // todo remove the concrete Position2D and Colors
   @Override
-  public Position2D getPosition() {
+  public IPosition2D getPosition() {
     return null;
   }
 
@@ -33,7 +35,7 @@ public class ShapeAdapter implements Shape {
   }
 
   @Override
-  public void moveTo(Position2D position) {
+  public void moveTo(IPosition2D position) {
     Move makeMove;
 
   }
@@ -54,7 +56,7 @@ public class ShapeAdapter implements Shape {
   }
 
   @Override
-  public void changeColor(Colors c) {
+  public void changeColor(IColors c) {
 
   }
 
@@ -69,7 +71,7 @@ public class ShapeAdapter implements Shape {
   }
 
   @Override
-  public Position2D getAnchor() {
+  public IPosition2D getAnchor() {
     return oldShapes.getXPosition() oldShapes.getYPosition();
   }
 

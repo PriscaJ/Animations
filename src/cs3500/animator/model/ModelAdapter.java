@@ -7,11 +7,11 @@ import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 
 public class ModelAdapter extends AnimationModel implements SimpleAnimation{
-  AnimationOperations oldModel;
+  // AnimationOperations oldModel;
   AnimationModel concreteModel;
 
   public ModelAdapter(AnimationOperations oldModel) {
-    this.oldModel = oldModel;
+    //this.oldModel = oldModel;
     concreteModel = new AnimationModel();
   }
 
@@ -40,6 +40,11 @@ public class ModelAdapter extends AnimationModel implements SimpleAnimation{
   @Override
   public Shape getShapeWithName(String name) {
     // todo need to access the hashmap in the concrete model
+    for (Shapes s : concreteModel.getShapes()) {
+      if (s.getName().equals(name)) {
+        return s;
+      }
+    }
     return null;
   }
 
