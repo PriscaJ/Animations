@@ -8,10 +8,10 @@ import cs3500.animator.view.*;
 /**
  * Creates an adapter so that the the provided code works with our system to create views.
  */
-public class AnimationAdapter implements View{
+public class ViewAdapter implements View{
   IView originalView;
 
-  public AnimationAdapter(IView originalView) {
+  public ViewAdapter(IView originalView) {
     this.originalView = originalView;
   }
 
