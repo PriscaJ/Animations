@@ -7,59 +7,61 @@ import cs3500.animator.provider.model.Shape;
 
 public class CommandAdapter implements Command {
   AnimationCommand oldCmd;
+  Animations oldAnimations;
 
-  public CommandAdapter(AnimationCommand oldCmd) {
+  public CommandAdapter(AnimationCommand oldCmd, Animations oldAnimations) {
     this.oldCmd = oldCmd;
+    this.oldAnimations = oldAnimations;
   }
 
   @Override
   public void execute(Shape s, int tick) {
-
+    oldCmd.execute(tick);
   }
 
   @Override
   public void convertToTicks(int tempo) {
-
+    // ignore
   }
 
   @Override
   public void setStartTick(double st) {
-
+    // setting is done on the intitialization of an animation
   }
 
   @Override
   public void setEndTick(double e) {
-
+    // setting is done on the intitialization of an animation
   }
 
   @Override
   public double delta(double a, double b, int tick) {
-    return 0;
+   return oldAnimations.calculateChange((float) a, (float) b, tick);
   }
 
   @Override
   public String printCommand(Shape s, int tempo) {
-    return null;
+    return oldCmd.toString();
   }
 
   @Override
   public double getStartTime() {
-    return 0;
+    return oldAnimations.getStart();
   }
 
   @Override
   public double getEndTime() {
-    return 0;
+    return oldAnimations.getFinish();
   }
 
   @Override
   public String getName() {
-    return null;
+    return oldAnimations.toString();
   }
 
   @Override
   public String printAnimation(Shape s, int speedFactor, boolean loop) {
-    return null;
+    return oldCmd.toString();
   }
 
   @Override
@@ -70,5 +72,6 @@ public class CommandAdapter implements Command {
   @Override
   public boolean overlappingTimes(Command that) {
     return false;
+    // this is checked privately in the model.
   }
 }

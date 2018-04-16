@@ -45,7 +45,7 @@ public class ModelAdapter extends AnimationModel implements SimpleAnimation{
 
   @Override
   public List<Shape> getShapes() {
-    // todo conflicting shapes
+    // todo conflicting shapes????
     return (List) oldModel.getShapes();
   }
 }
