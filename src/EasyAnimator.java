@@ -172,7 +172,7 @@ public final class EasyAnimator {
     // temporarily changed model from ReadOnly to AnimationOperations
     return new TextualView(outFile, shapes, animations, 1000 / tps);
   }
-  
+
   // Interprets the string ticks per second as an integer and sets it as 1 else.
   private static int getTicksPerSec(String ticksPerSec) {
     try {

@@ -19,19 +19,20 @@ public class ShapeAdapter implements Shape {
     this.adapteeCommands = adapteeCommands;
   }
 
-  public ShapeAdapter(Shapes oldShapes) {
+  /** public ShapeAdapter(Shapes oldShapes) {
     this.oldShapes = oldShapes;
-  }
+  }**/
 
   @Override
   public String printShape(int tempo) {
     return oldShapes.getDescription(tempo);
   }
 
-  // todo remove the concrete Position2D and Colors
   @Override
   public IPosition2D getPosition() {
-    return null;
+    // do nothing or should it be vvv
+    return new Position2D(adapteeCommands.getAnimation().startX,
+            adapteeCommands.getAnimation().getStartY());
   }
 
   @Override
@@ -41,7 +42,11 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public void moveTo(IPosition2D position) {
-    Move makeMove;
+    Move makeMove =
+    new Move(getName(), (float) getPosition().getX(), (float) getPosition().getY(),
+            (float) position.getX(), (float) position.getY(), getStartTime(), getEndTime());
+    MoveCommand move = new MoveCommand(makeMove);
+    //move.execute();
 
   }
 
@@ -58,6 +63,7 @@ public class ShapeAdapter implements Shape {
             (float) newWidth, (float) newHeight, oldShapes.getAppears(), oldShapes.getDisappears());
 
     ScaleCommand scaleCommand = new ScaleCommand(makeScale);
+    //scaleCommand.execute();
   }
 
   @Override
