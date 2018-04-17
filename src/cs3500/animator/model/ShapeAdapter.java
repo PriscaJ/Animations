@@ -9,7 +9,6 @@ import cs3500.animator.provider.misc.IPosition2D;
 import cs3500.animator.provider.misc.Position2D;
 import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
-import javafx.scene.transform.Scale;
 
 public class ShapeAdapter implements Shape {
   private Shapes oldShapes;
@@ -55,16 +54,19 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public void moveBy(double x, double y) {
-
+    oldShapes.setXPosn(oldShapes.getXPosition() + (float) x);
+    oldShapes.setYPosn(oldShapes.getYPosition() + (float) y);
   }
 
   @Override
   public void moveTo(IPosition2D position) {
-    Move makeMove =
-        new Move(getName(), (float) getPosition().getX(), (float) getPosition().getY(),
-            (float) position.getX(), (float) position.getY(), getStartTime(), getEndTime());
-    MoveCommand move = new MoveCommand(makeMove);
-    //move.execute();
+    oldShapes.setXPosn((float) position.getX());
+    oldShapes.setYPosn((float) position.getY());
+//    Move makeMove =
+//        new Move(getName(), (float) getPosition().getX(), (float) getPosition().getY(),
+//            (float) position.getX(), (float) position.getY(), getStartTime(), getEndTime());
+//    MoveCommand move = new MoveCommand(makeMove);
+//    //move.execute();
 
   }
 
@@ -76,28 +78,31 @@ public class ShapeAdapter implements Shape {
   @Override
   // todo what does this do lol
   public void scale(double newWidth, double newHeight) {
-    ScaleChange makeScale;
-    makeScale =
-        new ScaleChange(oldShapes.getName(), oldShapes.getXPosition(), oldShapes.getYPosition(),
-            (float) newWidth, (float) newHeight, oldShapes.getAppears(), oldShapes.getDisappears());
+    //    ScaleChange makeScale;
+    //    makeScale =
+    //        new ScaleChange(oldShapes.getName(), oldShapes.getXPosition(), oldShapes.getYPosition(),
+    //            (float) newWidth, (float) newHeight, oldShapes.getAppears(), oldShapes.getDisappears());
 
-    ScaleCommand scaleCommand = new ScaleCommand(makeScale);
-
-    CommandAdapter c = new CommandAdapter(scaleCommand, scaleCommand.getAnimation());
-    ShapeAdapter shapeAdapter = new ShapeAdapter(oldShapes);
-    c.execute(shapeAdapter, 4);
+    //    ScaleCommand scaleCommand = new ScaleCommand(makeScale);
+    oldShapes.setXDimension((float) newWidth);
+    oldShapes.setYDimension((float) newHeight);
+    //    CommandAdapter c = new CommandAdapter(scaleCommand, scaleCommand.getAnimation());
+    //    ShapeAdapter shapeAdapter = new ShapeAdapter(oldShapes);
+    //    c.execute(shapeAdapter, 4);
 
   }
 
   @Override
   public void changeColor(IColors c) {
-    ColorChange makeColor;
-    makeColor =
-        new ColorChange(getName(), (float) getColor().getR(), (float) getColor().getG(),
-            (float) getColor().getB(), (float) c.getR(), (float) c.getG(), (float) c.getB(),
-            getStartTime(), getEndTime());
-    ColorCommand color = new ColorCommand(makeColor);
-
+    oldShapes.setRed((float) c.getR());
+    oldShapes.setGreen((float) c.getG());
+    oldShapes.setBlue((float) c.getB());
+    //    ColorChange makeColor;
+    //    makeColor =
+    //        new ColorChange(getName(), (float) getColor().getR(), (float) getColor().getG(),
+    //            (float) getColor().getB(), (float) c.getR(), (float) c.getG(), (float) c.getB(),
+    //            getStartTime(), getEndTime());
+    //    ColorCommand color = new ColorCommand(makeColor);
   }
 
   @Override
@@ -154,8 +159,7 @@ public class ShapeAdapter implements Shape {
   // todo turn a Command to an AnimationCommand
   //todo this is weird
   public void addCommand(Command c) {
-
-    oldShapes.addCommand();
+    //oldShapes.addCommand();
   }
 
   @Override
