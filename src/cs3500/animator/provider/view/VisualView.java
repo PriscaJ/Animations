@@ -17,9 +17,6 @@ import javax.swing.WindowConstants;
 
 import cs3500.animator.provider.model.*;
 
-import cs3500.commands.Command;
-import cs3500.shapes.Shape;
-
 /**
  * Visual view takes the information regarding what the animation contains / does and displays it
  * as a viewable animation that is played in Java. This view has a concept of a timer, which

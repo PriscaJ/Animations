@@ -3,9 +3,8 @@ package cs3500.animator.provider.view;
 import java.io.IOException;
 import java.util.List;
 
+import cs3500.animator.provider.misc.IHelper;
 import cs3500.animator.provider.model.*;
-
-import cs3500.shapes.Shape;
 
 /**
  * View to represent the view in the form of human readable text.
@@ -31,12 +30,12 @@ public class  TextualView implements View {
   @Override
   public void showView() throws IOException {
 
-    String text = Helper.printAnimation(shapes, tempo);
+    String text = IHelper.printAnimation(shapes, tempo);
 
     if (path.equals("")) {
       System.out.println(text);
     } else {
-      Helper.writeToFile(text, path);
+      IHelper.writeToFile(text, path);
     }
   }
 }

@@ -6,10 +6,9 @@ import java.awt.Color;
 import java.util.List;
 
 import javax.swing.JPanel;
-import cs3500.animator.provider.model.*;
 
-import cs3500.misc.Colors;
-import cs3500.shapes.Shape;
+import cs3500.animator.provider.misc.IColors;
+import cs3500.animator.provider.model.*;
 
 /**
  * This class renders the specifics of the animation and is what is displayed by the visual
@@ -60,7 +59,7 @@ public class JDraw extends JPanel {
    * @param shape the shape to be rendered
    */
   private void drawRectangle(Graphics g, Shape shape) {
-    Colors color = shape.getColor();
+    IColors color = shape.getColor();
 
     g.setColor(new Color(
             (float)color.getR(),
@@ -79,7 +78,7 @@ public class JDraw extends JPanel {
    * @param shape the shape to be rendered
    */
   private void drawOval(Graphics g, Shape shape) {
-    Colors color = shape.getColor();
+    IColors color = shape.getColor();
 
     g.setColor(new Color(
             (float)color.getR(),

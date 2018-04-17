@@ -1,5 +1,7 @@
 package cs3500.animator.provider.view;
 
+import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -18,11 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.WindowConstants;
 
-import cs3500.animator.provider.model.*;
-
+import cs3500.animator.provider.misc.IHelper;
+import cs3500.animator.provider.model.Command;
+import cs3500.animator.provider.model.Shape;
 
 //import cs3500.commands.Command;
-//import cs3500.misc.Helper;
 //import cs3500.animator.provider.model.Shape;
 
 /**
@@ -63,7 +65,7 @@ public class HybridView extends JFrame implements View, ActionListener {
     this.initialShapes = new ArrayList<>();
     deepCopyShapes(initialShapes, shapes);
 
-    this.animationEndTime = Helper.findEndTimeOfAnimation(shapes);
+    this.animationEndTime = IHelper.findEndTimeOfAnimation(shapes);
 
     this.setTitle("Hybrid Animation!");
     this.setSize(700,700);
@@ -141,13 +143,13 @@ public class HybridView extends JFrame implements View, ActionListener {
     JButton svg = new JButton("Save SVG");
     svg.addActionListener((ActionEvent e) -> {
 
-      String svgText = Helper.printSVG(this.shapes, true, tempo);
+      String svgText = IHelper.printSVG(this.shapes, true, tempo);
 
       if (path.getText().equals("")) {
         System.out.println(svgText);
       } else {
         try {
-          Helper.writeToFile(svgText, path.getText());
+          IHelper.writeToFile(svgText, path.getText());
         } catch (IOException e1) {
           e1.printStackTrace();
         }
