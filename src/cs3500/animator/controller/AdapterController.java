@@ -9,6 +9,8 @@ import cs3500.animator.view.ViewAdapter;
 
 public class AdapterController {
   private ViewAdapter view;
+  // putting our own controller inside to pass funtionality through.
+  private Controller controller;
 
   public AdapterController(ModelAdapter model, ViewAdapter view) {
     this.view = view;

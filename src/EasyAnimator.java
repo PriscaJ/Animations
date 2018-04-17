@@ -157,6 +157,7 @@ public final class EasyAnimator {
     return new TextualView(outFile, shapes, animations, 1000 / tps);
   }
 
+
   private static ViewAdapter createProviderView(String outFile,
                                                 String ticksPerSec, AnimationOperations model) {
     int tps = getTicksPerSec(ticksPerSec);
