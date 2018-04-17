@@ -45,7 +45,6 @@ public class HybridView implements IInteractiveView {
   @Override
   public void increaseSpeed() {
     visualView.increaseSpeed();
-
   }
 
   @Override

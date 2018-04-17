@@ -103,7 +103,7 @@ public final class EasyAnimator {
         break;
       case "p-visual":
         SimpleAnimation modelAdapter3 = new ModelAdapter(model);
-        provided_view = createProviderVisualView(modelAdapter3.getShapes(),ticksPerSec);
+        provided_view = createProviderVisualView(modelAdapter3.getShapes(), ticksPerSec);
         AdapterController adapterController3 = new AdapterController(modelAdapter3, provided_view);
         adapterController3.run();
         break;

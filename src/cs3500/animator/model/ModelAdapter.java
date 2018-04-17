@@ -23,7 +23,7 @@ public class ModelAdapter implements SimpleAnimation {
 
   @Override
   public void animate() throws IllegalArgumentException {
-    // do nothing
+    concreteModel.
   }
 
   @Override
