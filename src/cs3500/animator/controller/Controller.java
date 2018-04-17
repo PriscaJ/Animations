@@ -2,6 +2,7 @@ package cs3500.animator.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.provider.view.View;
@@ -49,7 +50,12 @@ public class Controller implements ActionListener {
     }
 
     if (view2 instanceof ViewAdapter) {
-      ViewAdapter
+      ViewAdapter adapter = (ViewAdapter) view;
+      try {
+        adapter.showView();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
     view.makeVisible();
   }
