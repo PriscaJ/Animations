@@ -9,7 +9,7 @@ import cs3500.animator.provider.model.SimpleAnimation;
 
 public class ModelAdapter implements SimpleAnimation {
   // AnimationOperations oldModel;
-  AnimationModel concreteModel;
+  private AnimationModel concreteModel;
 
   public ModelAdapter(AnimationModel concreteModel) {
     //this.oldModel = oldModel;

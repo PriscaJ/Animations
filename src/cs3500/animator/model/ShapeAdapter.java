@@ -143,6 +143,10 @@ public class ShapeAdapter implements Shape {
     return false;
   }
 
+  public static Shape convertShapesToShape(Shapes shape) {
+
+  }
+
   public static Shapes convertShapeToShapes(Shape shape) {
     if (shape.getType().equals("rect")) {
       return new Rectangle(shape.getName(), (float) shape.getPosition().getX(),

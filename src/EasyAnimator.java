@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
 import cs3500.animator.model.ModelAdapter;
 import cs3500.animator.model.Shapes;
+import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 import cs3500.animator.provider.view.View;
 import cs3500.animator.util.AnimationFileReader;
@@ -28,7 +30,7 @@ public final class EasyAnimator {
   /**
    * The main method to run the animation.
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     String animationFileName = null;
     String typeOfView = null;
     // if not specified, outputDest is out by default
@@ -83,10 +85,13 @@ public final class EasyAnimator {
         break;
       case "provider":
         // create a hybrid view
-        viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+//        viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+//        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
+//        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
+//        adapterController.run();
         SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
-        AdapterController adapterController =
-            new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
+        viewAdapter = createProviderView(modelAdapter.getShapes(), outputDest);
+        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
         adapterController.run();
         // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
@@ -115,14 +120,18 @@ public final class EasyAnimator {
     int tps = getTicksPerSec(ticksPerSec);
     return new HybridView(shapes, endTime, outputDest, 1000 / tps);
   }
-
-  private static ViewAdapter createProviderView(ArrayList<Shapes> shapes, int endTime,
-      String ticksPerSec, String outputDest) {
+//
+//  private static ViewAdapter createProviderView(ArrayList<Shapes> shapes, int endTime,
+//      String ticksPerSec, String outputDest) {
+//    int tps = getTicksPerSec(ticksPerSec);
+//    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
+//    return new ViewAdapter(hybridView);
+//  }
+  private static View createProviderView(List<Shape> shapes, String ticksPerSec) throws IOException {
     int tps = getTicksPerSec(ticksPerSec);
-    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
-    return new ViewAdapter(hybridView);
+    // todo convert model.getShapes to return a list of Shape
+    return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);
   }
-
   /**
    * This is a helper method to create the model, using the AnimationFileReader and the
    * file the user has selected to create an animation from.
