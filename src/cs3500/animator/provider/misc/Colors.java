@@ -1,4 +1,4 @@
-package cs3500.misc;
+package cs3500.animator.provider.misc;
 
 import cs3500.animator.provider.misc.IColors;
 
@@ -36,8 +36,7 @@ public class Colors implements IColors{
    * @param g value for green
    * @return boolean representing if everything is in bounds
    */
-  @Override
-  public boolean checkValid(double r, double g, double b) {
+  private boolean checkValid(double r, double g, double b) {
     return r >= 0 && r <= 1 && b >= 0 && b <= 1 && g >= 0 && g <= 1;
   }
 

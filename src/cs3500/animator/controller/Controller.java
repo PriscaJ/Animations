@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import cs3500.animator.model.AnimationOperations;
+import cs3500.animator.provider.view.View;
 import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IInteractiveView;
 import cs3500.animator.view.IView;
+import cs3500.animator.view.ViewAdapter;
 import cs3500.animator.view.VisualView;
 
 /**
@@ -16,6 +18,7 @@ import cs3500.animator.view.VisualView;
 public class Controller implements ActionListener {
 
   private IView view;
+  private View view2;
 
   /**
    * Constructor for the controller.
@@ -25,6 +28,11 @@ public class Controller implements ActionListener {
    */
   public Controller(AnimationOperations model, IView view) {
     this.view = view;
+  }
+
+
+  public Controller(AnimationOperations model, View view2) {
+    this.view2 = view2;
   }
 
   /**
@@ -38,6 +46,10 @@ public class Controller implements ActionListener {
     if (view instanceof VisualView) {
       VisualView visualView = (VisualView) view;
       visualView.setButtonListeners(this);
+    }
+
+    if (view2 instanceof ViewAdapter) {
+      ViewAdapter
     }
     view.makeVisible();
   }

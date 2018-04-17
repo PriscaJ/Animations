@@ -3,9 +3,10 @@ package cs3500.animator.provider.model;
 
 import java.util.List;
 
+import cs3500.animator.provider.misc.IColors;
 import cs3500.animator.provider.misc.IPosition2D;
-import cs3500.commands.Command;
-import cs3500.misc.Position2D;
+//import cs3500.commands.Command;
+//import cs3500.misc.Position2D;
 
 /**
  * Interface representing shapes. Has getters so that commands can access particular parameters
@@ -65,7 +66,7 @@ public interface Shape {
    * Get the stating point of this shape.
    * @return The position representing the start.
    */
-  Position2D getAnchor();
+  IPosition2D getAnchor();
 
   /**
    * Get the width of this shape.
@@ -83,7 +84,7 @@ public interface Shape {
    * Get the color of this shape.
    * @return the color
    */
-  Colors getColor();
+  IColors getColor();
 
   /**
    * Get all the commands affecting this shape.

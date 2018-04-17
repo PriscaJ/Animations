@@ -10,7 +10,7 @@ import cs3500.shapes.Shape;
 /**
  * View to represent the view in the form of human readable text.
  */
-public class TextualView implements View {
+public class  TextualView implements View {
 
   private final String path;
   private List<Shape> shapes;

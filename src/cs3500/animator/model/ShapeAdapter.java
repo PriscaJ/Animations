@@ -2,8 +2,10 @@ package cs3500.animator.model;
 
 import java.util.List;
 
+import cs3500.animator.provider.misc.Colors;
 import cs3500.animator.provider.misc.IColors;
 import cs3500.animator.provider.misc.IPosition2D;
+import cs3500.animator.provider.misc.Position2D;
 import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
 import javafx.scene.transform.Scale;
@@ -72,7 +74,7 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public IPosition2D getAnchor() {
-    return oldShapes.getXPosition() oldShapes.getYPosition();
+    return new Position2D(oldShapes.getXPosition(), oldShapes.getYPosition());
   }
 
   @Override
@@ -86,8 +88,8 @@ public class ShapeAdapter implements Shape {
   }
 
   @Override
-  public Colors getColor() {
-    return oldShapes.getRed() oldShapes.getGreen() oldShapes.getBlue();
+  public IColors getColor() {
+    return new Colors(oldShapes.getRed(), oldShapes.getGreen(), oldShapes.getBlue());
   }
 
   @Override

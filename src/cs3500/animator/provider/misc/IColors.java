@@ -3,21 +3,6 @@ package cs3500.animator.provider.misc;
 public interface IColors {
 
   /**
-   * Check to see if the given parameters are valid (between 0 and 255).
-   * @param r value for red
-   * @param b value for blue
-   * @param g value for green
-   * @return boolean representing if everything is in bounds
-   */
-  boolean checkValid(double r, double g, double b);
-
-  /**
-   * Describe this color as a formatted string.
-   * @return string detailing r, g, and b values
-   */
-  String toString();
-
-  /**
    * Get this color in a formatted view.
    * @return the formatted String representing this color
    */
