@@ -180,11 +180,11 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public boolean getVisibility() {
-    return false;
+    return true;
   }
 
   @Override
   public void setVisibility(boolean visible) {
-
+    visible = true;
   }
 }
