@@ -89,9 +89,9 @@ public final class EasyAnimator {
         //        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
         //        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
         //        adapterController.run();
-        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
+        SimpleAnimation modelAdapter = new ModelAdapter(model);
         provided_view = createProviderView(modelAdapter.getShapes(), outputDest);
-        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) provided_view);
+        AdapterController adapterController = new AdapterController(modelAdapter, provided_view);
         adapterController.run();
         // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;

@@ -8,12 +8,16 @@ import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 
 public class ModelAdapter implements SimpleAnimation {
-  // AnimationOperations oldModel;
+  private AnimationOperations oldModel;
   private AnimationModel concreteModel;
 
   public ModelAdapter(AnimationModel concreteModel) {
     //this.oldModel = oldModel;
     this.concreteModel = concreteModel;
+  }
+
+  public ModelAdapter(AnimationOperations oldModel) {
+    this.oldModel = oldModel;
   }
 
 
