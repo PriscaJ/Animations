@@ -3,6 +3,7 @@ package cs3500.animator.controller;
 import java.io.IOException;
 
 import cs3500.animator.model.ModelAdapter;
+import cs3500.animator.provider.model.SimpleAnimation;
 import cs3500.animator.provider.view.View;
 import cs3500.animator.view.ViewAdapter;
 
@@ -12,7 +13,7 @@ public class AdapterController {
   // putting our own controller inside to pass funtionality through.
   private Controller controller;
 
-  public AdapterController(ModelAdapter model, ViewAdapter view) {
+  public AdapterController(SimpleAnimation model, View view) {
     this.view = view;
   }
 

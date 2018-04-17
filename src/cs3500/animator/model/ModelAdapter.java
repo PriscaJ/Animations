@@ -8,12 +8,16 @@ import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 
 public class ModelAdapter implements SimpleAnimation {
-  // AnimationOperations oldModel;
+  private AnimationOperations oldModel;
   private AnimationModel concreteModel;
 
   public ModelAdapter(AnimationModel concreteModel) {
     //this.oldModel = oldModel;
     this.concreteModel = concreteModel;
+  }
+
+  public ModelAdapter(AnimationOperations oldModel) {
+    this.oldModel = oldModel;
   }
 
 
@@ -60,7 +64,7 @@ public class ModelAdapter implements SimpleAnimation {
   public List<Shape> getShapes() {
     // todo conflicting shapes????
     ShapeAdapter shapeAdapter;
-    List<Shape> shapesToReturn = new ArrayList<>();
+    List<Shape> shapesToReturn = new ArrayList<Shape>();
     List<Shapes> old_shapes = concreteModel.getShapes();
     for (Shapes old_shape : old_shapes) {
       shapeAdapter = new ShapeAdapter(old_shape);
