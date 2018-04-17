@@ -7,9 +7,9 @@ import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 
-public class ModelAdapter implements SimpleAnimation{
+public class ModelAdapter implements SimpleAnimation {
   // AnimationOperations oldModel;
-  AnimationModel concreteModel;
+  private AnimationModel concreteModel;
 
   public ModelAdapter(AnimationModel concreteModel) {
     //this.oldModel = oldModel;
@@ -28,10 +28,12 @@ public class ModelAdapter implements SimpleAnimation{
     return "";
   }
 
-  // todo are we allowed to cast their interfaces into our classes? seems a lil fishy??
   @Override
+  // SHAPE --> SHAPES
   public void addShape(Shape shape) throws IllegalArgumentException {
-    concreteModel.addShape((AbstractShape)shape);
+    // need to turn their shape into a shapes?
+    Shapes shapeToAdd = ShapeAdapter.convertShapeToShapes(shape);
+    concreteModel.addShape((AbstractShape) shapeToAdd);
   }
 
   @Override
@@ -51,15 +53,16 @@ public class ModelAdapter implements SimpleAnimation{
   }
 
   @Override
+  // List<Shape> --> List<Shapes>
+  // our model will return Shapes, but we want a list of Shape...
   public List<Shape> getShapes() {
     // todo conflicting shapes????
     ShapeAdapter shapeAdapter;
     List<Shape> shapesToReturn = new ArrayList<>();
     List<Shapes> old_shapes = concreteModel.getShapes();
     for (Shapes old_shape : old_shapes) {
-      shapeAdapter = new ShapeAdapter(old_shape);
       // todo: create a method convertShape() to turn our Shapes into a Shape?? IDK
-      Shape newShape = shapeAdapter.convertShape(old_shape);
+      Shapes newShape = ShapeAdapter.convertShapeToShapes(old_shape);
       shapesToReturn.add(newShape);
     }
     return shapesToReturn;

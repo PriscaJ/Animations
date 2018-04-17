@@ -5,8 +5,6 @@ import java.util.List;
 
 import cs3500.animator.provider.misc.IColors;
 import cs3500.animator.provider.misc.IPosition2D;
-//import cs3500.commands.Command;
-//import cs3500.misc.Position2D;
 
 /**
  * Interface representing shapes. Has getters so that commands can access particular parameters
