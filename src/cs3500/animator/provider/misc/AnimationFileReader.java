@@ -1,4 +1,4 @@
-package cs3500.misc;
+package cs3500.animator.provider.misc;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
-import cs3500.models.TweenModelBuilder;
+import cs3500.animator.util.TweenModelBuilder;
 
 /**
  * This class represents a file reader for the animation file. This reads in the

@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.swing.*;
 
+import cs3500.animator.controller.AdapterController;
 import cs3500.animator.controller.Controller;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
+import cs3500.animator.model.ModelAdapter;
 import cs3500.animator.model.Shapes;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.HybridView;
@@ -63,6 +65,7 @@ public final class EasyAnimator {
       System.exit(1);
     }
     IView view = null;
+    ViewAdapter viewAdapter = null;
     switch (typeOfView) {
       case "text":
         view = createTextView(outputDest, ticksPerSec, model);
@@ -77,14 +80,20 @@ public final class EasyAnimator {
         view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       case "provider":
-        view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+        // create a hybrid view
+        viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+
+        ModelAdapter modelAdapter = new ModelAdapter((AnimationModel) model);
+        AdapterController adapterController = new AdapterController(modelAdapter, viewAdapter);
+        adapterController.run();
+        // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       default:
         makeErrorMessage("Invalid type of view");
     }
-    if (view == null) {
+    if (view == null && viewAdapter == null) {
       makeErrorMessage("Must create model and view.");
-    } else {
+    } else if (view != null) {
       Controller c = new Controller(model, view);
       c.run();
     }
@@ -103,6 +112,13 @@ public final class EasyAnimator {
       String ticksPerSec, String outputDest) {
     int tps = getTicksPerSec(ticksPerSec);
     return new HybridView(shapes, endTime, outputDest, 1000 / tps);
+  }
+
+  private static ViewAdapter createProviderView(ArrayList<Shapes> shapes, int endTime,
+      String ticksPerSec, String outputDest) {
+    int tps = getTicksPerSec(ticksPerSec);
+    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
+    return new ViewAdapter(hybridView);
   }
 
   /**
@@ -155,14 +171,6 @@ public final class EasyAnimator {
     List<Animations> animations = model.getAnimations();
     // temporarily changed model from ReadOnly to AnimationOperations
     return new TextualView(outFile, shapes, animations, 1000 / tps);
-  }
-
-  private static ViewAdapter createProviderView(String outFile, String ticksPerSec,
-      AnimationOperations model, String outputDest) {
-    int tps = getTicksPerSec(ticksPerSec);
-    List<Shapes> shapes = model.getShapes();
-    List<Animations> animations = model.getAnimations();
-    
   }
 
   // Interprets the string ticks per second as an integer and sets it as 1 else.
