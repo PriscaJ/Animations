@@ -5,7 +5,6 @@ import java.util.List;
 
 import cs3500.animator.provider.model.*;
 
-import cs3500.misc.Helper;
 import cs3500.shapes.Shape;
 
 /**

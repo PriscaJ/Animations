@@ -6,6 +6,7 @@ import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 
+<<<<<<< HEAD
 public class ModelAdapter implements SimpleAnimation{
   // AnimationOperations oldModel;
   AnimationModel concreteModel;
@@ -13,6 +14,15 @@ public class ModelAdapter implements SimpleAnimation{
   public ModelAdapter(AnimationModel concreteModel) {
     //this.oldModel = oldModel;
     this.concreteModel = concreteModel;
+=======
+public class ModelAdapter extends AnimationModel implements SimpleAnimation{
+  // AnimationOperations oldModel;
+  AnimationModel concreteModel;
+
+  public ModelAdapter(AnimationOperations oldModel) {
+    //this.oldModel = oldModel;
+    concreteModel = new AnimationModel();
+>>>>>>> 5ad03cdc7bc21570f5bd993b2ec3624442b3e16d
   }
 
 
@@ -40,6 +50,11 @@ public class ModelAdapter implements SimpleAnimation{
   @Override
   public Shape getShapeWithName(String name) {
     // todo need to access the hashmap in the concrete model
+    for (Shapes s : concreteModel.getShapes()) {
+      if (s.getName().equals(name)) {
+        return s;
+      }
+    }
     return null;
   }
 
