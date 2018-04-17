@@ -310,7 +310,7 @@ public class SVGView implements IView {
                   .append("\" fill=\"freeze\" />");
         }
         break;
-        default:
+      default:
           // do nothing.
     }
     return workString.toString();

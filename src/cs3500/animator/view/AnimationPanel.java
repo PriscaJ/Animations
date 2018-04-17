@@ -161,10 +161,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
   /**
    * Sets the ticks per second (speed) of the animation.
    *
-   * @param Tps is the ticks per second.
+   * @param tps is the ticks per second.
    */
-  protected void setTPS(int Tps) {
-    t.setDelay(Tps);
+  protected void setTPS(int tps) {
+    t.setDelay(tps);
   }
 
   /**

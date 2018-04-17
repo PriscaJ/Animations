@@ -1,0 +1,10 @@
+<svg width="700" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<rect>
+    <!-- This is the loop back. Set duration for the duration of one
+    animation before loopback. Ensure that this number is greater than 
+    the end of one complete animation-->
+    <!-- this example loops back after 10 seconds -->
+   <animate id="base" begin="0;base.end" dur="500.0ms" attributeName="visibility" from="hide" to="hide"/>
+</rect>
+
+</svg>

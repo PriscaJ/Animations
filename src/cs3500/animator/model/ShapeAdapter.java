@@ -175,8 +175,8 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public boolean isVisible() {
-    oldShapes.
-    return false;
+    //oldShapes.
+    return true;
   }
 
   @Override

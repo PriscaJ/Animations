@@ -1,0 +1,35 @@
+
+Working features:
+- JButton rendering
+- JPanel display
+
+Features that did not work:
+- Starting the animation
+
+    One large problem was that we received our code late from our providers so we ran into
+    issues, but due to the timeline, we weren't able to let our providers know so they had
+    time to make the changes we requested.
+
+    We were able to render the JButtons for controlling the hybrid view, but we were
+    unable to render the animation itself. The provider's code had a method called animate() in
+    their model interface, but our model did not have any methods related to initializing or
+    starting a view in order to separate the responsibilities as much as possible.
+
+    Upon requesting the code change, the providers did not have time to fix the design choice.
+
+
+
+        The provided code also had a representation of visibility in their Shape class, and
+    we suggested they move their representation of visible shapes to be a list of visible shapes
+    in their view, but, again they did not have time to make such changes.
+
+        If they were able
+
+null pointer with
+
+The other buttons relied on the animation already running, so we were unable to get those to
+work as well.
+
+The SVG output feature worked successfully.
+
+
