@@ -11,6 +11,8 @@ import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
 import cs3500.animator.model.ModelAdapter;
 import cs3500.animator.model.Shapes;
+import cs3500.animator.provider.model.SimpleAnimation;
+import cs3500.animator.provider.view.View;
 import cs3500.animator.util.AnimationFileReader;
 import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IView;
@@ -65,7 +67,7 @@ public final class EasyAnimator {
       System.exit(1);
     }
     IView view = null;
-    ViewAdapter viewAdapter = null;
+    View viewAdapter = null;
     switch (typeOfView) {
       case "text":
         view = createTextView(outputDest, ticksPerSec, model);
@@ -82,9 +84,9 @@ public final class EasyAnimator {
       case "provider":
         // create a hybrid view
         viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
-
-        ModelAdapter modelAdapter = new ModelAdapter((AnimationModel) model);
-        AdapterController adapterController = new AdapterController(modelAdapter, viewAdapter);
+        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
+        AdapterController adapterController =
+            new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
         adapterController.run();
         // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;

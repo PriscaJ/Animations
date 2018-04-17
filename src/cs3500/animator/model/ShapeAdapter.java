@@ -142,4 +142,21 @@ public class ShapeAdapter implements Shape {
   public boolean getVisibility() {
     return false;
   }
+
+  public static Shapes convertShapeToShapes(Shape shape) {
+    if (shape.getType().equals("rect")) {
+      return new Rectangle(shape.getName(), (float) shape.getPosition().getX(),
+          (float) shape.getPosition().getY(), (float) shape.getWidth(), (float) shape.getHeight(),
+          (float) shape.getColor().getR(),
+          (float) shape.getColor().getG(), (float) shape.getColor().getB(), shape.getStartTime(),
+          shape.getEndTime());
+    } else if (shape.getType().equals("ellipse")) {
+      return new Oval(shape.getName(), (float) shape.getPosition().getX(),
+          (float) shape.getPosition().getY(), (float) shape.getWidth(), (float) shape.getHeight(),
+          (float) shape.getColor().getR(),
+          (float) shape.getColor().getG(), (float) shape.getColor().getB(), shape.getStartTime(),
+          shape.getEndTime());
+    }
+    throw new IllegalArgumentException("this is a weird shape, man.");
+  }
 }
