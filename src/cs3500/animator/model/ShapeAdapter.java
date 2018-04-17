@@ -1,5 +1,6 @@
 package cs3500.animator.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.animator.provider.misc.Colors;
@@ -98,8 +99,12 @@ public class ShapeAdapter implements Shape {
   @Override
   public List<Command> getCommands() {
     List<AnimationCommand> animationCommands = oldShapes.getCommands();
-
-    return (List) oldShapes.getCommands();
+    List<Command> commandsToReturn = new ArrayList<>();
+    for (AnimationCommand ac : animationCommands) {
+      CommandAdapter commandAdapter = new CommandAdapter(ac, ac.getAnimation());
+      commandsToReturn.add(commandAdapter);
+    }
+    return commandsToReturn;
   }
 
   @Override
@@ -143,11 +148,7 @@ public class ShapeAdapter implements Shape {
     return false;
   }
 
-  public static Shape convertShapesToShape(Shapes shape) {
-
-  }
-
-  public static Shapes convertShapeToShapes(Shape shape) {
+  protected static Shapes convertShapeToShapes(Shape shape) {
     if (shape.getType().equals("rect")) {
       return new Rectangle(shape.getName(), (float) shape.getPosition().getX(),
           (float) shape.getPosition().getY(), (float) shape.getWidth(), (float) shape.getHeight(),

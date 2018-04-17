@@ -46,7 +46,7 @@ public class ModelAdapter implements SimpleAnimation {
     // todo need to access the hashmap in the concrete model
     for (Shapes s : concreteModel.getShapes()) {
       if (s.getName().equals(name)) {
-        return (Shape) s; // todo nasty casting probably a better way.
+        return new ShapeAdapter(s);
       }
     }
     return null;
@@ -61,9 +61,8 @@ public class ModelAdapter implements SimpleAnimation {
     List<Shape> shapesToReturn = new ArrayList<>();
     List<Shapes> old_shapes = concreteModel.getShapes();
     for (Shapes old_shape : old_shapes) {
-      // todo: create a method convertShape() to turn our Shapes into a Shape?? IDK
-      Shapes newShape = ShapeAdapter.convertShapeToShapes(old_shape);
-      shapesToReturn.add(newShape);
+      shapeAdapter = new ShapeAdapter(old_shape);
+      shapesToReturn.add(shapeAdapter);
     }
     return shapesToReturn;
   }

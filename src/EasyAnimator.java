@@ -69,7 +69,7 @@ public final class EasyAnimator {
       System.exit(1);
     }
     IView view = null;
-    View viewAdapter = null;
+    View provided_view = null;
     switch (typeOfView) {
       case "text":
         view = createTextView(outputDest, ticksPerSec, model);
@@ -85,20 +85,20 @@ public final class EasyAnimator {
         break;
       case "provider":
         // create a hybrid view
-//        viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
-//        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
-//        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
-//        adapterController.run();
+        //        viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+        //        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
+        //        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
+        //        adapterController.run();
         SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
-        viewAdapter = createProviderView(modelAdapter.getShapes(), outputDest);
-        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
+        provided_view = createProviderView(modelAdapter.getShapes(), outputDest);
+        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) provided_view);
         adapterController.run();
         // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       default:
         makeErrorMessage("Invalid type of view");
     }
-    if (view == null && viewAdapter == null) {
+    if (view == null && provided_view == null) {
       makeErrorMessage("Must create model and view.");
     } else if (view != null) {
       Controller c = new Controller(model, view);
@@ -120,18 +120,20 @@ public final class EasyAnimator {
     int tps = getTicksPerSec(ticksPerSec);
     return new HybridView(shapes, endTime, outputDest, 1000 / tps);
   }
-//
-//  private static ViewAdapter createProviderView(ArrayList<Shapes> shapes, int endTime,
-//      String ticksPerSec, String outputDest) {
-//    int tps = getTicksPerSec(ticksPerSec);
-//    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
-//    return new ViewAdapter(hybridView);
-//  }
+
+  //
+  //  private static ViewAdapter createProviderView(ArrayList<Shapes> shapes, int endTime,
+  //      String ticksPerSec, String outputDest) {
+  //    int tps = getTicksPerSec(ticksPerSec);
+  //    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
+  //    return new ViewAdapter(hybridView);
+  //  }
   private static View createProviderView(List<Shape> shapes, String ticksPerSec) throws IOException {
     int tps = getTicksPerSec(ticksPerSec);
     // todo convert model.getShapes to return a list of Shape
     return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);
   }
+
   /**
    * This is a helper method to create the model, using the AnimationFileReader and the
    * file the user has selected to create an animation from.
