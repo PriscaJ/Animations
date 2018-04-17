@@ -68,6 +68,12 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public void changeColor(IColors c) {
+    ColorChange makeColor;
+    makeColor =
+            new ColorChange(getName(), (float) getColor().getR(), (float) getColor().getG(),
+                    (float) getColor().getB(), (float) c.getR(), (float) c.getG(), (float) c.getB(),
+                    getStartTime(), getEndTime());
+    ColorCommand color = new ColorCommand(makeColor);
 
   }
 
@@ -151,6 +157,7 @@ public class ShapeAdapter implements Shape {
 
   public static Shape convertShapesToShape(Shapes shape) {
 
+    return (Shape) shape;
   }
 
   public static Shapes convertShapeToShapes(Shape shape) {
