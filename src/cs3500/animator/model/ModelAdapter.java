@@ -6,19 +6,19 @@ import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
 
-public class ModelAdapter extends AnimationModel implements SimpleAnimation{
-  AnimationOperations oldModel;
+public class ModelAdapter implements SimpleAnimation{
+  // AnimationOperations oldModel;
   AnimationModel concreteModel;
 
-  public ModelAdapter(AnimationOperations oldModel) {
-    this.oldModel = oldModel;
-    concreteModel = new AnimationModel();
+  public ModelAdapter(AnimationModel concreteModel) {
+    //this.oldModel = oldModel;
+    this.concreteModel = concreteModel;
   }
 
 
   @Override
   public void animate() throws IllegalArgumentException {
-    animate();
+    // ignore
   }
 
   @Override
@@ -29,12 +29,12 @@ public class ModelAdapter extends AnimationModel implements SimpleAnimation{
 
   @Override
   public void addShape(Shape shape) throws IllegalArgumentException {
-    addShape(shape);
+    concreteModel.addShape((AbstractShape)shape);
   }
 
   @Override
   public void addCommand(Command command, Shape s) throws IllegalArgumentException {
-    addCommand(command, s);
+    concreteModel.addCommand((AnimationCommand) command);
   }
 
   @Override
@@ -46,6 +46,6 @@ public class ModelAdapter extends AnimationModel implements SimpleAnimation{
   @Override
   public List<Shape> getShapes() {
     // todo conflicting shapes????
-    return (List) oldModel.getShapes();
+    return (List) concreteModel.getShapes();
   }
 }

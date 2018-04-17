@@ -14,6 +14,7 @@ import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
+import cs3500.animator.view.ViewAdapter;
 import cs3500.animator.view.VisualView;
 
 /**
@@ -74,6 +75,9 @@ public final class EasyAnimator {
         break;
       case "interactive":
         view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
+        break;
+      case "provider":
+        view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       default:
         makeErrorMessage("Invalid type of view");
@@ -151,6 +155,13 @@ public final class EasyAnimator {
     List<Animations> animations = model.getAnimations();
     // temporarily changed model from ReadOnly to AnimationOperations
     return new TextualView(outFile, shapes, animations, 1000 / tps);
+  }
+
+  private static ViewAdapter createProviderView(String outFile,
+                                                String ticksPerSec, AnimationOperations model) {
+    int tps = getTicksPerSec(ticksPerSec);
+    List<Shapes> shapes = model.getShapes();
+    List<Animations> animations = model.getAnimations();
   }
 
   // Interprets the string ticks per second as an integer and sets it as 1 else.
