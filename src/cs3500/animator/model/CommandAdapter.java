@@ -1,6 +1,5 @@
 package cs3500.animator.model;
 
-import com.sun.xml.internal.ws.util.HandlerAnnotationInfo;
 
 import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;

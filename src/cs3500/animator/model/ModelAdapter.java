@@ -51,6 +51,12 @@ public class ModelAdapter implements SimpleAnimation{
   @Override
   public List<Shape> getShapes() {
     // todo conflicting shapes????
+    ShapeAdapter shapeAdapter;
+    List<Shapes> old_shapes = concreteModel.getShapes();
+    for (Shapes old_shape : old_shapes) {
+      shapeAdapter = new ShapeAdapter(old_shape);
+
+    }
     return (List) concreteModel.getShapes();
   }
 }

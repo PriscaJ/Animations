@@ -157,11 +157,12 @@ public final class EasyAnimator {
     return new TextualView(outFile, shapes, animations, 1000 / tps);
   }
 
-  private static ViewAdapter createProviderView(String outFile,
-                                                String ticksPerSec, AnimationOperations model) {
+  private static ViewAdapter createProviderView(String outFile, String ticksPerSec,
+      AnimationOperations model, String outputDest) {
     int tps = getTicksPerSec(ticksPerSec);
     List<Shapes> shapes = model.getShapes();
     List<Animations> animations = model.getAnimations();
+    
   }
 
   // Interprets the string ticks per second as an integer and sets it as 1 else.

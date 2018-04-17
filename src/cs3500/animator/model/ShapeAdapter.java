@@ -17,7 +17,10 @@ public class ShapeAdapter implements Shape {
   public ShapeAdapter(Shapes oldShapes, AnimationCommand adapteeCommands) {
     this.oldShapes = oldShapes;
     this.adapteeCommands = adapteeCommands;
+  }
 
+  public ShapeAdapter(Shapes oldShapes) {
+    this.oldShapes = oldShapes;
   }
 
   @Override
@@ -94,6 +97,8 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public List<Command> getCommands() {
+    List<AnimationCommand> animationCommands = oldShapes.getCommands();
+
     return (List) oldShapes.getCommands();
   }
 
