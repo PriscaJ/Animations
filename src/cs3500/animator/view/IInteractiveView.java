@@ -42,7 +42,7 @@ public interface IInteractiveView extends IView {
   void restart();
 
   /**
-   * Runs the animation only with the shapes selected
+   * Runs the animation only with the shapes selected.
    */
   void runSelected();
 }

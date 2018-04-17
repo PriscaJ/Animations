@@ -16,7 +16,7 @@ import cs3500.animator.model.ScaleChange;
 import cs3500.animator.model.ScaleCommand;
 import cs3500.animator.model.Shapes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test class to check the output of a textual view.

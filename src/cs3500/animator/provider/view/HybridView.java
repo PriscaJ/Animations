@@ -264,7 +264,7 @@ public class HybridView extends JFrame implements View, ActionListener {
     List<Shape> currentShapes = new ArrayList<>();
     deepCopyShapes(currentShapes, shapes);
 
-    copyVisibility(currentShapes, shapes);
+    //copyVisibility(currentShapes, shapes);
 
     shapes.clear();
     deepCopyShapes(shapes, initialShapes);

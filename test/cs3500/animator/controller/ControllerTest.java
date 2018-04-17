@@ -17,7 +17,11 @@ public class ControllerTest {
   VisualView visualView;
   Controller controller;
   IInteractiveView iv;
+
   @Before
+  /**
+   * Initializes the data for tests.
+   */
   public void initData() {
     //VisualView visualView = new VisualView()
     // simple example
@@ -39,7 +43,7 @@ public class ControllerTest {
     iv = new VisualView(shapes, 200, 20);
   }
 
- /**@Test
+  /**@Test
   public void testActionPerformed() {
     // static error
     assertEquals(controller.actionPerformed((ActionEvent e) -> IInteractiveView.stopTimer());

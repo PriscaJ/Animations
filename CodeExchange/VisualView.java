@@ -1,11 +1,18 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.WindowConstants;
 
 import cs3500.animator.model.Shapes;
 
@@ -17,19 +24,21 @@ import cs3500.animator.model.Shapes;
 public class VisualView extends JFrame implements IInteractiveView {
   protected boolean looping;
   protected int lastTick;
-  private int ticksPerSec;
-  private JScrollPane pane;
   private AnimationPanel aniPanel;
   private ArrayList<Shapes> allShapes;
   private ArrayList<Shapes> selectedShapes;
-  private JButton incSpeed, decSpeed, stop, start, restart, loop, svgExport, runSelected, resume;
+  private JButton incSpeed;
+  private JButton decSpeed;
+  private JButton stop;
+  private JButton start;
+  private JButton restart;
+  private JButton loop;
+  private JButton svgExport;
+  private JButton runSelected;
+  private JButton resume;
   private JTextField svgFileName;
-  private JPanel buttonPanel;
   private JListShape shapeList;
-  private JScrollPane scrollingShapes;
   private int initTPS;
-  // looping is set to be false initially
-  private String svgButtonText = "Type file name here:";
   private JLabel info;
 
   /**
@@ -45,11 +54,11 @@ public class VisualView extends JFrame implements IInteractiveView {
     this.looping = false;
     this.lastTick = lastTick;
     this.initTPS = ticksPerSec;
-    this.ticksPerSec = ticksPerSec;
+    int ticksPerSec1 = ticksPerSec;
     this.allShapes = shapesList;
 
     //button panel
-    buttonPanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
     this.add(buttonPanel, BorderLayout.SOUTH);
     System.out.print("buttons placed");
@@ -94,6 +103,7 @@ public class VisualView extends JFrame implements IInteractiveView {
 
     // svg export
     // - text box for output file name
+    String svgButtonText = "Type file name here:";
     svgFileName = new JTextField(svgButtonText);
     buttonPanel.add(svgFileName);
     // - jbutton to export
@@ -111,7 +121,7 @@ public class VisualView extends JFrame implements IInteractiveView {
 
     // pane that will display all the shapes
     //scrollingShapes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    scrollingShapes = new JScrollPane(shapeList);
+    JScrollPane scrollingShapes = new JScrollPane(shapeList);
     scrollingShapes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scrollingShapes.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -145,12 +155,12 @@ public class VisualView extends JFrame implements IInteractiveView {
     this.aniPanel = new AnimationPanel(shapesList, lastTick, ticksPerSec);
     this.aniPanel.setPreferredSize(new Dimension(800, 800));
     this.add(this.aniPanel);
-    this.pane = new JScrollPane(this.aniPanel);
+    JScrollPane pane = new JScrollPane(this.aniPanel);
     pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
     pane.setPreferredSize(new Dimension(800, 800));
     pane.setSize(800, 800);
-    this.add(this.pane);
+    this.add(pane);
     this.pack();
   }
 
@@ -179,6 +189,9 @@ public class VisualView extends JFrame implements IInteractiveView {
     info.setText("Animation paused.");
   }
 
+  /**
+   * Runs the shapes selected in the list.
+   */
   public void runSelected() {
     // On the next iteration of the looped animation
     // it will run with the selected shapes.

@@ -5,15 +5,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.AnimationType;
-import cs3500.animator.model.ColorChange;
-import cs3500.animator.model.ColorCommand;
 import cs3500.animator.model.Move;
 import cs3500.animator.model.MoveCommand;
 import cs3500.animator.model.Oval;
 import cs3500.animator.model.Rectangle;
-import cs3500.animator.model.ScaleChange;
-import cs3500.animator.model.ScaleCommand;
 import cs3500.animator.model.Shapes;
 
 import static org.junit.Assert.assertEquals;
@@ -54,18 +49,26 @@ public class SVGTest {
     moveEllipse.setAnimatingShape(o);
 
     SVGView view = new SVGView(shapes, "hi", 1, false);
-    assertEquals( "<svg width= \"700\"  height= \"500\" version= \"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n"
+    assertEquals( "<svg width= \"700\"  height= \"500\" version= \"1.1\" "
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n"
         + "\n"
-        + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
-        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"1000.0ms\" dur=\"4000.0ms\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"4000ms\" attributeName=\"x\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
+        + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" "
+            + "fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\""
+            + "1000.0ms\" dur=\"4000.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"4000ms\" attributeName=\"x\" "
+            + "from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
         + "\n"
         + "</rect>\n"
         + "\n"
-        + "<ellipse id=\"C\" cx=\"500\" cy=\"100\" rx=\"60\" ry=\"30\" fill=\"rgb(0,0,255)\" visibility=\"hidden\" >\n"
-        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"2000.0ms\" dur=\"5000.0ms\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"2000ms\" dur=\"5000ms\" attributeName=\"cx\" from=\"500.0\" to=\"600.0\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"2000ms\" dur=\"5000ms\" attributeName=\"cy\" from=\"100.0\" to=\"400.0\" fill=\"freeze\" />\n"
+        + "<ellipse id=\"C\" cx=\"500\" cy=\"100\" rx=\"60\" ry=\"30\" fill=\"rgb(0,0,255)\" "
+            + "visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\""
+            + "2000.0ms\" dur=\"5000.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"2000ms\" dur=\"5000ms\" attributeName=\"cx\" "
+            + "from=\"500.0\" to=\"600.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"2000ms\" dur=\"5000ms\" attributeName=\"cy\" "
+            + "from=\"100.0\" to=\"400.0\" fill=\"freeze\" />\n"
         + "\n"
         + "</ellipse>\n"
         + "\n"
@@ -109,26 +112,38 @@ public class SVGTest {
     moveEllipse.setAnimatingShape(o);
 
     SVGView view = new SVGView(shapes, "hi", 1, true);
-    assertEquals( "<svg width= \"700\"  height= \"500\" version= \"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n"
+    assertEquals( "<svg width= \"700\"  height= \"500\" version= \"1.1\" xmlns=\""
+            + "http://www.w3.org/2000/svg\">\n"
         + "\n"
         + "<rect>\n"
-        + "<animate id=\"base\" begin=\"0;base.end\" dur=\"7000.0ms\" attributeName=\"visibility\" from=\"hide\" to=\"hide\"/>\n"
+        + "<animate id=\"base\" begin=\"0;base.end\" dur=\"7000.0ms\" attributeName=\""
+            + "visibility\" from=\"hide\" to=\"hide\"/>\n"
         + "</rect>\n"
         + "\n"
-        + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" fill=\"rgb(255,0,0)\" visibility=\"hidden\" >\n"
-        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"base.begin+1000.0ms\" dur=\"4000.0ms\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"base.begin+1000ms\" dur=\"4000ms\" attributeName=\"x\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
+        + "<rect id=\"R\" x=\"200.0\" y=\"200.0\" width=\"50.0\" height=\"100.0\" fill=\""
+            + "rgb(255,0,0)\" visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" "
+            + "begin=\"base.begin+1000.0ms\" dur=\"4000.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"base.begin+1000ms\" dur=\"4000ms\" "
+            + "attributeName=\"x\" from=\"200.0\" to=\"300.0\" fill=\"freeze\" />\n"
         + "\n"
-        + "<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" attributeName=\"x\" to=\"200.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" attributeName=\"x\""
+            + " to=\"200.0\" fill=\"freeze\" />\n"
         + "</rect>\n"
         + "\n"
-        + "<ellipse id=\"C\" cx=\"500\" cy=\"100\" rx=\"60\" ry=\"30\" fill=\"rgb(0,0,255)\" visibility=\"hidden\" >\n"
-        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\"base.begin+2000.0ms\" dur=\"5000.0ms\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"base.begin+2000ms\" dur=\"5000ms\" attributeName=\"cx\" from=\"500.0\" to=\"600.0\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"base.begin+2000ms\" dur=\"5000ms\" attributeName=\"cy\" from=\"100.0\" to=\"400.0\" fill=\"freeze\" />\n"
+        + "<ellipse id=\"C\" cx=\"500\" cy=\"100\" rx=\"60\" ry=\"30\" fill=\"rgb(0,0,255)\" "
+            + "visibility=\"hidden\" >\n"
+        + "<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" begin=\""
+            + "base.begin+2000.0ms\" dur=\"5000.0ms\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"base.begin+2000ms\" dur=\"5000ms\" "
+            + "attributeName=\"cx\" from=\"500.0\" to=\"600.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"base.begin+2000ms\" dur=\"5000ms\" "
+            + "attributeName=\"cy\" from=\"100.0\" to=\"400.0\" fill=\"freeze\" />\n"
         + "\n"
-        + "<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" attributeName=\"cx\" to=\"500.0\" fill=\"freeze\" />\n"
-        + "<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" attributeName=\"cy\" to=\"100.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" attributeName=\""
+            + "cx\" to=\"500.0\" fill=\"freeze\" />\n"
+        + "<animate attributeType=\"xml\" begin=\"base.end\" dur=\"1ms\" attributeName=\""
+            + "cy\" to=\"100.0\" fill=\"freeze\" />\n"
         + "</ellipse>\n"
         + "\n"
         + "</svg>", view.svgOutput());

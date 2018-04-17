@@ -105,7 +105,8 @@ public class SVGView implements IView {
     StringBuilder workString = new StringBuilder();
     if (looping) {
       // MAKE THE DUMMY SHAPE FOR LOOPING
-      workString.append(String.format("\n\n<rect>\n<animate id=\"base\" begin=\"0;base.end\" dur=\"%.1fms\" "
+      workString.append(String.format("\n\n<rect>\n<animate id=\"base\" begin=\"0;base.end\" "
+              + "dur=\"%.1fms\" "
               + "attributeName=\"visibility\" from=\"hide\" to=\"hide\"/>"
               + "\n</rect>", (float) endTime * ticksPerSec));
     }
@@ -114,10 +115,11 @@ public class SVGView implements IView {
     for (Shapes s : shapes) {
       if (s instanceof Oval) {
         workString.append(
-                String.format("\n\n<ellipse id=\"%s\" cx=\"%.0f\" cy=\"%.0f\" rx=\"%.0f\" ry=\"%.0f\" "
+                String.format("\n\n<ellipse id=\"%s\" cx=\"%.0f\" cy=\"%.0f\" rx=\"%.0f\" ry=\""
+                                + "%.0f\" "
                                 + "fill=\"rgb(%.0f,%.0f,%.0f)\" visibility=\"hidden\" >\n",
-                        s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(), s.getHeight(),
-                        s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
+                        s.getName(), s.getXPosition(), s.getYPosition(), s.getWidth(),
+                        s.getHeight(), s.getRed() * 255, s.getGreen() * 255, s.getBlue() * 255));
         workString.append("<set attributeName=\"visibility\" attributeType=\"CSS\" to=\"visible\" "
                 + "begin=\"");
         if (looping) {
@@ -184,8 +186,11 @@ public class SVGView implements IView {
           workString.append(formatColor((ColorChange) a.getAnimation(), workString2.toString()));
           break;
         case SCALECHANGE:
-          workString.append(formatScale((ScaleChange) a.getAnimation(), shapeType, workString2.toString()));
+          workString.append(formatScale((ScaleChange) a.getAnimation(), shapeType,
+                  workString2.toString()));
           break;
+        default:
+          // do nothing.
       }
     }
     // LOOPING
@@ -305,6 +310,8 @@ public class SVGView implements IView {
                   .append("\" fill=\"freeze\" />");
         }
         break;
+      default:
+          // do nothing.
     }
     return workString.toString();
   }

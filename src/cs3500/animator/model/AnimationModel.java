@@ -143,9 +143,10 @@ public class AnimationModel implements AnimationOperations {
     }
 
     @Override
-    public TweenModelBuilder<AnimationOperations>
-    addRectangle(String name, float lx, float ly, float width, float height,
-                 float red, float green, float blue, int startOfLife, int endOfLife) {
+    public TweenModelBuilder<AnimationOperations> addRectangle(String name, float lx, float ly,
+                                                               float width, float height, float red,
+                                                               float green, float blue,
+                                                               int startOfLife, int endOfLife) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -160,7 +161,7 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-    addMove(String name, float moveFromX, float moveFromY,
+        addMove(String name, float moveFromX, float moveFromY,
             float moveToX, float moveToY, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
@@ -174,7 +175,7 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-    addColorChange(String name, float oldR, float oldG, float oldB,
+        addColorChange(String name, float oldR, float oldG, float oldB,
                    float newR, float newG, float newB, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
@@ -188,7 +189,7 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-    addScaleToChange(String name, float fromSx, float fromSy,
+        addScaleToChange(String name, float fromSx, float fromSy,
                      float toSx, float toSy, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");

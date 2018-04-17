@@ -1,11 +1,17 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.Shapes;
@@ -155,10 +161,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
   /**
    * Sets the ticks per second (speed) of the animation.
    *
-   * @param TPS is the ticks per second.
+   * @param tps is the ticks per second.
    */
-  protected void setTPS(int TPS) {
-    t.setDelay(TPS);
+  protected void setTPS(int tps) {
+    t.setDelay(tps);
   }
 
   /**

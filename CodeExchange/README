@@ -3,10 +3,19 @@
 
 Overview:
  All the views work and are functioning. Below is a brief description of how the views work
+  We did not make any changes to our Assignment 8 code at all. Our customers never reached
+  out to us with any issues so we assumed that all was well.
+
+  When designing our code we were mindful of keeping our view and model responsibilities
+  decoupled and delegated to the correct classes. We also were careful to eliminate
+  tight coupling between classes.
+
+  We made slight changes merely for style checking purposes, because we lost points in Assignment 7
+  for those mistakes.
 
 Interface IView
-The behaviors of a view which are primarily to display it to the user, so there is only one method in
-the interface that all views should have as a behavior which is to make it visible.
+The behaviors of a view which are primarily to display it to the user, so there is only one method
+in the interface that all views should have as a behavior which is to make it visible.
 
 Class SVGView
 We allow users to specify whether an svg animation is looping or not. 
