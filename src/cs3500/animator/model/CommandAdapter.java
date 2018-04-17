@@ -20,6 +20,7 @@ public class CommandAdapter implements Command {
 
   @Override
   public void convertToTicks(int tempo) {
+
     // ignore
   }
 

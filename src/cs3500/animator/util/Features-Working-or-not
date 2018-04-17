@@ -1,0 +1,6 @@
+
+
+We were able to render the JButtons for controlling the hybrid view, but we were
+unable to render the animation itself. The provider's code had a method called animate() in
+their model interface, but our model did not have any methods related to initializing a view
+in order to be as decoupled 
