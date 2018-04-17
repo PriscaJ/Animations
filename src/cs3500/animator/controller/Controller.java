@@ -19,7 +19,7 @@ import cs3500.animator.view.VisualView;
 public class Controller implements ActionListener {
 
   private IView view;
-  private View view2;
+
 
   /**
    * Constructor for the controller.
@@ -29,11 +29,6 @@ public class Controller implements ActionListener {
    */
   public Controller(AnimationOperations model, IView view) {
     this.view = view;
-  }
-
-
-  public Controller(AnimationOperations model, View view2) {
-    this.view2 = view2;
   }
 
   /**
@@ -49,14 +44,6 @@ public class Controller implements ActionListener {
       visualView.setButtonListeners(this);
     }
 
-    if (view2 instanceof ViewAdapter) {
-      ViewAdapter adapter = (ViewAdapter) view;
-      try {
-        adapter.showView();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    }
     view.makeVisible();
   }
 
