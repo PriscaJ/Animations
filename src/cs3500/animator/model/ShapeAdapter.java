@@ -37,11 +37,11 @@ public class ShapeAdapter implements Shape {
     throw new IllegalArgumentException("this is a weird shape, man.");
   }
 
-  /**
-   * public ShapeAdapter(Shapes oldShapes) {
-   * this.oldShapes = oldShapes;
-   * }
-   **/
+
+  public ShapeAdapter(Shapes oldShapes) {
+    this.oldShapes = oldShapes;
+   }
+
 
   @Override
   public String printShape(int tempo) {
@@ -149,7 +149,11 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public void addCommand(Command c) {
-    oldShapes.addCommand((AnimationCommand) c);
+    // make the two way adapter
+    // oldShapes.addCommand((AnimationCommand) c);
+    // commands c --> commandAdapter
+    //
+    // todo convert command to the correct type -- handled privately in builder???
   }
 
   @Override

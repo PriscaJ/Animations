@@ -1,6 +1,6 @@
 package cs3500.animator.provider.view;
 
-import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
+// import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

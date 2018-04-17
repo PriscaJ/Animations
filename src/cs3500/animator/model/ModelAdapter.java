@@ -19,7 +19,7 @@ public class ModelAdapter implements SimpleAnimation {
 
   @Override
   public void animate() throws IllegalArgumentException {
-    concreteModel.
+    //concreteModel.
   }
 
   @Override
@@ -58,7 +58,7 @@ public class ModelAdapter implements SimpleAnimation {
   public List<Shape> getShapes() {
     // todo conflicting shapes????
     ShapeAdapter shapeAdapter;
-    List<Shape> shapesToReturn = new ArrayList<>();
+    List<Shape> shapesToReturn = new ArrayList<Shape>();
     List<Shapes> old_shapes = concreteModel.getShapes();
     for (Shapes old_shape : old_shapes) {
       shapeAdapter = new ShapeAdapter(old_shape);
