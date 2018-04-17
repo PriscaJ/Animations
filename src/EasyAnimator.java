@@ -95,6 +95,24 @@ public final class EasyAnimator {
         adapterController.run();
         // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
+      case "p-svg":
+        SimpleAnimation modelAdapter2 = new ModelAdapter(model);
+        provided_view = createProviderSVGView(modelAdapter2.getShapes(), outputDest, ticksPerSec);
+        AdapterController adapterController2 = new AdapterController(modelAdapter2, provided_view);
+        adapterController2.run();
+        break;
+      case "p-visual":
+        SimpleAnimation modelAdapter3 = new ModelAdapter(model);
+        provided_view = createProviderVisualView(modelAdapter3.getShapes(),ticksPerSec);
+        AdapterController adapterController3 = new AdapterController(modelAdapter3, provided_view);
+        adapterController3.run();
+        break;
+      case "p-text":
+        SimpleAnimation modelAdapter4 = new ModelAdapter(model);
+        provided_view = createProviderTextView(modelAdapter4.getShapes(), outputDest, ticksPerSec);
+        AdapterController adapterController4 = new AdapterController(modelAdapter4, provided_view);
+        adapterController4.run();
+        break;
       default:
         makeErrorMessage("Invalid type of view");
     }
@@ -134,7 +152,7 @@ public final class EasyAnimator {
     return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);
   }
 
-  private static View createProviderVisualView(List<Shape> shapesList, int lastTick,
+  private static View createProviderVisualView(List<Shape> shapesList,
       String ticksPerSec) {
     // list of shapes and last tick
     int tps = getTicksPerSec(ticksPerSec);
