@@ -12,12 +12,11 @@ import cs3500.animator.provider.model.Shape;
 import javafx.scene.transform.Scale;
 
 public class ShapeAdapter implements Shape {
-  Shapes oldShapes;
-  AnimationCommand adapteeCommands;
+  private Shapes oldShapes;
 
-  public ShapeAdapter(Shapes oldShapes, AnimationCommand adapteeCommands) {
+
+  public ShapeAdapter(Shapes oldShapes) {
     this.oldShapes = oldShapes;
-    this.adapteeCommands = adapteeCommands;
   }
 
   public static Shapes convertShapeToShapes(Shape shape) {
@@ -51,8 +50,7 @@ public class ShapeAdapter implements Shape {
   @Override
   public IPosition2D getPosition() {
     // do nothing or should it be vvv
-    return new Position2D(adapteeCommands.getAnimation().startX,
-        adapteeCommands.getAnimation().getStartY());
+    return new Position2D(oldShapes.getXPosition(), oldShapes.getYPosition());
   }
 
   @Override
@@ -76,6 +74,7 @@ public class ShapeAdapter implements Shape {
   }
 
   @Override
+  // todo what does this do lol
   public void scale(double newWidth, double newHeight) {
     ScaleChange makeScale;
     makeScale =
@@ -83,7 +82,11 @@ public class ShapeAdapter implements Shape {
             (float) newWidth, (float) newHeight, oldShapes.getAppears(), oldShapes.getDisappears());
 
     ScaleCommand scaleCommand = new ScaleCommand(makeScale);
-    //scaleCommand.execute();
+
+    CommandAdapter c = new CommandAdapter(scaleCommand, scaleCommand.getAnimation());
+    ShapeAdapter shapeAdapter = new ShapeAdapter(oldShapes);
+    c.execute(shapeAdapter, 4);
+
   }
 
   @Override
@@ -148,8 +151,11 @@ public class ShapeAdapter implements Shape {
   }
 
   @Override
+  // todo turn a Command to an AnimationCommand
+  //todo this is weird
   public void addCommand(Command c) {
-    oldShapes.addCommand((AnimationCommand) c);
+
+    oldShapes.addCommand();
   }
 
   @Override

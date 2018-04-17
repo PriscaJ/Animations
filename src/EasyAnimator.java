@@ -134,6 +134,28 @@ public final class EasyAnimator {
     return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);
   }
 
+  private static View createProviderVisualView(List<Shape> shapesList, int lastTick,
+      String ticksPerSec) {
+    // list of shapes and last tick
+    int tps = getTicksPerSec(ticksPerSec);
+    return new cs3500.animator.provider.view.VisualView(shapesList, 1000 / tps);
+  }
+
+  // Create an SVGView with the given file name, speed, and model.
+  private static View createProviderSVGView(List<Shape> shapesList, String outputDest,
+      String ticksPerSec) {
+    int tps = getTicksPerSec(ticksPerSec);
+    return new cs3500.animator.provider.view.SVGView(shapesList, outputDest, 1000 / tps);
+  }
+
+  // Creates a text view, similar to the other views.
+  private static View createProviderTextView(List<Shape> shapesList, String outFile,
+      String ticksPerSec) {
+    int tps = getTicksPerSec(ticksPerSec);
+    // temporarily changed model from ReadOnly to AnimationOperations
+    return new cs3500.animator.provider.view.TextualView(shapesList, outFile, 1000 / tps);
+  }
+
   /**
    * This is a helper method to create the model, using the AnimationFileReader and the
    * file the user has selected to create an animation from.
