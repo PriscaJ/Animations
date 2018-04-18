@@ -39,8 +39,14 @@ some extra methods. Some of these methods were a bit erroneous and unneccessary 
 implmentation as mentioned above.
 
 How capable are the views?
+The view seem capable we were able to get most of the views to work fully. From the screenshot they
+had sent there was a slight problem in placement of shapes in the hybrid however we did not
+experience that issue, but we had some troubles working with their hybrid views in other ways. The
+other views work properly with our implmentation showing their capability.
 
 How convenient was it to reuse their code?
+For the most part it was convient, but there were some dependencies that should have stayed in the
+view that made it more difficult to draw on thier code and adapt into ours.
 
 How cleanly written and well-documented was their code?
 As mentioned above there was Javadoc so it was well documented, However the quality of the Javadoc
@@ -51,4 +57,5 @@ We had to ask they implment an Interface-type instead of having many methods and
 relied on a concrete class. Without this  there are core functionalities that would fail. These
 implementations included objects that represented the Position (Position2d --> IPosition2d) and the
 Colors (Colors --> IColors) as well as a concrete Helper class that was mostly static, but turned
-into an interface (IHelper)/ 
+into an interface (IHelper). Without asking we would be unable to send correctly form shapes to pass
+to our exisiting implpementation.
