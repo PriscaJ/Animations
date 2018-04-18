@@ -57,11 +57,11 @@ public class ShapeAdapter implements Shape {
   public void moveTo(IPosition2D position) {
     oldShapes.setXPosn((float) position.getX());
     oldShapes.setYPosn((float) position.getY());
-//    Move makeMove =
-//        new Move(getName(), (float) getPosition().getX(), (float) getPosition().getY(),
-//            (float) position.getX(), (float) position.getY(), getStartTime(), getEndTime());
-//    MoveCommand move = new MoveCommand(makeMove);
-//    //move.execute();
+    //    Move makeMove =
+    //        new Move(getName(), (float) getPosition().getX(), (float) getPosition().getY(),
+    //            (float) position.getX(), (float) position.getY(), getStartTime(), getEndTime());
+    //    MoveCommand move = new MoveCommand(makeMove);
+    //    //move.execute();
 
   }
 
@@ -175,7 +175,6 @@ public class ShapeAdapter implements Shape {
 
   @Override
   public boolean isVisible() {
-    //oldShapes.
     return true;
   }
 
