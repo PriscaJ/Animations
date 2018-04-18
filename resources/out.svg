@@ -1,0 +1,423 @@
+<svg width="700" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<rect>
+    <!-- This is the loop back. Set duration for the duration of one
+    animation before loopback. Ensure that this number is greater than 
+    the end of one complete animation-->
+    <!-- this example loops back after 10 seconds -->
+   <animate id="base" begin="0;base.end" dur="4500.0ms" attributeName="visibility" from="hide" to="hide"/>
+</rect>
+
+<rect id="Shape background" x="0.0" y="0.0" width="800.0" height="800.0" fill="rgb(33, 94, 248)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="fill" from="rgb(34,94,249)" to="rgb(16,46,249)" fill="freeze" />
+
+</rect>
+<rect id="Shape B0" x="80.0" y="424.0" width="100.0" height="326.0" fill="rgb(0, 0, 0)" visibility="true" >
+
+</rect>
+<rect id="Shape B1" x="260.0" y="365.0" width="100.0" height="385.0" fill="rgb(0, 0, 0)" visibility="true" >
+
+</rect>
+<rect id="Shape B2" x="440.0" y="375.0" width="100.0" height="375.0" fill="rgb(0, 0, 0)" visibility="true" >
+
+</rect>
+<rect id="Shape B3" x="620.0" y="445.0" width="100.0" height="305.0" fill="rgb(0, 0, 0)" visibility="true" >
+
+</rect>
+<rect id="Shape window000" x="100.0" y="850.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="850.0" to="710.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window001" x="140.0" y="850.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="850.0" to="710.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window010" x="100.0" y="890.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="890.0" to="670.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window011" x="140.0" y="890.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="890.0" to="670.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window020" x="100.0" y="930.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="930.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window021" x="140.0" y="930.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="930.0" to="630.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window030" x="100.0" y="970.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="970.0" to="590.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window031" x="140.0" y="970.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="970.0" to="590.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window040" x="100.0" y="1010.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1010.0" to="550.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window041" x="140.0" y="1010.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1010.0" to="550.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window050" x="100.0" y="1050.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1050.0" to="510.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window051" x="140.0" y="1050.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1050.0" to="510.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window060" x="100.0" y="1090.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1090.0" to="470.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window061" x="140.0" y="1090.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1090.0" to="470.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window100" x="280.0" y="-750.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-750.0" to="710.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window101" x="320.0" y="-750.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-750.0" to="710.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window110" x="280.0" y="-710.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-710.0" to="670.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window111" x="320.0" y="-710.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-710.0" to="670.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window120" x="280.0" y="-670.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-670.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window121" x="320.0" y="-670.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-670.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window130" x="280.0" y="-630.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-630.0" to="590.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window131" x="320.0" y="-630.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-630.0" to="590.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window140" x="280.0" y="-590.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-590.0" to="550.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window141" x="320.0" y="-590.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-590.0" to="550.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window150" x="280.0" y="-550.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-550.0" to="510.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window151" x="320.0" y="-550.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-550.0" to="510.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window160" x="280.0" y="-510.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-510.0" to="470.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window161" x="320.0" y="-510.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-510.0" to="470.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window170" x="280.0" y="-470.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-470.0" to="430.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window171" x="320.0" y="-470.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-470.0" to="430.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window180" x="280.0" y="-430.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-430.0" to="390.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window181" x="320.0" y="-430.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-430.0" to="390.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window200" x="460.0" y="850.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="850.0" to="710.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window201" x="500.0" y="850.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="850.0" to="710.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window210" x="460.0" y="890.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="890.0" to="670.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window211" x="500.0" y="890.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="890.0" to="670.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window220" x="460.0" y="930.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="930.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window221" x="500.0" y="930.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="930.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window230" x="460.0" y="970.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="970.0" to="590.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window231" x="500.0" y="970.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="970.0" to="590.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window240" x="460.0" y="1010.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1010.0" to="550.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window241" x="500.0" y="1010.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1010.0" to="550.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window250" x="460.0" y="1050.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1050.0" to="510.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window251" x="500.0" y="1050.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1050.0" to="510.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window260" x="460.0" y="1090.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1090.0" to="470.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window261" x="500.0" y="1090.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1090.0" to="470.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window270" x="460.0" y="1130.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1130.0" to="430.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window271" x="500.0" y="1130.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="1130.0" to="430.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window300" x="640.0" y="-750.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-750.0" to="710.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window301" x="680.0" y="-750.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-750.0" to="710.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window310" x="640.0" y="-710.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-710.0" to="670.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window311" x="680.0" y="-710.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-710.0" to="670.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window320" x="640.0" y="-670.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-670.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window321" x="680.0" y="-670.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-670.0" to="630.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window330" x="640.0" y="-630.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-630.0" to="590.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window331" x="680.0" y="-630.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-630.0" to="590.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window340" x="640.0" y="-590.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-590.0" to="550.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window341" x="680.0" y="-590.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-590.0" to="550.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window350" x="640.0" y="-550.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-550.0" to="510.0" fill="freeze" />
+
+</rect>
+<rect id="Shape window351" x="680.0" y="-550.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-550.0" to="510.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window360" x="640.0" y="-510.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-510.0" to="470.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<rect id="Shape window361" x="680.0" y="-510.0" width="20.0" height="20.0" fill="rgb(255, 255, 255)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="-510.0" to="470.0" fill="freeze" />
+<animate attributeType="xml" begin="5ms" attributeName="fill" from="rgb(255,255,255)" to="rgb(255,255,0)" fill="freeze" />
+
+</rect>
+<ellipse id="Shape moon" cx="250.0" cy="250.0" rx="50.0" ry="50.0" fill="rgb(229, 229, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape eclipse" cx="450.0" cy="50.0" rx="50.0" ry="50.0" fill="rgb(33, 94, 248)" visibility="true" >
+<animate attributeType="xml" begin="40ms" attributeName="cx" from="450.0" to="280.0" fill="freeze" />
+<animate attributeType="xml" begin="40ms" attributeName="cy" from="50.0" to="230.0" fill="freeze" />
+<animate attributeType="xml" begin="40ms" attributeName="fill" from="rgb(34,94,249)" to="rgb(16,46,249)" fill="freeze" />
+
+</ellipse>
+<ellipse id="Shape star0" cx="226.0" cy="69.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star1" cx="588.0" cy="214.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star2" cx="492.0" cy="80.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star3" cx="377.0" cy="289.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star4" cx="711.0" cy="284.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star5" cx="511.0" cy="263.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star6" cx="532.0" cy="73.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star7" cx="335.0" cy="68.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star8" cx="314.0" cy="150.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star9" cx="173.0" cy="284.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star10" cx="722.0" cy="105.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star11" cx="527.0" cy="267.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star12" cx="771.0" cy="197.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star13" cx="769.0" cy="182.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star14" cx="513.0" cy="81.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star15" cx="624.0" cy="152.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star16" cx="494.0" cy="255.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star17" cx="408.0" cy="66.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star18" cx="553.0" cy="270.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star19" cx="111.0" cy="200.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star20" cx="740.0" cy="81.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star21" cx="798.0" cy="140.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star22" cx="187.0" cy="128.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star23" cx="137.0" cy="233.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star24" cx="247.0" cy="156.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star25" cx="262.0" cy="122.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star26" cx="325.0" cy="272.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star27" cx="415.0" cy="185.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star28" cx="677.0" cy="140.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star29" cx="49.0" cy="249.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star30" cx="391.0" cy="318.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star31" cx="188.0" cy="239.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star32" cx="553.0" cy="235.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star33" cx="659.0" cy="104.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star34" cx="286.0" cy="114.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star35" cx="652.0" cy="329.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star36" cx="694.0" cy="270.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star37" cx="116.0" cy="279.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star38" cx="607.0" cy="305.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+<ellipse id="Shape star39" cx="465.0" cy="165.0" rx="3.0" ry="3.0" fill="rgb(255, 255, 255)" visibility="true" >
+
+</ellipse>
+</svg>
