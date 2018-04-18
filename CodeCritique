@@ -1,0 +1,23 @@
+
+In our provider's code we ran into a few problems, but also had success with adapting their code to
+work with our implementation. Overall, our biggest hurdles and concerns for the code we were given
+was the initial lack of interfaces, coupling in incorrect places, and unclear javadoc.
+
+When we were first given the code there was a lack of interfaces, but several references to concrete
+classes that were not available. When we encountered this problem we assumed that most of the code
+had public methods and as expected the providers gave created the interface we needed to work with.
+However we still ran into the problems when another class was predominately static Methods and we
+had to ask our providers again for an interface.
+
+Another problem we had was with the coupling of functionality in the wrong places. For instance
+we found that methods and functionality that should have been in the View was in Model. We found
+this with the visisbility where there was a boolean flag in the model for shapes and the instead of
+having it checked in the Hybrid View where the visinility is a concern when choosing shapes. It made
+it more difficult to select shapes since it was stuck in the model and could not be picked through
+the view. We also found that printAnimationwas still in the model of the animation, but we moved
+modt of that functionality into the Textual View. Although the latter was a smaller problem it
+was a functionality that we found is better suited in the View instead of keeping it in the model.
+
+We found it difficult to follow along with their code where there were unclear javadoc or the
+javadoc was not clear for figuring out what the methods were supposed to be doing. We were stuck in
+some plaes in the code 
