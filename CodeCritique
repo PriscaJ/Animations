@@ -1,4 +1,7 @@
 
+General notes and critique
+==========================
+
 In our provider's code we ran into a few problems, but also had success with adapting their code to
 work with our implementation. Overall, our biggest hurdles and concerns for the code we were given
 was the initial lack of interfaces, coupling in incorrect places, and unclear javadoc.
@@ -19,5 +22,33 @@ modt of that functionality into the Textual View. Although the latter was a smal
 was a functionality that we found is better suited in the View instead of keeping it in the model.
 
 We found it difficult to follow along with their code where there were unclear javadoc or the
-javadoc was not clear for figuring out what the methods were supposed to be doing. We were stuck in
-some plaes in the code 
+javadoc was not helpful for figuring out what the methods were supposed to be doing. We were stuck in
+some places in the code such as in the view where there was functionality that seemed importnant but
+the Javadoc was to vague and left us confused longer than we need to be. This happened when examining
+the code for a method called copyVisibility where it was left us unsure as to it's purpose.
+Sometimes due to this and luckily for our adapter we did not need to implment these methods as they
+were not relevant to the code that we had to make our implmentation of the animation.
+
+Assignment Questions
+====================
+
+How flexible are the interfaces you were given?
+Their code was flexible, because it contained many methods that each had a seperate resonsibilty it
+also had a bounty of method some that we have thought of as well in our design as well, but also
+some extra methods. Some of these methods were a bit erroneous and unneccessary in our
+implmentation as mentioned above.
+
+How capable are the views?
+
+How convenient was it to reuse their code?
+
+How cleanly written and well-documented was their code?
+As mentioned above there was Javadoc so it was well documented, However the quality of the Javadoc
+was lacking where it was unclear or unhelpful to figure out what certain methods were supposed to do
+
+If you needed to request changes from them, what were they and why were they needed?
+We had to ask they implment an Interface-type instead of having many methods and functionlities that
+relied on a concrete class. Without this  there are core functionalities that would fail. These
+implementations included objects that represented the Position (Position2d --> IPosition2d) and the
+Colors (Colors --> IColors) as well as a concrete Helper class that was mostly static, but turned
+into an interface (IHelper)/ 
