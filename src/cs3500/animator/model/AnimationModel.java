@@ -128,7 +128,7 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-    addOval(String name, float cx, float cy, float xRadius, float yRadius,
+        addOval(String name, float cx, float cy, float xRadius, float yRadius,
             float red, float green, float blue, int startOfLife, int endOfLife) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");

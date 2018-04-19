@@ -1,0 +1,16 @@
+
+Working features:
+- JButton rendering
+- JPanel display
+- Visual View
+- Textual View
+- Exporting SVG from hybrid view
+- SVG
+- Resume animation in hybrid view
+
+Features that did not work:
+- Hybrid view: pause, start from beginning, looping, selecting shapes, updating speed
+- SVG actually moving
+
+
+

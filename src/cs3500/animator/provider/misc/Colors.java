@@ -5,17 +5,18 @@ import cs3500.animator.provider.misc.IColors;
 /**
  * Class representing colors in RGB notation.
  */
-public class Colors implements IColors{
+public class Colors implements IColors {
 
   /**
    * Constructor for colors.
+   *
    * @param r red value between 0 and 1 inclusive
    * @param b blue value between 0 and 1 inclusive
    * @param g green value between 0 and 1 inclusive
    * @throws IllegalArgumentException if color value is outside of 0 - 1
    */
   public Colors(double r, double g, double b) throws IllegalArgumentException {
-    if (!checkValid(r,b,g)) {
+    if (!checkValid(r, b, g)) {
       throw new IllegalArgumentException("out of bounds");
     }
 
@@ -31,6 +32,7 @@ public class Colors implements IColors{
 
   /**
    * Check to see if the given parameters are valid (between 0 and 255).
+   *
    * @param r value for red
    * @param b value for blue
    * @param g value for green
@@ -42,6 +44,7 @@ public class Colors implements IColors{
 
   /**
    * Describe this color as a formatted string.
+   *
    * @return string detailing r, g, and b values
    */
   @Override
@@ -52,6 +55,7 @@ public class Colors implements IColors{
 
   /**
    * Get this color in a formatted view.
+   *
    * @return the formatted String representing this color
    */
   @Override
@@ -61,6 +65,7 @@ public class Colors implements IColors{
 
   /**
    * Get this color in a 0-255 formatted range view.
+   *
    * @return the formatted color
    */
   @Override
@@ -71,6 +76,7 @@ public class Colors implements IColors{
 
   /**
    * Get the R value of this color.
+   *
    * @return the R value as a double (between 0 and 1)
    */
   @Override
@@ -80,6 +86,7 @@ public class Colors implements IColors{
 
   /**
    * Get the G value of this color.
+   *
    * @return the G value as a double (between 0 and 1)
    */
   @Override
@@ -89,6 +96,7 @@ public class Colors implements IColors{
 
   /**
    * Get the B value of this color.
+   *
    * @return the B value as a double (between 0 and 1)
    */
   @Override

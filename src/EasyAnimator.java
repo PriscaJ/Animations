@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+import javax.swing.JOptionPane;
 
 import cs3500.animator.controller.AdapterController;
 import cs3500.animator.controller.Controller;
@@ -20,7 +22,6 @@ import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
-import cs3500.animator.view.ViewAdapter;
 import cs3500.animator.view.VisualView;
 
 /**
@@ -84,16 +85,11 @@ public final class EasyAnimator {
         view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       case "provider":
-        // create a hybrid view
-        //        viewAdapter = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
-        //        SimpleAnimation modelAdapter = new ModelAdapter((AnimationModel) model);
-        //        AdapterController adapterController = new AdapterController((ModelAdapter) modelAdapter, (ViewAdapter) viewAdapter);
-        //        adapterController.run();
+
         SimpleAnimation modelAdapter = new ModelAdapter(model);
         provided_view = createProviderView(modelAdapter.getShapes(), outputDest);
         AdapterController adapterController = new AdapterController(modelAdapter, provided_view);
         adapterController.run();
-        // view = createProviderView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
       case "p-svg":
         SimpleAnimation modelAdapter2 = new ModelAdapter(model);
@@ -146,7 +142,8 @@ public final class EasyAnimator {
   //    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
   //    return new ViewAdapter(hybridView);
   //  }
-  private static View createProviderView(List<Shape> shapes, String ticksPerSec) throws IOException {
+  private static View createProviderView(List<Shape> shapes, String ticksPerSec)
+          throws IOException {
     int tps = getTicksPerSec(ticksPerSec);
     // todo convert model.getShapes to return a list of Shape
     return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);

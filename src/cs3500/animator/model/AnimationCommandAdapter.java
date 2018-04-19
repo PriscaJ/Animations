@@ -4,6 +4,7 @@ import cs3500.animator.provider.model.Command;
 
 public class AnimationCommandAdapter implements Animations, AnimationCommand {
   private Command cmd;
+
   public AnimationCommandAdapter(Command cmd) {
     this.cmd = cmd;
   }
@@ -40,7 +41,7 @@ public class AnimationCommandAdapter implements Animations, AnimationCommand {
 
   @Override
   public void apply(int tick) {
-
+    // do nothing
   }
 
   @Override
@@ -60,7 +61,7 @@ public class AnimationCommandAdapter implements Animations, AnimationCommand {
 
   @Override
   public void setAnimatingShape(Shapes s) {
-
+    // do nothing
   }
 
   @Override
@@ -105,6 +106,6 @@ public class AnimationCommandAdapter implements Animations, AnimationCommand {
 
   @Override
   public void execute(int tick) {
-
+    // do nothing
   }
 }

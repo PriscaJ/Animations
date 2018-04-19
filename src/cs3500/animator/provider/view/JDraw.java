@@ -8,7 +8,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import cs3500.animator.provider.misc.IColors;
-import cs3500.animator.provider.model.*;
+import cs3500.animator.provider.model.Shape;
 
 /**
  * This class renders the specifics of the animation and is what is displayed by the visual

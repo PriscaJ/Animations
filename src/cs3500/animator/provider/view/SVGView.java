@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import cs3500.animator.provider.misc.IHelper;
-import cs3500.animator.provider.model.*;
+import cs3500.animator.provider.model.Shape;
 
 
 /**
@@ -15,6 +15,7 @@ public class SVGView implements View {
   private final String path;
   private List<Shape> shapes;
   private int tempo;
+
   /**
    * Constructor for SVGView.
    *

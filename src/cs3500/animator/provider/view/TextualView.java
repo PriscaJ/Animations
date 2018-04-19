@@ -4,22 +4,23 @@ import java.io.IOException;
 import java.util.List;
 
 import cs3500.animator.provider.misc.IHelper;
-import cs3500.animator.provider.model.*;
+import cs3500.animator.provider.model.Shape;
 
 /**
  * View to represent the view in the form of human readable text.
  */
-public class  TextualView implements View {
+public class TextualView implements View {
 
   private final String path;
   private List<Shape> shapes;
   private int tempo;
+
   /**
    * Constructor for textual view.
    *
    * @param shapes the shapes that compose the animation
-   * @param path the path where this text view should be saved
-   * @param tempo how many ticks per second
+   * @param path   the path where this text view should be saved
+   * @param tempo  how many ticks per second
    */
   public TextualView(List<Shape> shapes, String path, int tempo) {
     this.shapes = shapes;
