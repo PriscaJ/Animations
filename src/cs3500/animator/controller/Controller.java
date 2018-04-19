@@ -2,14 +2,12 @@ package cs3500.animator.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+
 
 import cs3500.animator.model.AnimationOperations;
-import cs3500.animator.provider.view.View;
 import cs3500.animator.view.HybridView;
 import cs3500.animator.view.IInteractiveView;
 import cs3500.animator.view.IView;
-import cs3500.animator.view.ViewAdapter;
 import cs3500.animator.view.VisualView;
 
 /**

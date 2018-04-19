@@ -2,11 +2,14 @@ package cs3500.animator.controller;
 
 import java.io.IOException;
 
-import cs3500.animator.model.ModelAdapter;
+
 import cs3500.animator.provider.model.SimpleAnimation;
 import cs3500.animator.provider.view.View;
-import cs3500.animator.view.ViewAdapter;
 
+
+/**
+ * Adapter for controllers.
+ */
 public class AdapterController {
 
   private View view;
@@ -17,6 +20,9 @@ public class AdapterController {
     this.view = view;
   }
 
+  /**
+   * Runs the controller for animations.
+   */
   public void run() {
     try {
       view.showView();

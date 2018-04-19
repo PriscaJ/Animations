@@ -10,6 +10,9 @@ import cs3500.animator.provider.misc.Position2D;
 import cs3500.animator.provider.model.Command;
 import cs3500.animator.provider.model.Shape;
 
+/**
+ * Adapts functionality of Shapes to Shape.
+ */
 public class ShapeAdapter implements Shape {
   private Shapes oldShapes;
 
@@ -18,6 +21,11 @@ public class ShapeAdapter implements Shape {
     this.oldShapes = oldShapes;
   }
 
+  /**
+   * Converts provoder Shapes into shapes that work with our implmentation.
+   * @param shape  Is a shape to be converted.
+   * @return Shapes.
+   */
   public static Shapes convertShapeToShapes(Shape shape) {
     if (shape.getType().equals("rect")) {
       return new Rectangle(shape.getName(), (float) shape.getPosition().getX(),
@@ -73,12 +81,6 @@ public class ShapeAdapter implements Shape {
   @Override
   // todo what does this do lol
   public void scale(double newWidth, double newHeight) {
-    //    ScaleChange makeScale;
-    //    makeScale =
-    //        new ScaleChange(oldShapes.getName(), oldShapes.getXPosition(), oldShapes.getYPosition(),
-    //            (float) newWidth, (float) newHeight, oldShapes.getAppears(), oldShapes.getDisappears());
-
-    //    ScaleCommand scaleCommand = new ScaleCommand(makeScale);
     oldShapes.setXDimension((float) newWidth);
     oldShapes.setYDimension((float) newHeight);
     //    CommandAdapter c = new CommandAdapter(scaleCommand, scaleCommand.getAnimation());
