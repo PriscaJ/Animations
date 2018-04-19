@@ -89,6 +89,14 @@ public class AnimationFileReader {
               scaleByInfo.getStart(),
               scaleByInfo.getEnd());
           break;
+        case "rotate":
+          RotateInfo rotateInfo = readRotateInfo(sc);
+          builder.addRotateChange(rotateInfo.name,
+              rotateInfo.getFromRadian(),
+              rotateInfo.getToRadian(),
+              rotateInfo.getStart(),
+              rotateInfo.getEnd());
+          break;
         default:
           throw new IllegalStateException("Unidentified token " + command + " "
               + "read from file");
@@ -276,7 +284,34 @@ public class AnimationFileReader {
 
     return info;
   }
+  private RotateInfo readRotateInfo(Scanner sc) throws
+      IllegalStateException, InputMismatchException {
+    RotateInfo info = new RotateInfo();
 
+    while (!info.isAllInitialized()) {
+      String command = sc.next();
+      switch (command) {
+        case "rotate":
+          info.setFromRadian(sc.nextFloat());
+          info.setToRadian(sc.nextFloat());
+          break;
+        case "name":
+          info.setName(sc.next());
+          break;
+        case "from":
+          info.setStart(sc.nextInt());
+          break;
+        case "to":
+          info.setEnd(sc.nextInt());
+          break;
+        default:
+          throw new IllegalStateException("Invalid attribute " + command + " for "
+              + "rotate");
+      }
+    }
+
+    return info;
+  }
 
   class Inputable {
     protected Map<String, Boolean> valueFlags;
@@ -754,6 +789,71 @@ public class AnimationFileReader {
       return toSy;
     }
 
+
+    int getStart() {
+      return start;
+    }
+
+    int getEnd() {
+      return end;
+    }
+  }
+
+  class RotateInfo extends Inputable {
+    private String name;
+    private float fromRadian;
+    private float toRadian;
+    private int start;
+    private int end;
+
+    RotateInfo() {
+      super();
+
+      valueFlags.put("name", false);
+      valueFlags.put("fromRadian", false);
+      valueFlags.put("toRadian", false);
+      valueFlags.put("start", false);
+      valueFlags.put("end", false);
+
+    }
+
+    void setName(String name) {
+      this.name = name;
+      valueFlags.replace("name", true);
+    }
+
+    void setFromRadian(float sx) {
+      this.fromRadian = sx;
+      valueFlags.replace("fromRadian", true);
+    }
+
+    void setToRadian(float sy) {
+      this.toRadian = sy;
+      valueFlags.replace("toRadian", true);
+    }
+
+
+    void setStart(int start) {
+      this.start = start;
+      valueFlags.replace("start", true);
+    }
+
+    void setEnd(int end) {
+      this.end = end;
+      valueFlags.replace("end", true);
+    }
+
+    String getName() {
+      return name;
+    }
+
+    float getFromRadian() {
+      return fromRadian;
+    }
+
+    float getToRadian() {
+      return toRadian;
+    }
 
     int getStart() {
       return start;

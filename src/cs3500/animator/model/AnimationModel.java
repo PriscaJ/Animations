@@ -202,6 +202,19 @@ public class AnimationModel implements AnimationOperations {
     }
 
     @Override
+    public TweenModelBuilder<AnimationOperations> addRotateChange(String name, float fromRadian,
+        float toRadian, int startTime, int endTime) {
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+      Rotate scale = new Rotate(name,
+          fromRadian, toRadian, startTime, endTime);
+      RotateCommand command = new RotateCommand(scale);
+      model.addCommand(command);
+      return this;
+    }
+
+    @Override
     public AnimationOperations build() {
       return model;
     }

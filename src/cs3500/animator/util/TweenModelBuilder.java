@@ -103,6 +103,13 @@ public interface TweenModelBuilder<T> {
       fromSy, float toSx, float toSy, int startTime, int endTime);
 
   /**
+   * Change the x and y extents of this shape from the specified extents to the
+   * specified target extents. What these extents actually mean depends on the
+   * shape, but these are roughly the extents of the box enclosing the shape.
+   */
+  TweenModelBuilder<T> addRotateChange(String name, float fromRadian, float
+      toRadian, int startTime, int endTime);
+  /**
    * Return the model built so far.
    *
    * @return the model that was constructed so far.

@@ -48,6 +48,20 @@ public interface Animations {
   float getNewB();
 
   /**
+   * Gets the starting radian of a shape in a rotation.
+   *
+   * @return the new degree of rotation.
+   */
+  float getFromRadian();
+
+  /**
+   * Gets the ending degree of rotation of a shape in a rotation.
+   *
+   * @return the new radian.
+   */
+  float getToRadian();
+
+  /**
    * Applies the Animation actions and mutates its shape at the given time.
    */
   void apply(int tick);
