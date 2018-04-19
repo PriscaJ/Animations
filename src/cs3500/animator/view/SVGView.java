@@ -30,14 +30,6 @@ public class SVGView implements IView {
   private boolean looping;
   private int endTime;
 
-  {
-    // if it was changed make a new tag
-    workString2 = starter + attributeY + "\" "
-        + "from=\"" + sChange.getStartY()
-        + "\" to=\"" + sChange.getEndY() + "\" ";
-    workString2 += "fill=\"freeze\" />\n";
-  }
-
   /**
    * The constructor for an SVG view.
    *
@@ -215,7 +207,7 @@ public class SVGView implements IView {
     }
     return workString.toString();
   }
-  
+
   private String formatRotate(Rotate animation, String shapeType, String s) {
     return s + "\"transform\" attributeType=\"XML\" type=\"rotate\" "
         + "from=\"" + animation.getFromRadian() + " " + animation.getAnimatingShape().getCenterX()

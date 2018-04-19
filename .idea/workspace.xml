@@ -7,19 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13642b6b-d525-4c76-b3ae-e2208a212a24" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/RotateCommand.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/AbstractAnimation.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/AbstractAnimation.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/AbstractShape.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/AbstractShape.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/AnimationType.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/AnimationType.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Animations.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Animations.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/ColorChange.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/ColorChange.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Move.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Move.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Oval.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Oval.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Rectangle.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Rectangle.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Rotate.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Rotate.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/ScaleChange.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/ScaleChange.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Shapes.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Shapes.java" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -90,8 +77,8 @@
       <file leaf-file-name="SVGView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="217" column="2" lean-forward="false" selection-start-line="217" selection-start-column="2" selection-end-line="217" selection-end-column="2" />
+            <state relative-caret-position="360">
+              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -494,7 +481,7 @@
       <workItem from="1522824861463" duration="24037000" />
       <workItem from="1523827264067" duration="3339000" />
       <workItem from="1523912999338" duration="4022000" />
-      <workItem from="1524168919743" duration="6063000" />
+      <workItem from="1524168919743" duration="6102000" />
     </task>
     <servers />
   </component>
@@ -504,7 +491,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65282000" />
+    <option name="totallyTimeSpent" value="65321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -998,8 +985,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="217" column="2" lean-forward="false" selection-start-line="217" selection-start-column="2" selection-end-line="217" selection-end-column="2" />
+        <state relative-caret-position="360">
+          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
