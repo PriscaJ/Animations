@@ -62,6 +62,12 @@ public abstract class AbstractAnimation implements Animations {
         + endValue * (tick - (float) this.startTime) / (float) (this.endTime - this.startTime);
   }
 
+  @Override
+  // todo make a copy?
+  public Shapes getAnimatingShape() {
+    return this.animatingShape;
+  }
+
   /**
    * Various getters for the fields of a shape.
    *

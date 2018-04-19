@@ -26,6 +26,16 @@ public class Oval extends AbstractShape {
   }
 
   @Override
+  public float getCenterX() {
+    return xPosn;
+  }
+
+  @Override
+  public float getCenterY() {
+    return yPosn;
+  }
+
+  @Override
   public String getDescription(int tps) {
     return String.format("Name: %s\n"
             + "Type: oval\n"

@@ -95,6 +95,8 @@ public interface Animations {
    */
   void setAnimatingShape(Shapes s);
 
+  Shapes getAnimatingShape();
+
   /**
    * Depending on what time the animation is at it will show the incrementation of the of an
    * Action.

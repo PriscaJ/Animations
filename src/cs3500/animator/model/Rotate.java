@@ -9,6 +9,7 @@ public class Rotate extends AbstractAnimation{
     super(name, startTime, endTime);
     this.fromRadian = fromRadian;
     this.toRadian = toRadian;
+    this.type = AnimationType.ROTATE;
   }
 
   @Override
@@ -23,10 +24,16 @@ public class Rotate extends AbstractAnimation{
 
   @Override
   public void apply(int tick) {
+    if (tick >= startTime && tick < endTime) {
+      animatingShape.setRadian(calculateChange(fromRadian, toRadian, tick));
+    }
   }
 
   @Override
   public String getDescription(int tps) {
-    return null;
+    return String.format("Shape %s rotates from %.1f to "
+            + "%.1f from t=%.1fs to t=%.1fs",
+        this.name, this.fromRadian, toRadian,
+        (float) startTime * tps / 1000, (float) endTime * tps / 1000);
   }
 }

@@ -16,6 +16,7 @@ public abstract class AbstractShape implements Shapes {
   protected float red;
   protected float green;
   protected float blue;
+  protected float radian;
   protected int startOfLife;
   protected int endOfLife;
   // the animations that the shape invokes
@@ -156,5 +157,10 @@ public abstract class AbstractShape implements Shapes {
   @Override
   public void setBlue(float v) {
     this.blue = v;
+  }
+
+  @Override
+  public void setRadian(float v) {
+    this.radian = v;
   }
 }

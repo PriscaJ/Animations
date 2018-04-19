@@ -35,6 +35,16 @@ public class Rectangle extends AbstractShape {
   }
 
   @Override
+  public float getCenterX() {
+    return this.xPosn + xDimension / 2 ;
+  }
+
+  @Override
+  public float getCenterY() {
+    return this.yPosn - yDimension / 2;
+  }
+
+  @Override
   public String getDescription(int tps) {
     return String.format("Name: %s\n"
             + "Type: rectangle\n"

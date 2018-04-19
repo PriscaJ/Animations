@@ -57,6 +57,16 @@ public class ColorChange extends AbstractAnimation {
   }
 
   @Override
+  public float getFromRadian() {
+    throw new RuntimeException("No radians in a move");
+  }
+
+  @Override
+  public float getToRadian() {
+    throw new RuntimeException("No radians in a move");
+  }
+
+  @Override
   public void apply(int tick) {
     if (tick >= startTime && tick < endTime) {
 

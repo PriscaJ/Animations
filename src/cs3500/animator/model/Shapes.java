@@ -8,6 +8,10 @@ import java.util.ArrayList;
  */
 public interface Shapes {
 
+  float getCenterX();
+
+  float getCenterY();
+
   /**
    * A String of the output of what the AbstractShape is doing during an animation.
    *
@@ -178,4 +182,10 @@ public interface Shapes {
    * @param command the command that the shape is a part of.
    */
   void addCommand(AnimationCommand command);
+
+  /**
+   * Change the current radian of the shape.
+   * @param v the new degree of rotation.
+   */
+  void setRadian(float v);
 }
