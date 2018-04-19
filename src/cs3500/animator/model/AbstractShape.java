@@ -19,6 +19,7 @@ public abstract class AbstractShape implements Shapes {
   protected float radian;
   protected int startOfLife;
   protected int endOfLife;
+  private int layer;
   // the animations that the shape invokes
   private ArrayList<AnimationCommand> commands = new ArrayList<>();
 
@@ -39,7 +40,7 @@ public abstract class AbstractShape implements Shapes {
   public AbstractShape(String name,
       float xPosn, float yPosn, float xDimension, float yDimension,
       float red, float green, float blue,
-      int startOfLife, int endOfLife) {
+      int startOfLife, int endOfLife, int layer) {
     this.name = name;
     this.xPosn = xPosn;
     this.yPosn = yPosn;
@@ -50,6 +51,7 @@ public abstract class AbstractShape implements Shapes {
     this.blue = blue;
     this.startOfLife = startOfLife;
     this.endOfLife = endOfLife;
+    this.layer = layer;
   }
 
   @Override
@@ -67,6 +69,11 @@ public abstract class AbstractShape implements Shapes {
       throw new IllegalArgumentException("Cannot apply Action to shape");
     }
     commands.add(newCommand);
+  }
+
+  @Override
+  public int getLayer() {
+    return this.layer;
   }
 
   @Override

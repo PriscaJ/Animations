@@ -9,6 +9,12 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -28,7 +34,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private ArrayList<Shapes> shapesList;
   private int lastTick;
   private boolean looping = false;
-
+  private Map<Integer, ArrayList<Shapes>> layers = new HashMap<>();
   /**
    * The constructor for the Animation Panel.
    *
@@ -61,8 +67,28 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-
-    for (Shapes shape : activeShapes(tick)) {
+    for (Shapes s : activeShapes(tick)) {
+      if (layers.containsKey(s.getLayer())) {
+        ArrayList<Shapes> shapes = layers.get(s.getLayer());
+        shapes.add(s);
+        layers.put(s.getLayer(), shapes);
+      }
+      else {
+        ArrayList<Shapes> newList = new ArrayList<>();
+        newList.add(s);
+        layers.put(s.getLayer(), newList);
+      }
+    }
+    List<Integer> layerNums = new ArrayList<>(layers.keySet());
+    // sorted list of layers
+    Collections.sort(layerNums);
+    List<Shapes> sortedShapes = new ArrayList<>();
+    for (Integer i : layerNums) {
+      List<Shapes> shapesInLayer = layers.get(i);
+      sortedShapes.addAll(shapesInLayer);
+    }
+    
+    for (Shapes shape : sortedShapes) {
       float r = shape.getRed();
       float gg = shape.getGreen();
       float b = shape.getBlue();

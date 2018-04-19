@@ -8,6 +8,8 @@ import java.util.ArrayList;
  */
 public interface Shapes {
 
+  int getLayer();
+
   float getCenterX();
 
   float getCenterY();

@@ -129,7 +129,7 @@ public class AnimationModel implements AnimationOperations {
     @Override
     public TweenModelBuilder<AnimationOperations>
         addOval(String name, float cx, float cy, float xRadius, float yRadius,
-            float red, float green, float blue, int startOfLife, int endOfLife) {
+            float red, float green, float blue, int startOfLife, int endOfLife, int layer) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -137,7 +137,7 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape oval =
-              new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife);
+              new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife, layer);
       model.addShape(oval);
       return this;
     }
@@ -146,7 +146,8 @@ public class AnimationModel implements AnimationOperations {
     public TweenModelBuilder<AnimationOperations> addRectangle(String name, float lx, float ly,
                                                                float width, float height, float red,
                                                                float green, float blue,
-                                                               int startOfLife, int endOfLife) {
+                                                               int startOfLife, int endOfLife,
+        int layer) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -154,7 +155,7 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape rect =
-              new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife);
+              new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife, layer);
       model.addShape(rect);
       return this;
     }

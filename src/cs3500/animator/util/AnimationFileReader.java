@@ -45,7 +45,8 @@ public class AnimationFileReader {
               rinfo.getX(), rinfo.getY(),
               rinfo.getWidth(), rinfo.getHeight(),
               rinfo.getR(), rinfo.getG(), rinfo.getB(),
-              rinfo.getStart(), rinfo.getEnd());
+              rinfo.getStart(), rinfo.getEnd(),
+              rinfo.getLayer());
           break;
         case "oval":
           OvalInfo cinfo = readOvalInfo(sc);
@@ -54,7 +55,8 @@ public class AnimationFileReader {
               cinfo.getX(), cinfo.getY(),
               cinfo.getXRadius(), cinfo.getYRadius(),
               cinfo.getR(), cinfo.getG(), cinfo.getB(),
-              cinfo.getStart(), cinfo.getEnd());
+              cinfo.getStart(), cinfo.getEnd(),
+              cinfo.getLayer());
           break;
         case "move":
           MoveInfo minfo = readMoveInfo(sc);
@@ -139,6 +141,9 @@ public class AnimationFileReader {
         case "to":
           info.setEnd(sc.nextInt());
           break;
+        case "layer":
+          info.setLayer(sc.nextInt());
+          break;
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
               + "rectangle");
@@ -180,6 +185,9 @@ public class AnimationFileReader {
           break;
         case "to":
           info.setEnd(sc.nextInt());
+          break;
+        case "layer":
+          info.setLayer(sc.nextInt());
           break;
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
@@ -338,6 +346,8 @@ public class AnimationFileReader {
     private float b;
     private int start;
     private int end;
+    // layer is 1 by default
+    private int layer = 1;
 
 
     ShapeInfo() {
@@ -348,6 +358,12 @@ public class AnimationFileReader {
       valueFlags.put("b", false);
       valueFlags.put("start", false);
       valueFlags.put("end", false);
+      valueFlags.put("layer", true);
+    }
+
+    void setLayer(int layer) {
+      this.layer = layer;
+      valueFlags.replace("layer", true);
     }
 
     void setName(String name) {
@@ -379,6 +395,10 @@ public class AnimationFileReader {
     void setEnd(int end) {
       this.end = end;
       valueFlags.replace("end", true);
+    }
+
+    int getLayer() {
+      return layer;
     }
 
     float getR() {

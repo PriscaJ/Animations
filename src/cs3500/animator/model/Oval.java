@@ -10,9 +10,9 @@ public class Oval extends AbstractShape {
   public Oval(String name,
       float cx, float cy, float xRadius, float yRadius,
       float red, float green, float blue,
-      int startOfLife, int endOfLife) {
+      int startOfLife, int endOfLife, int layer) {
     super(name, cx, cy, xRadius, yRadius, red, green, blue,
-        startOfLife, endOfLife);
+        startOfLife, endOfLife, layer);
   }
 
   @Override

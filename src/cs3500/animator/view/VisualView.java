@@ -54,7 +54,6 @@ public class VisualView extends JFrame implements IInteractiveView {
     this.looping = false;
     this.lastTick = lastTick;
     this.initTPS = ticksPerSec;
-    int ticksPerSec1 = ticksPerSec;
     this.allShapes = shapesList;
 
     //button panel
