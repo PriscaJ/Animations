@@ -12,7 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JSlider;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import cs3500.animator.model.Shapes;
 
@@ -21,7 +24,7 @@ import cs3500.animator.model.Shapes;
  * display a given animation.
  */
 
-public class VisualView extends JFrame implements IInteractiveView {
+public class VisualView extends JFrame implements IInteractiveView, ChangeListener {
   protected boolean looping;
   protected int lastTick;
   private AnimationPanel aniPanel;
@@ -126,6 +129,15 @@ public class VisualView extends JFrame implements IInteractiveView {
 
     this.add(scrollingShapes, BorderLayout.EAST);
 
+    JSlider progress = new JSlider(JSlider.HORIZONTAL,
+        0, lastTick, 1);
+    progress.addChangeListener(this);
+    progress.setMajorTickSpacing(lastTick / 10);
+    progress.setMinorTickSpacing(1);
+    progress.setPaintTicks(true);
+    progress.setPaintLabels(true);
+    buttonPanel.add(progress, BOTTOM_ALIGNMENT);
+
     // info about state of animation
     info = new JLabel();
     this.add(info, BorderLayout.NORTH);
@@ -146,6 +158,7 @@ public class VisualView extends JFrame implements IInteractiveView {
 
   /**
    * This initializes the animation panel that will display the shapes.
+   *
    * @param shapesList the list of shapes to be displayed.
    * @param lastTick the last tick at which a shape is visible.
    * @param ticksPerSec the speed of the animation.
@@ -222,6 +235,7 @@ public class VisualView extends JFrame implements IInteractiveView {
   /**
    * This method allows the view to update the JText panel that will inform the user of
    * the state of the animation as they make changes.
+   *
    * @param text information about what action the user has taken.
    */
   protected void setInfoText(String text) {
@@ -275,6 +289,7 @@ public class VisualView extends JFrame implements IInteractiveView {
 
   /**
    * This method allows the hybrid view to get the current speed of the animation.
+   *
    * @return the speed of the animation in ticks per second.
    */
   protected int getSpeed() {
@@ -284,19 +299,20 @@ public class VisualView extends JFrame implements IInteractiveView {
   /**
    * This method allows the user to get the shapes that have been selected
    * from the JList of Shapes.
+   *
    * @return the shapes that have been selected.
    */
   protected ArrayList<Shapes> getSelectedShapes() {
     if (shapeList.getSelected() == null) {
       return allShapes;
-    }
-    else {
+    } else {
       return (ArrayList<Shapes>) shapeList.getSelected();
     }
   }
 
   /**
    * This allows the view to update the animation panel with the shapes that have been selected.
+   *
    * @param selectedShapes the shapes to be given to the AnimationPanel.
    */
   protected void setSelectedShapes(ArrayList<Shapes> selectedShapes) {
@@ -306,10 +322,18 @@ public class VisualView extends JFrame implements IInteractiveView {
 
   /**
    * This is the name of the file to be exported.
+   *
    * @return the text from the file name box.
    */
   protected String getFileName() {
     return svgFileName.getText();
+  }
+
+  @Override
+  public void stateChanged(ChangeEvent e) {
+    JSlider source = (JSlider) e.getSource();
+    int tick = (int) source.getValue();
+    aniPanel.setTick(tick);
   }
 }
 

@@ -246,4 +246,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     return currentShapes;
   }
 
+  public void setTick(int tick) {
+    this.tick = tick;
+  }
 }
