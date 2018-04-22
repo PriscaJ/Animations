@@ -71,7 +71,7 @@ public class VisualView extends JFrame implements IInteractiveView {
     //incSpeed.addActionListener((ActionEvent e) -> increaseSpeed());
 
     decSpeed = new JButton("Decrease Speed");
-    decSpeed.setActionCommand("Decrease speed");
+    decSpeed.setActionCommand("Decrease Speed");
     buttonPanel.add(decSpeed);
     //decSpeed.addActionListener((ActionEvent e) -> decreaseSpeed());
 
@@ -174,6 +174,11 @@ public class VisualView extends JFrame implements IInteractiveView {
     svgExport.addActionListener(listener);
     runSelected.addActionListener(listener);
     resume.addActionListener(listener);
+  }
+
+  @Override
+  public void startAnimation() {
+    start();
   }
 
   @Override

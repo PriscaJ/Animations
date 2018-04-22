@@ -24,6 +24,12 @@ public class Rectangle extends AbstractShape {
     super(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer);
   }
 
+
+  @Override
+  public Shapes getCopy() {
+    return new Rectangle(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer);
+  }
+
   @Override
   public boolean isOval() {
     return false;

@@ -11,6 +11,9 @@ public class ColorChange extends AbstractAnimation {
   private float newG;
   private float newB;
 
+  private float ogR;
+  private float ogG;
+  private float ogB;
   /**
    * Create a colorchange object that will change the color of a shape.
    */
@@ -23,6 +26,10 @@ public class ColorChange extends AbstractAnimation {
     this.newR = newR;
     this.newG = newG;
     this.newB = newB;
+    this.ogR = newR;
+    this.ogG = newG;
+    this.ogB = newB;
+
     this.type = AnimationType.COLORCHANGE;
   }
 
@@ -69,7 +76,6 @@ public class ColorChange extends AbstractAnimation {
   @Override
   public void apply(int tick) {
     if (tick >= startTime && tick < endTime) {
-
       animatingShape.setRed(calculateChange(oldR, newR, tick));
       animatingShape.setGreen(calculateChange(oldG, newG, tick));
       animatingShape.setBlue(calculateChange(oldB, newB, tick));

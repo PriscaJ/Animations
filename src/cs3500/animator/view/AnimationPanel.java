@@ -3,9 +3,7 @@ package cs3500.animator.view;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,8 +11,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -22,6 +18,9 @@ import javax.swing.Timer;
 import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.Shapes;
 
+// start with a list of all shapes in correct order
+// maintain order of shapes, but sort by layer number
+//
 
 /**
  * This panel represents the area where the shapes and actions of an animation will be displayed.
@@ -31,10 +30,14 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   private int tick;
   private Timer t;
+  private ArrayList<Shapes> ogShapesList = new ArrayList<>();
   private ArrayList<Shapes> shapesList;
+  private List<Shapes> sortedShapesList;
   private int lastTick;
   private boolean looping = false;
   private Map<Integer, ArrayList<Shapes>> layers = new HashMap<>();
+  private Map<Integer, ArrayList<Shapes>> activeMap = new HashMap<>();
+
   /**
    * The constructor for the Animation Panel.
    *
@@ -45,35 +48,38 @@ public class AnimationPanel extends JPanel implements ActionListener {
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model by using same fields passed into it
     this.shapesList = shapesList;
+    for (Shapes s : shapesList) {
+      Shapes copy = s.getCopy();
+      ogShapesList.add(copy);
+    }
     this.lastTick = lastTick;
     this.setBackground(Color.WHITE);
     this.setPreferredSize(new Dimension(800, 800));
     this.tick = -1;
     this.t = new Timer(ticksPerSec, this);
-    t.start();
+    initLayersMap(shapesList);
+    //t.start();
   }
 
-  /**
-   * This method uses the given shapes in the animation.
-   *
-   * @param shapes to be used.
-   */
-  protected void setShapesList(ArrayList<Shapes> shapes) {
-    this.shapesList = shapes;
-    t.start();
-  }
+  private void initLayersMap(ArrayList<Shapes> listOfShapes) {
+    for (Shapes s : listOfShapes) {
+      for (int i = s.getAppears(); i < s.getDisappears(); i++) {
+        if (activeMap.containsKey(i)) {
+          ArrayList<Shapes> curr = activeMap.get(i);
+          curr.add(s);
+          activeMap.put(i, curr);
+        } else {
+          ArrayList<Shapes> curr = new ArrayList<>();
+          curr.add(s);
+          activeMap.put(i, curr);
+        }
+      }
 
-  @Override
-  protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    Graphics2D g2d = (Graphics2D) g;
-    for (Shapes s : activeShapes(tick)) {
       if (layers.containsKey(s.getLayer())) {
         ArrayList<Shapes> shapes = layers.get(s.getLayer());
         shapes.add(s);
         layers.put(s.getLayer(), shapes);
-      }
-      else {
+      } else {
         ArrayList<Shapes> newList = new ArrayList<>();
         newList.add(s);
         layers.put(s.getLayer(), newList);
@@ -84,26 +90,43 @@ public class AnimationPanel extends JPanel implements ActionListener {
     Collections.sort(layerNums);
     List<Shapes> sortedShapes = new ArrayList<>();
     for (Integer i : layerNums) {
-      List<Shapes> shapesInLayer = layers.get(i);
-      sortedShapes.addAll(shapesInLayer);
+      sortedShapes.addAll(layers.get(i));
     }
-    
-    for (Shapes shape : sortedShapes) {
-      float r = shape.getRed();
-      float gg = shape.getGreen();
-      float b = shape.getBlue();
-      Color c = new Color(r, gg, b);
-      g2d.setColor(c);
-      if (shape.isOval()) {
-        g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-            shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-            shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+    this.sortedShapesList = sortedShapes;
+  }
 
-      } else if (shape.isRect()) {
-        Rectangle r2 = new Rectangle(
-            new Point(shape.getXPosition().intValue(), shape.getYPosition().intValue()),
-            new Dimension(shape.getWidth().intValue(), shape.getHeight().intValue()));
-        g2d.fill(r2);
+  /**
+   * This method uses the given shapes in the animation.
+   *
+   * @param shapes to be used.
+   */
+  protected void setShapesList(ArrayList<Shapes> shapes) {
+    this.sortedShapesList = shapes;
+    initLayersMap(shapes);
+  }
+
+  @Override
+  protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    Graphics2D g2d = (Graphics2D) g;
+    if (activeMap.containsKey(tick)) {
+      for (Shapes shape : activeMap.get(tick)) {
+        float r = shape.getRed();
+        float gg = shape.getGreen();
+        float b = shape.getBlue();
+        Color c = new Color(r, gg, b);
+        g2d.setColor(c);
+        if (shape.isOval()) {
+          g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+              shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+              shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+
+        } else if (shape.isRect()) {
+          g2d.setColor(c);
+          g2d.fillRect(shape.getXPosition().intValue(),
+              shape.getYPosition().intValue(),
+              shape.getWidth().intValue(), shape.getHeight().intValue());
+        }
       }
     }
   }
@@ -133,16 +156,20 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * This method allows the view to increase the delay of the timer.
    */
   protected void increaseSpeed() {
-    t = new Timer(t.getDelay() + 15, this);
+    t.stop();
+    if (t.getDelay() - 15 > 1) {
+      t = new Timer(t.getDelay() - 15, this);
+    }
+    t.start();
   }
 
   /**
    * This method allows the view to decrease the delay of the timer.
    */
   protected void decreaseSpeed() {
-    if (t.getDelay() > 15) {
-      t = new Timer(t.getDelay() - 15, this);
-    }
+    t.stop();
+      t = new Timer(t.getDelay() + 15, this);
+    t.start();
   }
 
   /**
@@ -158,6 +185,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     // when the model's last animation stops, stop the timer
     if (tick >= lastTick) {
       if (looping) {
+        setShapesList(ogShapesList);
         tick = 0;
       } else {
         t.stop();

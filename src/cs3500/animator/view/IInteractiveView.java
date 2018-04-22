@@ -10,6 +10,11 @@ public interface IInteractiveView extends IView {
   void setButtonListeners(ActionListener listener);
 
   /**
+   * Start the animation for the first time.
+   */
+  void startAnimation();
+
+  /**
    * Stops the timer which in turn stops the animation.
    */
   void stopTimer();
@@ -29,6 +34,9 @@ public interface IInteractiveView extends IView {
    */
   void start();
 
+  /**
+   * Start the animation from the place it has been stopped.
+   */
   void resume();
 
   /**

@@ -128,8 +128,8 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-        addOval(String name, float cx, float cy, float xRadius, float yRadius,
-            float red, float green, float blue, int startOfLife, int endOfLife, int layer) {
+    addOval(String name, float cx, float cy, float xRadius, float yRadius,
+        float red, float green, float blue, int startOfLife, int endOfLife, int layer) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -137,16 +137,16 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape oval =
-              new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife, layer);
+          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife, layer);
       model.addShape(oval);
       return this;
     }
 
     @Override
     public TweenModelBuilder<AnimationOperations> addRectangle(String name, float lx, float ly,
-                                                               float width, float height, float red,
-                                                               float green, float blue,
-                                                               int startOfLife, int endOfLife,
+        float width, float height, float red,
+        float green, float blue,
+        int startOfLife, int endOfLife,
         int layer) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
@@ -155,20 +155,20 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape rect =
-              new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife, layer);
+          new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife, layer);
       model.addShape(rect);
       return this;
     }
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-        addMove(String name, float moveFromX, float moveFromY,
-            float moveToX, float moveToY, int startTime, int endTime) {
+    addMove(String name, float moveFromX, float moveFromY,
+        float moveToX, float moveToY, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       Move move = new Move(name, moveFromX, moveFromY,
-              moveToX, moveToY, startTime, endTime);
+          moveToX, moveToY, startTime, endTime);
       MoveCommand command = new MoveCommand(move);
       model.addCommand(command);
       return this;
@@ -176,13 +176,13 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-        addColorChange(String name, float oldR, float oldG, float oldB,
-                   float newR, float newG, float newB, int startTime, int endTime) {
+    addColorChange(String name, float oldR, float oldG, float oldB,
+        float newR, float newG, float newB, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       ColorChange color = new ColorChange(name,
-              oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+          oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
       ColorCommand command = new ColorCommand(color);
       model.addCommand(command);
       return this;
@@ -190,13 +190,13 @@ public class AnimationModel implements AnimationOperations {
 
     @Override
     public TweenModelBuilder<AnimationOperations>
-        addScaleToChange(String name, float fromSx, float fromSy,
-                     float toSx, float toSy, int startTime, int endTime) {
+    addScaleToChange(String name, float fromSx, float fromSy,
+        float toSx, float toSy, int startTime, int endTime) {
       if (endTime < startTime) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       ScaleChange scale = new ScaleChange(name,
-              fromSx, fromSy, toSx, toSy, startTime, endTime);
+          fromSx, fromSy, toSx, toSy, startTime, endTime);
       ScaleCommand command = new ScaleCommand(scale);
       model.addCommand(command);
       return this;

@@ -26,6 +26,11 @@ public class Oval extends AbstractShape {
   }
 
   @Override
+  public Shapes getCopy() {
+    return new Oval(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer);
+  }
+
+  @Override
   public float getCenterX() {
     return xPosn;
   }

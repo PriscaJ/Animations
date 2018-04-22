@@ -19,7 +19,7 @@ public abstract class AbstractShape implements Shapes {
   protected float radian;
   protected int startOfLife;
   protected int endOfLife;
-  private int layer;
+  protected int layer;
   // the animations that the shape invokes
   private ArrayList<AnimationCommand> commands = new ArrayList<>();
 

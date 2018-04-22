@@ -190,4 +190,6 @@ public interface Shapes {
    * @param v the new degree of rotation.
    */
   void setRadian(float v);
+
+  Shapes getCopy();
 }

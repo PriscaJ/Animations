@@ -7,12 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import javax.swing.JOptionPane;
 
-import cs3500.animator.controller.AdapterController;
+//import cs3500.animator.controller.AdapterController;
 import cs3500.animator.controller.Controller;
+//import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.AnimationOperations;
 import cs3500.animator.model.Animations;
-import cs3500.animator.model.ModelAdapter;
+//import cs3500.animator.model.ModelAdapter;
 import cs3500.animator.model.Shapes;
 import cs3500.animator.provider.model.Shape;
 import cs3500.animator.provider.model.SimpleAnimation;
@@ -84,31 +85,31 @@ public final class EasyAnimator {
       case "interactive":
         view = createHybridView(model.getShapes(), model.getEndTime(), ticksPerSec, outputDest);
         break;
-      case "provider":
-
-        SimpleAnimation modelAdapter = new ModelAdapter(model);
-        provided_view = createProviderView(modelAdapter.getShapes(), outputDest);
-        AdapterController adapterController = new AdapterController(modelAdapter, provided_view);
-        adapterController.run();
-        break;
-      case "p-svg":
-        SimpleAnimation modelAdapter2 = new ModelAdapter(model);
-        provided_view = createProviderSVGView(modelAdapter2.getShapes(), outputDest, ticksPerSec);
-        AdapterController adapterController2 = new AdapterController(modelAdapter2, provided_view);
-        adapterController2.run();
-        break;
-      case "p-visual":
-        SimpleAnimation modelAdapter3 = new ModelAdapter(model);
-        provided_view = createProviderVisualView(modelAdapter3.getShapes(), ticksPerSec);
-        AdapterController adapterController3 = new AdapterController(modelAdapter3, provided_view);
-        adapterController3.run();
-        break;
-      case "p-text":
-        SimpleAnimation modelAdapter4 = new ModelAdapter(model);
-        provided_view = createProviderTextView(modelAdapter4.getShapes(), outputDest, ticksPerSec);
-        AdapterController adapterController4 = new AdapterController(modelAdapter4, provided_view);
-        adapterController4.run();
-        break;
+//      case "provider":
+//
+//        SimpleAnimation modelAdapter = new ModelAdapter(model);
+//        provided_view = createProviderView(modelAdapter.getShapes(), outputDest);
+//        AdapterController adapterController = new AdapterController(modelAdapter, provided_view);
+//        adapterController.run();
+//        break;
+//      case "p-svg":
+//        SimpleAnimation modelAdapter2 = new ModelAdapter(model);
+//        provided_view = createProviderSVGView(modelAdapter2.getShapes(), outputDest, ticksPerSec);
+//        AdapterController adapterController2 = new AdapterController(modelAdapter2, provided_view);
+//        adapterController2.run();
+//        break;
+//      case "p-visual":
+//        SimpleAnimation modelAdapter3 = new ModelAdapter(model);
+//        provided_view = createProviderVisualView(modelAdapter3.getShapes(), ticksPerSec);
+//        AdapterController adapterController3 = new AdapterController(modelAdapter3, provided_view);
+//        adapterController3.run();
+//        break;
+//      case "p-text":
+//        SimpleAnimation modelAdapter4 = new ModelAdapter(model);
+//        provided_view = createProviderTextView(modelAdapter4.getShapes(), outputDest, ticksPerSec);
+//        AdapterController adapterController4 = new AdapterController(modelAdapter4, provided_view);
+//        adapterController4.run();
+//        break;
       default:
         makeErrorMessage("Invalid type of view");
     }
@@ -142,34 +143,34 @@ public final class EasyAnimator {
   //    IView hybridView = new HybridView(shapes, endTime, outputDest, 1000 / tps);
   //    return new ViewAdapter(hybridView);
   //  }
-  private static View createProviderView(List<Shape> shapes, String ticksPerSec)
-          throws IOException {
-    int tps = getTicksPerSec(ticksPerSec);
-    // todo convert model.getShapes to return a list of Shape
-    return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);
-  }
-
-  private static View createProviderVisualView(List<Shape> shapesList,
-      String ticksPerSec) {
-    // list of shapes and last tick
-    int tps = getTicksPerSec(ticksPerSec);
-    return new cs3500.animator.provider.view.VisualView(shapesList, 1000 / tps);
-  }
-
-  // Create an SVGView with the given file name, speed, and model.
-  private static View createProviderSVGView(List<Shape> shapesList, String outputDest,
-      String ticksPerSec) {
-    int tps = getTicksPerSec(ticksPerSec);
-    return new cs3500.animator.provider.view.SVGView(shapesList, outputDest, 1000 / tps);
-  }
-
-  // Creates a text view, similar to the other views.
-  private static View createProviderTextView(List<Shape> shapesList, String outFile,
-      String ticksPerSec) {
-    int tps = getTicksPerSec(ticksPerSec);
-    // temporarily changed model from ReadOnly to AnimationOperations
-    return new cs3500.animator.provider.view.TextualView(shapesList, outFile, 1000 / tps);
-  }
+//  private static View createProviderView(List<Shape> shapes, String ticksPerSec)
+//          throws IOException {
+//    int tps = getTicksPerSec(ticksPerSec);
+//    // todo convert model.getShapes to return a list of Shape
+//    return new cs3500.animator.provider.view.HybridView(shapes, 1000 / tps);
+//  }
+//
+//  private static View createProviderVisualView(List<Shape> shapesList,
+//      String ticksPerSec) {
+//    // list of shapes and last tick
+//    int tps = getTicksPerSec(ticksPerSec);
+//    return new cs3500.animator.provider.view.VisualView(shapesList, 1000 / tps);
+//  }
+//
+//  // Create an SVGView with the given file name, speed, and model.
+//  private static View createProviderSVGView(List<Shape> shapesList, String outputDest,
+//      String ticksPerSec) {
+//    int tps = getTicksPerSec(ticksPerSec);
+//    return new cs3500.animator.provider.view.SVGView(shapesList, outputDest, 1000 / tps);
+//  }
+//
+//  // Creates a text view, similar to the other views.
+//  private static View createProviderTextView(List<Shape> shapesList, String outFile,
+//      String ticksPerSec) {
+//    int tps = getTicksPerSec(ticksPerSec);
+//    // temporarily changed model from ReadOnly to AnimationOperations
+//    return new cs3500.animator.provider.view.TextualView(shapesList, outFile, 1000 / tps);
+//  }
 
   /**
    * This is a helper method to create the model, using the AnimationFileReader and the

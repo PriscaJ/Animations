@@ -38,6 +38,11 @@ public class HybridView implements IInteractiveView {
   }
 
   @Override
+  public void startAnimation() {
+    visualView.startAnimation();
+  }
+
+  @Override
   public void makeVisible() {
     visualView.setVisible(true);
   }
