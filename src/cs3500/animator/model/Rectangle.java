@@ -20,14 +20,15 @@ public class Rectangle extends AbstractShape {
    * @param endOfLife When this rectangle disappears.
    */
   public Rectangle(String name, float xPosn, float yPosn, float xDimension, float yDimension,
-      float red, float green, float blue, int startOfLife, int endOfLife, int layer) {
-    super(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer);
+      float red, float green, float blue, int startOfLife, int endOfLife, int layer, float radian) {
+    super(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer, radian);
   }
 
 
   @Override
   public Shapes getCopy() {
-    return new Rectangle(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer);
+    return new Rectangle(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
+        startOfLife, endOfLife, layer, radian);
   }
 
   @Override

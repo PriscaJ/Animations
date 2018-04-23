@@ -10,9 +10,9 @@ public class Oval extends AbstractShape {
   public Oval(String name,
       float cx, float cy, float xRadius, float yRadius,
       float red, float green, float blue,
-      int startOfLife, int endOfLife, int layer) {
+      int startOfLife, int endOfLife, int layer, float radian) {
     super(name, cx, cy, xRadius, yRadius, red, green, blue,
-        startOfLife, endOfLife, layer);
+        startOfLife, endOfLife, layer, radian);
   }
 
   @Override
@@ -27,7 +27,8 @@ public class Oval extends AbstractShape {
 
   @Override
   public Shapes getCopy() {
-    return new Oval(name, xPosn, yPosn, xDimension, yDimension, red, green, blue, startOfLife, endOfLife, layer);
+    return new Oval(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
+        startOfLife, endOfLife, layer, radian);
   }
 
   @Override

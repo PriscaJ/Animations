@@ -40,7 +40,7 @@ public abstract class AbstractShape implements Shapes {
   public AbstractShape(String name,
       float xPosn, float yPosn, float xDimension, float yDimension,
       float red, float green, float blue,
-      int startOfLife, int endOfLife, int layer) {
+      int startOfLife, int endOfLife, int layer, float radian) {
     this.name = name;
     this.xPosn = xPosn;
     this.yPosn = yPosn;
@@ -52,6 +52,7 @@ public abstract class AbstractShape implements Shapes {
     this.startOfLife = startOfLife;
     this.endOfLife = endOfLife;
     this.layer = layer;
+    this.radian = radian;
   }
 
   @Override

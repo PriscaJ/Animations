@@ -43,7 +43,7 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
   private JListShape shapeList;
   private int initTPS;
   private JLabel info;
-
+  private JSlider progress;
   /**
    * The Constructor for the visual view.
    *
@@ -129,15 +129,15 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
 
     this.add(scrollingShapes, BorderLayout.EAST);
 
-    JSlider progress = new JSlider(JSlider.HORIZONTAL,
+    progress = new JSlider(JSlider.HORIZONTAL,
         0, lastTick, 1);
     progress.addChangeListener(this);
-    progress.setMajorTickSpacing(lastTick / 10);
+    progress.setMajorTickSpacing(10);
     progress.setMinorTickSpacing(1);
     progress.setPaintTicks(true);
     progress.setPaintLabels(true);
     buttonPanel.add(progress, BOTTOM_ALIGNMENT);
-
+    aniPanel.getProgress(progress);
     // info about state of animation
     info = new JLabel();
     this.add(info, BorderLayout.NORTH);

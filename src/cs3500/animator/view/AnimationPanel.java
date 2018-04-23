@@ -14,6 +14,8 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.JSlider;
+
 
 import cs3500.animator.model.AnimationCommand;
 import cs3500.animator.model.Shapes;
@@ -37,6 +39,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private boolean looping = false;
   private Map<Integer, ArrayList<Shapes>> layers = new HashMap<>();
   private Map<Integer, ArrayList<Shapes>> activeMap = new HashMap<>();
+  // has reference of progress?
+  private JSlider progress;
 
   /**
    * The constructor for the Animation Panel.
@@ -61,6 +65,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
     //t.start();
   }
 
+  /**
+   * Sets the map of active shapes in order of layer
+   * @param listOfShapes
+   */
   private void initLayersMap(ArrayList<Shapes> listOfShapes) {
     for (Shapes s : listOfShapes) {
       for (int i = s.getAppears(); i < s.getDisappears(); i++) {
@@ -103,6 +111,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void setShapesList(ArrayList<Shapes> shapes) {
     this.sortedShapesList = shapes;
     initLayersMap(shapes);
+  }
+
+  protected void getProgress(JSlider progress) {
+    this.progress = progress;
   }
 
   @Override
@@ -149,7 +161,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * This method allows the view to restart the animation by resetting the tick to -1.
    */
   protected void setTickToZero() {
-    this.tick = -1;
+    this.tick = 0;
   }
 
   /**
@@ -182,6 +194,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    progress.setValue(tick);
     // when the model's last animation stops, stop the timer
     if (tick >= lastTick) {
       if (looping) {
@@ -192,10 +205,12 @@ public class AnimationPanel extends JPanel implements ActionListener {
       }
     }
     // for every shape call its command to execute the action.
-    for (Shapes s : activeShapes(tick)) {
-      for (AnimationCommand cmd : s.getCommands()) {
-        if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
-          cmd.execute(tick);
+    if (activeMap.containsKey(tick)) {
+      for (Shapes s : activeMap.get(tick)) {
+        for (AnimationCommand cmd : s.getCommands()) {
+          if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
+            cmd.execute(tick);
+          }
         }
       }
     }
@@ -229,22 +244,22 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void setLooping(boolean looping) {
     this.looping = looping;
   }
-
-  /**
-   * Returns the list of Shapes that are currently running at a particular tick.
-   *
-   * @param time The current tick.
-   * @return The list of shapes running at the given time.
-   */
-  protected ArrayList<Shapes> activeShapes(int time) {
-    ArrayList<Shapes> currentShapes = new ArrayList<>();
-    for (Shapes s : shapesList) {
-      if (time >= s.getAppears() && time <= s.getDisappears()) {
-        currentShapes.add(s);
-      }
-    }
-    return currentShapes;
-  }
+//
+//  /**
+//   * Returns the list of Shapes that are currently running at a particular tick.
+//   *
+//   * @param time The current tick.
+//   * @return The list of shapes running at the given time.
+//   */
+//  protected ArrayList<Shapes> activeShapes(int time) {
+//    ArrayList<Shapes> currentShapes = new ArrayList<>();
+//    for (Shapes s : shapesList) {
+//      if (time >= s.getAppears() && time <= s.getDisappears()) {
+//        currentShapes.add(s);
+//      }
+//    }
+//    return currentShapes;
+//  }
 
   public void setTick(int tick) {
     this.tick = tick;
