@@ -134,11 +134,6 @@ public interface Shapes {
    */
   Float getRadian();
 
-  /**
-   * Set the orientation in radian of the shapes.
-   * @param v The given set value to change the orientation angle.
-   */
-  void setRadian(Float v);
 
   /**
    * Get the string representation of the shape with the given speed.

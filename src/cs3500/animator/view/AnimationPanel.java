@@ -3,6 +3,7 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -117,6 +118,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
+    AffineTransform old = g2d.getTransform();
     if (tickToLayersToShapes.containsKey(tick)) {
       //      List<Integer> layerNums = new ArrayList<>(layers.keySet());
       //      // sorted list of layers
@@ -131,22 +133,28 @@ public class AnimationPanel extends JPanel implements ActionListener {
             float b = shape.getBlue();
             Color c = new Color(r, gg, b);
             g2d.setColor(c);
+
             if (shape.isOval()) {
               g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
                   shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
                   shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+              System.out.print("rotation check");
+              g2d.rotate(Math.toRadians((double) shape.getRadian()));
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
               g2d.fillRect(shape.getXPosition().intValue(),
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
+              System.out.print("rotation check");
+              g2d.rotate(Math.toRadians((double) shape.getRadian()));
             }
-             shape.getRadian();
           }
         }
       }
     }
+    // return the shapes back to their original state.
+    g2d.setTransform(old);
   }
 
   /**
