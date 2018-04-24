@@ -7,33 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13642b6b-d525-4c76-b3ae-e2208a212a24" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/AbstractShape 2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/AbstractShape.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/AbstractShape.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Oval 2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Oval.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Oval.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Rectangle 2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Rectangle.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Rectangle.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Shapes 2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$ChangeColorInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$ChangeColorInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$Inputable.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$Inputable.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$MoveInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$MoveInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$OvalInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$OvalInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$RectangleInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$RectangleInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$RotateInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$RotateInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$ScaleByInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$ScaleByInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$ShapeInfo.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader$ShapeInfo.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/util/AnimationFileReader.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/AnimationPanel 3.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/AnimationPanel.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/AnimationPanel.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/VisualView.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/VisualView.class" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/AbstractShape.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/AbstractShape.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/AnimationModel.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/AnimationModel.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Oval.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Oval.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Rectangle.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Rectangle.java" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,8 +52,8 @@
       <file leaf-file-name="AnimationFileReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4120">
-              <caret line="146" column="22" lean-forward="true" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="22" />
+            <state relative-caret-position="1866">
+              <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#10703#10704#0" expanded="true" />
@@ -270,13 +244,13 @@
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/ColorChange.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/Shapes.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/util/TweenModelBuilder.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/AnimationModel.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/AbstractShape.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/Oval.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java" />
       </list>
     </option>
   </component>
@@ -588,7 +562,7 @@
       <workItem from="1524201516038" duration="7662000" />
       <workItem from="1524366031441" duration="4255000" />
       <workItem from="1524413728148" duration="666000" />
-      <workItem from="1524525404089" duration="11300000" />
+      <workItem from="1524525404089" duration="11414000" />
     </task>
     <servers />
   </component>
@@ -598,7 +572,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92648000" />
+    <option name="totallyTimeSpent" value="92762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1074,8 +1048,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/util/AnimationFileReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4120">
-          <caret line="146" column="22" lean-forward="true" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="22" />
+        <state relative-caret-position="1866">
+          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#10703#10704#0" expanded="true" />
