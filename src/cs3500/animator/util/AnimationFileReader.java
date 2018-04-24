@@ -54,7 +54,8 @@ public class AnimationFileReader {
               cinfo.getName(),
               cinfo.getX(), cinfo.getY(),
               cinfo.getXRadius(), cinfo.getYRadius(),
-              cinfo.getR(), cinfo.getG(), cinfo.getB(),
+              cinfo.getR(),
+                  cinfo.getG(), cinfo.getB(),
               cinfo.getStart(), cinfo.getEnd(),
               cinfo.getLayer(), cinfo.getRadians());
           break;
@@ -356,7 +357,7 @@ public class AnimationFileReader {
     // layer is 1 by default
     private int layer = 1;
     // radians is 0 by default
-    private float radians = 0;
+    private float radian = 0;
 
 
     ShapeInfo() {
@@ -370,6 +371,8 @@ public class AnimationFileReader {
       // optional
       valueFlags.put("layer", true);
       valueFlags.put("radians", true);
+    }
+
     int getLayer() {
       return layer;
 
@@ -382,13 +385,17 @@ public class AnimationFileReader {
 
 
     void setRadian(float rad) {
-      this.radian = rad;
+      //this.radian = rad;
       valueFlags.replace("radian", true);
     }
 
     void setName(String name) {
       this.name = name;
       valueFlags.replace("name", true);
+    }
+
+    float getR() {
+      return r;
     }
 
     void setR(float r) {
@@ -418,10 +425,10 @@ public class AnimationFileReader {
       return name;
     }
 
-    void setName(String name) {
+    /**void setName(String name) {
       this.name = name;
       valueFlags.replace("name", true);
-    }
+    } **/
 
     public int getStart() {
       return start;
@@ -442,11 +449,11 @@ public class AnimationFileReader {
     }
 
     float getRadians() {
-      return radians;
+      return radian;
     }
 
     void setRadians(float radians) {
-      this.radians = radians;
+      this.radian = radians;
     }
   }
 

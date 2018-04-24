@@ -97,18 +97,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
       // add the shape to this time
       for (int i = s.getAppears(); i < s.getDisappears(); i++) {
-<<<<<<< HEAD
-        //if (activeMap.containsKey(i)) {
-          ArrayList<Shapes> curr = activeMap.get(i);
-          curr.add(s);
-          activeMap.put(i, curr);
-        /**} else {
-          ArrayList<Shapes> curr = new ArrayList<>();
-          curr.add(s);
-          activeMap.put(i, curr);
-        } **/
-      }
-=======
         if (tickToLayersToShapes.containsKey(i)) {
           // if the hashmap for this current tick contains the layer
           if (tickToLayersToShapes.get(i).containsKey(s.getLayer())) {
@@ -128,15 +116,14 @@ public class AnimationPanel extends JPanel implements ActionListener {
             if (tickToLayersToShapes.get(i).containsKey(s.getLayer())) {
               ArrayList<Shapes> shapesInLayer = tickToLayersToShapes.get(i).get(s.getLayer());
               shapesInLayer.add(s);
-              tickToLayersToShapes.put(i,
-                  //.put(s.getLayer(), shapesInLayer);
+              // tickToLayersToShapes.put(i,.put(s.getLayer(), shapesInLayer);
             }
             else {
               ArrayList<Shapes> shapesInLayer = new ArrayList<>();
               shapesInLayer.add(s);
               tickToLayersToShapes.get(i).put(s.getLayer(), shapesInLayer);
             }
->>>>>>> 7d501b5c3cb01c1c3d574f5021046dbcf2bbd97c
+
 
           }
 
