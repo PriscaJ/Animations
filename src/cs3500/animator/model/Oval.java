@@ -27,8 +27,10 @@ public class Oval extends AbstractShape {
 
   @Override
   public Shapes getCopy() {
-    return new Oval(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
+    Oval copy = new Oval(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
         startOfLife, endOfLife, layer, radian);
+    copy.commands = super.getCommands();
+    return copy;
   }
 
   @Override

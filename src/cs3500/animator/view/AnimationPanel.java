@@ -33,12 +33,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private int tick;
   private Timer t;
   private ArrayList<Shapes> ogShapesList = new ArrayList<>();
-  private ArrayList<Shapes> shapesList;
-  private List<Shapes> sortedShapesList;
+  private ArrayList<Shapes> currentShapesList;
   private int lastTick;
   private boolean looping = false;
-  private Map<Integer, ArrayList<Shapes>> layers = new HashMap<>();
-  private Map<Integer, ArrayList<Shapes>> activeMap = new HashMap<>();
 
   private Map<Integer, Map<Integer, ArrayList<Shapes>>> tickToLayersToShapes = new HashMap<>();
 
@@ -54,7 +51,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    */
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model by using same fields passed into it
-    this.shapesList = shapesList;
+    this.currentShapesList = shapesList;
     for (Shapes s : shapesList) {
       Shapes copy = s.getCopy();
       ogShapesList.add(copy);
@@ -70,103 +67,37 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   /**
    * Sets the map of active shapes in order of layer
-   * @param listOfShapes
    */
   // starts with all shapes
   private void initLayersMap(ArrayList<Shapes> listOfShapes) {
-    activeMap.clear();
+    tickToLayersToShapes.clear();
     for (Shapes s : listOfShapes) {
-      // for each shape
-      // - for each tick it is present in the animation
-      // --- if it has the tick, get the hashmap from the current tick
-      // ------if hashmap2 contains the shape's layer,
-      // ----------- get hm2.get(layer)
-      // ----------- add(s)
-      // ----------- put layer, list
-      // ------else
-      // ----------- new arraylist(s)
-      // ----------- put layer, new list
-      // --- else
-      // ----- it does not have the tick,
-      // ---------- create a new hashmap
-      // ---------- put layer, new list(s)
-      // ---------- put tick, hm
-
-
-
-
       // add the shape to this time
       for (int i = s.getAppears(); i < s.getDisappears(); i++) {
+        // --- if it has the tick, get the hashmap from the current tick
         if (tickToLayersToShapes.containsKey(i)) {
+          Map<Integer, ArrayList<Shapes>> mapAtTick = tickToLayersToShapes.get(i);
           // if the hashmap for this current tick contains the layer
           if (tickToLayersToShapes.get(i).containsKey(s.getLayer())) {
-            ArrayList<Shapes> curr = tickToLayersToShapes.get(i).get(s.getLayer());
-            curr.add(s);
-            tickToLayersToShapes.get(i).put(s.getLayer(), curr);
-          }
-          else {
+            ArrayList<Shapes> shapesInLayer = tickToLayersToShapes.get(i).get(s.getLayer());
+            shapesInLayer.add(s);
+            mapAtTick.put(s.getLayer(), shapesInLayer);
+          } else {
             ArrayList<Shapes> curr = new ArrayList<>();
             curr.add(s);
-            tickToLayersToShapes.get(i).put(s.getLayer(), curr);
+            mapAtTick.put(s.getLayer(), curr);
           }
-        }
-        else {
-          // if it contains the tick, check if the map contains the layer
-          if (tickToLayersToShapes.containsKey(i)) {
-            if (tickToLayersToShapes.get(i).containsKey(s.getLayer())) {
-              ArrayList<Shapes> shapesInLayer = tickToLayersToShapes.get(i).get(s.getLayer());
-              shapesInLayer.add(s);
-              // tickToLayersToShapes.put(i,.put(s.getLayer(), shapesInLayer);
-            }
-            else {
-              ArrayList<Shapes> shapesInLayer = new ArrayList<>();
-              shapesInLayer.add(s);
-              tickToLayersToShapes.get(i).put(s.getLayer(), shapesInLayer);
-            }
-
-
-          }
-
+        } else {
+          // it doesnt have a tick -> hashmap
+          // create a new hashmap and add the shape to the correct layer
+          Map<Integer, ArrayList<Shapes>> newMapAtTick = new HashMap<>();
+          ArrayList<Shapes> shapesInLayer = new ArrayList<>();
+          shapesInLayer.add(s);
+          newMapAtTick.put(s.getLayer(), shapesInLayer);
+          tickToLayersToShapes.put(i, newMapAtTick);
         }
       }
-//
-//
-//
-//      // SORT SHAPES BY LAYER
-//      if (layers.containsKey(s.getLayer())) {
-//        ArrayList<Shapes> shapes = layers.get(s.getLayer());
-//        shapes.add(s);
-//        layers.put(s.getLayer(), shapes);
-//      } else {
-//        ArrayList<Shapes> newList = new ArrayList<>();
-//        newList.add(s);
-//        layers.put(s.getLayer(), newList);
-//      }
-//      List<Integer> layerNums = new ArrayList<>(layers.keySet());
-//      // sorted list of layers
-//      Collections.sort(layerNums);
-//      List<Shapes> sortedShapes = new ArrayList<>();
-//      for (Integer i : layerNums) {
-//        sortedShapes.addAll(layers.get(i));
-//      }
-//      this.sortedShapesList = sortedShapes;
-//
-//      // INITIALIZE ACTIVE SHAPES
-//      for (int i = s.getAppears(); i < s.getDisappears(); i++) {
-//        if (activeMap.containsKey(i)) {
-//          ArrayList<Shapes> curr = activeMap.get(i);
-//          curr.add(s);
-//          activeMap.put(i, curr);
-//        } else {
-//          ArrayList<Shapes> curr = new ArrayList<>();
-//          curr.add(s);
-//          activeMap.put(i, curr);
-//        }
-//      }
-      // a list of shapes
-      // sort first by layer, then
     }
-
   }
 
   /**
@@ -175,7 +106,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * @param shapes to be used.
    */
   protected void setShapesList(ArrayList<Shapes> shapes) {
-    this.sortedShapesList = shapes;
+    this.currentShapesList = shapes;
     initLayersMap(shapes);
   }
 
@@ -194,43 +125,27 @@ public class AnimationPanel extends JPanel implements ActionListener {
       List<Integer> layersInAnimation = new ArrayList<>(tickToLayersToShapes.get(tick).keySet());
       Collections.sort(layersInAnimation);
       for (Integer i : layersInAnimation) {
-        for (Shapes shape : tickToLayersToShapes.get(tick).get(i)) {
-          float r = shape.getRed();
-          float gg = shape.getGreen();
-          float b = shape.getBlue();
-          Color c = new Color(r, gg, b);
-          g2d.setColor(c);
-          if (shape.isOval()) {
-            g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-                shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-                shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-
-          } else if (shape.isRect()) {
+        if (tickToLayersToShapes.get(tick).containsKey(i)) {
+          for (Shapes shape : tickToLayersToShapes.get(tick).get(i)) {
+            float r = shape.getRed();
+            float gg = shape.getGreen();
+            float b = shape.getBlue();
+            Color c = new Color(r, gg, b);
             g2d.setColor(c);
-            g2d.fillRect(shape.getXPosition().intValue(),
-                shape.getYPosition().intValue(),
-                shape.getWidth().intValue(), shape.getHeight().intValue());
+            if (shape.isOval()) {
+              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+
+            } else if (shape.isRect()) {
+              g2d.setColor(c);
+              g2d.fillRect(shape.getXPosition().intValue(),
+                  shape.getYPosition().intValue(),
+                  shape.getWidth().intValue(), shape.getHeight().intValue());
+            }
           }
         }
       }
-//      for (Shapes shape : activeMap.get(tick)) {
-//        float r = shape.getRed();
-//        float gg = shape.getGreen();
-//        float b = shape.getBlue();
-//        Color c = new Color(r, gg, b);
-//        g2d.setColor(c);
-//        if (shape.isOval()) {
-//          g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-//              shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-//              shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-//
-//        } else if (shape.isRect()) {
-//          g2d.setColor(c);
-//          g2d.fillRect(shape.getXPosition().intValue(),
-//              shape.getYPosition().intValue(),
-//              shape.getWidth().intValue(), shape.getHeight().intValue());
-//        }
-//      }
     }
   }
 
@@ -271,7 +186,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
    */
   protected void decreaseSpeed() {
     t.stop();
-      t = new Timer(t.getDelay() + 15, this);
+    t = new Timer(t.getDelay() + 15, this);
     t.start();
   }
 
@@ -289,18 +204,21 @@ public class AnimationPanel extends JPanel implements ActionListener {
     // when the model's last animation stops, stop the timer
     if (tick >= lastTick) {
       if (looping) {
-        setShapesList(ogShapesList);
+        setShapesList(currentShapesList);
         tick = 0;
       } else {
         t.stop();
       }
     }
-    // for every shape call its command to execute the action.
-    if (activeMap.containsKey(tick)) {
-      for (Shapes s : activeMap.get(tick)) {
-        for (AnimationCommand cmd : s.getCommands()) {
-          if (cmd.getAnimation().getStart() <= tick && tick <= cmd.getAnimation().getFinish()) {
-            cmd.execute(tick);
+    if (tickToLayersToShapes.containsKey(tick)) {
+      List<Integer> layersInAnimation = new ArrayList<>(tickToLayersToShapes.get(tick).keySet());
+      Collections.sort(layersInAnimation);
+      for (Integer layer : layersInAnimation) {
+        if (tickToLayersToShapes.get(tick).containsKey(layer)) {
+          for (Shapes s : tickToLayersToShapes.get(tick).get(layer)) {
+            for (AnimationCommand cmd : s.getCommands()) {
+              cmd.execute(tick);
+            }
           }
         }
       }
@@ -335,22 +253,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void setLooping(boolean looping) {
     this.looping = looping;
   }
-//
-//  /**
-//   * Returns the list of Shapes that are currently running at a particular tick.
-//   *
-//   * @param time The current tick.
-//   * @return The list of shapes running at the given time.
-//   */
-//  protected ArrayList<Shapes> activeShapes(int time) {
-//    ArrayList<Shapes> currentShapes = new ArrayList<>();
-//    for (Shapes s : shapesList) {
-//      if (time >= s.getAppears() && time <= s.getDisappears()) {
-//        currentShapes.add(s);
-//      }
-//    }
-//    return currentShapes;
-//  }
 
   public void setTick(int tick) {
     this.tick = tick;

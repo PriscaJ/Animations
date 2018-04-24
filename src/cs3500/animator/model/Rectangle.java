@@ -27,8 +27,10 @@ public class Rectangle extends AbstractShape {
 
   @Override
   public Shapes getCopy() {
-    return new Rectangle(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
+    Rectangle copy = new Rectangle(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
         startOfLife, endOfLife, layer, radian);
+    copy.commands = super.getCommands();
+    return copy;
   }
 
   @Override

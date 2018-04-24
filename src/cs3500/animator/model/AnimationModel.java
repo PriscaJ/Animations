@@ -136,8 +136,7 @@ public class AnimationModel implements AnimationOperations {
       if (name == null) {
         throw new IllegalArgumentException("Shapes must have names");
       }
-      AbstractShape oval =
-          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue,
+      AbstractShape oval = new Oval(name, cx, cy, xRadius, yRadius, red, green, blue,
                   startOfLife, endOfLife, layer, radian);
       model.addShape(oval);
       return this;

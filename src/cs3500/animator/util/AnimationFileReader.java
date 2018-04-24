@@ -46,7 +46,7 @@ public class AnimationFileReader {
               rinfo.getWidth(), rinfo.getHeight(),
               rinfo.getR(), rinfo.getG(), rinfo.getB(),
               rinfo.getStart(), rinfo.getEnd(),
-              rinfo.getLayer(), rinfo.getRadians());
+              rinfo.getLayer(), rinfo.getRadian());
           break;
         case "oval":
           OvalInfo cinfo = readOvalInfo(sc);
@@ -57,7 +57,7 @@ public class AnimationFileReader {
               cinfo.getR(),
                   cinfo.getG(), cinfo.getB(),
               cinfo.getStart(), cinfo.getEnd(),
-              cinfo.getLayer(), cinfo.getRadians());
+              cinfo.getLayer(), cinfo.getRadian());
           break;
         case "move":
           MoveInfo minfo = readMoveInfo(sc);
@@ -146,7 +146,7 @@ public class AnimationFileReader {
           info.setLayer(sc.nextInt());
           break;
         case "radian":
-          info.setRadians(sc.nextFloat());
+          info.setRadian(sc.nextFloat());
           break;
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
@@ -194,7 +194,7 @@ public class AnimationFileReader {
           info.setLayer(sc.nextInt());
           break;
         case "radian":
-          info.setRadians(sc.nextFloat());
+          info.setRadian(sc.nextFloat());
           break;
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
@@ -356,9 +356,7 @@ public class AnimationFileReader {
     private int end;
     // layer is 1 by default
     private int layer = 1;
-    // radians is 0 by default
     private float radian = 0;
-
 
     ShapeInfo() {
       super();
@@ -370,23 +368,16 @@ public class AnimationFileReader {
       valueFlags.put("end", false);
       // optional
       valueFlags.put("layer", true);
-      valueFlags.put("radians", true);
+      valueFlags.put("radian", true);
     }
 
     int getLayer() {
       return layer;
-
     }
 
     void setLayer(int layer) {
       this.layer = layer;
       valueFlags.replace("layer", true);
-    }
-
-
-    void setRadian(float rad) {
-      //this.radian = rad;
-      valueFlags.replace("radian", true);
     }
 
     void setName(String name) {
@@ -448,13 +439,15 @@ public class AnimationFileReader {
       valueFlags.replace("end", true);
     }
 
-    float getRadians() {
+    float getRadian() {
       return radian;
     }
 
-    void setRadians(float radians) {
-      this.radian = radians;
+    void setRadian(float rad) {
+      this.radian = rad;
+      valueFlags.replace("radian", true);
     }
+
   }
 
   class RectangleInfo extends ShapeInfo {
@@ -904,3 +897,4 @@ public class AnimationFileReader {
     }
   }
 }
+
