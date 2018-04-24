@@ -24,4 +24,6 @@ public interface AnimationCommand {
    * @return String of what the animation action is doing to pass to the AbstractShape.
    */
   String toString();
+
+  AnimationCommand getCopy(Shapes copy);
 }

@@ -29,7 +29,9 @@ public class Oval extends AbstractShape {
   public Shapes getCopy() {
     Oval copy = new Oval(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
         startOfLife, endOfLife, layer, radian);
-    copy.commands = super.getCommands();
+    for (AnimationCommand cmd : super.getCommands()) {
+      copy.addCommand(cmd.getCopy(copy));
+    }
     return copy;
   }
 

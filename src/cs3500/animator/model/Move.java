@@ -69,5 +69,11 @@ public class Move extends AbstractAnimation {
         (float) startTime * tps / 1000, (float) endTime * tps / 1000);
   }
 
+  @Override
+  public Move getCopy(Shapes copyShape) {
+    Move copy = new Move(name, startX, startY, endX, endY, startTime, endTime);
+    copy.setAnimatingShape(copyShape);
+    return copy;
+  }
 
 }

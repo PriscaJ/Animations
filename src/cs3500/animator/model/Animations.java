@@ -150,4 +150,6 @@ public interface Animations {
    * @return the y value the animation's shape ends at.
    */
   float getEndY();
+
+  Animations getCopy(Shapes copyShape);
 }

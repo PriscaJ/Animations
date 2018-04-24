@@ -77,4 +77,11 @@ public class ScaleChange extends AbstractAnimation {
         this.name, this.startX, startY, endX, endY,
         (float) startTime * tps / 1000, (float) endTime * tps / 1000);
   }
+
+  @Override
+  public ScaleChange getCopy(Shapes copyShape) {
+    ScaleChange copy =  new ScaleChange(name, startX, startY, endX, endY, startTime, endTime);
+    copy.setAnimatingShape(copyShape);
+    return copy;
+  }
 }

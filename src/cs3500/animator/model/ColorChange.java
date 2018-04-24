@@ -89,4 +89,11 @@ public class ColorChange extends AbstractAnimation {
         name, oldR, oldG, oldB, newR, newG, newB, (float) startTime * tps / 1000,
             (float) endTime * tps / 1000);
   }
+
+  @Override
+  public ColorChange getCopy(Shapes copyShape) {
+    ColorChange copy = new ColorChange(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+    copy.setAnimatingShape(copyShape);
+    return copy;
+  }
 }
