@@ -129,7 +129,7 @@ public class AnimationModel implements AnimationOperations {
     @Override
     public TweenModelBuilder<AnimationOperations>
     addOval(String name, float cx, float cy, float xRadius, float yRadius,
-        float red, float green, float blue, int startOfLife, int endOfLife, int layer) {
+        float red, float green, float blue, int startOfLife, int endOfLife, int layer, float radian) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -137,7 +137,7 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape oval =
-          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife, layer);
+          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife, layer, radian);
       model.addShape(oval);
       return this;
     }
@@ -147,7 +147,7 @@ public class AnimationModel implements AnimationOperations {
         float width, float height, float red,
         float green, float blue,
         int startOfLife, int endOfLife,
-        int layer) {
+        int layer, float radian) {
       if (endOfLife < startOfLife) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -155,7 +155,8 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape rect =
-          new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife, layer);
+          new Rectangle(name, lx, ly, width, height, red, green, blue,
+              startOfLife, endOfLife, layer, radian);
       model.addShape(rect);
       return this;
     }

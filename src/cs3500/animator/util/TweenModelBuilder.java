@@ -28,7 +28,7 @@ public interface TweenModelBuilder<T> {
       float cx, float cy,
       float xRadius, float yRadius,
       float red, float green, float blue,
-      int startOfLife, int endOfLife, int layer);
+      int startOfLife, int endOfLife, int layer, float radian);
 
   /**
    * Add a new rectangle to the model with the given specifications.
@@ -52,7 +52,7 @@ public interface TweenModelBuilder<T> {
       float lx, float ly,
       float width, float height,
       float red, float green, float blue,
-      int startOfLife, int endOfLife, int layer);
+      int startOfLife, int endOfLife, int layer, float radian);
 
   /**
    * Move the specified shape to the given position during the given time

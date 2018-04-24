@@ -39,6 +39,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private boolean looping = false;
   private Map<Integer, ArrayList<Shapes>> layers = new HashMap<>();
   private Map<Integer, ArrayList<Shapes>> activeMap = new HashMap<>();
+
+  private Map<Integer, Map<Integer, ArrayList<Shapes>>> tickToLayersToShapes = new HashMap<>();
+
   // has reference of progress?
   private JSlider progress;
 
@@ -69,38 +72,101 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * Sets the map of active shapes in order of layer
    * @param listOfShapes
    */
+  // starts with all shapes
   private void initLayersMap(ArrayList<Shapes> listOfShapes) {
+    activeMap.clear();
     for (Shapes s : listOfShapes) {
+      // for each shape
+      // - for each tick it is present in the animation
+      // --- if it has the tick, get the hashmap from the current tick
+      // ------if hashmap2 contains the shape's layer,
+      // ----------- get hm2.get(layer)
+      // ----------- add(s)
+      // ----------- put layer, list
+      // ------else
+      // ----------- new arraylist(s)
+      // ----------- put layer, new list
+      // --- else
+      // ----- it does not have the tick,
+      // ---------- create a new hashmap
+      // ---------- put layer, new list(s)
+      // ---------- put tick, hm
+
+
+
+
+      // add the shape to this time
       for (int i = s.getAppears(); i < s.getDisappears(); i++) {
-        if (activeMap.containsKey(i)) {
-          ArrayList<Shapes> curr = activeMap.get(i);
-          curr.add(s);
-          activeMap.put(i, curr);
-        } else {
-          ArrayList<Shapes> curr = new ArrayList<>();
-          curr.add(s);
-          activeMap.put(i, curr);
+        if (tickToLayersToShapes.containsKey(i)) {
+          // if the hashmap for this current tick contains the layer
+          if (tickToLayersToShapes.get(i).containsKey(s.getLayer())) {
+            ArrayList<Shapes> curr = tickToLayersToShapes.get(i).get(s.getLayer());
+            curr.add(s);
+            tickToLayersToShapes.get(i).put(s.getLayer(), curr);
+          }
+          else {
+            ArrayList<Shapes> curr = new ArrayList<>();
+            curr.add(s);
+            tickToLayersToShapes.get(i).put(s.getLayer(), curr);
+          }
+        }
+        else {
+          // if it contains the tick, check if the map contains the layer
+          if (tickToLayersToShapes.containsKey(i)) {
+            if (tickToLayersToShapes.get(i).containsKey(s.getLayer())) {
+              ArrayList<Shapes> shapesInLayer = tickToLayersToShapes.get(i).get(s.getLayer());
+              shapesInLayer.add(s);
+              tickToLayersToShapes.put(i,
+                  //.put(s.getLayer(), shapesInLayer);
+            }
+            else {
+              ArrayList<Shapes> shapesInLayer = new ArrayList<>();
+              shapesInLayer.add(s);
+              tickToLayersToShapes.get(i).put(s.getLayer(), shapesInLayer);
+            }
+
+          }
+
         }
       }
+//
+//
+//
+//      // SORT SHAPES BY LAYER
+//      if (layers.containsKey(s.getLayer())) {
+//        ArrayList<Shapes> shapes = layers.get(s.getLayer());
+//        shapes.add(s);
+//        layers.put(s.getLayer(), shapes);
+//      } else {
+//        ArrayList<Shapes> newList = new ArrayList<>();
+//        newList.add(s);
+//        layers.put(s.getLayer(), newList);
+//      }
+//      List<Integer> layerNums = new ArrayList<>(layers.keySet());
+//      // sorted list of layers
+//      Collections.sort(layerNums);
+//      List<Shapes> sortedShapes = new ArrayList<>();
+//      for (Integer i : layerNums) {
+//        sortedShapes.addAll(layers.get(i));
+//      }
+//      this.sortedShapesList = sortedShapes;
+//
+//      // INITIALIZE ACTIVE SHAPES
+//      for (int i = s.getAppears(); i < s.getDisappears(); i++) {
+//        if (activeMap.containsKey(i)) {
+//          ArrayList<Shapes> curr = activeMap.get(i);
+//          curr.add(s);
+//          activeMap.put(i, curr);
+//        } else {
+//          ArrayList<Shapes> curr = new ArrayList<>();
+//          curr.add(s);
+//          activeMap.put(i, curr);
+//        }
+//      }
+      // a list of shapes
+      // sort first by layer, then
+    }
 
-      if (layers.containsKey(s.getLayer())) {
-        ArrayList<Shapes> shapes = layers.get(s.getLayer());
-        shapes.add(s);
-        layers.put(s.getLayer(), shapes);
-      } else {
-        ArrayList<Shapes> newList = new ArrayList<>();
-        newList.add(s);
-        layers.put(s.getLayer(), newList);
-      }
-    }
-    List<Integer> layerNums = new ArrayList<>(layers.keySet());
-    // sorted list of layers
-    Collections.sort(layerNums);
-    List<Shapes> sortedShapes = new ArrayList<>();
-    for (Integer i : layerNums) {
-      sortedShapes.addAll(layers.get(i));
-    }
-    this.sortedShapesList = sortedShapes;
   }
 
   /**
@@ -121,25 +187,50 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-    if (activeMap.containsKey(tick)) {
-      for (Shapes shape : activeMap.get(tick)) {
-        float r = shape.getRed();
-        float gg = shape.getGreen();
-        float b = shape.getBlue();
-        Color c = new Color(r, gg, b);
-        g2d.setColor(c);
-        if (shape.isOval()) {
-          g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-              shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-              shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-
-        } else if (shape.isRect()) {
+    if (tickToLayersToShapes.containsKey(tick)) {
+      //      List<Integer> layerNums = new ArrayList<>(layers.keySet());
+      //      // sorted list of layers
+      //      Collections.sort(layerNums);
+      List<Integer> layersInAnimation = new ArrayList<>(tickToLayersToShapes.get(tick).keySet());
+      Collections.sort(layersInAnimation);
+      for (Integer i : layersInAnimation) {
+        for (Shapes shape : tickToLayersToShapes.get(tick).get(i)) {
+          float r = shape.getRed();
+          float gg = shape.getGreen();
+          float b = shape.getBlue();
+          Color c = new Color(r, gg, b);
           g2d.setColor(c);
-          g2d.fillRect(shape.getXPosition().intValue(),
-              shape.getYPosition().intValue(),
-              shape.getWidth().intValue(), shape.getHeight().intValue());
+          if (shape.isOval()) {
+            g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+                shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+                shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+
+          } else if (shape.isRect()) {
+            g2d.setColor(c);
+            g2d.fillRect(shape.getXPosition().intValue(),
+                shape.getYPosition().intValue(),
+                shape.getWidth().intValue(), shape.getHeight().intValue());
+          }
         }
       }
+//      for (Shapes shape : activeMap.get(tick)) {
+//        float r = shape.getRed();
+//        float gg = shape.getGreen();
+//        float b = shape.getBlue();
+//        Color c = new Color(r, gg, b);
+//        g2d.setColor(c);
+//        if (shape.isOval()) {
+//          g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+//              shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+//              shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+//
+//        } else if (shape.isRect()) {
+//          g2d.setColor(c);
+//          g2d.fillRect(shape.getXPosition().intValue(),
+//              shape.getYPosition().intValue(),
+//              shape.getWidth().intValue(), shape.getHeight().intValue());
+//        }
+//      }
     }
   }
 
