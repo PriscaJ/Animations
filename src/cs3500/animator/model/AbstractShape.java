@@ -21,7 +21,7 @@ public abstract class AbstractShape implements Shapes {
   protected int endOfLife;
   protected int layer;
   // the animations that the shape invokes
-  private ArrayList<AnimationCommand> commands = new ArrayList<>();
+  protected ArrayList<AnimationCommand> commands = new ArrayList<>();
 
   /**
    * Constructor for a shape.

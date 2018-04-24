@@ -44,6 +44,7 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
   private int initTPS;
   private JLabel info;
   private JSlider progress;
+  private ArrayList<Shapes> ogShapesList;
   /**
    * The Constructor for the visual view.
    *
@@ -58,6 +59,11 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
     this.lastTick = lastTick;
     this.initTPS = ticksPerSec;
     this.allShapes = shapesList;
+    ogShapesList = new ArrayList<>();
+    for (Shapes s : allShapes) {
+      Shapes copy = s.getCopy();
+      ogShapesList.add(copy);
+    }
 
     //button panel
     JPanel buttonPanel = new JPanel();
@@ -247,8 +253,9 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
   @Override
   public void start() {
     System.out.print("start plz");
+
     // creating a new instance outside of panel when declared new
-    aniPanel.setShapesList(allShapes);
+    aniPanel.setShapesList(ogShapesList);
     aniPanel.setEndTime(lastTick);
     aniPanel.setTPS(initTPS);
     aniPanel.setLooping(looping);
