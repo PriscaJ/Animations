@@ -129,11 +129,12 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
 
     this.add(scrollingShapes, BorderLayout.EAST);
 
+    // progress slider controlling the animation (scrubbing)
     progress = new JSlider(JSlider.HORIZONTAL,
         0, lastTick, 1);
     progress.addChangeListener(this);
-    progress.setMajorTickSpacing(10);
-    progress.setMinorTickSpacing(1);
+    progress.setMajorTickSpacing(100);
+    progress.setMinorTickSpacing(10);
     progress.setPaintTicks(true);
     progress.setPaintLabels(true);
     buttonPanel.add(progress, BOTTOM_ALIGNMENT);
@@ -262,7 +263,7 @@ public class VisualView extends JFrame implements IInteractiveView, ChangeListen
     // toggle between turning looping on and off
     // aniPanel.setLooping(!looping);
     if (looping) {
-      looping = !looping;
+      looping = false;
       aniPanel.setLooping(looping);
       info.setText("Animation is not looping.");
 

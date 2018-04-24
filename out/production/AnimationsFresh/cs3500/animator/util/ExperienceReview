@@ -1,0 +1,39 @@
+
+
+    Overall the providers were very kind and happy to work with us to improve their code when we
+    aksed them to make interfaces for the concrete classes that they relied on. However,
+    One problem was that we received our code late from our providers so we ran into
+    issues, but due to the tighter timeline, the providers did not have time to fix their design
+    choices that made our model incompatible with their views.
+
+    The provided code also had a representation of visibility in their Shape class, and
+    we suggested they move their representation of visible shapes to be a list of visible shapes
+    in their view, but they did not have time to make such changes.
+
+    If they were able to do so, the fact that we do not have a "visibility" field in our
+    shape would not have been a breaking point in our code, and we would not need to refactor
+    our code to have access to view information from the shape. We considered retrieving info
+    from our view class JListShape to see which shapes had been selected and thus which were
+    "visible", but we considered doing so to be poor design in that the model classes are now
+    concerned with the view class implementation.
+
+    This experience has made us reflect on our design where we may have found it more beneficial to
+    create more public methods to be accessed through our adapter such as getters and setter that
+    may havr made our code more flexible. We would do so in a fashion to maintain the integrity of
+    our code while still providinf more functionlaity to new cutomers.
+
+    Another way we could have improved our code was to refactor to reduce unnecessary complexity
+    before complications arise. We were aware that some of our model classes were redundant,
+    but because they still worked properly, we did not see it as a priority to refactor. This
+    caused some confusion during the process of adapting to our providers' code, so in the future,
+    we have learned to address refactoring more often, even if we don't necessarily want to.
+
+    The fact that we did not have to change our code for our customers, was a good sign to us, in
+    that the efforts that we had made to ensure that our design was not tightly coupled,
+    responsibilities were contained to classes and methods that were most relevant, and our
+    Javadoc was as clear as possible, finally paid off in the end!
+
+
+
+
+  

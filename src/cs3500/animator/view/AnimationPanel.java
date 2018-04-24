@@ -72,15 +72,15 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private void initLayersMap(ArrayList<Shapes> listOfShapes) {
     for (Shapes s : listOfShapes) {
       for (int i = s.getAppears(); i < s.getDisappears(); i++) {
-        if (activeMap.containsKey(i)) {
+        //if (activeMap.containsKey(i)) {
           ArrayList<Shapes> curr = activeMap.get(i);
           curr.add(s);
           activeMap.put(i, curr);
-        } else {
+        /**} else {
           ArrayList<Shapes> curr = new ArrayList<>();
           curr.add(s);
           activeMap.put(i, curr);
-        }
+        } **/
       }
 
       if (layers.containsKey(s.getLayer())) {

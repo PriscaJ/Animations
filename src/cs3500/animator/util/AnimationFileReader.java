@@ -144,6 +144,8 @@ public class AnimationFileReader {
         case "layer":
           info.setLayer(sc.nextInt());
           break;
+        case "radian":
+          info.setRadian(sc.nextInt());
         default:
           throw new IllegalStateException("Invalid attribute " + command + " for "
               + "rectangle");
@@ -348,6 +350,7 @@ public class AnimationFileReader {
     private int end;
     // layer is 1 by default
     private int layer = 1;
+    private float radian = 0;
 
 
     ShapeInfo() {
@@ -359,11 +362,17 @@ public class AnimationFileReader {
       valueFlags.put("start", false);
       valueFlags.put("end", false);
       valueFlags.put("layer", true);
+      valueFlags.put("radian", true);
     }
 
     void setLayer(int layer) {
       this.layer = layer;
       valueFlags.replace("layer", true);
+    }
+
+    void setRadian(float rad) {
+      this.radian = rad;
+      valueFlags.replace("radian", true);
     }
 
     void setName(String name) {

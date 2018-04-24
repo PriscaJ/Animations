@@ -137,7 +137,8 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape oval =
-          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue, startOfLife, endOfLife, layer);
+          new Oval(name, cx, cy, xRadius, yRadius, red, green, blue,
+                  startOfLife, endOfLife, layer,1);
       model.addShape(oval);
       return this;
     }
@@ -155,7 +156,8 @@ public class AnimationModel implements AnimationOperations {
         throw new IllegalArgumentException("Shapes must have names");
       }
       AbstractShape rect =
-          new Rectangle(name, lx, ly, width, height, red, green, blue, startOfLife, endOfLife, layer);
+          new Rectangle(name, lx, ly, width, height, red, green, blue,
+                  startOfLife, endOfLife, layer, 1);
       model.addShape(rect);
       return this;
     }
