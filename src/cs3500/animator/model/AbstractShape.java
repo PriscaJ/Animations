@@ -168,6 +168,11 @@ public abstract class AbstractShape implements Shapes {
   }
 
   @Override
+  public Float getRadian() {
+    return this.radian;
+  }
+
+  @Override
   public void setRadian(float v) {
     this.radian = v;
   }

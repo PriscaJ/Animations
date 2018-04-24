@@ -143,6 +143,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
             }
+             shape.getRadian();
           }
         }
       }
