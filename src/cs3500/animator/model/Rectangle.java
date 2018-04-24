@@ -29,7 +29,9 @@ public class Rectangle extends AbstractShape {
   public Shapes getCopy() {
     Rectangle copy = new Rectangle(name, xPosn, yPosn, xDimension, yDimension, red, green, blue,
         startOfLife, endOfLife, layer, radian);
-    copy.commands = super.getCommands();
+    for (AnimationCommand cmd : super.getCommands()) {
+      copy.addCommand(cmd.getCopy(copy));
+    }
     return copy;
   }
 

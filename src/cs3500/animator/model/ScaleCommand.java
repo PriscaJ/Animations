@@ -24,4 +24,9 @@ public class ScaleCommand implements AnimationCommand {
   public void execute(int tick) {
     getAnimation().apply(tick);
   }
+
+  @Override
+  public AnimationCommand getCopy(Shapes copy) {
+    return new ScaleCommand(scale.getCopy(copy));
+  }
 }

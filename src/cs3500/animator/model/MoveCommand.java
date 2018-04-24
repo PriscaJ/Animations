@@ -29,4 +29,9 @@ public class MoveCommand implements AnimationCommand {
   public String toString() {
     return move.toString();
   }
+
+  @Override
+  public AnimationCommand getCopy(Shapes copy) {
+    return new MoveCommand(move.getCopy(copy));
+  }
 }

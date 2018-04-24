@@ -36,4 +36,11 @@ public class Rotate extends AbstractAnimation{
         this.name, this.fromRadian, toRadian,
         (float) startTime * tps / 1000, (float) endTime * tps / 1000);
   }
+
+  @Override
+  public Rotate getCopy(Shapes copyShape) {
+    Rotate copy = new Rotate(name, fromRadian, toRadian, startTime, endTime);
+    copy.setAnimatingShape(copyShape);
+    return copy;
+  }
 }

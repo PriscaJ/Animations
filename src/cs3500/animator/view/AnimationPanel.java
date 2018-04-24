@@ -1,9 +1,6 @@
 package cs3500.animator.view;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,8 +29,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
   private int tick;
   private Timer t;
-  private ArrayList<Shapes> ogShapesList = new ArrayList<>();
   private ArrayList<Shapes> currentShapesList;
+  private ArrayList<Shapes> currentShapesListCopy;
+  // a copy is made whenever a new list is instantiated
+
   private int lastTick;
   private boolean looping = false;
 
@@ -52,10 +51,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
   public AnimationPanel(ArrayList<Shapes> shapesList, int lastTick, int ticksPerSec) {
     // find a way to instantiate the model by using same fields passed into it
     this.currentShapesList = shapesList;
-    for (Shapes s : shapesList) {
-      Shapes copy = s.getCopy();
-      ogShapesList.add(copy);
-    }
     this.lastTick = lastTick;
     this.setBackground(Color.WHITE);
     this.setPreferredSize(new Dimension(800, 800));
@@ -107,7 +102,11 @@ public class AnimationPanel extends JPanel implements ActionListener {
    */
   protected void setShapesList(ArrayList<Shapes> shapes) {
     this.currentShapesList = shapes;
-    initLayersMap(shapes);
+    currentShapesListCopy = new ArrayList<>();
+    for (Shapes s: currentShapesList) {
+      currentShapesListCopy.add(s.getCopy());
+    }
+    initLayersMap(currentShapesList);
   }
 
   protected void getProgress(JSlider progress) {
@@ -205,7 +204,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     // when the model's last animation stops, stop the timer
     if (tick >= lastTick) {
       if (looping) {
-        setShapesList(currentShapesList);
+        setShapesList(currentShapesListCopy);
         tick = 0;
       } else {
         t.stop();

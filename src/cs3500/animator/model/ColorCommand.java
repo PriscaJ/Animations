@@ -25,4 +25,9 @@ public class ColorCommand implements AnimationCommand {
   public String toString() {
     return changeColor.toString();
   }
+
+  @Override
+  public AnimationCommand getCopy(Shapes copy) {
+    return new ColorCommand(changeColor.getCopy(copy));
+  }
 }
