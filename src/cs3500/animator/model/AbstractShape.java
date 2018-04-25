@@ -169,11 +169,14 @@ public abstract class AbstractShape implements Shapes {
 
   @Override
   public Float getRadian() {
+    System.out.print("getRadian= " + radian + "\n");
+
     return this.radian;
   }
 
   @Override
   public void setRadian(float v) {
+    System.out.print(v + "\n");
     this.radian = v;
   }
 }

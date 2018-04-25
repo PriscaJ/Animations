@@ -3,6 +3,9 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -132,9 +135,20 @@ public class AnimationPanel extends JPanel implements ActionListener {
             Color c = new Color(r, gg, b);
             g2d.setColor(c);
             if (shape.isOval()) {
-              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+              Ellipse2D oval = new Ellipse2D.Double(shape.getXPosition(), shape.getYPosition(),
+                  shape.getWidth(), shape.getHeight());
+              //AffineTransform transform = new AffineTransform();
+              AffineTransform at = AffineTransform.getRotateInstance(
+                  Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              System.out.print(shape.getRadian() + "\n");
+              g2d.transform(at);
+              at.createTransformedShape(oval);
+              g2d.setPaint(c);
+              g2d.draw(oval);
+//
+//              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+//                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+//                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
@@ -142,7 +156,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
             }
-             shape.getRadian();
+
           }
         }
       }
