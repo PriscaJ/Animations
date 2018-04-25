@@ -1,10 +1,15 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -105,12 +110,17 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void setShapesList(ArrayList<Shapes> shapes) {
     this.currentShapesList = shapes;
     currentShapesListCopy = new ArrayList<>();
-    for (Shapes s: currentShapesList) {
+    for (Shapes s : currentShapesList) {
       currentShapesListCopy.add(s.getCopy());
     }
     initLayersMap(currentShapesList);
   }
 
+  /**
+   * Helper method to adjust the slider with the tick.
+   *
+   * @param progress is the time of the animation.
+   */
   protected void getProgress(JSlider progress) {
     this.progress = progress;
   }
@@ -134,7 +144,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
             if (shape.isOval()) {
 
               AffineTransform transform = new AffineTransform();
-              transform.rotate(Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              transform.rotate(Math.toRadians(shape.getRadian()),
+                  shape.getCenterX(), shape.getCenterY());
               AffineTransform old = g2d.getTransform();
 
               g2d.transform(transform);
@@ -147,9 +158,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
-              
+
               AffineTransform transform = new AffineTransform();
-              transform.rotate(Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              transform.rotate(Math.toRadians(shape.getRadian()),
+                  shape.getCenterX(), shape.getCenterY());
               AffineTransform old = g2d.getTransform();
               g2d.transform(transform);
 

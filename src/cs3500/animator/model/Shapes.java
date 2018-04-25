@@ -8,10 +8,22 @@ import java.util.ArrayList;
  */
 public interface Shapes {
 
+  /**
+   * Getter for the layer of a shape.
+   * @return the layer.
+   */
   int getLayer();
 
+  /**
+   * Helper to get the center x from the shape.
+   * @return center x coordinate.
+   */
   float getCenterX();
 
+  /**
+   * Helper method to get the center y position of the shape.
+   * @return center y coordinate.
+   */
   float getCenterY();
 
   /**
@@ -199,5 +211,9 @@ public interface Shapes {
    */
   void addCommand(AnimationCommand command);
 
+  /**
+   * Return a copy of this shape including a copy of commands and animations.
+   * @return copy of shape.
+   */
   Shapes getCopy();
 }
