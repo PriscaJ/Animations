@@ -157,25 +157,23 @@ public class AnimationPanel extends JPanel implements ActionListener {
               g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
                   shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
                   shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-              g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              // g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
               System.out.print("rotation check");
-<<<<<<< HEAD
-              g2d.rotate(Math.toRadians((double) shape.getRadian()),
+              /**g2d.rotate(Math.toRadians((double) shape.getRadian()),
                       (double) shape.getCenterX(),
               (double) shape.getCenterY());
-              //g2d.rotate(Math.toRadians((double) shape.getRadian()));
-=======
->>>>>>> 08f98b9388c68ed2fda4a05c679033269d0a9d4e
+              //g2d.rotate(Math.toRadians((double) shape.getRadian())); **/
 
             } else if (shape.isRect()) {
-              g2d.setColor(c);
+              // g2d.setColor(c);
+              g2d.rotate(Math.toRadians((double) shape.getRadian()),
+                      (double) shape.getCenterX(),
+                      (double) shape.getCenterY());
               g2d.fillRect(shape.getXPosition().intValue(),
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
               System.out.print("rotation check");
-              g2d.rotate(Math.toRadians((double) shape.getRadian()),
-                      (double) shape.getCenterX(),
-                      (double) shape.getCenterY());
+
               //g2d.rotate(Math.toRadians((double) shape.getRadian()));
             }
           }
