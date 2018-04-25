@@ -7,23 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13642b6b-d525-4c76-b3ae-e2208a212a24" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/AbstractShape.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/AbstractShape.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/AnimationCommand.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/AnimationCommand.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Animations.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Animations.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ColorChange.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ColorChange.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ColorCommand.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ColorCommand.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Move.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Move.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/MoveCommand.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/MoveCommand.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Oval.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Oval.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Rectangle.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Rectangle.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Rotate.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Rotate.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/RotateCommand.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/RotateCommand.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ScaleChange.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ScaleChange.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ScaleCommand.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/ScaleCommand.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Shapes.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/model/Shapes.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/view/AnimationPanel.class" afterPath="$PROJECT_DIR$/out/production/AnimationsFresh/cs3500/animator/view/AnimationPanel.class" />
-      <change beforePath="$PROJECT_DIR$/resources/AnimationsFresh.jar" afterPath="$PROJECT_DIR$/resources/AnimationsFresh.jar" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/model/Shapes.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/model/Shapes.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Shapes.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/model/Shapes.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/AnimationPanel.class" afterPath="$PROJECT_DIR$/out/production/Animations/cs3500/animator/view/AnimationPanel.class" />
+      <change beforePath="$PROJECT_DIR$/resources/Animations.jar" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,26 +26,26 @@
       <file leaf-file-name="AnimationPanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+            <state relative-caret-position="277">
+              <caret line="158" column="26" lean-forward="false" selection-start-line="158" selection-start-column="26" selection-end-line="158" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6738#6739#0" expanded="true" />
-                <element signature="e#6757#6758#0" expanded="true" />
-                <element signature="e#6853#6854#0" expanded="true" />
-                <element signature="e#6871#6872#0" expanded="true" />
-                <element signature="e#7006#7007#0" expanded="true" />
-                <element signature="e#7029#7030#0" expanded="true" />
-                <element signature="e#7580#7581#0" expanded="true" />
-                <element signature="e#7609#7610#0" expanded="true" />
-                <element signature="e#8627#8628#0" expanded="true" />
-                <element signature="e#8660#8661#0" expanded="true" />
-                <element signature="e#8811#8812#0" expanded="true" />
-                <element signature="e#8836#8837#0" expanded="true" />
-                <element signature="e#9022#9023#0" expanded="true" />
-                <element signature="e#9054#9055#0" expanded="true" />
-                <element signature="e#9089#9090#0" expanded="true" />
-                <element signature="e#9115#9116#0" expanded="true" />
+                <element signature="e#6899#6900#0" expanded="true" />
+                <element signature="e#6918#6919#0" expanded="true" />
+                <element signature="e#7014#7015#0" expanded="true" />
+                <element signature="e#7032#7033#0" expanded="true" />
+                <element signature="e#7167#7168#0" expanded="true" />
+                <element signature="e#7190#7191#0" expanded="true" />
+                <element signature="e#7741#7742#0" expanded="true" />
+                <element signature="e#7770#7771#0" expanded="true" />
+                <element signature="e#8788#8789#0" expanded="true" />
+                <element signature="e#8821#8822#0" expanded="true" />
+                <element signature="e#8972#8973#0" expanded="true" />
+                <element signature="e#8997#8998#0" expanded="true" />
+                <element signature="e#9183#9184#0" expanded="true" />
+                <element signature="e#9215#9216#0" expanded="true" />
+                <element signature="e#9250#9251#0" expanded="true" />
+                <element signature="e#9276#9277#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -250,8 +237,8 @@
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/Rotate.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/AbstractShape.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/AnimationModel.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" />
         <option value="$PROJECT_DIR$/src/cs3500/animator/model/Shapes.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java" />
       </list>
     </option>
   </component>
@@ -564,7 +551,7 @@
       <workItem from="1524366031441" duration="4255000" />
       <workItem from="1524413728148" duration="666000" />
       <workItem from="1524525404089" duration="15414000" />
-      <workItem from="1524597838762" duration="5665000" />
+      <workItem from="1524597838762" duration="6012000" />
     </task>
     <servers />
   </component>
@@ -574,11 +561,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102427000" />
+    <option name="totallyTimeSpent" value="102774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -593,7 +579,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2907916" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2907916" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14855571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1021,26 +1007,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animator/view/AnimationPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        <state relative-caret-position="277">
+          <caret line="158" column="26" lean-forward="false" selection-start-line="158" selection-start-column="26" selection-end-line="158" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6738#6739#0" expanded="true" />
-            <element signature="e#6757#6758#0" expanded="true" />
-            <element signature="e#6853#6854#0" expanded="true" />
-            <element signature="e#6871#6872#0" expanded="true" />
-            <element signature="e#7006#7007#0" expanded="true" />
-            <element signature="e#7029#7030#0" expanded="true" />
-            <element signature="e#7580#7581#0" expanded="true" />
-            <element signature="e#7609#7610#0" expanded="true" />
-            <element signature="e#8627#8628#0" expanded="true" />
-            <element signature="e#8660#8661#0" expanded="true" />
-            <element signature="e#8811#8812#0" expanded="true" />
-            <element signature="e#8836#8837#0" expanded="true" />
-            <element signature="e#9022#9023#0" expanded="true" />
-            <element signature="e#9054#9055#0" expanded="true" />
-            <element signature="e#9089#9090#0" expanded="true" />
-            <element signature="e#9115#9116#0" expanded="true" />
+            <element signature="e#6899#6900#0" expanded="true" />
+            <element signature="e#6918#6919#0" expanded="true" />
+            <element signature="e#7014#7015#0" expanded="true" />
+            <element signature="e#7032#7033#0" expanded="true" />
+            <element signature="e#7167#7168#0" expanded="true" />
+            <element signature="e#7190#7191#0" expanded="true" />
+            <element signature="e#7741#7742#0" expanded="true" />
+            <element signature="e#7770#7771#0" expanded="true" />
+            <element signature="e#8788#8789#0" expanded="true" />
+            <element signature="e#8821#8822#0" expanded="true" />
+            <element signature="e#8972#8973#0" expanded="true" />
+            <element signature="e#8997#8998#0" expanded="true" />
+            <element signature="e#9183#9184#0" expanded="true" />
+            <element signature="e#9215#9216#0" expanded="true" />
+            <element signature="e#9250#9251#0" expanded="true" />
+            <element signature="e#9276#9277#0" expanded="true" />
           </folding>
         </state>
       </provider>

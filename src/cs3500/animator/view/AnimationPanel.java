@@ -136,27 +136,28 @@ public class AnimationPanel extends JPanel implements ActionListener {
             g2d.setColor(c);
 
             if (shape.isOval()) {
-              Ellipse2D oval = new Ellipse2D.Double(shape.getXPosition(), shape.getYPosition(),
-                  shape.getWidth(), shape.getHeight());
-              //AffineTransform transform = new AffineTransform();
-              AffineTransform at = AffineTransform.getRotateInstance(
-                  Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
-              System.out.print(shape.getRadian() + "\n");
-              g2d.transform(at);
-              at.createTransformedShape(oval);
-              g2d.setPaint(c);
-              g2d.fill(oval);
+//              Ellipse2D oval = new Ellipse2D.Double(shape.getXPosition(), shape.getYPosition(),
+//                  shape.getWidth(), shape.getHeight());
+//              //AffineTransform transform = new AffineTransform();
+//              AffineTransform at = AffineTransform.getRotateInstance(
+//                  Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+//              System.out.print(shape.getRadian() + "\n");
+//              g2d.transform(at);
+//              at.createTransformedShape(oval);
+//              g2d.setPaint(c);
+//              g2d.fill(oval);
 //
 //              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
 //                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
 //                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
 
               // PRISCA's VERSION //
-//              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-//                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-//                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-//              System.out.print("rotation check");
-//              g2d.rotate(Math.toRadians((double) shape.getRadian()));
+              g2d.rotate(Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+              g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              System.out.print("rotation check");
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
