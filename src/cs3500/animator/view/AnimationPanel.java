@@ -134,6 +134,8 @@ public class AnimationPanel extends JPanel implements ActionListener {
             Color c = new Color(r, gg, b);
             g2d.setColor(c);
 
+
+
             if (shape.isOval()) {
 //              Ellipse2D oval = new Ellipse2D.Double(shape.getXPosition(), shape.getYPosition(),
 //                  shape.getWidth(), shape.getHeight());
@@ -160,10 +162,11 @@ public class AnimationPanel extends JPanel implements ActionListener {
 //                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
 //              g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
 //              System.out.print("rotation check");
-              AffineTransform old = g2d.getTransform();
 
               AffineTransform transform = new AffineTransform();
-              transform.rotate(shape.getRadian(), shape.getCenterX(), shape.getCenterY());
+              transform.rotate(Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              AffineTransform old = g2d.getTransform();
+
               g2d.transform(transform);
 
               g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
@@ -176,11 +179,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
-
-              AffineTransform old = g2d.getTransform();
-
+              
               AffineTransform transform = new AffineTransform();
-              transform.rotate(shape.getRadian(), shape.getCenterX(), shape.getCenterY());
+              transform.rotate(Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+              AffineTransform old = g2d.getTransform();
               g2d.transform(transform);
 
               g2d.fillRect(shape.getXPosition().intValue(),
