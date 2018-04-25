@@ -1,0 +1,5 @@
+rectangle name R min-x 500 min-y 250 width 75 height 75 color 0 1 0 radian 0 layer 1 from 1 to 100
+rotate name R rotate 0 180 from 1 to 25
+rotate name R rotate 0 360 from 26 to 50
+rotate name R rotate 0 720 from 51 to 75
+rotate name R rotate 0 -360 from 76 to 100
