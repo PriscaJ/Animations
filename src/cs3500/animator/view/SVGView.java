@@ -218,7 +218,7 @@ public class SVGView implements IView {
         + animation.getToRadian() + " " + animation.getAnimatingShape().getCenterX() + " "
         + animation.getAnimatingShape().getCenterY() + "\" " + "dur=\""
         + (animation.getFinish() - animation.getStart()) + "s\""
-            + " repeatCount=\"1\"/>\n";
+            + " repeatCount=\"0\"/>\n";
   }
 
   /**
