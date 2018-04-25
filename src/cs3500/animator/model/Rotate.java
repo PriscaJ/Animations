@@ -24,8 +24,10 @@ public class Rotate extends AbstractAnimation{
 
   @Override
   public void apply(int tick) {
+    System.out.print(tick + "\n");
     if (tick >= startTime && tick < endTime) {
       animatingShape.setRadian(calculateChange(fromRadian, toRadian, tick));
+      System.out.print(calculateChange(fromRadian, toRadian, tick) + "\n");
     }
   }
 

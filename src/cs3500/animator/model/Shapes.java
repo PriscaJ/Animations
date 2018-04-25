@@ -26,7 +26,7 @@ public interface Shapes {
    * animations that a shape has.
    *
    * @param newCommand Animation Command that will add to the list of commands the AbstractShape
-   *                   will have.
+   * will have.
    */
   void setAnimation(AnimationCommand newCommand);
 
@@ -130,10 +130,17 @@ public interface Shapes {
 
   /**
    * Get the orientation of the shape.
+   *
    * @return Float of the
    */
   Float getRadian();
 
+  /**
+   * Change the current radian of the shape.
+   *
+   * @param v the new degree of rotation.
+   */
+  void setRadian(float v);
 
   /**
    * Get the string representation of the shape with the given speed.
@@ -191,12 +198,6 @@ public interface Shapes {
    * @param command the command that the shape is a part of.
    */
   void addCommand(AnimationCommand command);
-
-  /**
-   * Change the current radian of the shape.
-   * @param v the new degree of rotation.
-   */
-  void setRadian(float v);
 
   Shapes getCopy();
 }
