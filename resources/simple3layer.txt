@@ -1,0 +1,12 @@
+oval name C0 center-x 500 center-y 100 x-radius 50 y-radius 50 color 0 0 1 radian 0 layer 1 from 0 to 100
+oval name C1 center-x 250 center-y 200 x-radius 40 y-radius 40 color 0 1 0 radian 0 layer 2 from 10 to 100
+oval name C2 center-x 750 center-y 200 x-radius 30 y-radius 30 color 1 0 0 radian 0 layer 3 from 20 to 100
+rotate name C0 rotate 0 360 from 0 to 10
+rotate name C1 rotate 0 360 from 10 to 20
+rotate name C2 rotate 0 360 from 20 to 30
+move name C0 moveto 500 100 500 200 from 30 to 65
+move name C1 moveto 250 200 500 200 from 30 to 65
+move name C2 moveto 750 200 500 200 from 30 to 65
+move name C0 moveto 500 200 500 100 from 70 to 100
+move name C1 moveto 500 200 250 200 from 70 to 100
+move name C2 moveto 500 200 750 200 from 70 to 100

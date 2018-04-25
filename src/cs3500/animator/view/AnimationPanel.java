@@ -133,7 +133,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
             float b = shape.getBlue();
             Color c = new Color(r, gg, b);
             g2d.setColor(c);
-            
+
             if (shape.isOval()) {
 //              Ellipse2D oval = new Ellipse2D.Double(shape.getXPosition(), shape.getYPosition(),
 //                  shape.getWidth(), shape.getHeight());

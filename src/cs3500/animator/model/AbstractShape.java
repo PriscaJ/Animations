@@ -38,6 +38,25 @@ public abstract class AbstractShape implements Shapes {
    * @param endOfLife The disappears time.
    */
   public AbstractShape(String name,
+                       float xPosn, float yPosn, float xDimension, float yDimension,
+                       float red, float green, float blue,
+                       int startOfLife, int endOfLife) {
+    this.name = name;
+    this.xPosn = xPosn;
+    this.yPosn = yPosn;
+    this.xDimension = xDimension;
+    this.yDimension = yDimension;
+    this.red = red;
+    this.green = green;
+    this.blue = blue;
+    this.startOfLife = startOfLife;
+    this.endOfLife = endOfLife;
+    this.layer = 1;
+    this.radian = 0;
+  }
+
+  // constructor that handles the layers and radians
+  public AbstractShape(String name,
       float xPosn, float yPosn, float xDimension, float yDimension,
       float red, float green, float blue,
       int startOfLife, int endOfLife, int layer, float radian) {
