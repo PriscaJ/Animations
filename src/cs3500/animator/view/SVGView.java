@@ -190,8 +190,11 @@ public class SVGView implements IView {
               workString2.toString()));
           break;
         case ROTATE:
+          // special case of it's own
+          StringBuilder workstring3 = new StringBuilder();
+          workstring3.append("<animateTransform attributeName=\"");
           workString.append(formatRotate((Rotate) a.getAnimation(), shapeType,
-              workString2.toString()));
+              workstring3.toString()));
         default:
           // do nothing.
       }
@@ -209,12 +212,13 @@ public class SVGView implements IView {
   }
 
   private String formatRotate(Rotate animation, String shapeType, String s) {
-    return s + "\"transform\" attributeType=\"XML\" type=\"rotate\" "
+    return s + "transform\" attributeType=\"XML\" type=\"rotate\" "
         + "from=\"" + animation.getFromRadian() + " " + animation.getAnimatingShape().getCenterX()
         + " " + animation.getAnimatingShape().getCenterY() + "\" to=\""
         + animation.getToRadian() + " " + animation.getAnimatingShape().getCenterX() + " "
         + animation.getAnimatingShape().getCenterY() + "\" " + "dur=\""
-        + (animation.getFinish() - animation.getStart()) + "s" + "repeatCount=\"indefinite\"/>\n";
+        + (animation.getFinish() - animation.getStart()) + "s\""
+            + " repeatCount=\"1\"/>\n";
   }
 
   /**
