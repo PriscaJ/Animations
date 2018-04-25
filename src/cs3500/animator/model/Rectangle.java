@@ -47,12 +47,12 @@ public class Rectangle extends AbstractShape {
 
   @Override
   public float getCenterX() {
-    return this.xPosn + xDimension / 2 ;
+    return this.xPosn + (xDimension / 2) - (xDimension / 10);
   }
 
   @Override
   public float getCenterY() {
-    return this.yPosn - yDimension / 2;
+    return this.yPosn + (yDimension / 2) - (yDimension / 9);
   }
 
   @Override
