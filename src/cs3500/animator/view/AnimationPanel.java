@@ -119,7 +119,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-    AffineTransform old = g2d.getTransform();
     if (tickToLayersToShapes.containsKey(tick)) {
       //      List<Integer> layerNums = new ArrayList<>(layers.keySet());
       //      // sorted list of layers
@@ -152,27 +151,58 @@ public class AnimationPanel extends JPanel implements ActionListener {
 //                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
 
               // PRISCA's VERSION //
-              g2d.rotate(Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+//              g2d.translate(shape.getCenterX(), shape.getCenterY());
+//              g2d.rotate( shape.getRadian(), shape.getCenterX() * 2, shape.getCenterY() * 2);
+//              g2d.translate(-shape.getCenterX(), -shape.getCenterY());
+//
+//              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
+//                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
+//                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
+//              g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
+//              System.out.print("rotation check");
+              AffineTransform old = g2d.getTransform();
+
+              AffineTransform transform = new AffineTransform();
+              transform.rotate(shape.getRadian(), shape.getCenterX(), shape.getCenterY());
+              g2d.transform(transform);
+
               g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
                   shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
                   shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-              g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
-              System.out.print("rotation check");
+
+              // draw your rectangle here...
+
+              g2d.setTransform(old);
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
+
+              AffineTransform old = g2d.getTransform();
+
+              AffineTransform transform = new AffineTransform();
+              transform.rotate(shape.getRadian(), shape.getCenterX(), shape.getCenterY());
+              g2d.transform(transform);
+
               g2d.fillRect(shape.getXPosition().intValue(),
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
-              System.out.print("rotation check");
-              g2d.rotate(Math.toRadians((double) shape.getRadian()));
+
+              // draw your rectangle here...
+
+              g2d.setTransform(old);
+
+//              g2d.rotate(Math.toRadians((double) shape.getRadian()));
+//              g2d.fillRect(shape.getXPosition().intValue(),
+//                  shape.getYPosition().intValue(),
+//                  shape.getWidth().intValue(), shape.getHeight().intValue());
+//              System.out.print("rotation check");
             }
           }
         }
       }
     }
     // return the shapes back to their original state.
-    g2d.setTransform(old);
+//    g2d.setTransform(old);
   }
 
   /**
