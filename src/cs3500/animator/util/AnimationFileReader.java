@@ -367,8 +367,12 @@ public class AnimationFileReader {
       valueFlags.put("start", false);
       valueFlags.put("end", false);
       // optional
-      valueFlags.put("layer", false);
-      valueFlags.put("radian", false);
+      if (!(layer == 1)) {
+        valueFlags.put("layer", false);
+      }
+      if (!(radian == 0)) {
+        valueFlags.put("radian", false);
+      }
     }
 
     int getLayer() {
