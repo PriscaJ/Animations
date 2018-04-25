@@ -120,9 +120,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     if (tickToLayersToShapes.containsKey(tick)) {
-      //      List<Integer> layerNums = new ArrayList<>(layers.keySet());
-      //      // sorted list of layers
-      //      Collections.sort(layerNums);
       List<Integer> layersInAnimation = new ArrayList<>(tickToLayersToShapes.get(tick).keySet());
       Collections.sort(layersInAnimation);
       for (Integer i : layersInAnimation) {
@@ -135,31 +132,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
             g2d.setColor(c);
 
             if (shape.isOval()) {
-//              Ellipse2D oval = new Ellipse2D.Double(shape.getXPosition(), shape.getYPosition(),
-//                  shape.getWidth(), shape.getHeight());
-//              //AffineTransform transform = new AffineTransform();
-//              AffineTransform at = AffineTransform.getRotateInstance(
-//                  Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
-//              System.out.print(shape.getRadian() + "\n");
-//              g2d.transform(at);
-//              at.createTransformedShape(oval);
-//              g2d.setPaint(c);
-//              g2d.fill(oval);
-//
-//              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-//                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-//                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-
-              // PRISCA's VERSION //
-//              g2d.translate(shape.getCenterX(), shape.getCenterY());
-//              g2d.rotate( shape.getRadian(), shape.getCenterX() * 2, shape.getCenterY() * 2);
-//              g2d.translate(-shape.getCenterX(), -shape.getCenterY());
-//
-//              g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
-//                  shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
-//                  shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-//              g2d.rotate(-Math.toRadians((double) shape.getRadian()), shape.getCenterX(), shape.getCenterY());
-//              System.out.print("rotation check");
 
               AffineTransform transform = new AffineTransform();
               transform.rotate(Math.toRadians(shape.getRadian()), shape.getCenterX(), shape.getCenterY());
@@ -170,7 +142,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
               g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
                   shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
                   shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
-              // draw your rectangle here...
 
               g2d.setTransform(old);
 
@@ -185,23 +156,13 @@ public class AnimationPanel extends JPanel implements ActionListener {
               g2d.fillRect(shape.getXPosition().intValue(),
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
-
-              // draw your rectangle here...
-
               g2d.setTransform(old);
 
-//              g2d.rotate(Math.toRadians((double) shape.getRadian()));
-//              g2d.fillRect(shape.getXPosition().intValue(),
-//                  shape.getYPosition().intValue(),
-//                  shape.getWidth().intValue(), shape.getHeight().intValue());
-//              System.out.print("rotation check");
             }
           }
         }
       }
     }
-    // return the shapes back to their original state.
-//    g2d.setTransform(old);
   }
 
   /**
@@ -222,7 +183,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * This method allows the view to restart the animation by resetting the tick to -1.
    */
   protected void setTickToZero() {
+    this.setShapesList(currentShapesListCopy);
     this.tick = 0;
+    t.start();
   }
 
   /**

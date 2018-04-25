@@ -37,12 +37,12 @@ public class Oval extends AbstractShape {
 
   @Override
   public float getCenterX() {
-    return xPosn;
+    return xPosn + xDimension / 2 - xDimension / 10;
   }
 
   @Override
   public float getCenterY() {
-    return yPosn;
+    return yPosn + yDimension/2 - yDimension /10;
   }
 
   @Override
