@@ -134,12 +134,16 @@ public class AnimationPanel extends JPanel implements ActionListener {
             Color c = new Color(r, gg, b);
             g2d.setColor(c);
 
+
             if (shape.isOval()) {
               g2d.fillOval(shape.getXPosition().intValue() - shape.getWidth().intValue() / 2,
                   shape.getYPosition().intValue() - shape.getHeight().intValue() / 2,
                   shape.getWidth().intValue() * 2, shape.getHeight().intValue() * 2);
               System.out.print("rotation check");
-              g2d.rotate(Math.toRadians((double) shape.getRadian()));
+              g2d.rotate(Math.toRadians((double) shape.getRadian()),
+                      (double) shape.getCenterX(),
+              (double) shape.getCenterY());
+              //g2d.rotate(Math.toRadians((double) shape.getRadian()));
 
             } else if (shape.isRect()) {
               g2d.setColor(c);
@@ -147,7 +151,10 @@ public class AnimationPanel extends JPanel implements ActionListener {
                   shape.getYPosition().intValue(),
                   shape.getWidth().intValue(), shape.getHeight().intValue());
               System.out.print("rotation check");
-              g2d.rotate(Math.toRadians((double) shape.getRadian()));
+              g2d.rotate(Math.toRadians((double) shape.getRadian()),
+                      (double) shape.getCenterX(),
+                      (double) shape.getCenterY());
+              //g2d.rotate(Math.toRadians((double) shape.getRadian()));
             }
           }
         }
